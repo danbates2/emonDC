@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -16880,10 +16880,10 @@ Source: http://focus.ti.com/lit/ds/symlink/ths4211.pdf</description>
 <attribute name="MPN" value="2211S-02G"/>
 <attribute name="OC_FARNELL" value="1593411"/>
 </part>
-<part name="SC1" library="SparkFun" deviceset="SOLDERJUMPER" device="NO"/>
+<part name="SC1" library="SparkFun" deviceset="SOLDERJUMPER" device="NO" value=""/>
 <part name="SUPPLY9" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="1K"/>
-<part name="SC2" library="SparkFun" deviceset="SOLDERJUMPER" device="NO"/>
+<part name="SC2" library="SparkFun" deviceset="SOLDERJUMPER" device="NO" value=""/>
 </parts>
 <sheets>
 <sheet>
@@ -16928,6 +16928,7 @@ Switch</text>
 <text x="-9.398" y="469.646" size="5.08" layer="91">Voltage Sense</text>
 <wire x1="38.1" y1="495.3" x2="-12.7" y2="495.3" width="0.1524" layer="94"/>
 <wire x1="38.1" y1="495.3" x2="38.1" y2="393.7" width="0.1524" layer="94"/>
+<wire x1="236.22" y1="276.86" x2="236.22" y2="213.36" width="1.778" layer="95" style="shortdash"/>
 </plain>
 <instances>
 <instance part="R10" gate="G$1" x="184.15" y="317.5" smashed="yes" rot="R90">
@@ -17026,7 +17027,7 @@ Switch</text>
 <attribute name="MF" x="-17.78" y="241.935" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="-17.78" y="241.935" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="C48" gate="G$1" x="22.86" y="246.38"/>
+<instance part="C48" gate="G$1" x="17.78" y="246.38"/>
 <instance part="C51" gate="G$1" x="-78.74" y="248.92"/>
 <instance part="GND23" gate="1" x="107.95" y="228.6"/>
 <instance part="C13" gate="G$1" x="92.71" y="246.38" smashed="yes">
@@ -17411,7 +17412,7 @@ Switch</text>
 <wire x1="-7.62" y1="233.68" x2="22.86" y2="233.68" width="0.1524" layer="91"/>
 <junction x="-17.78" y="233.68"/>
 <pinref part="C48" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="241.3" x2="22.86" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="241.3" x2="22.86" y2="233.68" width="0.1524" layer="91"/>
 <junction x="22.86" y="233.68"/>
 <wire x1="-7.62" y1="238.76" x2="-7.62" y2="233.68" width="0.1524" layer="91"/>
 <junction x="-7.62" y="233.68"/>
@@ -18086,7 +18087,7 @@ Switch</text>
 <pinref part="D1" gate="G$1" pin="A"/>
 <pinref part="C48" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="259.08" x2="22.86" y2="259.08" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="259.08" x2="22.86" y2="248.92" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="259.08" x2="17.78" y2="248.92" width="0.1524" layer="91"/>
 <wire x1="13.97" y1="259.08" x2="22.86" y2="259.08" width="0.1524" layer="91"/>
 <junction x="13.97" y="259.08"/>
 <junction x="22.86" y="259.08"/>
