@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="7.7.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<description>&lt;b&gt; Developed By element14 &lt;/b&gt;&lt;p&gt; 
+
+For feedback and Technical support please contact reach from below:
+&lt;br&gt; Tech Support e-mail  : &lt;a href="mailto:CAD_Tech@element14.com"&gt;CAD_Tech@element14.com&lt;/a&gt;
+&lt;br&gt;Community website: &lt;a href=http://www.element14.com/community/community/knode/cad_tools/cadsoft_eagle/eagle_cad_libraries&gt;
+EAGLE CAD Libraries on element14&lt;/a&gt;</description>
+<packages>
+<package name="CAPT7343X430N">
+<smd name="1" x="-2.7686" y="0" dx="2.4892" dy="2.2606" layer="1" rot="R90"/>
+<smd name="2" x="2.7686" y="0" dx="2.4892" dy="2.2606" layer="1" rot="R90"/>
+<wire x1="-4.1656" y1="-2.5146" x2="-4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="-4.1656" y1="2.5146" x2="4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="4.1656" y1="2.5146" x2="4.1656" y2="-2.5146" width="0.1524" layer="39"/>
+<wire x1="4.1656" y1="-2.5146" x2="-4.1656" y2="-2.5146" width="0.1524" layer="39"/>
+<wire x1="-4.1656" y1="-2.5146" x2="-4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="-4.1656" y1="2.5146" x2="4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="4.1656" y1="2.5146" x2="4.1656" y2="-2.5146" width="0.1524" layer="39"/>
+<wire x1="3.7592" y1="1.5748" x2="3.7592" y2="2.2606" width="0.1524" layer="21"/>
+<wire x1="-3.7592" y1="-1.5748" x2="-3.7592" y2="-2.2606" width="0.1524" layer="21"/>
+<wire x1="-5.3848" y1="0" x2="-6.1468" y2="0" width="0.1524" layer="21"/>
+<wire x1="-5.7658" y1="0.381" x2="-5.7658" y2="-0.381" width="0.1524" layer="21"/>
+<wire x1="-3.7592" y1="-2.2606" x2="3.7592" y2="-2.2606" width="0.1524" layer="21"/>
+<wire x1="3.7592" y1="-2.2606" x2="3.7592" y2="-1.5748" width="0.1524" layer="21"/>
+<wire x1="3.7592" y1="2.2606" x2="-3.7592" y2="2.2606" width="0.1524" layer="21"/>
+<wire x1="-3.7592" y1="2.2606" x2="-3.7592" y2="1.5748" width="0.1524" layer="21"/>
+<wire x1="-5.3848" y1="0" x2="-6.1468" y2="0" width="0.1524" layer="51"/>
+<wire x1="-5.7658" y1="0.381" x2="-5.7658" y2="-0.381" width="0.1524" layer="51"/>
+<wire x1="-3.7592" y1="-2.2606" x2="3.7592" y2="-2.2606" width="0.1524" layer="51"/>
+<wire x1="3.7592" y1="-2.2606" x2="3.7592" y2="2.2606" width="0.1524" layer="51"/>
+<wire x1="3.7592" y1="2.2606" x2="-3.7592" y2="2.2606" width="0.1524" layer="51"/>
+<wire x1="-3.7592" y1="2.2606" x2="-3.7592" y2="-2.2606" width="0.1524" layer="51"/>
+<text x="-4.0386" y="3.9116" size="2.0828" layer="25" ratio="10" rot="SR0">&gt;NAME</text>
+<text x="-5.3594" y="-5.6642" size="2.0828" layer="27" ratio="10" rot="SR0">&gt;VALUE</text>
+</package>
+<package name="CAPT6032X250N">
+<smd name="1" x="-2.3622" y="0" dx="2.0066" dy="1.9558" layer="1" rot="R90"/>
+<smd name="2" x="2.3622" y="0" dx="2.0066" dy="1.9558" layer="1" rot="R90"/>
+<wire x1="-3.6068" y1="-1.9558" x2="-3.6068" y2="1.9558" width="0.1524" layer="39"/>
+<wire x1="-3.6068" y1="1.9558" x2="3.6068" y2="1.9558" width="0.1524" layer="39"/>
+<wire x1="3.6068" y1="1.9558" x2="3.6068" y2="-1.9558" width="0.1524" layer="39"/>
+<wire x1="3.6068" y1="-1.9558" x2="-3.6068" y2="-1.9558" width="0.1524" layer="39"/>
+<wire x1="-3.6068" y1="-1.9558" x2="-3.6068" y2="1.9558" width="0.1524" layer="39"/>
+<wire x1="-3.6068" y1="1.9558" x2="3.6068" y2="1.9558" width="0.1524" layer="39"/>
+<wire x1="3.6068" y1="1.9558" x2="3.6068" y2="-1.9558" width="0.1524" layer="39"/>
+<wire x1="3.2004" y1="1.3208" x2="3.2004" y2="1.7018" width="0.1524" layer="21"/>
+<wire x1="-3.2004" y1="-1.3208" x2="-3.2004" y2="-1.7018" width="0.1524" layer="21"/>
+<wire x1="-4.2926" y1="0" x2="-5.0546" y2="0" width="0.1524" layer="21"/>
+<wire x1="-4.6736" y1="0.381" x2="-4.6736" y2="-0.381" width="0.1524" layer="21"/>
+<wire x1="-3.2004" y1="-1.7018" x2="3.2004" y2="-1.7018" width="0.1524" layer="21"/>
+<wire x1="3.2004" y1="-1.7018" x2="3.2004" y2="-1.3208" width="0.1524" layer="21"/>
+<wire x1="3.2004" y1="1.7018" x2="-3.2004" y2="1.7018" width="0.1524" layer="21"/>
+<wire x1="-3.2004" y1="1.7018" x2="-3.2004" y2="1.3208" width="0.1524" layer="21"/>
+<wire x1="-4.2926" y1="0" x2="-5.0546" y2="0" width="0.1524" layer="51"/>
+<wire x1="-4.6736" y1="0.381" x2="-4.6736" y2="-0.381" width="0.1524" layer="51"/>
+<wire x1="-3.2004" y1="-1.7018" x2="3.2004" y2="-1.7018" width="0.1524" layer="51"/>
+<wire x1="3.2004" y1="-1.7018" x2="3.2004" y2="1.7018" width="0.1524" layer="51"/>
+<wire x1="3.2004" y1="1.7018" x2="-3.2004" y2="1.7018" width="0.1524" layer="51"/>
+<wire x1="-3.2004" y1="1.7018" x2="-3.2004" y2="-1.7018" width="0.1524" layer="51"/>
+<text x="-4.5974" y="2.032" size="2.0828" layer="25" ratio="10" rot="SR0">&gt;NAME</text>
+<text x="-5.7404" y="-4.064" size="2.0828" layer="27" ratio="10" rot="SR0">&gt;VALUE</text>
+</package>
+<package name="2917">
+<smd name="1" x="-2.7686" y="0" dx="2.4892" dy="2.2606" layer="1" rot="R90"/>
+<smd name="2" x="2.7686" y="0" dx="2.4892" dy="2.2606" layer="1" rot="R90"/>
+<wire x1="-4.1656" y1="-2.5146" x2="-4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="-4.1656" y1="2.5146" x2="4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="4.1656" y1="-2.5146" x2="-4.1656" y2="-2.5146" width="0.1524" layer="39"/>
+<wire x1="-4.1656" y1="-2.5146" x2="-4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="-4.1656" y1="2.5146" x2="4.1656" y2="2.5146" width="0.1524" layer="39"/>
+<wire x1="4.1656" y1="2.5146" x2="4.1656" y2="-2.5146" width="0.1524" layer="39"/>
+<wire x1="3.7592" y1="1.5748" x2="3.7592" y2="2.2606" width="0.1524" layer="21"/>
+<wire x1="-3.7592" y1="-1.5748" x2="-3.7592" y2="-2.2606" width="0.1524" layer="21"/>
+<wire x1="-5.3848" y1="0" x2="-6.1468" y2="0" width="0.1524" layer="21"/>
+<wire x1="-5.7658" y1="0.381" x2="-5.7658" y2="-0.381" width="0.1524" layer="21"/>
+<wire x1="-3.7592" y1="-2.2606" x2="3.7592" y2="-2.2606" width="0.1524" layer="21"/>
+<wire x1="3.7592" y1="-2.2606" x2="3.7592" y2="-1.5748" width="0.1524" layer="21"/>
+<wire x1="3.7592" y1="2.2606" x2="-3.7592" y2="2.2606" width="0.1524" layer="21"/>
+<wire x1="-3.7592" y1="2.2606" x2="-3.7592" y2="1.5748" width="0.1524" layer="21"/>
+<wire x1="-5.3848" y1="0" x2="-6.1468" y2="0" width="0.1524" layer="51"/>
+<wire x1="-5.7658" y1="0.381" x2="-5.7658" y2="-0.381" width="0.1524" layer="51"/>
+<wire x1="-3.7592" y1="-2.2606" x2="3.7592" y2="-2.2606" width="0.1524" layer="51"/>
+<wire x1="3.7592" y1="-2.2606" x2="3.7592" y2="2.2606" width="0.1524" layer="51"/>
+<wire x1="3.7592" y1="2.2606" x2="-3.7592" y2="2.2606" width="0.1524" layer="51"/>
+<wire x1="-3.7592" y1="2.2606" x2="-3.7592" y2="-2.2606" width="0.1524" layer="51"/>
+<text x="-4.0386" y="3.9116" size="2.0828" layer="25" ratio="10" rot="SR0">&gt;NAME</text>
+<text x="-5.3594" y="-5.6642" size="2.0828" layer="27" ratio="10" rot="SR0">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="PCAPH">
+<pin name="2" x="7.62" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+<pin name="1" x="0" y="0" visible="off" length="short" direction="pas"/>
+<wire x1="2.2098" y1="0.635" x2="2.2098" y2="1.905" width="0.2032" layer="94"/>
+<wire x1="4.1148" y1="0" x2="5.08" y2="0" width="0.2032" layer="94"/>
+<wire x1="3.4798" y1="-1.905" x2="3.4798" y2="1.905" width="0.2032" layer="94"/>
+<wire x1="1.5748" y1="1.27" x2="2.8448" y2="1.27" width="0.2032" layer="94"/>
+<wire x1="2.54" y1="0" x2="3.4798" y2="0" width="0.2032" layer="94"/>
+<wire x1="4.7498" y1="-1.905" x2="4.7498" y2="1.905" width="0.1524" layer="94" curve="-74"/>
+<text x="-0.9144" y="2.7686" size="2.0828" layer="95" ratio="10" rot="SR0">&gt;NAME</text>
+<text x="-1.9304" y="-4.445" size="2.0828" layer="96" ratio="10" rot="SR0">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="293DS" prefix="C">
+<description>SP-Cap/ Conductive Polymer Aluminum Capacitors (Specialty Polymer Aluminum Capacitors)</description>
+<gates>
+<gate name="A" symbol="PCAPH" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="CAPT7343X430N">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="CD0J100R">
+<attribute name="MPN" value="EEFCD0J100R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694684  " constant="no"/>
+<attribute name="OC_NEWARK" value="25M9133" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="10UF" constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V" constant="no"/>
+</technology>
+<technology name="CD0J470R">
+<attribute name="MPN" value="EEFCD0J470R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694714  " constant="no"/>
+<attribute name="OC_NEWARK" value="34M5921" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 47UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 6.3V " constant="no"/>
+</technology>
+<technology name="CD0K330R">
+<attribute name="MPN" value="EEFCD0K330R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694749  " constant="no"/>
+<attribute name="OC_NEWARK" value="55W9270" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 33UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="8V" constant="no"/>
+</technology>
+<technology name="CD1B220R">
+<attribute name="MPN" value="EEFCD1B220R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694790  " constant="no"/>
+<attribute name="OC_NEWARK" value="25M9135" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 22UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="12.5V " constant="no"/>
+</technology>
+<technology name="CD1C2R2R">
+<attribute name="MPN" value="EEFCD1C2R2R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694803  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2523" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 2.2UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="16V" constant="no"/>
+</technology>
+<technology name="CT0J101R">
+<attribute name="MPN" value="EEFCT0J101R" constant="no"/>
+<attribute name="OC_FARNELL" value="2284873  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3865" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="100UF " constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V " constant="no"/>
+</technology>
+<technology name="CX0D221R">
+<attribute name="MPN" value="EEFCX0D221R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751902  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8924" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 220UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="CX0D331R">
+<attribute name="MPN" value="EEFCX0D331R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751903  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2527" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="CX0D471R">
+<attribute name="MPN" value="EEFCX0D471R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751904  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2531" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="CX0E221R">
+<attribute name="MPN" value="EEFCX0E221R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751905  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8927" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 220UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="CX0E331R">
+<attribute name="MPN" value="EEFCX0E331R" constant="no"/>
+<attribute name="OC_FARNELL" value="1855084  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2535" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="CX0E471R">
+<attribute name="MPN" value="EEFCX0E471R" constant="no"/>
+<attribute name="OC_FARNELL" value="2284453  " constant="no"/>
+<attribute name="OC_NEWARK" value="49W5260" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="CX0G151R">
+<attribute name="MPN" value="EEFCX0G151R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751908  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8929" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 150UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="CX0G181R">
+<attribute name="MPN" value="EEFCX0G181R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751909  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8930" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 180UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="CX0G221R">
+<attribute name="MPN" value="EEFCX0G221R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751910  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2538" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 220UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="CX0J101R">
+<attribute name="MPN" value="EEFCX0J101R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751911  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8932" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 100UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 6.3V " constant="no"/>
+</technology>
+<technology name="CX0J121R">
+<attribute name="MPN" value="EEFCX0J121R" constant="no"/>
+<attribute name="OC_FARNELL" value="2284875  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3867" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 120UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 6.3V " constant="no"/>
+</technology>
+<technology name="CX0J151R">
+<attribute name="MPN" value="EEFCX0J151R" constant="no"/>
+<attribute name="OC_FARNELL" value="1751912  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2542" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 150UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 6.3V " constant="no"/>
+</technology>
+<technology name="CX0J151XR">
+<attribute name="MPN" value="EEFCX0J151XR" constant="no"/>
+<attribute name="OC_FARNELL" value="1855085  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W8321" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 150UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V " constant="no"/>
+</technology>
+<technology name="CX0J181R">
+<attribute name="MPN" value="EEFCX0J181R" constant="no"/>
+<attribute name="OC_FARNELL" value="2284454  " constant="no"/>
+<attribute name="OC_NEWARK" value="49W5265" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 180 µF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 6.3V " constant="no"/>
+</technology>
+<technology name="GX0D331R">
+<attribute name="MPN" value="EEFGX0D331R" constant="no"/>
+<attribute name="OC_FARNELL" value="1855097  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5092" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="GX0D471R">
+<attribute name="MPN" value="EEFGX0D471R" constant="no"/>
+<attribute name="OC_FARNELL" value="1855099  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W8322" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="LX0D331R">
+<attribute name="MPN" value="EEFLX0D331R" constant="no"/>
+<attribute name="OC_FARNELL" value="1855091   " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5094" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V " constant="no"/>
+</technology>
+<technology name="LX0D331R4">
+<attribute name="MPN" value="EEFLX0D331R4" constant="no"/>
+<attribute name="OC_FARNELL" value="1855092  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5095" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="LX0D471R4">
+<attribute name="MPN" value="EEFLX0D471R4" constant="no"/>
+<attribute name="OC_FARNELL" value="1855094  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5097" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="LX0D561R">
+<attribute name="MPN" value="EEFLX0D561R" constant="no"/>
+<attribute name="OC_FARNELL" value="1855095   " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5098" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 560UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="LX0D561R4">
+<attribute name="MPN" value="EEFLX0D561R4" constant="no"/>
+<attribute name="OC_FARNELL" value="1855096  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5099" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 560UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SL0J560R">
+<attribute name="MPN" value="EEFSL0J560R" constant="no"/>
+<attribute name="OC_FARNELL" value="1855082  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5104" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 56UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V " constant="no"/>
+</technology>
+<technology name="SS0D221R">
+<attribute name="MPN" value="EEFSS0D221R" constant="no"/>
+<attribute name="OC_FARNELL" value="2284876  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3868" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="220UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="ST0D331R">
+<attribute name="MPN" value="EEFST0D331R" constant="no"/>
+<attribute name="OC_FARNELL" value="2284877  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3869" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D221ER">
+<attribute name="MPN" value="EEFSX0D221ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1855076  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5105" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 220UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D271ER">
+<attribute name="MPN" value="EEFSX0D271ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1855077  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5106" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 270UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D331E4">
+<attribute name="MPN" value="EEFSX0D331E4" constant="no"/>
+<attribute name="OC_FARNELL" value="1751917  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8936" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D331ER">
+<attribute name="MPN" value="EEFSX0D331ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751914  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8935" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D331XE">
+<attribute name="MPN" value="EEFSX0D331XE" constant="no"/>
+<attribute name="OC_FARNELL" value="1751916  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2546" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D331XR">
+<attribute name="MPN" value="EEFSX0D331XR" constant="no"/>
+<attribute name="OC_FARNELL" value="1751915  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8938" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D471E4">
+<attribute name="MPN" value="EEFSX0D471E4" constant="no"/>
+<attribute name="OC_FARNELL" value="1751922  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8940" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D471ER">
+<attribute name="MPN" value="EEFSX0D471ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751919  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8939" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0D471XE">
+<attribute name="MPN" value="EEFSX0D471XE" constant="no"/>
+<attribute name="OC_FARNELL" value="1751921  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8941" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 470UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="2V" constant="no"/>
+</technology>
+<technology name="SX0E181ER">
+<attribute name="MPN" value="EEFSX0E181ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1855078  " constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 180UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="SX0E221ER">
+<attribute name="MPN" value="EEFSX0E221ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751923  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8942" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 220UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="SX0E331ER">
+<attribute name="MPN" value="EEFSX0E331ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1855079  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5108" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="SX0E331XE">
+<attribute name="MPN" value="EEFSX0E331XE" constant="no"/>
+<attribute name="OC_FARNELL" value="1855080  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5109" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 330UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="SX0E391XE">
+<attribute name="MPN" value="EEFSX0E391XE" constant="no"/>
+<attribute name="OC_FARNELL" value="1751925  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8944" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 390UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 2.5V " constant="no"/>
+</technology>
+<technology name="SX0E471E4">
+<attribute name="MPN" value="EEFSX0E471E4" constant="no"/>
+<attribute name="OC_FARNELL" value="2284878  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3870" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="470UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="2.5V " constant="no"/>
+</technology>
+<technology name="SX0E471ER">
+<attribute name="MPN" value="EEFSX0E471ER" constant="no"/>
+<attribute name="OC_FARNELL" value="2284456  " constant="no"/>
+<attribute name="OC_NEWARK" value="49W5355" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="470UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 2.5V " constant="no"/>
+</technology>
+<technology name="SX0E471XE">
+<attribute name="MPN" value="EEFSX0E471XE" constant="no"/>
+<attribute name="OC_FARNELL" value="2282062  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3871" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="470UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 2.5V " constant="no"/>
+</technology>
+<technology name="SX0G101ER">
+<attribute name="MPN" value="EEFSX0G101ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1855081  " constant="no"/>
+<attribute name="OC_NEWARK" value="22T5110" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 100UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="SX0G151ER">
+<attribute name="MPN" value="EEFSX0G151ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751926  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8945" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 150UF " constant="no"/>
+<attribute name="VOLTAGERATING" value=" 4V " constant="no"/>
+</technology>
+<technology name="SX0G181ER">
+<attribute name="MPN" value="EEFSX0G181ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751927  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8946" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 180UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="SX0G221ER">
+<attribute name="MPN" value="EEFSX0G221ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751928  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8947" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 220UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="SX0J121E7">
+<attribute name="MPN" value="EEFSX0J121E7" constant="no"/>
+<attribute name="OC_FARNELL" value="1855083  " constant="no"/>
+<attribute name="OC_NEWARK" value="54W2550" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 120UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V " constant="no"/>
+</technology>
+<technology name="SX0J151ER">
+<attribute name="MPN" value="EEFSX0J151ER" constant="no"/>
+<attribute name="OC_FARNELL" value="1751929  " constant="no"/>
+<attribute name="OC_NEWARK" value="32R8948" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 150UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V " constant="no"/>
+</technology>
+<technology name="UD0J101R">
+<attribute name="MPN" value="EEFUD0J101R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694722  " constant="no"/>
+<attribute name="OC_NEWARK" value="88K2870" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="100UF" constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V" constant="no"/>
+</technology>
+<technology name="UD0K680R">
+<attribute name="MPN" value="EEFUD0K680R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694757  " constant="no"/>
+<attribute name="OC_NEWARK" value="25M9139" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 68UF" constant="no"/>
+<attribute name="VOLTAGERATING" value="8V" constant="no"/>
+</technology>
+<technology name="UE0G181R">
+<attribute name="MPN" value="EEFUE0G181R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694676  " constant="no"/>
+<attribute name="OC_NEWARK" value="25M9140" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 180UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="4V" constant="no"/>
+</technology>
+<technology name="UE0J151R">
+<attribute name="MPN" value="EEFUE0J151R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694730  " constant="no"/>
+<attribute name="OC_NEWARK" value="20M6823" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 150UF  " constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V " constant="no"/>
+</technology>
+<technology name="UE0J221ER">
+<attribute name="MPN" value="EEFUE0J221ER" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3875" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="220UF" constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V" constant="no"/>
+</technology>
+<technology name="UE0J221LR">
+<attribute name="MPN" value="EEFUE0J221LR" constant="no"/>
+<attribute name="OC_FARNELL" value="2282066  " constant="no"/>
+<attribute name="OC_NEWARK" value="53W3876" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value="220UF" constant="no"/>
+<attribute name="VOLTAGERATING" value="6.3V" constant="no"/>
+</technology>
+<technology name="UE0K101R">
+<attribute name="MPN" value="EEFUE0K101R" constant="no"/>
+<attribute name="OC_FARNELL" value="9694765  " constant="no"/>
+<attribute name="OC_NEWARK" value="25M9141" constant="no"/>
+<attribute name="PACKAGE" value="7343" constant="no"/>
+<attribute name="SUPPLIER" value="PANASONIC" constant="no"/>
+<attribute name="VALUE" value=" 100UF   " constant="no"/>
+<attribute name="VOLTAGERATING" value="8V" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="293D">
+<gates>
+<gate name="G$1" symbol="PCAPH" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="2917">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="SIZE" value="2917"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>
