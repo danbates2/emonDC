@@ -8353,6 +8353,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <contactref element="X1" pad="2"/>
 <wire x1="-17.898" y1="10.151" x2="86.868" y2="26.48" width="0" layer="19" extent="1-1"/>
 </signal>
+<signal name="N$11">
+<contactref element="X1" pad="SW2"/>
+<contactref element="X1" pad="SW3"/>
+<wire x1="-35.798" y1="27.526" x2="-35.498" y2="0.076" width="0" layer="19" extent="1-1"/>
+</signal>
 </signals>
 <errors>
 <approved hash="19,1,bbacef9bb71602f3"/>
