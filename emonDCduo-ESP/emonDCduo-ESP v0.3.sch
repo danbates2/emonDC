@@ -15011,6 +15011,76 @@ Herstellerbez.:  SDBMF-00915B0T2</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="47219-2001_SD_MICRO">
+<packages>
+<package name="47219-2001_MICROSD">
+<smd name="P$1" x="0" y="0" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="P$2" x="13.75" y="0" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="P$3" x="0" y="8.3" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="P$4" x="13.75" y="8.3" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="PIN1" x="2.38" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN2" x="3.48" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN3" x="4.58" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN4" x="5.68" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN5" x="6.78" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN6" x="7.88" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN7" x="8.98" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN8" x="10.08" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<wire x1="0" y1="-2.55" x2="13.6" y2="-2.55" width="0.1" layer="21"/>
+<wire x1="13.6" y1="-2.55" x2="13.6" y2="11.95" width="0.1" layer="21"/>
+<wire x1="13.6" y1="11.95" x2="0" y2="11.95" width="0.1" layer="21"/>
+<wire x1="0" y1="11.95" x2="0" y2="-2.55" width="0.1" layer="21"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="-12.7" width="0.127" layer="21" style="shortdash"/>
+<wire x1="1.27" y1="-12.7" x2="12.7" y2="-12.7" width="0.127" layer="21" style="shortdash"/>
+<wire x1="12.7" y1="-12.7" x2="12.7" y2="-2.54" width="0.127" layer="21" style="shortdash"/>
+<text x="2.54" y="6.35" size="1.27" layer="21">47219-2001
+MICRO_SD</text>
+</package>
+</packages>
+<symbols>
+<symbol name="47219-2001_MICROSD">
+<pin name="DAT2" x="10.16" y="20.32" length="middle"/>
+<pin name="CD/DAT3" x="10.16" y="17.78" length="middle"/>
+<pin name="CMD" x="10.16" y="15.24" length="middle"/>
+<pin name="VDD" x="10.16" y="12.7" length="middle"/>
+<pin name="CLK" x="10.16" y="10.16" length="middle"/>
+<pin name="VSS" x="10.16" y="7.62" length="middle"/>
+<pin name="DAT0" x="10.16" y="5.08" length="middle"/>
+<pin name="DAT1" x="10.16" y="2.54" length="middle"/>
+<wire x1="0" y1="0" x2="12.7" y2="0" width="0.254" layer="94"/>
+<wire x1="12.7" y1="0" x2="12.7" y2="22.86" width="0.254" layer="94"/>
+<wire x1="12.7" y1="22.86" x2="0" y2="22.86" width="0.254" layer="94"/>
+<wire x1="0" y1="22.86" x2="0" y2="0" width="0.254" layer="94"/>
+<text x="-2.54" y="25.4" size="2.032" layer="95">47219-2001_MICROSD</text>
+<pin name="GND" x="2.54" y="2.54" visible="pin" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="47219-2001_MICROSD">
+<gates>
+<gate name="G$1" symbol="47219-2001_MICROSD" x="-5.08" y="-10.16"/>
+</gates>
+<devices>
+<device name="" package="47219-2001_MICROSD">
+<connects>
+<connect gate="G$1" pin="CD/DAT3" pad="PIN2"/>
+<connect gate="G$1" pin="CLK" pad="PIN5"/>
+<connect gate="G$1" pin="CMD" pad="PIN3"/>
+<connect gate="G$1" pin="DAT0" pad="PIN7"/>
+<connect gate="G$1" pin="DAT1" pad="PIN8"/>
+<connect gate="G$1" pin="DAT2" pad="PIN1"/>
+<connect gate="G$1" pin="GND" pad="P$1 P$2 P$3 P$4"/>
+<connect gate="G$1" pin="VDD" pad="PIN4"/>
+<connect gate="G$1" pin="VSS" pad="PIN6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -15252,6 +15322,7 @@ Herstellerbez.:  SDBMF-00915B0T2</description>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_03" device=""/>
 <part name="J4" library="SparkFun-Connectors" deviceset="CONN_03" device=""/>
 <part name="X1" library="farnell" deviceset="SDBMF" device=""/>
+<part name="U$1" library="47219-2001_SD_MICRO" deviceset="47219-2001_MICROSD" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15568,6 +15639,7 @@ BACKUP FOR TESTING</text>
 <instance part="J3" gate="J$1" x="-96.52" y="335.28" rot="R270"/>
 <instance part="J4" gate="J$1" x="-96.52" y="337.82" rot="R90"/>
 <instance part="X1" gate="G$1" x="101.6" y="431.8"/>
+<instance part="U$1" gate="G$1" x="55.88" y="424.18"/>
 </instances>
 <busses>
 </busses>

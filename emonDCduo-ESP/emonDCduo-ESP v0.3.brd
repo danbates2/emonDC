@@ -6710,6 +6710,33 @@ Herstellerbez.:  SDBMF-00915B0T2</description>
 </package>
 </packages>
 </library>
+<library name="47219-2001_SD_MICRO">
+<packages>
+<package name="47219-2001_MICROSD">
+<smd name="P$1" x="0" y="0" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="P$2" x="13.75" y="0" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="P$3" x="0" y="8.3" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="P$4" x="13.75" y="8.3" dx="2" dy="1.45" layer="1" rot="R90"/>
+<smd name="PIN1" x="2.38" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN2" x="3.48" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN3" x="4.58" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN4" x="5.68" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN5" x="6.78" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN6" x="7.88" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN7" x="8.98" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<smd name="PIN8" x="10.08" y="2.6" dx="1.5" dy="0.8" layer="1" rot="R90"/>
+<wire x1="0" y1="-2.55" x2="13.6" y2="-2.55" width="0.1" layer="21"/>
+<wire x1="13.6" y1="-2.55" x2="13.6" y2="11.95" width="0.1" layer="21"/>
+<wire x1="13.6" y1="11.95" x2="0" y2="11.95" width="0.1" layer="21"/>
+<wire x1="0" y1="11.95" x2="0" y2="-2.55" width="0.1" layer="21"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="-12.7" width="0.127" layer="21" style="shortdash"/>
+<wire x1="1.27" y1="-12.7" x2="12.7" y2="-12.7" width="0.127" layer="21" style="shortdash"/>
+<wire x1="12.7" y1="-12.7" x2="12.7" y2="-2.54" width="0.127" layer="21" style="shortdash"/>
+<text x="2.54" y="6.35" size="1.27" layer="21">47219-2001
+MICRO_SD</text>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -7240,6 +7267,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="VALUE" x="11.43" y="39.37" size="0.6096" layer="27" font="vector" ratio="20"/>
 </element>
 <element name="X1" library="farnell" package="SDBMF-009XXBXX2" value="SDBMF" x="-22.098" y="4.826"/>
+<element name="U$1" library="47219-2001_SD_MICRO" package="47219-2001_MICROSD" value="47219-2001_MICROSD" x="15.24" y="12.7"/>
 </elements>
 <signals>
 <signal name="+5V-ISO" class="1">
