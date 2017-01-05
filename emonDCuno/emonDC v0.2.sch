@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -30107,7 +30107,7 @@ OpenEnergyMonitor.org</text>
 <text x="-83.82" y="194.31" size="1.778" layer="91">Hardware design files are licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License</text>
 <text x="94.615" y="370.84" size="3.81" layer="91">ATmega328</text>
 <text x="173.99" y="381.635" size="3.81" layer="91">RFM12B
-RFM1269CW</text>
+RFM69CW</text>
 <text x="263.144" y="377.063" size="2.54" layer="91">DIP
 Switch</text>
 <text x="186.69" y="280.035" size="3.81" layer="91">FTDI OPTO ISO</text>
