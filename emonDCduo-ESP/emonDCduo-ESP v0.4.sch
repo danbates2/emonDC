@@ -14956,7 +14956,7 @@ MICRO_SD</text>
 <sheets>
 <sheet>
 <plain>
-<text x="-82.55" y="184.15" size="1.778" layer="97">emonDC v0.3 : based on emonTx v3.4 by Glyn Hudson and Trystan Lea
+<text x="-82.55" y="184.15" size="1.778" layer="97">emonDC v0.4 : based on emonTx v3.4 by Glyn Hudson and Trystan Lea
 OpenEnergyMonitor.org</text>
 <text x="-82.55" y="180.34" size="1.778" layer="97">Daniel Bates     Dec 2016</text>
 <wire x1="38.1" y1="393.7" x2="38.1" y2="292.1" width="0.1524" layer="94"/>
