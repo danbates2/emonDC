@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -14667,6 +14667,45 @@ MICRO_SD</text>
 </deviceset>
 </devicesets>
 </library>
+<library name="wirepad">
+<description>&lt;b&gt;Single Pads&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SMD1,27-2,54">
+<description>&lt;b&gt;SMD PAD&lt;/b&gt;</description>
+<smd name="1" x="0" y="0" dx="1.27" dy="2.54" layer="1"/>
+<text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
+<text x="-0.8" y="-2.4" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+</package>
+</packages>
+<symbols>
+<symbol name="PAD">
+<wire x1="-1.016" y1="1.016" x2="1.016" y2="-1.016" width="0.254" layer="94"/>
+<wire x1="-1.016" y1="-1.016" x2="1.016" y2="1.016" width="0.254" layer="94"/>
+<text x="-1.143" y="1.8542" size="1.778" layer="95">&gt;NAME</text>
+<text x="-1.143" y="-3.302" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="P" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SMD2" prefix="PAD" uservalue="yes">
+<description>&lt;b&gt;SMD PAD&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="PAD" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SMD1,27-2,54">
+<connects>
+<connect gate="1" pin="P" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14901,9 +14940,12 @@ MICRO_SD</text>
 </part>
 <part name="SUPPLY2" library="supply2" deviceset="GND" device=""/>
 <part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="120K"/>
-<part name="C20-TUNE" library="rcl" deviceset="C-EU" device="C0603" value="tune"/>
+<part name="C20/TUNE" library="rcl" deviceset="C-EU" device="C0603" value="tune"/>
 <part name="SUPPLY6" library="supply2" deviceset="GND" device=""/>
 <part name="GND18" library="supply1" deviceset="0V" device="" value="GND"/>
+<part name="C19" library="rcl" deviceset="C-EU" device="C0603" value="22pF"/>
+<part name="PAD1" library="wirepad" deviceset="SMD2" device=""/>
+<part name="GPIO-4/5" library="SparkFun" deviceset="M02" device="PTH"/>
 </parts>
 <sheets>
 <sheet>
@@ -15202,12 +15244,18 @@ RFM69CW</text>
 <attribute name="NAME" x="106.172" y="461.6196" size="1.778" layer="95"/>
 <attribute name="VALUE" x="106.172" y="456.819" size="1.778" layer="96"/>
 </instance>
-<instance part="C20-TUNE" gate="G$1" x="140.462" y="460.756" smashed="yes" rot="R90">
+<instance part="C20/TUNE" gate="G$1" x="140.462" y="460.756" smashed="yes" rot="R90">
 <attribute name="NAME" x="140.081" y="462.28" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="148.336" y="463.55" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="SUPPLY6" gate="GND" x="151.892" y="458.216"/>
 <instance part="GND18" gate="1" x="-121.92" y="231.14"/>
+<instance part="C19" gate="G$1" x="136.652" y="466.852" smashed="yes" rot="R180">
+<attribute name="NAME" x="135.128" y="466.471" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="133.858" y="474.726" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="PAD1" gate="1" x="147.32" y="467.36" rot="R90"/>
+<instance part="GPIO-4/5" gate="G$1" x="226.06" y="398.78" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -15391,7 +15439,7 @@ RFM69CW</text>
 <wire x1="143.002" y1="424.561" x2="143.002" y2="427.101" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C20-TUNE" gate="G$1" pin="2"/>
+<pinref part="C20/TUNE" gate="G$1" pin="2"/>
 <pinref part="SUPPLY6" gate="GND" pin="GND"/>
 <wire x1="151.892" y1="460.756" x2="145.542" y2="460.756" width="0.1524" layer="91"/>
 </segment>
@@ -16262,12 +16310,20 @@ RFM69CW</text>
 <wire x1="210.82" y1="444.5" x2="205.74" y2="444.5" width="0.1524" layer="91"/>
 <label x="203.2" y="444.5" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="GPIO-4/5" gate="G$1" pin="2"/>
+<wire x1="223.52" y1="406.4" x2="223.52" y2="408.94" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="GPIO4" class="0">
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="GPIO4"/>
 <wire x1="210.82" y1="441.96" x2="205.74" y2="441.96" width="0.1524" layer="91"/>
 <label x="203.2" y="441.96" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="GPIO-4/5" gate="G$1" pin="1"/>
+<wire x1="226.06" y1="406.4" x2="226.06" y2="408.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GPIO16" class="0">
@@ -16333,17 +16389,28 @@ RFM69CW</text>
 </net>
 <net name="DIG1" class="0">
 <segment>
-<pinref part="C20-TUNE" gate="G$1" pin="1"/>
-<wire x1="150.114" y1="474.726" x2="136.652" y2="474.726" width="0.1524" layer="91"/>
-<wire x1="136.652" y1="474.726" x2="136.652" y2="460.756" width="0.1524" layer="91"/>
+<pinref part="C20/TUNE" gate="G$1" pin="1"/>
 <wire x1="136.652" y1="460.756" x2="136.652" y2="439.801" width="0.1524" layer="91"/>
 <wire x1="137.922" y1="460.756" x2="136.652" y2="460.756" width="0.1524" layer="91"/>
-<junction x="136.652" y="460.756"/>
 <pinref part="RF" gate="G$1" pin="ANT"/>
 <wire x1="132.842" y1="439.801" x2="136.652" y2="439.801" width="0.1524" layer="91"/>
+<pinref part="C19" gate="G$1" pin="1"/>
+<wire x1="136.652" y1="460.756" x2="136.652" y2="464.312" width="0.1524" layer="91"/>
+<junction x="136.652" y="460.756"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
 <pinref part="ANT1" gate="A" pin="1"/>
-<wire x1="150.114" y1="474.726" x2="150.114" y2="479.806" width="0.1524" layer="91"/>
-<junction x="150.114" y="474.726"/>
+<wire x1="150.114" y1="474.726" x2="136.652" y2="474.726" width="0.1524" layer="91"/>
+<pinref part="C19" gate="G$1" pin="2"/>
+<wire x1="136.652" y1="474.726" x2="136.652" y2="471.932" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="PAD1" gate="1" pin="P"/>
+<wire x1="147.32" y1="469.9" x2="152.4" y2="469.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
