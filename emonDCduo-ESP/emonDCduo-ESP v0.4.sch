@@ -14792,7 +14792,7 @@ MICRO_SD</text>
 <attribute name="MPN" value="LM2575HVS-15/NOPB"/>
 <attribute name="OC_FARNELL" value="2492609"/>
 </part>
-<part name="I1" library="SRR0603-331KL" deviceset="SRR0603-331KL" device="">
+<part name="I1" library="SRR0603-331KL" deviceset="SRR0603-331KL" device="" value="330uH">
 <attribute name="MF" value="BOURNS"/>
 <attribute name="MPN" value="SRR0603-331KL"/>
 <attribute name="OC_FARNELL" value="2333890"/>
