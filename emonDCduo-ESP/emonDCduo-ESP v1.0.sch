@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.0.1">
+<eagle version="7.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.05" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -14793,6 +14793,102 @@ EAGLE CAD Libraries on element14&lt;/a&gt;</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="5000751517_sd">
+<packages>
+<package name="5000751517_SD">
+<wire x1="3.975371875" y1="-0.89648125" x2="3.975371875" y2="0.86671875" width="0.001" layer="46"/>
+<wire x1="3.326321875" y1="0.86671875" x2="3.326321875" y2="-0.89648125" width="0.001" layer="46"/>
+<wire x1="-3.968871875" y1="-0.919559375" x2="-3.968871875" y2="0.83055" width="0.001" layer="46"/>
+<wire x1="-3.319821875" y1="0.83055" x2="-3.319821875" y2="-0.919559375" width="0.001" layer="46"/>
+<pad name="D-" x="-0.8" y="1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
+<pad name="ID" x="0.8" y="1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
+<pad name="VBUS" x="-1.6" y="-1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
+<pad name="D+" x="0" y="-1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
+<pad name="GND1" x="1.6" y="-1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
+<wire x1="-3.96729375" y1="0.832140625" x2="-3.31665" y2="0.827384375" width="0.001" layer="46" curve="-180.004403"/>
+<wire x1="-3.960828125" y1="-0.92995625" x2="-3.311009375" y2="-0.92995625" width="0.001" layer="46" curve="180"/>
+<wire x1="3.32571875" y1="0.865771875" x2="3.9763625" y2="0.861015625" width="0.001" layer="46" curve="-180.004403"/>
+<wire x1="3.332184375" y1="-0.896325" x2="3.982003125" y2="-0.896325" width="0.001" layer="46" curve="180"/>
+<pad name="GND3" x="-3.65" y="0" drill="0.7" diameter="1.6764" shape="long" rot="R90"/>
+<pad name="GND2" x="3.65" y="0" drill="0.7" diameter="1.6764" shape="long" rot="R90"/>
+<wire x1="-3.968871875" y1="-0.919559375" x2="-3.968871875" y2="0.83055" width="0.127" layer="42"/>
+<wire x1="-3.319821875" y1="0.83055" x2="-3.319821875" y2="-0.919559375" width="0.127" layer="42"/>
+<wire x1="-3.96729375" y1="0.832140625" x2="-3.31665" y2="0.827384375" width="0.127" layer="42" curve="-180.004403"/>
+<wire x1="-3.960828125" y1="-0.92995625" x2="-3.311009375" y2="-0.92995625" width="0.127" layer="42" curve="180"/>
+<wire x1="3.318671875" y1="-0.883390625" x2="3.318671875" y2="0.86671875" width="0.127" layer="42"/>
+<wire x1="3.967721875" y1="0.86671875" x2="3.967721875" y2="-0.883390625" width="0.127" layer="42"/>
+<wire x1="3.32025" y1="0.868309375" x2="3.97089375" y2="0.863553125" width="0.127" layer="42" curve="-180.004403"/>
+<wire x1="3.326715625" y1="-0.8937875" x2="3.976534375" y2="-0.8937875" width="0.127" layer="42" curve="180"/>
+<wire x1="3.651209375" y1="-0.971703125" x2="3.6383125" y2="-0.971703125" width="0.6096" layer="42"/>
+<wire x1="3.6383125" y1="-0.971703125" x2="3.6383125" y2="0.88778125" width="0.6096" layer="42"/>
+<wire x1="-3.6290125" y1="-0.987503125" x2="-3.662134375" y2="-0.987503125" width="0.6096" layer="42"/>
+<wire x1="-3.662134375" y1="-0.987503125" x2="-3.662134375" y2="0.87023125" width="0.6096" layer="42"/>
+<wire x1="3.85" y1="-1.95" x2="3.85" y2="-0.05" width="0.127" layer="21"/>
+<wire x1="3.85" y1="-0.05" x2="3.85" y2="1.95" width="0.127" layer="21"/>
+<wire x1="3.85" y1="1.95" x2="-3.85" y2="1.95" width="0.127" layer="21"/>
+<wire x1="-3.85" y1="1.95" x2="-3.85" y2="-0.05" width="0.127" layer="21"/>
+<wire x1="-3.85" y1="-0.05" x2="-3.85" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-3.85" y1="-1.95" x2="-3.3" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-3.3" y1="-1.95" x2="3.85" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="-3.85" y1="-0.05" x2="-3.3" y2="-0.6" width="0.127" layer="21"/>
+<wire x1="-3.3" y1="-0.6" x2="-3.3" y2="-1.95" width="0.127" layer="21"/>
+<wire x1="3.85" y1="-0.05" x2="3.3" y2="-0.6" width="0.127" layer="21"/>
+<wire x1="3.3" y1="-0.6" x2="3.3" y2="-1.95" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="USBMINI-5P-VERTICAL">
+<wire x1="-5.08" y1="6.35" x2="-5.08" y2="-6.35" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-6.35" x2="-3.81" y2="-7.62" width="0.254" layer="94" curve="90"/>
+<wire x1="-3.81" y1="-7.62" x2="-2.54" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-7.62" x2="-1.524" y2="-8.128" width="0.254" layer="94" curve="-53.130102"/>
+<wire x1="-1.524" y1="-8.128" x2="0" y2="-8.89" width="0.254" layer="94" curve="53.130102"/>
+<wire x1="0" y1="-8.89" x2="2.54" y2="-8.89" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-8.89" x2="3.81" y2="-7.62" width="0.254" layer="94" curve="90"/>
+<wire x1="3.81" y1="-7.62" x2="3.81" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="6.35" x2="-3.81" y2="7.62" width="0.254" layer="94" curve="-90"/>
+<wire x1="-3.81" y1="7.62" x2="-2.54" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="7.62" x2="-1.524" y2="8.128" width="0.254" layer="94" curve="53.130102"/>
+<wire x1="-1.524" y1="8.128" x2="0" y2="8.89" width="0.254" layer="94" curve="-53.130102"/>
+<wire x1="0" y1="8.89" x2="2.54" y2="8.89" width="0.254" layer="94"/>
+<wire x1="2.54" y1="8.89" x2="3.81" y2="7.62" width="0.254" layer="94" curve="-90"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-5.08" x2="-1.27" y2="-6.35" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="-6.35" x2="1.27" y2="-6.35" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-6.35" x2="1.27" y2="6.35" width="0.254" layer="94"/>
+<wire x1="1.27" y1="6.35" x2="-1.27" y2="6.35" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="6.35" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
+<text x="-5.08" y="11.43" size="1.778" layer="95">&gt;NAME</text>
+<text x="7.62" y="-7.62" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="1" x="-7.62" y="5.08" visible="pin" direction="pas"/>
+<pin name="2" x="-7.62" y="2.54" visible="pin" direction="pas"/>
+<pin name="3" x="-7.62" y="0" visible="pin" direction="pas"/>
+<pin name="4" x="-7.62" y="-2.54" visible="pin" direction="pas"/>
+<pin name="5" x="-7.62" y="-5.08" visible="pin" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="5000751517_SD">
+<gates>
+<gate name="G$1" symbol="USBMINI-5P-VERTICAL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="5000751517_SD">
+<connects>
+<connect gate="G$1" pin="1" pad="VBUS"/>
+<connect gate="G$1" pin="2" pad="D-"/>
+<connect gate="G$1" pin="3" pad="D+"/>
+<connect gate="G$1" pin="4" pad="ID" route="any"/>
+<connect gate="G$1" pin="5" pad="GND1 GND2 GND3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14861,7 +14957,7 @@ EAGLE CAD Libraries on element14&lt;/a&gt;</description>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="1K"/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
-<part name="D2" library="CASE 403D Diode" deviceset="MBRA130LT3G" device="">
+<part name="D1" library="CASE 403D Diode" deviceset="MBRA130LT3G" device="">
 <attribute name="MF" value="ON SEMICONDUCTOR"/>
 <attribute name="MPN" value="MBRA130LT3G"/>
 <attribute name="OC_FARNELL" value="9555978"/>
@@ -14897,7 +14993,7 @@ EAGLE CAD Libraries on element14&lt;/a&gt;</description>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="SUPPLY14" library="supply2" deviceset="GND" device=""/>
 <part name="MC32882" library="multicomp tact switch" deviceset="MC32882" device=""/>
-<part name="D1" library="diode" deviceset="BAT60J" device=""/>
+<part name="D2" library="diode" deviceset="BAT60J" device=""/>
 <part name="FTDI/UART" library="SparkFun" deviceset="FTDI_BASIC" device="PTH" value="2211S-06G">
 <attribute name="MF" value="MULTICOMP"/>
 <attribute name="MPN" value="2211S-06G"/>
@@ -15034,6 +15130,8 @@ EAGLE CAD Libraries on element14&lt;/a&gt;</description>
 <part name="U$2" library="MOLEX MICRO SD [exposed pins]" deviceset="MOLEX_MICRO_SD_1040310811" device=""/>
 <part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="GPIO5" library="wirepad" deviceset="2,15/1,0" device=""/>
+<part name="MINI_USB-B" library="5000751517_sd" deviceset="5000751517_SD" device=""/>
+<part name="GPIO1" library="SparkFun" deviceset="M02" device="PTH"/>
 </parts>
 <sheets>
 <sheet>
@@ -15141,7 +15239,7 @@ RFM69CW</text>
 <instance part="GND7" gate="1" x="-86.36" y="307.34"/>
 <instance part="R5" gate="G$1" x="-53.34" y="347.98"/>
 <instance part="GND8" gate="1" x="-45.72" y="358.14"/>
-<instance part="D2" gate="G$1" x="-17.78" y="241.3" smashed="yes" rot="R90">
+<instance part="D1" gate="G$1" x="-17.78" y="241.3" smashed="yes" rot="R90">
 <attribute name="OC_FARNELL" x="-17.78" y="241.3" size="1.778" layer="96" display="off"/>
 <attribute name="MF" x="-17.78" y="241.3" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="-17.78" y="241.3" size="1.778" layer="96" display="off"/>
@@ -15176,7 +15274,7 @@ RFM69CW</text>
 <instance part="GND10" gate="1" x="137.16" y="381" rot="R180"/>
 <instance part="SUPPLY14" gate="GND" x="205.74" y="297.18"/>
 <instance part="MC32882" gate="G$1" x="205.74" y="309.88"/>
-<instance part="D1" gate="G$1" x="27.94" y="259.08"/>
+<instance part="D2" gate="G$1" x="27.94" y="259.08"/>
 <instance part="FTDI/UART" gate="G$1" x="203.2" y="246.38">
 <attribute name="OC_FARNELL" x="203.2" y="246.38" size="1.778" layer="96" display="off"/>
 <attribute name="MF" x="203.2" y="246.38" size="1.778" layer="96" display="off"/>
@@ -15309,7 +15407,7 @@ RFM69CW</text>
 <instance part="J2" gate="J$1" x="-96.52" y="431.8" rot="R270"/>
 <instance part="J3" gate="J$1" x="-96.52" y="335.28" rot="R270"/>
 <instance part="J4" gate="J$1" x="-96.52" y="337.82" rot="R90"/>
-<instance part="R3" gate="G$1" x="190.5" y="457.2"/>
+<instance part="R3" gate="G$1" x="189.23" y="457.2"/>
 <instance part="R6" gate="G$1" x="200.66" y="462.28" rot="R90"/>
 <instance part="P+5" gate="G$1" x="200.66" y="469.9"/>
 <instance part="SUPPLY1" gate="1" x="43.18" y="444.5"/>
@@ -15345,6 +15443,8 @@ RFM69CW</text>
 <instance part="U$2" gate="1040310811" x="60.96" y="462.28"/>
 <instance part="R9" gate="G$1" x="200.66" y="441.96" rot="R180"/>
 <instance part="GPIO5" gate="1" x="208.28" y="401.32"/>
+<instance part="MINI_USB-B" gate="G$1" x="129.54" y="269.24"/>
+<instance part="GPIO1" gate="G$1" x="187.96" y="469.9" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -15478,7 +15578,7 @@ RFM69CW</text>
 <wire x1="-114.3" y1="400.812" x2="-114.3" y2="401.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="185.42" y1="457.2" x2="177.8" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="184.15" y1="457.2" x2="177.8" y2="457.2" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="457.2" x2="177.8" y2="414.02" width="0.1524" layer="91"/>
 <pinref part="FTDI1" gate="1" pin="6"/>
 <wire x1="213.36" y1="414.02" x2="190.5" y2="414.02" width="0.1524" layer="91"/>
@@ -15491,6 +15591,10 @@ RFM69CW</text>
 <junction x="190.5" y="421.64"/>
 <junction x="190.5" y="414.02"/>
 <pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="GPIO1" gate="G$1" pin="1"/>
+<wire x1="187.96" y1="462.28" x2="184.15" y2="462.28" width="0.1524" layer="91"/>
+<wire x1="184.15" y1="462.28" x2="184.15" y2="457.2" width="0.1524" layer="91"/>
+<junction x="184.15" y="457.2"/>
 </segment>
 <segment>
 <pinref part="C31" gate="G$1" pin="2"/>
@@ -15529,7 +15633,7 @@ RFM69CW</text>
 <wire x1="-121.92" y1="233.68" x2="-96.52" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-78.74" y1="233.68" x2="-68.58" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-68.58" y1="233.68" x2="-68.58" y2="246.38" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="A"/>
+<pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="-17.78" y1="238.76" x2="-17.78" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-17.78" y1="233.68" x2="-68.58" y2="233.68" width="0.1524" layer="91"/>
 <junction x="-68.58" y="233.68"/>
@@ -15565,6 +15669,9 @@ RFM69CW</text>
 <junction x="93.98" y="233.68"/>
 <pinref part="C10" gate="A" pin="2"/>
 <pinref part="GND18" gate="1" pin="0V"/>
+<pinref part="MINI_USB-B" gate="G$1" pin="5"/>
+<wire x1="121.92" y1="264.16" x2="121.92" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="233.68" x2="93.98" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="1040310811" pin="VSS"/>
@@ -15922,7 +16029,7 @@ RFM69CW</text>
 <net name="IND" class="0">
 <segment>
 <wire x1="-15.24" y1="259.08" x2="-17.78" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="C"/>
+<pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="-17.78" y1="243.84" x2="-17.78" y2="259.08" width="0.1524" layer="91"/>
 <junction x="-17.78" y="259.08"/>
 <pinref part="TL2575HV" gate="A" pin="VOUT"/>
@@ -15933,15 +16040,20 @@ RFM69CW</text>
 </net>
 <net name="4.7V" class="1">
 <segment>
-<pinref part="D1" gate="G$1" pin="C"/>
+<pinref part="D2" gate="G$1" pin="C"/>
 <label x="38.608" y="259.588" size="1.778" layer="95"/>
-<wire x1="30.48" y1="259.08" x2="45.72" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="259.08" x2="33.02" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="259.08" x2="45.72" y2="259.08" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="259.08" x2="45.72" y2="254" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="248.92" x2="45.72" y2="254" width="0.1524" layer="91"/>
 <pinref part="REG1117" gate="G$1" pin="VIN"/>
 <wire x1="45.72" y1="254" x2="50.8" y2="254" width="0.1524" layer="91"/>
 <junction x="45.72" y="254"/>
 <pinref part="C1" gate="G$1" pin="1"/>
+<pinref part="MINI_USB-B" gate="G$1" pin="1"/>
+<wire x1="121.92" y1="274.32" x2="33.02" y2="274.32" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="274.32" x2="33.02" y2="259.08" width="0.1524" layer="91"/>
+<junction x="33.02" y="259.08"/>
 </segment>
 <segment>
 <pinref part="FTDI/UART" gate="G$1" pin="4"/>
@@ -15965,6 +16077,10 @@ RFM69CW</text>
 <wire x1="-71.12" y1="322.58" x2="-48.26" y2="322.58" width="0.1524" layer="91"/>
 <wire x1="-48.26" y1="322.58" x2="-48.26" y2="325.12" width="0.1524" layer="91"/>
 <junction x="-71.12" y="322.58"/>
+</segment>
+<segment>
+<pinref part="FTDI1" gate="1" pin="4"/>
+<wire x1="213.36" y1="419.1" x2="210.82" y2="419.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="D0/RX" class="0">
@@ -16036,7 +16152,7 @@ RFM69CW</text>
 <wire x1="-38.1" y1="251.46" x2="-66.04" y2="256.54" width="0.1524" layer="91"/>
 <wire x1="-7.62" y1="251.46" x2="15.24" y2="251.46" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="251.46" x2="15.24" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="D1" gate="G$1" pin="A"/>
+<pinref part="D2" gate="G$1" pin="A"/>
 <pinref part="C48" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="259.08" x2="17.78" y2="259.08" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="259.08" x2="17.78" y2="248.92" width="0.1524" layer="91"/>
@@ -16351,9 +16467,13 @@ RFM69CW</text>
 <wire x1="208.28" y1="454.66" x2="195.58" y2="454.66" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="452.12" x2="195.58" y2="454.66" width="0.1524" layer="91"/>
 <junction x="195.58" y="454.66"/>
-<wire x1="195.58" y1="454.66" x2="195.58" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="195.58" y1="454.66" x2="194.31" y2="457.2" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="195.58" y1="452.12" x2="210.82" y2="452.12" width="0.1524" layer="91"/>
+<pinref part="GPIO1" gate="G$1" pin="2"/>
+<wire x1="190.5" y1="462.28" x2="194.31" y2="462.28" width="0.1524" layer="91"/>
+<wire x1="194.31" y1="462.28" x2="194.31" y2="457.2" width="0.1524" layer="91"/>
+<junction x="194.31" y="457.2"/>
 </segment>
 </net>
 <net name="GPIO0" class="0">
