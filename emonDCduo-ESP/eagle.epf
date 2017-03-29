@@ -348,13 +348,14 @@ UsedLibrary="/Applications/EAGLE-7.7.0/lbr/xilinx-xc9.lbr"
 UsedLibrary="/Applications/EAGLE-7.7.0/lbr/xilinx-xcv.lbr"
 UsedLibrary="/Applications/EAGLE-7.7.0/lbr/zetex.lbr"
 UsedLibrary="/Applications/EAGLE-7.7.0/lbr/zilog.lbr"
+UsedLibrary="/Users/admin/Dropbox/PROJECT FILES/emon/EmonDC/eagle libs/PACKAGES FOR TEST BOARDS.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="0 23 599 422"
+Loc="0 23 800 611"
 State=2
 Number=0
 
 [Desktop]
-Screen="1440 900"
+Screen="640 480"
 Window="Win_1"
