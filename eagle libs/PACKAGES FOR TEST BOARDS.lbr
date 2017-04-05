@@ -1611,6 +1611,33 @@
 <rectangle x1="-3.0075" y1="1.8" x2="-2.7075" y2="3.1" layer="51"/>
 <rectangle x1="-3.6425" y1="1.8" x2="-3.3425" y2="3.1" layer="51"/>
 </package>
+<package name="MSOP-8">
+<wire x1="3.15" y1="2.7" x2="3.15" y2="-2.2" width="0.2032" layer="21"/>
+<wire x1="3.15" y1="-2.2" x2="3.15" y2="-2.7" width="0.2032" layer="21"/>
+<wire x1="3.15" y1="-2.7" x2="-3.15" y2="-2.7" width="0.2032" layer="51"/>
+<wire x1="-3.15" y1="-2.7" x2="-3.15" y2="-2.2" width="0.2032" layer="21"/>
+<wire x1="-3.15" y1="-2.2" x2="-3.15" y2="2.7" width="0.2032" layer="21"/>
+<wire x1="-3.15" y1="2.7" x2="3.15" y2="2.7" width="0.2032" layer="51"/>
+<wire x1="3.15" y1="-2.2" x2="-3.15" y2="-2.2" width="0.2032" layer="21"/>
+<smd name="2" x="-0.635" y="-3.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="7" x="-0.635" y="3.575" dx="0.6" dy="2.2" layer="1"/>
+<smd name="1" x="-1.905" y="-3.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="3" x="0.635" y="-3.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="4" x="1.905" y="-3.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="8" x="-1.905" y="3.575" dx="0.6" dy="2.2" layer="1"/>
+<smd name="6" x="0.635" y="3.575" dx="0.6" dy="2.2" layer="1"/>
+<smd name="5" x="1.905" y="3.575" dx="0.6" dy="2.2" layer="1"/>
+<text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-2.15" y1="-4.1" x2="-1.66" y2="-2.725" layer="51"/>
+<rectangle x1="-0.88" y1="-4.1" x2="-0.39" y2="-2.725" layer="51"/>
+<rectangle x1="0.39" y1="-4.1" x2="0.88" y2="-2.75" layer="51"/>
+<rectangle x1="1.66" y1="-4.1" x2="2.15" y2="-2.725" layer="51"/>
+<rectangle x1="1.66" y1="2.7" x2="2.15" y2="4.075" layer="51"/>
+<rectangle x1="0.39" y1="2.725" x2="0.88" y2="4.075" layer="51"/>
+<rectangle x1="-0.88" y1="2.725" x2="-0.39" y2="4.075" layer="51"/>
+<rectangle x1="-2.15" y1="2.725" x2="-1.66" y2="4.075" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="16PINS">
