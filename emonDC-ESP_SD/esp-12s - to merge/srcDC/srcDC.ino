@@ -40,7 +40,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-const int microSDcardchipSelect = 2;
+const int microSDcardChipSelect = 2;
 
 Sd2Card card;
 SdVolume volume;
@@ -258,7 +258,7 @@ void setup() {
 
   DEBUG.println("Server started");
 
-  if (SD.begin(microSDcardchipSelect)){
+  if (SD.begin(microSDcardChipSelect)){
      DEBUG.println("SD Card initialized.");
      hasSD = true;
   }

@@ -30,8 +30,10 @@
 #include <EEPROM.h>                   // Save config settings
 
 // Wifi Network Strings
-String esid = "";
-String epass = "";
+String esid = "AndroidAPDB";
+String epass = "upside99";
+//String esid = "";
+//String epass = "";
 
 // Web server authentication (leave blank for none)
 String www_username = "";
@@ -66,7 +68,7 @@ String datalogfilename = "";
 #define EEPROM_MQTT_FEED_PREFIX_SIZE  10
 #define EEPROM_WWW_USER_SIZE      16
 #define EEPROM_WWW_PASS_SIZE      16
-#define EEPROM_DATAFILE_SIZE      16
+#define EEPROM_DATA_FILE_SIZE      16
 #define EEPROM_SIZE 512
 
 #define EEPROM_ESID_START         0
@@ -95,8 +97,8 @@ String datalogfilename = "";
 #define EEPROM_WWW_USER_END       (EEPROM_WWW_USER_START + EEPROM_WWW_USER_SIZE)
 #define EEPROM_WWW_PASS_START     EEPROM_WWW_USER_END
 #define EEPROM_WWW_PASS_END       (EEPROM_WWW_PASS_START + EEPROM_WWW_PASS_SIZE)
-#define EEPROM_DATAFILE_START     EEPROM_DATAFILE_END
-#define EEPROM_DATAFILE_END       (EEPROM_DATAFILE_START + EEPROM_DATAFILE_SIZE)
+//#define EEPROM_DATA_FILE_START     EEPROM_DATA_FILE_END
+//#define EEPROM_DATA_FILE_END      (EEPROM_DATA_FILE_START + EEPROM_DATA_FILE_SIZE)
 
 // -------------------------------------------------------------------
 // Reset EEPROM, wipes all settings
@@ -156,7 +158,7 @@ void config_load_settings()
   EEPROM_read_srting(EEPROM_WWW_PASS_START, EEPROM_WWW_PASS_SIZE, www_password);
 
   // Name of datalogfile
-  EEPROM_read_srting(EEPROM_DATAFILE_START, EEPROM_DATAFILE_SIZE, datalogfilename);
+ // EEPROM_read_srting(EEPROM_DATA_FILE_START, EEPROM_DATA_FILE_SIZE, datalogfilename);
 }
 
 void config_save_emoncms(String server, String node, String apikey, String fingerprint)
@@ -217,7 +219,7 @@ void config_save_admin(String user, String pass)
 
   EEPROM.commit();
 }
-
+/*
 void config_download_file(String datafile)
 {
   datalogfilename = datafile;
@@ -226,7 +228,7 @@ void config_download_file(String datafile)
 
   EEPROM.commit();
 }
-
+*/
 void config_save_wifi(String qsid, String qpass)
 {
   esid = qsid;

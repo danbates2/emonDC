@@ -38,8 +38,8 @@
 
 const int chipSelect = 2;
 
-const char* ssid = "**********";
-const char* password = "**********";
+const char* ssid = "AndroidAPDB";
+const char* password = "upside99";
 const char* host = "esp8266sd";
 
 ESP8266WebServer server(80);
@@ -61,7 +61,6 @@ bool loadFromSdCard(String path){
   if(path.endsWith("/")) path += "index.htm";
 
   if(path.endsWith(".src")) path = path.substring(0, path.lastIndexOf("."));
-  else if(path.endsWith(".htm")) dataType = "text/html";
   else if(path.endsWith(".css")) dataType = "text/css";
   else if(path.endsWith(".js")) dataType = "application/javascript";
   else if(path.endsWith(".png")) dataType = "image/png";
