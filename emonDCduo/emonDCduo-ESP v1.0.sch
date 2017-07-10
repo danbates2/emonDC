@@ -14239,7 +14239,7 @@ Source: http://focus.ti.com/lit/ds/symlink/ths4211.pdf</description>
 <gate name="G$1" symbol="LMP8481" x="5.08" y="0"/>
 </gates>
 <devices>
-<device name="LMP8481-H" package="S-PDSO-G08">
+<device name="-H" package="S-PDSO-G08">
 <connects>
 <connect gate="G$1" pin="GND" pad="4"/>
 <connect gate="G$1" pin="NC" pad="3"/>
@@ -14884,7 +14884,7 @@ drill 1.1 mm</description>
 </part>
 <part name="SUPPLY3" library="supply2" deviceset="GND" device=""/>
 <part name="AGND11" library="supply1" deviceset="AGND" device=""/>
-<part name="SHUNTMON-B" library="lmp8481b" deviceset="LMP8481" device="LMP8481-H" value="LMP8481">
+<part name="SHUNTMON-B" library="lmp8481b" deviceset="LMP8481" device="-H" value="LMP8481">
 <attribute name="MF" value="TEXAS INSTRUMENTS"/>
 <attribute name="MPN" value="LMP8481MME-H/NOPB"/>
 <attribute name="OC_FARNELL" value="2322044"/>
@@ -14955,7 +14955,7 @@ drill 1.1 mm</description>
 </part>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="T1" library="con-weidmueller-sl35" deviceset="180-2" device=""/>
-<part name="SHUNTMON-A" library="lmp8481b" deviceset="LMP8481" device="LMP8481-H" value="LMP8481">
+<part name="SHUNTMON-A" library="lmp8481b" deviceset="LMP8481" device="-H" value="LMP8481">
 <attribute name="MF" value="TEXAS INSTRUMENTS"/>
 <attribute name="MPN" value="LMP8481MME-S/NOPB"/>
 <attribute name="OC_FARNELL" value="2322044"/>
