@@ -57,7 +57,7 @@
 </layers>
 <library>
 <packages>
-<package name="SOT95P280X145-5N">
+<package name="TSOT-23-5">
 <smd name="1" x="-1.2954" y="0.9398" dx="1.27" dy="0.5588" layer="1"/>
 <smd name="2" x="-1.2954" y="0" dx="1.27" dy="0.5588" layer="1"/>
 <smd name="3" x="-1.2954" y="-0.9398" dx="1.27" dy="0.5588" layer="1"/>
@@ -108,7 +108,7 @@
 </package>
 </packages>
 <symbols>
-<symbol name="TPS73633DBVTG4">
+<symbol name="RT9080-33GJ5">
 <pin name="NR/FB" x="-17.78" y="2.54" length="middle" direction="pas"/>
 <pin name="EN" x="-17.78" y="-2.54" length="middle" direction="in"/>
 <pin name="IN" x="-17.78" y="-5.08" length="middle" direction="in"/>
@@ -123,13 +123,13 @@
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="TPS73633DBVTG4" prefix="U">
+<deviceset name="RT9080-33GJ5" prefix="U">
 <description>Low-Dropout Regulator</description>
 <gates>
-<gate name="A" symbol="TPS73633DBVTG4" x="0" y="0"/>
+<gate name="A" symbol="RT9080-33GJ5" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SOT95P280X145-5N">
+<device name="" package="TSOT-23-5">
 <connects>
 <connect gate="A" pin="EN" pad="3"/>
 <connect gate="A" pin="GND" pad="2"/>
@@ -139,11 +139,8 @@
 </connects>
 <technologies>
 <technology name="">
-<attribute name="MPN" value="TPS73633DBVTG4" constant="no"/>
-<attribute name="OC_FARNELL" value="1207346" constant="no"/>
-<attribute name="OC_NEWARK" value="62M0776" constant="no"/>
-<attribute name="PACKAGE" value="SOT-5" constant="no"/>
-<attribute name="SUPPLIER" value="TEXAS INSTRUMENTS" constant="no"/>
+<attribute name="OC_FARNELL" value="2679852" constant="no"/>
+<attribute name="PACKAGE" value="SOT-23-5" constant="no"/>
 </technology>
 </technologies>
 </device>

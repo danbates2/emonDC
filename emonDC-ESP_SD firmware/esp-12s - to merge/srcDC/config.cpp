@@ -30,8 +30,8 @@
 #include <EEPROM.h>                   // Save config settings
 
 // Wifi Network Strings
-String esid = "AndroidAPDB";
-String epass = "upside99";
+String esid = "";
+String epass = "";
 //String esid = "";
 //String epass = "";
 
