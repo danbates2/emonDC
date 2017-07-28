@@ -2927,7 +2927,7 @@
 <text x="14.9606" y="29.5148" size="0.8128" layer="25" align="bottom-center">Tx</text>
 <text x="17.5006" y="29.5148" size="0.8128" layer="25" align="bottom-center">Rx</text>
 <text x="20.0406" y="29.5148" size="0.8128" layer="25" align="bottom-center">RST</text>
-<text x="20.9042" y="31.9786" size="0.9" layer="25" rot="R90">emonDCmini v0.6</text>
+<text x="20.9042" y="31.9786" size="0.9" layer="25" rot="R90">emonDCmini v0.7</text>
 <text x="21.7424" y="28.0416" size="0.8128" layer="25" rot="R90" align="top-left">micro WiFi enabled
 DC power monitor
 and datalogger</text>
