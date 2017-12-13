@@ -1,0 +1,35 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \ul \ulc0 Power Supply for DC Project\ulnone \
+\
+\
+As some of you have noticed for a while now I've tried to get this DC energy meter done and out there.\
+\
+I have a dilemma regarding the power supply.\
+\
+I have 2 approaches for each context. Category A: Generator/battery applications, for example solar and wind, with integral power supply.  Category B: Single source (battery only?) monitoring with integral power supply. Category C: Single source monitoring, end-user implemented powersupply.\
+\
+For Category A the requirements are 1) to handle voltages up to 80V, and 2) to disconnect the meter/logger by mechanical relay in event of overvoltage.\
+For Category B the requirement is only 1) to handle voltages up to 80V.\
+For Category C the idea is essentially to have a shunt monitor and an ADC on a breakout board. The user can define their own shunt, on board or externally. Their own 5V power supply can be selected by their preference, might be a buck converter, USB plug in supply etc.\
+\
+My dilemma is this. When handling voltages of up to 80VDC and providing enough power for the ESP8266, the only method I can find which reliably works is a switching regulator, typically requiring external components, like this - [http://www.ebay.co.uk/itm/263040641193](http://www.ebay.co.uk/itm/263040641193).\
+Now, god knows how they're doing it for $2 on ebay.. and the power quality and noise radiation are unknowns, but these are the kind of components I'm talking about.\
+Is there any other way of getting 5V out of 80V?\
+\
+Space saving and cost considerations for the end-user are my considerations. I've just thought now of a good method for Categories A, B and even C.. To have a well shielded DC buck converter module with headers, that could fit into any DC monitoring board I design. End-users could choose to buy the module or not depending if they have their own 5V source. A modular approach could be the way forward.\
+\
+Because of the diverse requirements of DC monitoring this could be a good way to go.\
+\
+Possible modules could be:\
+DC BUCK CONVERTER POWER SUPPLY\
+SHUNT with Cable Connections\
+SHUNT MONITOR / ADC / ESP in one module.\
+SD CARD\
+RF69CW\
+\
+}

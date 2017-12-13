@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="8.3.2">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<packages>
+<package name="QFN16">
+<description>&lt;b&gt;RTE (S-PQFP-N16)&lt;/b&gt; 3x3 mm&lt;p&gt;
+Source: www.ti.com .. tpa6132a2 direct path stereo $.65.pdf</description>
+<wire x1="-1.75" y1="1.75" x2="1.75" y2="1.75" width="0.1016" layer="51"/>
+<wire x1="1.75" y1="1.75" x2="1.75" y2="-1.75" width="0.1016" layer="51"/>
+<wire x1="1.75" y1="-1.75" x2="-1.75" y2="-1.75" width="0.1016" layer="51"/>
+<wire x1="-1.75" y1="-1.75" x2="-1.75" y2="1.75" width="0.1016" layer="51"/>
+<wire x1="1.75" y1="1.75" x2="1.75" y2="1.025" width="0.1016" layer="21"/>
+<wire x1="1.025" y1="1.75" x2="1.75" y2="1.75" width="0.1016" layer="21"/>
+<wire x1="-1.5" y1="1.5" x2="-1.05" y2="1.5" width="0.1016" layer="21"/>
+<wire x1="-1.5" y1="1.05" x2="-1.5" y2="1.5" width="0.1016" layer="21"/>
+<wire x1="-1.75" y1="-1.75" x2="-1.75" y2="-1.025" width="0.1016" layer="21"/>
+<wire x1="-1.025" y1="-1.75" x2="-1.75" y2="-1.75" width="0.1016" layer="21"/>
+<wire x1="1.75" y1="-1.75" x2="1.025" y2="-1.75" width="0.1016" layer="21"/>
+<wire x1="1.75" y1="-1.025" x2="1.75" y2="-1.75" width="0.1016" layer="21"/>
+<circle x="-1.2" y="0.75" radius="0.125" width="0" layer="31"/>
+<circle x="-1.2" y="0.75" radius="0.2" width="0" layer="29"/>
+<circle x="-1.2" y="0.25" radius="0.125" width="0" layer="31"/>
+<circle x="-1.2" y="0.25" radius="0.2" width="0" layer="29"/>
+<circle x="-1.2" y="-0.25" radius="0.125" width="0" layer="31"/>
+<circle x="-1.2" y="-0.75" radius="0.125" width="0" layer="31"/>
+<circle x="-0.75" y="-1.2" radius="0.125" width="0" layer="31"/>
+<circle x="-0.25" y="-1.2" radius="0.125" width="0" layer="31"/>
+<circle x="0.25" y="-1.2" radius="0.125" width="0" layer="31"/>
+<circle x="0.75" y="-1.2" radius="0.125" width="0" layer="31"/>
+<circle x="1.2" y="-0.75" radius="0.125" width="0" layer="31"/>
+<circle x="1.2" y="-0.25" radius="0.125" width="0" layer="31"/>
+<circle x="1.2" y="0.25" radius="0.125" width="0" layer="31"/>
+<circle x="1.2" y="0.75" radius="0.125" width="0" layer="31"/>
+<circle x="0.75" y="1.2" radius="0.125" width="0" layer="31"/>
+<circle x="0.25" y="1.2" radius="0.125" width="0" layer="31"/>
+<circle x="-0.25" y="1.2" radius="0.125" width="0" layer="31"/>
+<circle x="-0.75" y="1.2" radius="0.125" width="0" layer="31"/>
+<circle x="-1.2" y="-0.25" radius="0.2" width="0" layer="29"/>
+<circle x="-1.2" y="-0.75" radius="0.2" width="0" layer="29"/>
+<circle x="-0.75" y="-1.2" radius="0.2" width="0" layer="29"/>
+<circle x="-0.25" y="-1.2" radius="0.2" width="0" layer="29"/>
+<circle x="0.25" y="-1.2" radius="0.2" width="0" layer="29"/>
+<circle x="0.75" y="-1.2" radius="0.2" width="0" layer="29"/>
+<circle x="1.2" y="-0.75" radius="0.2" width="0" layer="29"/>
+<circle x="1.2" y="-0.25" radius="0.2" width="0" layer="29"/>
+<circle x="1.2" y="0.25" radius="0.2" width="0" layer="29"/>
+<circle x="1.2" y="0.75" radius="0.2" width="0" layer="29"/>
+<circle x="0.75" y="1.2" radius="0.2" width="0" layer="29"/>
+<circle x="0.25" y="1.2" radius="0.2" width="0" layer="29"/>
+<circle x="-0.25" y="1.2" radius="0.2" width="0" layer="29"/>
+<circle x="-0.75" y="1.2" radius="0.2" width="0" layer="29"/>
+<smd name="1" x="-1.655" y="0.75" dx="0.85" dy="0.3" layer="1" roundness="75" stop="no" cream="no"/>
+<smd name="2" x="-1.655" y="0.25" dx="0.85" dy="0.3" layer="1" roundness="75" stop="no" cream="no"/>
+<smd name="3" x="-1.655" y="-0.25" dx="0.85" dy="0.3" layer="1" roundness="75" stop="no" cream="no"/>
+<smd name="4" x="-1.655" y="-0.75" dx="0.85" dy="0.3" layer="1" roundness="75" stop="no" cream="no"/>
+<smd name="5" x="-0.75" y="-1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R90" stop="no" cream="no"/>
+<smd name="6" x="-0.25" y="-1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R90" stop="no" cream="no"/>
+<smd name="7" x="0.25" y="-1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R90" stop="no" cream="no"/>
+<smd name="8" x="0.75" y="-1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R90" stop="no" cream="no"/>
+<smd name="9" x="1.655" y="-0.75" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R180" stop="no" cream="no"/>
+<smd name="10" x="1.655" y="-0.25" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R180" stop="no" cream="no"/>
+<smd name="11" x="1.655" y="0.25" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R180" stop="no" cream="no"/>
+<smd name="12" x="1.655" y="0.75" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R180" stop="no" cream="no"/>
+<smd name="13" x="0.75" y="1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R270" stop="no" cream="no"/>
+<smd name="14" x="0.25" y="1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R270" stop="no" cream="no"/>
+<smd name="15" x="-0.25" y="1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R270" stop="no" cream="no"/>
+<smd name="16" x="-0.75" y="1.655" dx="0.85" dy="0.3" layer="1" roundness="75" rot="R270" stop="no" cream="no"/>
+<text x="-2" y="2.635" size="1.27" layer="25">&gt;NAME</text>
+<text x="-2" y="-3.754" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.875" y1="-0.875" x2="0.875" y2="0.875" layer="29"/>
+<rectangle x1="-0.8" y1="0.1" x2="-0.1" y2="0.8" layer="31" rot="R90"/>
+<rectangle x1="-1.9" y1="0.55" x2="-1.2" y2="0.95" layer="29"/>
+<rectangle x1="-1.85" y1="0.625" x2="-1.2" y2="0.875" layer="31"/>
+<rectangle x1="-1.75" y1="1" x2="-1" y2="1.75" layer="21"/>
+<rectangle x1="-1.75" y1="0" x2="0" y2="1.75" layer="51"/>
+<rectangle x1="-1.9" y1="0.05" x2="-1.2" y2="0.45" layer="29"/>
+<rectangle x1="-1.85" y1="0.125" x2="-1.2" y2="0.375" layer="31"/>
+<rectangle x1="-1.85" y1="-0.375" x2="-1.2" y2="-0.125" layer="31"/>
+<rectangle x1="-1.85" y1="-0.875" x2="-1.2" y2="-0.625" layer="31"/>
+<rectangle x1="-1.075" y1="-1.65" x2="-0.425" y2="-1.4" layer="31" rot="R90"/>
+<rectangle x1="-0.575" y1="-1.65" x2="0.075" y2="-1.4" layer="31" rot="R90"/>
+<rectangle x1="-0.075" y1="-1.65" x2="0.575" y2="-1.4" layer="31" rot="R90"/>
+<rectangle x1="0.425" y1="-1.65" x2="1.075" y2="-1.4" layer="31" rot="R90"/>
+<rectangle x1="1.2" y1="-0.875" x2="1.85" y2="-0.625" layer="31" rot="R180"/>
+<rectangle x1="1.2" y1="-0.375" x2="1.85" y2="-0.125" layer="31" rot="R180"/>
+<rectangle x1="1.2" y1="0.125" x2="1.85" y2="0.375" layer="31" rot="R180"/>
+<rectangle x1="1.2" y1="0.625" x2="1.85" y2="0.875" layer="31" rot="R180"/>
+<rectangle x1="0.425" y1="1.4" x2="1.075" y2="1.65" layer="31" rot="R270"/>
+<rectangle x1="-0.075" y1="1.4" x2="0.575" y2="1.65" layer="31" rot="R270"/>
+<rectangle x1="-0.575" y1="1.4" x2="0.075" y2="1.65" layer="31" rot="R270"/>
+<rectangle x1="-1.075" y1="1.4" x2="-0.425" y2="1.65" layer="31" rot="R270"/>
+<rectangle x1="-0.8" y1="-0.8" x2="-0.1" y2="-0.1" layer="31" rot="R180"/>
+<rectangle x1="0.1" y1="-0.8" x2="0.8" y2="-0.1" layer="31" rot="R270"/>
+<rectangle x1="0.1" y1="0.1" x2="0.8" y2="0.8" layer="31"/>
+<rectangle x1="-1.9" y1="-0.45" x2="-1.2" y2="-0.05" layer="29"/>
+<rectangle x1="-1.9" y1="-0.95" x2="-1.2" y2="-0.55" layer="29"/>
+<rectangle x1="-1.1" y1="-1.75" x2="-0.4" y2="-1.35" layer="29" rot="R90"/>
+<rectangle x1="-0.6" y1="-1.75" x2="0.1" y2="-1.35" layer="29" rot="R90"/>
+<rectangle x1="-0.1" y1="-1.75" x2="0.6" y2="-1.35" layer="29" rot="R90"/>
+<rectangle x1="0.4" y1="-1.75" x2="1.1" y2="-1.35" layer="29" rot="R90"/>
+<rectangle x1="1.2" y1="-0.95" x2="1.9" y2="-0.55" layer="29" rot="R180"/>
+<rectangle x1="1.2" y1="-0.45" x2="1.9" y2="-0.05" layer="29" rot="R180"/>
+<rectangle x1="1.2" y1="0.05" x2="1.9" y2="0.45" layer="29" rot="R180"/>
+<rectangle x1="1.2" y1="0.55" x2="1.9" y2="0.95" layer="29" rot="R180"/>
+<rectangle x1="0.4" y1="1.35" x2="1.1" y2="1.75" layer="29" rot="R270"/>
+<rectangle x1="-0.1" y1="1.35" x2="0.6" y2="1.75" layer="29" rot="R270"/>
+<rectangle x1="-0.6" y1="1.35" x2="0.1" y2="1.75" layer="29" rot="R270"/>
+<rectangle x1="-1.1" y1="1.35" x2="-0.4" y2="1.75" layer="29" rot="R270"/>
+<rectangle x1="-2.131" y1="1.254" x2="-1.381" y2="2.004" layer="21"/>
+<smd name="PAD" x="0" y="0" dx="1.9" dy="1.9" layer="1"/>
+</package>
+</packages>
+<symbols>
+<symbol name="QFN16">
+<wire x1="-15.24" y1="12.7" x2="17.78" y2="12.7" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="12.7" x2="-15.24" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="-20.32" x2="17.78" y2="-20.32" width="0.254" layer="94"/>
+<wire x1="17.78" y1="-20.32" x2="17.78" y2="12.7" width="0.254" layer="94"/>
+<pin name="VBAT" x="0" y="17.78" length="middle" rot="R270"/>
+<pin name="SPI-CLK" x="22.86" y="0" length="middle" rot="R180"/>
+<pin name="SPI-I" x="22.86" y="10.16" length="middle" rot="R180"/>
+<pin name="VSS/PAD" x="5.08" y="-25.4" length="middle" rot="R90"/>
+<pin name="SPI-CS/NCE" x="22.86" y="-5.08" length="middle" rot="R180"/>
+<pin name="NIRQ2" x="-20.32" y="-10.16" length="middle"/>
+<pin name="WDI" x="22.86" y="-10.16" length="middle" rot="R180"/>
+<pin name="XI" x="-20.32" y="10.16" length="middle"/>
+<pin name="XO" x="-20.32" y="5.08" length="middle"/>
+<pin name="EXTI" x="22.86" y="-15.24" length="middle" rot="R180"/>
+<pin name="FOUT/NIRQ1" x="-20.32" y="-5.08" length="middle"/>
+<pin name="VCC" x="5.08" y="17.78" length="middle" rot="R270"/>
+<pin name="SPI-O" x="22.86" y="5.08" length="middle" rot="R180"/>
+<pin name="CLKOUT/NIRQ3" x="-20.32" y="-15.24" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="AB0815_RTC">
+<gates>
+<gate name="G$1" symbol="QFN16" x="0" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="QFN16">
+<connects>
+<connect gate="G$1" pin="CLKOUT/NIRQ3" pad="8"/>
+<connect gate="G$1" pin="EXTI" pad="10"/>
+<connect gate="G$1" pin="FOUT/NIRQ1" pad="11"/>
+<connect gate="G$1" pin="NIRQ2" pad="4"/>
+<connect gate="G$1" pin="SPI-CLK" pad="7"/>
+<connect gate="G$1" pin="SPI-CS/NCE" pad="12"/>
+<connect gate="G$1" pin="SPI-I" pad="9"/>
+<connect gate="G$1" pin="SPI-O" pad="6"/>
+<connect gate="G$1" pin="VBAT" pad="5"/>
+<connect gate="G$1" pin="VCC" pad="13 PAD"/>
+<connect gate="G$1" pin="VSS/PAD" pad="14"/>
+<connect gate="G$1" pin="WDI" pad="2"/>
+<connect gate="G$1" pin="XI" pad="16"/>
+<connect gate="G$1" pin="XO" pad="15"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>
