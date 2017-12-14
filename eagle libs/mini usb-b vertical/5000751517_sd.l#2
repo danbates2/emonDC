@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.0.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
-<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.000123031496" altunitdist="mil" altunit="mil"/>
+<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.05" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -59,13 +58,19 @@
 <library>
 <packages>
 <package name="5000751517_SD">
-<wire x1="-3.99925" y1="-0.919559375" x2="-3.99925" y2="0.83055" width="0.001" layer="46"/>
-<wire x1="-3.298471875" y1="0.8334625" x2="-3.298471875" y2="-0.916646875" width="0.001" layer="46"/>
+<wire x1="3.975371875" y1="-0.89648125" x2="3.975371875" y2="0.86671875" width="0.001" layer="46"/>
+<wire x1="3.326321875" y1="0.86671875" x2="3.326321875" y2="-0.89648125" width="0.001" layer="46"/>
+<wire x1="-3.968871875" y1="-0.919559375" x2="-3.968871875" y2="0.83055" width="0.001" layer="46"/>
+<wire x1="-3.319821875" y1="0.83055" x2="-3.319821875" y2="-0.919559375" width="0.001" layer="46"/>
 <pad name="D-" x="-0.8" y="1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
 <pad name="ID" x="0.8" y="1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
 <pad name="VBUS" x="-1.6" y="-1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
 <pad name="D+" x="0" y="-1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
 <pad name="GND1" x="1.6" y="-1.3" drill="0.7" diameter="1.016" shape="long" rot="R90"/>
+<wire x1="-3.96729375" y1="0.832140625" x2="-3.31665" y2="0.827384375" width="0.001" layer="46" curve="-180.004403"/>
+<wire x1="-3.960828125" y1="-0.92995625" x2="-3.311009375" y2="-0.92995625" width="0.001" layer="46" curve="180"/>
+<wire x1="3.32571875" y1="0.865771875" x2="3.9763625" y2="0.861015625" width="0.001" layer="46" curve="-180.004403"/>
+<wire x1="3.332184375" y1="-0.896325" x2="3.982003125" y2="-0.896325" width="0.001" layer="46" curve="180"/>
 <pad name="GND3" x="-3.65" y="0" drill="0.7" diameter="1.6764" shape="long" rot="R90"/>
 <pad name="GND2" x="3.65" y="0" drill="0.7" diameter="1.6764" shape="long" rot="R90"/>
 <wire x1="-3.968871875" y1="-0.919559375" x2="-3.968871875" y2="0.83055" width="0.127" layer="42"/>
@@ -91,7 +96,6 @@
 <wire x1="-3.3" y1="-0.6" x2="-3.3" y2="-1.95" width="0.127" layer="21"/>
 <wire x1="3.85" y1="-0.05" x2="3.3" y2="-0.6" width="0.127" layer="21"/>
 <wire x1="3.3" y1="-0.6" x2="3.3" y2="-1.95" width="0.127" layer="21"/>
-<wire x1="-3.998884375" y1="0.828796875" x2="-3.298884375" y2="0.828796875" width="0" layer="46" curve="-180"/>
 </package>
 </packages>
 <symbols>
