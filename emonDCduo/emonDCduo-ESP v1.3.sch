@@ -20221,6 +20221,7 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <part name="L1" library="inductor-bourns" deviceset="SRR1208" device="">
 <attribute name="MPN" value="SRR1208-151YL"/>
 </part>
+<part name="C8" library="Panasonic-EEE-EEV-EEF-ECQ" deviceset="EEV-" device="-CASE-H13" technology="FK2A680Q" value="68UF"/>
 </parts>
 <sheets>
 <sheet>
@@ -20449,6 +20450,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="L1" gate="G$1" x="-5.08" y="254" smashed="yes">
 <attribute name="NAME" x="-11.43" y="255.778" size="1.778" layer="95"/>
 </instance>
+<instance part="C8" gate="A" x="22.86" y="368.3"/>
 </instances>
 <busses>
 </busses>
