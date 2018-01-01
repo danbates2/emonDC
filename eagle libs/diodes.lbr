@@ -1026,7 +1026,7 @@ diameter 2 mm, horizontal, grid 10.16mm</description>
 <gate name="G$1" symbol="SCHOTTKY" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SMA">
+<device name="" package="SMB_1">
 <connects>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="C" pad="C"/>

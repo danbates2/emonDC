@@ -7652,105 +7652,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
-<library name="SRR0603-331KL">
-<packages>
-<package name="SRR0603-331KL">
-<description>330uH</description>
-<smd name="P$1" x="-3" y="0" dx="2.5" dy="1.5" layer="1" rot="R90"/>
-<smd name="P$2" x="3" y="0" dx="2.5" dy="1.5" layer="1" rot="R90"/>
-<wire x1="-4.1275" y1="4.1275" x2="4.1275" y2="4.1275" width="0.127" layer="21"/>
-<wire x1="4.1275" y1="4.1275" x2="4.1275" y2="-4.1275" width="0.127" layer="21"/>
-<wire x1="4.1275" y1="-4.1275" x2="-4.1275" y2="-4.1275" width="0.127" layer="21"/>
-<wire x1="-4.1275" y1="-4.1275" x2="-4.1275" y2="4.1275" width="0.127" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SRR0603-331KL">
-<wire x1="5.08" y1="0" x2="15.24" y2="0" width="0.254" layer="94" curve="-180"/>
-<wire x1="15.24" y1="0" x2="7.62" y2="0" width="0.254" layer="94" curve="-180"/>
-<wire x1="7.62" y1="0" x2="17.78" y2="0" width="0.254" layer="94" curve="-180"/>
-<wire x1="17.78" y1="0" x2="10.16" y2="0" width="0.254" layer="94" curve="-180"/>
-<wire x1="10.16" y1="0" x2="20.32" y2="0" width="0.254" layer="94" curve="-180"/>
-<wire x1="20.32" y1="0" x2="12.7" y2="0" width="0.254" layer="94" curve="-180"/>
-<wire x1="12.7" y1="0" x2="22.86" y2="0" width="0.254" layer="94" curve="-180"/>
-<pin name="P$1" x="0" y="0" length="middle"/>
-<pin name="P$2" x="27.94" y="0" length="middle" rot="R180"/>
-<wire x1="5.08" y1="6.35" x2="22.86" y2="6.35" width="0.254" layer="94"/>
-<wire x1="5.08" y1="7.62" x2="22.86" y2="7.62" width="0.254" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="SRR0603-331KL" uservalue="yes">
-<description>SRR0603-331KL</description>
-<gates>
-<gate name="G$1" symbol="SRR0603-331KL" x="-13.97" y="0"/>
-</gates>
-<devices>
-<device name="" package="SRR0603-331KL">
-<connects>
-<connect gate="G$1" pin="P$1" pad="P$1"/>
-<connect gate="G$1" pin="P$2" pad="P$2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="INDUCTANCE" value="330uH"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="CASE 403D Diode">
-<packages>
-<package name="DO-214">
-<smd name="P$1" x="-2" y="0" dx="2" dy="2" layer="1"/>
-<smd name="P$2" x="2" y="0" dx="2" dy="2" layer="1"/>
-<wire x1="-2.5" y1="-1.5" x2="2.5" y2="-1.5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="-1.5" x2="2.5" y2="1.5" width="0.127" layer="21"/>
-<wire x1="2.5" y1="1.5" x2="-2.5" y2="1.5" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="1.5" x2="-2.5" y2="-1.5" width="0.127" layer="21"/>
-<polygon width="0.127" layer="21">
-<vertex x="-2" y="1.5"/>
-<vertex x="-1.5" y="1.5"/>
-<vertex x="-1.5" y="-1.5"/>
-<vertex x="-2" y="-1.5"/>
-</polygon>
-</package>
-</packages>
-<symbols>
-<symbol name="MBRA130LT3G">
-<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
-<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
-<text x="-6.985" y="1.7526" size="1.778" layer="95">MBRA130LT3G</text>
-<text x="-3.81" y="-3.5814" size="1.778" layer="96">1A 30V</text>
-<pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-<pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="MBRA130LT3G">
-<description>Fast switching diode</description>
-<gates>
-<gate name="G$1" symbol="MBRA130LT3G" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="DO-214">
-<connects>
-<connect gate="G$1" pin="A" pad="P$2"/>
-<connect gate="G$1" pin="C" pad="P$1"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="multicomp tact switch">
 <packages>
 <package name="SWITCH_TACT_MULTICOMP">
@@ -20029,6 +19930,135 @@ MICRO_SD</text>
 </deviceset>
 </devicesets>
 </library>
+<library name="diodes">
+<packages>
+<package name="SMB_1">
+<wire x1="-2.025" y1="1.65" x2="2.025" y2="1.65" width="0.1524" layer="21"/>
+<wire x1="2.025" y1="-1.65" x2="-2.025" y2="-1.65" width="0.1524" layer="21"/>
+<wire x1="-2.025" y1="1.65" x2="-2.025" y2="1.2" width="0.1524" layer="21"/>
+<wire x1="-2.025" y1="-1.65" x2="-2.025" y2="-1.2" width="0.1524" layer="21"/>
+<wire x1="2.025" y1="-1.65" x2="2.025" y2="-1.2" width="0.1524" layer="21"/>
+<wire x1="2.025" y1="1.65" x2="2.025" y2="1.2" width="0.1524" layer="21"/>
+<wire x1="2.025" y1="1.2" x2="2.025" y2="-1.2" width="0.1524" layer="51"/>
+<wire x1="-2.025" y1="1.2" x2="-2.025" y2="-1.2" width="0.1524" layer="51"/>
+<smd name="C" x="-2.11" y="0" dx="1.62" dy="2.18" layer="1"/>
+<smd name="A" x="2.11" y="0" dx="1.62" dy="2.18" layer="1"/>
+<text x="-2.286" y="2.032" size="1.016" layer="25" ratio="18">&gt;NAME</text>
+<text x="-2.286" y="-3.5814" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="2.125" y1="-1" x2="2.65" y2="1" layer="51"/>
+<rectangle x1="-2.65" y1="-1" x2="-2.125" y2="1" layer="51"/>
+<rectangle x1="-1.27" y1="-1.65" x2="-0.635" y2="1.65" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SCHOTTKY">
+<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.27" x2="1.778" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="0.762" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
+<text x="-2.54" y="1.778" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="-3.683" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+<pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MBRS1100T3G">
+<description>MBRS1100T3G
+100V 1A Freewheeling Diode</description>
+<gates>
+<gate name="G$1" symbol="SCHOTTKY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SMB_1">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="inductor-bourns">
+<description>&lt;b&gt;Bourns Inductors  - v1.01, 03/01/2010&lt;/b&gt;&lt;p&gt;
+&lt;p&gt;THIS LIBRARY IS PROVIDED AS IS AND WITHOUT WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED.&lt;br&gt;
+USE AT YOUR OWN RISK!&lt;p&gt;
+&lt;author&gt;Copyright (C) 2008, Bob Starr&lt;br&gt; http://www.bobstarr.net&lt;br&gt;&lt;/author&gt;</description>
+<packages>
+<package name="SSR1208">
+<description>&lt;B&gt;POWER INDUCTOR&lt;/B&gt;</description>
+<wire x1="-2.9" y1="4.45" x2="2.9" y2="4.45" width="0.2032" layer="51" curve="-65.890082" cap="flat"/>
+<wire x1="4.45" y1="2.9" x2="4.45" y2="-2.95" width="0.2032" layer="51" curve="-66.634107" cap="flat"/>
+<wire x1="-2.95" y1="-4.45" x2="2.9" y2="-4.45" width="0.2032" layer="51" curve="66.634107" cap="flat"/>
+<wire x1="-4.45" y1="-2.9" x2="-4.45" y2="2.95" width="0.2032" layer="51" curve="-66.634107" cap="flat"/>
+<wire x1="-4.45" y1="2.9" x2="-2.9" y2="4.45" width="0.2032" layer="51" curve="-243.008533" cap="flat"/>
+<wire x1="-4.45" y1="-2.9" x2="-2.9" y2="-4.45" width="0.2032" layer="51" curve="243.008533" cap="flat"/>
+<wire x1="2.9" y1="-4.45" x2="4.45" y2="-2.9" width="0.2032" layer="51" curve="243.008533" cap="flat"/>
+<wire x1="2.9" y1="4.45" x2="4.4" y2="2.9" width="0.2032" layer="51" curve="-245.657084" cap="flat"/>
+<wire x1="-3.75" y1="6.25" x2="3.75" y2="6.25" width="0.254" layer="51"/>
+<wire x1="3.75" y1="6.25" x2="5.25" y2="6.25" width="0.254" layer="21"/>
+<wire x1="5.25" y1="6.25" x2="6.25" y2="5.25" width="0.254" layer="21" curve="-90"/>
+<wire x1="6.25" y1="5.25" x2="6.25" y2="-5.25" width="0.254" layer="21"/>
+<wire x1="6.25" y1="-5.25" x2="5.25" y2="-6.25" width="0.254" layer="21" curve="-90"/>
+<wire x1="5.25" y1="-6.25" x2="3.75" y2="-6.25" width="0.254" layer="21"/>
+<wire x1="3.75" y1="-6.25" x2="-3.75" y2="-6.25" width="0.254" layer="51"/>
+<wire x1="-3.75" y1="-6.25" x2="-5.25" y2="-6.25" width="0.254" layer="21"/>
+<wire x1="-5.25" y1="-6.25" x2="-6.25" y2="-5.25" width="0.254" layer="21" curve="-90"/>
+<wire x1="-6.25" y1="-5.25" x2="-6.25" y2="5.25" width="0.254" layer="21"/>
+<wire x1="-6.25" y1="5.25" x2="-5.25" y2="6.25" width="0.254" layer="21" curve="-90"/>
+<wire x1="-5.25" y1="6.25" x2="-3.75" y2="6.25" width="0.254" layer="21"/>
+<circle x="0" y="0" radius="4.5" width="0.2032" layer="51"/>
+<smd name="1" x="0" y="5" dx="7" dy="4" layer="1"/>
+<smd name="2" x="0" y="-5" dx="7" dy="4" layer="1"/>
+<text x="-3.175" y="0" size="0.8128" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-6.6675" y="-5.08" size="1.016" layer="25" ratio="18" rot="R90">&gt;NAME</text>
+</package>
+</packages>
+<symbols>
+<symbol name="L">
+<wire x1="-3.81" y1="0.635" x2="-1.905" y2="0.635" width="0.254" layer="94" curve="-180"/>
+<wire x1="-1.905" y1="0.635" x2="0" y2="0.635" width="0.254" layer="94" curve="-180"/>
+<wire x1="0" y1="0.635" x2="1.905" y2="0.635" width="0.254" layer="94" curve="-180"/>
+<wire x1="1.905" y1="0.635" x2="3.81" y2="0.635" width="0.254" layer="94" curve="-180"/>
+<wire x1="-3.81" y1="0.635" x2="-3.81" y2="0" width="0.254" layer="94"/>
+<wire x1="3.81" y1="0.635" x2="3.81" y2="0" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="0" x2="-5.08" y2="0" width="0.1524" layer="94"/>
+<wire x1="3.81" y1="0" x2="5.08" y2="0" width="0.1524" layer="94"/>
+<wire x1="-3.4925" y1="2.2225" x2="3.4925" y2="2.2225" width="0.254" layer="94"/>
+<wire x1="-3.4925" y1="2.8575" x2="3.4925" y2="2.8575" width="0.254" layer="94"/>
+<text x="-3.81" y="3.81" size="1.778" layer="95">&gt;NAME</text>
+<text x="-3.81" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="2" x="5.08" y="0" visible="off" length="point" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="1" x="-5.08" y="0" visible="off" length="point" direction="pas" swaplevel="1"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SRR1208" prefix="L">
+<description>&lt;b&gt;POWER INDUCTOR&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="L" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SSR1208">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -20057,23 +20087,13 @@ MICRO_SD</text>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="1K"/>
-<part name="D1" library="CASE 403D Diode" deviceset="MBRA130LT3G" device="">
-<attribute name="MF" value="ON SEMICONDUCTOR"/>
-<attribute name="MPN" value="MBRA130LT3G"/>
-<attribute name="OC_FARNELL" value="9555978"/>
-</part>
-<part name="C48" library="rcl" deviceset="C-EU" device="C0603" value="100nF"/>
+<part name="C48" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF MLCC"/>
 <part name="GND23" library="supply1" deviceset="0V" device="" value="GND"/>
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="100nF"/>
 <part name="REG1117" library="burr-brown" library_urn="urn:adsk.eagle:library:111" deviceset="REG1117-VOUT4" device="" value="REG1117-3.3V">
 <attribute name="MF" value="TEXAS INSTRUMENTS"/>
 </part>
 <part name="SUPPLY4" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
-<part name="I1" library="SRR0603-331KL" deviceset="SRR0603-331KL" device="" value="330uH">
-<attribute name="MF" value="BOURNS"/>
-<attribute name="MPN" value="SRR0603-331KL"/>
-<attribute name="OC_FARNELL" value="2333890"/>
-</part>
 <part name="SUPPLY5" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="BAT60J" device="" package3d_urn="urn:adsk.eagle:package:43461/1" value="BAT60AE6327HTSA1"/>
 <part name="C24" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
@@ -20197,6 +20217,10 @@ MICRO_SD</text>
 <part name="U1" library="MAX5035" deviceset="MAX5035" device=""/>
 <part name="C4" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF MLCC"/>
 <part name="C5" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF MLCC"/>
+<part name="D1" library="diodes" deviceset="MBRS1100T3G" device=""/>
+<part name="L1" library="inductor-bourns" deviceset="SRR1208" device="">
+<attribute name="MPN" value="SRR1208-151YL"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -20215,7 +20239,7 @@ OpenEnergyMonitor.org</text>
 <text x="-35.56" y="283.21" size="5.08" layer="91">Power</text>
 <text x="-83.82" y="190.5" size="1.778" layer="91">Design is provided "AS IS" and "WITH ALL FAULTS. OpenEnergyMonitor DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED,</text>
 <text x="-83.82" y="194.31" size="1.778" layer="91">Hardware design files are licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License</text>
-<text x="-35.306" y="279.908" size="2.286" layer="91">DC INPUT, ELS POWER &amp; VOLTAGE REGULATORS</text>
+<text x="-35.306" y="279.908" size="2.286" layer="91">DC INPUT &amp; REGULATORS</text>
 <wire x1="147.32" y1="292.1" x2="182.88" y2="292.1" width="0.1524" layer="94"/>
 <wire x1="182.88" y1="292.1" x2="284.48" y2="292.1" width="0.1524" layer="94"/>
 <wire x1="38.1" y1="393.7" x2="-137.16" y2="393.7" width="0.1524" layer="94"/>
@@ -20268,21 +20292,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="GND2" gate="1" x="-60.96" y="365.76" rot="R180"/>
 <instance part="GND7" gate="1" x="-60.96" y="307.34"/>
 <instance part="R5" gate="G$1" x="-27.94" y="347.98"/>
-<instance part="D1" gate="G$1" x="-17.78" y="241.3" smashed="yes" rot="R90">
-<attribute name="OC_FARNELL" x="-17.78" y="241.3" size="1.778" layer="96" display="off"/>
-<attribute name="MF" x="-17.78" y="241.3" size="1.778" layer="96" display="off"/>
-<attribute name="MPN" x="-17.78" y="241.3" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="C48" gate="G$1" x="17.78" y="246.38"/>
 <instance part="GND23" gate="1" x="93.98" y="231.14"/>
 <instance part="C13" gate="G$1" x="93.98" y="246.38"/>
 <instance part="REG1117" gate="G$1" x="63.5" y="254"/>
 <instance part="SUPPLY4" gate="G$1" x="93.98" y="256.54"/>
-<instance part="I1" gate="G$1" x="-15.24" y="259.08">
-<attribute name="OC_FARNELL" x="-15.24" y="259.08" size="1.778" layer="96" display="off"/>
-<attribute name="MF" x="-15.24" y="259.08" size="1.778" layer="96" display="off"/>
-<attribute name="MPN" x="-15.24" y="259.08" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="SUPPLY5" gate="G$1" x="-22.86" y="325.12"/>
 <instance part="D2" gate="G$1" x="27.94" y="259.08"/>
 <instance part="C24" gate="G$1" x="-60.96" y="358.14">
@@ -20296,7 +20310,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="VALUE" x="-44.45" y="316.357" size="1.778" layer="96"/>
 <attribute name="MPN" x="-45.72" y="320.04" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="C3" gate="A" x="-7.62" y="246.38" rot="R270"/>
+<instance part="C3" gate="A" x="0" y="246.38" rot="R270"/>
 <instance part="C1" gate="G$1" x="45.72" y="246.38"/>
 <instance part="C18" gate="G$1" x="78.74" y="246.38"/>
 <instance part="R1" gate="G$1" x="-86.36" y="316.992" smashed="yes" rot="R90">
@@ -20429,6 +20443,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="U1" gate="G$1" x="-48.26" y="254"/>
 <instance part="C4" gate="G$1" x="-30.48" y="259.08"/>
 <instance part="C5" gate="G$1" x="-30.48" y="241.3"/>
+<instance part="D1" gate="G$1" x="-20.32" y="243.84" smashed="yes" rot="R90">
+<attribute name="NAME" x="-22.098" y="241.3" size="1.778" layer="95" rot="R90"/>
+</instance>
+<instance part="L1" gate="G$1" x="-5.08" y="254" smashed="yes">
+<attribute name="NAME" x="-11.43" y="255.778" size="1.778" layer="95"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -20514,22 +20534,21 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="63.5" y1="233.68" x2="45.72" y2="233.68" width="0.1524" layer="91"/>
 <pinref part="REG1117" gate="G$1" pin="GND"/>
 <wire x1="63.5" y1="241.3" x2="63.5" y2="233.68" width="0.1524" layer="91"/>
-<pinref part="D1" gate="G$1" pin="A"/>
-<wire x1="-17.78" y1="238.76" x2="-17.78" y2="233.68" width="0.1524" layer="91"/>
-<wire x1="-17.78" y1="233.68" x2="-30.48" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="241.3" x2="-20.32" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="233.68" x2="-30.48" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-30.48" y1="233.68" x2="-45.72" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-45.72" y1="233.68" x2="-55.88" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-55.88" y1="233.68" x2="-71.12" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-71.12" y1="233.68" x2="-91.44" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="-91.44" y1="233.68" x2="-121.92" y2="233.68" width="0.1524" layer="91"/>
-<wire x1="-17.78" y1="233.68" x2="-7.62" y2="233.68" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="233.68" x2="17.78" y2="233.68" width="0.1524" layer="91"/>
-<junction x="-17.78" y="233.68"/>
+<wire x1="-20.32" y1="233.68" x2="0" y2="233.68" width="0.1524" layer="91"/>
+<wire x1="0" y1="233.68" x2="17.78" y2="233.68" width="0.1524" layer="91"/>
+<junction x="-20.32" y="233.68"/>
 <pinref part="C48" gate="G$1" pin="2"/>
 <wire x1="17.78" y1="241.3" x2="17.78" y2="233.68" width="0.1524" layer="91"/>
 <junction x="17.78" y="233.68"/>
-<wire x1="-7.62" y1="238.76" x2="-7.62" y2="233.68" width="0.1524" layer="91"/>
-<junction x="-7.62" y="233.68"/>
+<wire x1="0" y1="238.76" x2="0" y2="233.68" width="0.1524" layer="91"/>
+<junction x="0" y="233.68"/>
 <wire x1="17.78" y1="233.68" x2="45.72" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="241.3" x2="45.72" y2="233.68" width="0.1524" layer="91"/>
 <junction x="45.72" y="233.68"/>
@@ -20560,6 +20579,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="C10" gate="A" pin="2"/>
 <wire x1="-71.12" y1="254" x2="-71.12" y2="233.68" width="0.1524" layer="91"/>
 <junction x="-71.12" y="233.68"/>
+<pinref part="D1" gate="G$1" pin="A"/>
 </segment>
 <segment>
 <wire x1="193.04" y1="441.96" x2="198.12" y2="441.96" width="0.1524" layer="91"/>
@@ -20714,17 +20734,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH4"/>
 <wire x1="91.44" y1="347.98" x2="66.04" y2="347.98" width="0.1524" layer="91"/>
 <label x="53.34" y="347.98" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="IND" class="0">
-<segment>
-<wire x1="-15.24" y1="259.08" x2="-17.78" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="D1" gate="G$1" pin="C"/>
-<wire x1="-17.78" y1="243.84" x2="-17.78" y2="259.08" width="0.1524" layer="91"/>
-<junction x="-17.78" y="259.08"/>
-<wire x1="-17.78" y1="259.08" x2="-22.86" y2="259.08" width="0.1524" layer="91"/>
-<wire x1="-22.86" y1="259.08" x2="-25.4" y2="254" width="0.1524" layer="91"/>
-<pinref part="I1" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="4.7V" class="1">
@@ -21360,25 +21369,28 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </net>
 <net name="+5V" class="0">
 <segment>
-<pinref part="I1" gate="G$1" pin="P$2"/>
-<wire x1="15.24" y1="259.08" x2="12.7" y2="259.08" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="251.46" x2="-7.62" y2="246.38" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="251.46" x2="15.24" y2="251.46" width="0.1524" layer="91"/>
-<wire x1="15.24" y1="251.46" x2="15.24" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="D2" gate="G$1" pin="A"/>
 <pinref part="C48" gate="G$1" pin="1"/>
+<pinref part="B1" gate="G$1" pin="1"/>
+<wire x1="25.4" y1="264.16" x2="26.67" y2="264.16" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="A"/>
+<wire x1="25.4" y1="259.08" x2="25.4" y2="264.16" width="0.1524" layer="91"/>
+<junction x="25.4" y="259.08"/>
 <wire x1="25.4" y1="259.08" x2="17.78" y2="259.08" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="259.08" x2="17.78" y2="248.92" width="0.1524" layer="91"/>
-<wire x1="15.24" y1="259.08" x2="17.78" y2="259.08" width="0.1524" layer="91"/>
-<junction x="15.24" y="259.08"/>
 <junction x="17.78" y="259.08"/>
-<pinref part="C3" gate="A" pin="1"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
 <wire x1="17.78" y1="266.7" x2="17.78" y2="259.08" width="0.1524" layer="91"/>
-<pinref part="B1" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="259.08" x2="25.4" y2="264.16" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="264.16" x2="26.67" y2="264.16" width="0.1524" layer="91"/>
-<junction x="25.4" y="259.08"/>
+<wire x1="17.78" y1="259.08" x2="17.78" y2="248.92" width="0.1524" layer="91"/>
+<wire x1="0" y1="248.92" x2="0" y2="246.38" width="0.1524" layer="91"/>
+<pinref part="C3" gate="A" pin="1"/>
+<pinref part="L1" gate="G$1" pin="2"/>
+<wire x1="0" y1="254" x2="0" y2="248.92" width="0.1524" layer="91"/>
+<junction x="0" y="248.92"/>
+<pinref part="U1" gate="G$1" pin="FB"/>
+<wire x1="0" y1="248.92" x2="-33.02" y2="248.92" width="0.1524" layer="91"/>
+<wire x1="0" y1="254" x2="7.62" y2="254" width="0.1524" layer="91"/>
+<junction x="0" y="254"/>
+<wire x1="7.62" y1="254" x2="7.62" y2="259.08" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="259.08" x2="17.78" y2="259.08" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$20" class="0">
@@ -21474,6 +21486,13 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="C4" gate="G$1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="LX/OUT"/>
 <wire x1="-30.48" y1="254" x2="-33.02" y2="254" width="0.1524" layer="91"/>
+<pinref part="L1" gate="G$1" pin="1"/>
+<wire x1="-10.16" y1="254" x2="-20.32" y2="254" width="0.1524" layer="91"/>
+<junction x="-30.48" y="254"/>
+<pinref part="D1" gate="G$1" pin="C"/>
+<wire x1="-20.32" y1="254" x2="-30.48" y2="254" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="246.38" x2="-20.32" y2="254" width="0.1524" layer="91"/>
+<junction x="-20.32" y="254"/>
 </segment>
 </net>
 </nets>
