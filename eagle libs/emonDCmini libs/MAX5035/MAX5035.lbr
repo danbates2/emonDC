@@ -67,7 +67,6 @@
 <smd name="6" x="2.6543" y="-0.635" dx="1.6002" dy="0.5334" layer="1"/>
 <smd name="7" x="2.6543" y="0.635" dx="1.6002" dy="0.5334" layer="1"/>
 <smd name="8" x="2.6543" y="1.905" dx="1.6002" dy="0.5334" layer="1"/>
-<smd name="9" x="0" y="0" dx="2.413" dy="3.0988" layer="1" cream="no"/>
 <wire x1="-1.9812" y1="1.6764" x2="-1.9812" y2="2.1336" width="0.1524" layer="51"/>
 <wire x1="-1.9812" y1="2.1336" x2="-3.0988" y2="2.1336" width="0.1524" layer="51"/>
 <wire x1="-3.0988" y1="2.1336" x2="-3.0988" y2="1.651" width="0.1524" layer="51"/>
@@ -107,18 +106,6 @@
 <wire x1="-0.3048" y1="2.4892" x2="-1.9812" y2="2.4892" width="0.1524" layer="51"/>
 <wire x1="-1.9812" y1="2.4892" x2="-1.9812" y2="-2.4892" width="0.1524" layer="51"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="51" curve="-180"/>
-<polygon width="0.0254" layer="31">
-<vertex x="-1.1065" y="1.4494"/>
-<vertex x="-1.1065" y="0.1"/>
-<vertex x="1.1065" y="0.1"/>
-<vertex x="1.1065" y="1.4494"/>
-</polygon>
-<polygon width="0.0254" layer="31">
-<vertex x="-1.1065" y="-0.1"/>
-<vertex x="-1.1065" y="-1.4494"/>
-<vertex x="1.1065" y="-1.4494"/>
-<vertex x="1.1065" y="-0.1"/>
-</polygon>
 <wire x1="-1.7526" y1="-2.4892" x2="1.7526" y2="-2.4892" width="0.1524" layer="21"/>
 <wire x1="1.7526" y1="2.4892" x2="0.3048" y2="2.4892" width="0.1524" layer="21"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="21"/>
@@ -135,7 +122,6 @@
 <smd name="6" x="2.7051" y="-0.635" dx="1.905" dy="0.5842" layer="1"/>
 <smd name="7" x="2.7051" y="0.635" dx="1.905" dy="0.5842" layer="1"/>
 <smd name="8" x="2.7051" y="1.905" dx="1.905" dy="0.5842" layer="1"/>
-<smd name="EPAD" x="0" y="0" dx="2.413" dy="3.0988" layer="1" cream="no"/>
 <wire x1="-1.9812" y1="1.6764" x2="-1.9812" y2="2.1336" width="0.1524" layer="51"/>
 <wire x1="-1.9812" y1="2.1336" x2="-3.0988" y2="2.1336" width="0.1524" layer="51"/>
 <wire x1="-3.0988" y1="2.1336" x2="-3.0988" y2="1.651" width="0.1524" layer="51"/>
@@ -176,25 +162,13 @@
 <wire x1="-1.9812" y1="2.4892" x2="-1.9812" y2="-2.4892" width="0.1524" layer="51"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="51" curve="-180"/>
 <text x="-3.5306" y="2.3622" size="1.27" layer="51" ratio="6" rot="SR0">*</text>
-<polygon width="0.0254" layer="31">
-<vertex x="-1.1065" y="1.4494"/>
-<vertex x="-1.1065" y="0.1"/>
-<vertex x="1.1065" y="0.1"/>
-<vertex x="1.1065" y="1.4494"/>
-</polygon>
-<polygon width="0.0254" layer="31">
-<vertex x="-1.1065" y="-0.1"/>
-<vertex x="-1.1065" y="-1.4494"/>
-<vertex x="1.1065" y="-1.4494"/>
-<vertex x="1.1065" y="-0.1"/>
-</polygon>
 <wire x1="-1.6002" y1="-2.4892" x2="1.6002" y2="-2.4892" width="0.1524" layer="21"/>
 <wire x1="1.6002" y1="2.4892" x2="0.3048" y2="2.4892" width="0.1524" layer="21"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="21"/>
 <wire x1="-0.3048" y1="2.4892" x2="-1.6002" y2="2.4892" width="0.1524" layer="21"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="21" curve="-180"/>
 <text x="-3.5306" y="2.3622" size="1.27" layer="21" ratio="6" rot="SR0">*</text>
-<text x="-3.2766" y="-0.635" size="1.27" layer="21" ratio="6" rot="SR0">&lt;Name</text>
+<text x="-3.2766" y="3.175" size="1.27" layer="21" ratio="6" rot="SR0">&lt;Name</text>
 </package>
 <package name="21-0111D_SBE-14-L">
 <smd name="1" x="-2.6035" y="1.905" dx="1.2954" dy="0.4826" layer="1"/>
@@ -205,7 +179,6 @@
 <smd name="6" x="2.6035" y="-0.635" dx="1.2954" dy="0.4826" layer="1"/>
 <smd name="7" x="2.6035" y="0.635" dx="1.2954" dy="0.4826" layer="1"/>
 <smd name="8" x="2.6035" y="1.905" dx="1.2954" dy="0.4826" layer="1"/>
-<smd name="EPAD" x="0" y="0" dx="2.413" dy="3.0988" layer="1" cream="no"/>
 <wire x1="-1.9812" y1="1.6764" x2="-1.9812" y2="2.1336" width="0.1524" layer="51"/>
 <wire x1="-1.9812" y1="2.1336" x2="-3.0988" y2="2.1336" width="0.1524" layer="51"/>
 <wire x1="-3.0988" y1="2.1336" x2="-3.0988" y2="1.651" width="0.1524" layer="51"/>
@@ -245,18 +218,6 @@
 <wire x1="-0.3048" y1="2.4892" x2="-1.9812" y2="2.4892" width="0.1524" layer="51"/>
 <wire x1="-1.9812" y1="2.4892" x2="-1.9812" y2="-2.4892" width="0.1524" layer="51"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="51" curve="-180"/>
-<polygon width="0.0254" layer="31">
-<vertex x="-1.1065" y="1.4494"/>
-<vertex x="-1.1065" y="0.1"/>
-<vertex x="1.1065" y="0.1"/>
-<vertex x="1.1065" y="1.4494"/>
-</polygon>
-<polygon width="0.0254" layer="31">
-<vertex x="-1.1065" y="-0.1"/>
-<vertex x="-1.1065" y="-1.4494"/>
-<vertex x="1.1065" y="-1.4494"/>
-<vertex x="1.1065" y="-0.1"/>
-</polygon>
 <wire x1="-1.9812" y1="-2.4892" x2="1.9812" y2="-2.4892" width="0.1524" layer="21"/>
 <wire x1="1.9812" y1="2.4892" x2="0.3048" y2="2.4892" width="0.1524" layer="21"/>
 <wire x1="0.3048" y1="2.4892" x2="-0.3048" y2="2.4892" width="0.1524" layer="21"/>
@@ -267,143 +228,49 @@
 </package>
 </packages>
 <symbols>
-<symbol name="MAX5023TASA-T">
-<description>VOLTAGE REGULATOR 3.3V</description>
-<pin name="IN" x="-20.32" y="5.08" direction="in"/>
-<pin name="EN" x="-20.32" y="2.54" direction="in"/>
-<pin name="GND" x="-20.32" y="0" direction="pwr"/>
-<pin name="!RESET" x="-20.32" y="-2.54" direction="out"/>
-<pin name="!HOLD" x="17.78" y="-5.08" direction="in" rot="R180"/>
-<pin name="N.C." x="17.78" y="-2.54" direction="nc" rot="R180"/>
-<pin name="WDI" x="17.78" y="0" direction="in" rot="R180"/>
-<pin name="OUT" x="17.78" y="2.54" direction="out" rot="R180"/>
-<pin name="EPAD" x="17.78" y="5.08" direction="pas" rot="R180"/>
-<wire x1="-12.7" y1="10.16" x2="-12.7" y2="-10.16" width="0.1524" layer="94"/>
-<wire x1="-12.7" y1="-10.16" x2="10.16" y2="-10.16" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="-10.16" x2="10.16" y2="10.16" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="10.16" x2="-12.7" y2="10.16" width="0.1524" layer="94"/>
-</symbol>
-<symbol name="MAX5033BUSA+">
-<description>MAX5033BUSA+
-VOLTAGE REGULATOR 3.3V</description>
-<pin name="IN" x="-20.32" y="5.08" direction="in"/>
-<pin name="EN" x="-20.32" y="2.54" direction="in"/>
-<pin name="GND" x="-20.32" y="0" direction="pwr"/>
-<pin name="!RESET" x="-20.32" y="-2.54" direction="out"/>
-<pin name="!HOLD" x="17.78" y="-5.08" direction="in" rot="R180"/>
-<pin name="N.C." x="17.78" y="-2.54" direction="nc" rot="R180"/>
-<pin name="WDI" x="17.78" y="0" direction="in" rot="R180"/>
-<pin name="OUT" x="17.78" y="2.54" direction="out" rot="R180"/>
-<pin name="EPAD" x="17.78" y="5.08" direction="pas" rot="R180"/>
-<wire x1="-12.7" y1="10.16" x2="-12.7" y2="-10.16" width="0.1524" layer="94"/>
-<wire x1="-12.7" y1="-10.16" x2="10.16" y2="-10.16" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="-10.16" x2="10.16" y2="10.16" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="10.16" x2="-12.7" y2="10.16" width="0.1524" layer="94"/>
+<symbol name="MAX5035">
+<description>MAX5035</description>
+<pin name="V_IN" x="-10.16" y="12.7" length="short" direction="pwr" rot="R270"/>
+<pin name="ON/OFF" x="-15.24" y="0" length="short" direction="in"/>
+<pin name="SGND" x="-7.62" y="-15.24" length="short" direction="pwr" rot="R90"/>
+<pin name="GND" x="2.54" y="-15.24" length="short" direction="pas" rot="R90"/>
+<pin name="VD" x="15.24" y="-10.16" length="short" direction="in" rot="R180"/>
+<pin name="FB" x="15.24" y="-5.08" length="short" direction="in" rot="R180"/>
+<pin name="LX/OUT" x="15.24" y="0" length="short" direction="out" rot="R180"/>
+<pin name="BST" x="15.24" y="7.62" length="short" direction="pas" rot="R180"/>
+<wire x1="-12.7" y1="10.16" x2="-12.7" y2="-12.7" width="0.1524" layer="94"/>
+<wire x1="-12.7" y1="-12.7" x2="12.7" y2="-12.7" width="0.1524" layer="94"/>
+<wire x1="12.7" y1="-12.7" x2="12.7" y2="10.16" width="0.1524" layer="94"/>
+<wire x1="12.7" y1="10.16" x2="-12.7" y2="10.16" width="0.1524" layer="94"/>
+<text x="-5.08" y="2.54" size="2.1844" layer="95" font="fixed">MAX5035</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MAX5023TASA-T" prefix="U">
-<description>VOLTAGE REGULATOR 3.3V</description>
+<deviceset name="MAX5035" prefix="U">
+<description>SWITCHING REGULATOR 5.0V 1.0A</description>
 <gates>
-<gate name="A" symbol="MAX5023TASA-T" x="0" y="0"/>
+<gate name="G$1" symbol="MAX5035" x="0" y="0"/>
 </gates>
 <devices>
 <device name="" package="21-0111D_SBE-14">
 <connects>
-<connect gate="A" pin="!HOLD" pad="5"/>
-<connect gate="A" pin="!RESET" pad="4"/>
-<connect gate="A" pin="EN" pad="2"/>
-<connect gate="A" pin="EPAD" pad="9"/>
-<connect gate="A" pin="GND" pad="3"/>
-<connect gate="A" pin="IN" pad="1"/>
-<connect gate="A" pin="N.C." pad="6"/>
-<connect gate="A" pin="OUT" pad="8"/>
-<connect gate="A" pin="WDI" pad="7"/>
+<connect gate="G$1" pin="BST" pad="1"/>
+<connect gate="G$1" pin="FB" pad="4"/>
+<connect gate="G$1" pin="GND" pad="6"/>
+<connect gate="G$1" pin="LX/OUT" pad="8"/>
+<connect gate="G$1" pin="ON/OFF" pad="5"/>
+<connect gate="G$1" pin="SGND" pad="3"/>
+<connect gate="G$1" pin="VD" pad="2"/>
+<connect gate="G$1" pin="V_IN" pad="7"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="max5023tasat" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="MAX5035BASA+"/>
 <attribute name="VENDOR" value="MAXIM" constant="no"/>
 </technology>
 </technologies>
 </device>
 <device name="21-0111D_SBE-14-M" package="21-0111D_SBE-14-M">
-<connects>
-<connect gate="A" pin="!HOLD" pad="5"/>
-<connect gate="A" pin="!RESET" pad="4"/>
-<connect gate="A" pin="EN" pad="2"/>
-<connect gate="A" pin="EPAD" pad="EPAD"/>
-<connect gate="A" pin="GND" pad="3"/>
-<connect gate="A" pin="IN" pad="1"/>
-<connect gate="A" pin="N.C." pad="6"/>
-<connect gate="A" pin="OUT" pad="8"/>
-<connect gate="A" pin="WDI" pad="7"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="max5023tasat" constant="no"/>
-<attribute name="VENDOR" value="MAXIM" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="21-0111D_SBE-14-L" package="21-0111D_SBE-14-L">
-<connects>
-<connect gate="A" pin="!HOLD" pad="5"/>
-<connect gate="A" pin="!RESET" pad="4"/>
-<connect gate="A" pin="EN" pad="2"/>
-<connect gate="A" pin="EPAD" pad="EPAD"/>
-<connect gate="A" pin="GND" pad="3"/>
-<connect gate="A" pin="IN" pad="1"/>
-<connect gate="A" pin="N.C." pad="6"/>
-<connect gate="A" pin="OUT" pad="8"/>
-<connect gate="A" pin="WDI" pad="7"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="max5023tasat" constant="no"/>
-<attribute name="VENDOR" value="MAXIM" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="MAX5033BUSA+" prefix="U">
-<description>VOLTAGE REGULATOR 3.3V</description>
-<gates>
-<gate name="A" symbol="MAX5023TASA-T" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="21-0111D_SBE-14">
-<connects>
-<connect gate="A" pin="!HOLD" pad="5"/>
-<connect gate="A" pin="!RESET" pad="4"/>
-<connect gate="A" pin="EN" pad="2"/>
-<connect gate="A" pin="EPAD" pad="9"/>
-<connect gate="A" pin="GND" pad="3"/>
-<connect gate="A" pin="IN" pad="1"/>
-<connect gate="A" pin="N.C." pad="6"/>
-<connect gate="A" pin="OUT" pad="8"/>
-<connect gate="A" pin="WDI" pad="7"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="MAX5033BUSA+"/>
-<attribute name="VENDOR" value="MAXIM" constant="no"/>
-</technology>
-</technologies>
-</device>
-<device name="21-0111D_SBE-14-M" package="21-0111D_SBE-14-M">
-<connects>
-<connect gate="A" pin="!HOLD" pad="5"/>
-<connect gate="A" pin="!RESET" pad="4"/>
-<connect gate="A" pin="EN" pad="2"/>
-<connect gate="A" pin="EPAD" pad="EPAD"/>
-<connect gate="A" pin="GND" pad="3"/>
-<connect gate="A" pin="IN" pad="1"/>
-<connect gate="A" pin="N.C." pad="6"/>
-<connect gate="A" pin="OUT" pad="8"/>
-<connect gate="A" pin="WDI" pad="7"/>
-</connects>
 <technologies>
 <technology name="">
 <attribute name="MANUFACTURER_PART_NUMBER" value="MAX5033BUSA+"/>
@@ -412,17 +279,6 @@ VOLTAGE REGULATOR 3.3V</description>
 </technologies>
 </device>
 <device name="21-0111D_SBE-14-L" package="21-0111D_SBE-14-L">
-<connects>
-<connect gate="A" pin="!HOLD" pad="5"/>
-<connect gate="A" pin="!RESET" pad="4"/>
-<connect gate="A" pin="EN" pad="2"/>
-<connect gate="A" pin="EPAD" pad="EPAD"/>
-<connect gate="A" pin="GND" pad="3"/>
-<connect gate="A" pin="IN" pad="1"/>
-<connect gate="A" pin="N.C." pad="6"/>
-<connect gate="A" pin="OUT" pad="8"/>
-<connect gate="A" pin="WDI" pad="7"/>
-</connects>
 <technologies>
 <technology name="">
 <attribute name="MANUFACTURER_PART_NUMBER" value="MAX5033BUSA+"/>
