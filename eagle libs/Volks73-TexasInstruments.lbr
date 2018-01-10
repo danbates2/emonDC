@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="7.2.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<description>&lt;h1&gt;Volks73's Library for Texas Instruments (TI) Parts&lt;/h1&gt;
+&lt;p&gt;
+&lt;a href="https://github.com/volks73/eagle-libraries/"&gt;Repository&lt;/a&gt;
+&lt;/p&gt;
+&lt;h3&gt;Licensing:&lt;/h3&gt; 
+&lt;p&gt;
+Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0), &lt;a href="http://creativecommons.org/licenses/by-sa/3.0/"&gt;http://creativecommons.org/licenses/by-sa/3.0/&lt;/a&gt;. 
+&lt;/p&gt;
+&lt;p&gt;
+For attribution, please provide a link in any documentation or design files to the repository on Github. 
+&lt;/p&gt;</description>
+<packages>
+<package name="SOT-223">
+<description>&lt;h1&gt;Small-Outline Transistor (SOT) 223&lt;/h1&gt;
+&lt;h3&gt;Aliases&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;TO-261-4&lt;/li&gt;
+&lt;li&gt;TO-261AA&lt;/li&gt;
+&lt;/ul&gt;</description>
+<smd name="1" x="-2.3" y="-2.9" dx="0.95" dy="2.15" layer="1"/>
+<smd name="2" x="0" y="-2.9" dx="0.95" dy="2.15" layer="1"/>
+<smd name="3" x="2.3" y="-2.9" dx="0.95" dy="2.15" layer="1"/>
+<smd name="4" x="0" y="2.9" dx="3.25" dy="2.15" layer="1"/>
+<wire x1="-3.15" y1="-1.65" x2="-3.15" y2="1.65" width="0.127" layer="21"/>
+<wire x1="-3.15" y1="1.65" x2="3.15" y2="1.65" width="0.127" layer="21"/>
+<wire x1="3.15" y1="1.65" x2="3.15" y2="-1.65" width="0.127" layer="21"/>
+<wire x1="3.15" y1="-1.65" x2="-3.15" y2="-1.65" width="0.127" layer="21"/>
+<rectangle x1="-2.72" y1="-3.45" x2="-1.88" y2="-1.65" layer="51"/>
+<rectangle x1="-0.42" y1="-3.45" x2="0.42" y2="-1.65" layer="51"/>
+<rectangle x1="1.88" y1="-3.45" x2="2.72" y2="-1.65" layer="51"/>
+<rectangle x1="-1.55" y1="1.65" x2="1.55" y2="3.45" layer="51"/>
+<text x="-3.6" y="-2.7" size="1.27" layer="25" font="vector" rot="R90">&gt;NAME</text>
+<text x="5" y="-3" size="1.27" layer="27" font="vector" rot="R90">&gt;VALUE</text>
+</package>
+<package name="SO-8_POWERPAD">
+<description>&lt;h1&gt;8-Pin Small Outline Integrated Circuit (SOIC)&lt;/h1&gt;
+&lt;h2&gt;PowerPAD&amp;trade; Plastic Small Outline&lt;/h2&gt;
+&lt;p&gt;
+Package contains a relatively large pad on the bottom that should be soldered directly to a large ground plane for thermal dissapiation. Up to six (6) thermal vias should be placed within the PowerPad&amp;trade; connection.
+&lt;/p&gt;</description>
+<smd name="1" x="-1.905" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="2" x="-0.635" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="3" x="0.635" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="4" x="1.905" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="8" x="-1.905" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="7" x="-0.635" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="6" x="0.635" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="5" x="1.905" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="POWERPAD_TOP" x="0" y="0" dx="3.1" dy="2.4" layer="1"/>
+<smd name="POWERPAD_BOTTOM" x="0" y="0" dx="3.1" dy="2.4" layer="16"/>
+<wire x1="-2.54" y1="-1.524" x2="-2.54" y2="1.524" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.524" x2="2.54" y2="1.524" width="0.127" layer="21"/>
+<wire x1="2.54" y1="1.524" x2="2.54" y2="-1.524" width="0.127" layer="21"/>
+<wire x1="2.54" y1="-1.524" x2="-2.54" y2="-1.524" width="0.127" layer="21"/>
+<circle x="-2.032" y="-1.016" radius="0.254" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-3.81" x2="-2.54" y2="-2.54" width="0.127" layer="21"/>
+<text x="-3.175" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="4.445" y="-3.175" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<wire x1="-2.5" y1="2" x2="2.5" y2="2" width="0.127" layer="49"/>
+<wire x1="2.5" y1="-2" x2="-2.5" y2="-2" width="0.127" layer="49"/>
+<wire x1="-2.5" y1="2" x2="-2.5" y2="-2" width="0.127" layer="49"/>
+<wire x1="2.5" y1="-2" x2="2.5" y2="2" width="0.127" layer="49"/>
+<rectangle x1="-2.11" y1="2" x2="-1.7" y2="3.1" layer="51"/>
+<rectangle x1="-0.84" y1="2" x2="-0.43" y2="3.1" layer="51"/>
+<rectangle x1="0.43" y1="2" x2="0.84" y2="3.1" layer="51"/>
+<rectangle x1="1.7" y1="2" x2="2.11" y2="3.1" layer="51"/>
+<rectangle x1="1.7" y1="-3.1" x2="2.11" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="0.43" y1="-3.1" x2="0.84" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="-0.84" y1="-3.1" x2="-0.43" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="-2.11" y1="-3.1" x2="-1.7" y2="-2" layer="51" rot="R180"/>
+</package>
+<package name="SOIC-8">
+<description>&lt;h1&gt;8-Pin Small Outline Integrated Circuit (SOIC)&lt;/h1&gt;
+&lt;h2&gt;Plastic Small Outline&lt;/h2&gt;</description>
+<smd name="1" x="-1.905" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="2" x="-0.635" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="3" x="0.635" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="4" x="1.905" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="8" x="-1.905" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="7" x="-0.635" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="6" x="0.635" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="5" x="1.905" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<wire x1="-2.54" y1="-1.524" x2="-2.54" y2="1.524" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.524" x2="2.54" y2="1.524" width="0.127" layer="21"/>
+<wire x1="2.54" y1="1.524" x2="2.54" y2="-1.524" width="0.127" layer="21"/>
+<wire x1="2.54" y1="-1.524" x2="-2.54" y2="-1.524" width="0.127" layer="21"/>
+<circle x="-2.032" y="-1.016" radius="0.254" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-3.81" x2="-2.54" y2="-2.54" width="0.127" layer="21"/>
+<text x="-3.175" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="4.445" y="-3.175" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<wire x1="-2.5" y1="2" x2="2.5" y2="2" width="0.127" layer="49"/>
+<wire x1="2.5" y1="-2" x2="-2.5" y2="-2" width="0.127" layer="49"/>
+<wire x1="-2.5" y1="2" x2="-2.5" y2="-2" width="0.127" layer="49"/>
+<wire x1="2.5" y1="-2" x2="2.5" y2="2" width="0.127" layer="49"/>
+<rectangle x1="-2.11" y1="2" x2="-1.7" y2="3.1" layer="51"/>
+<rectangle x1="-0.84" y1="2" x2="-0.43" y2="3.1" layer="51"/>
+<rectangle x1="0.43" y1="2" x2="0.84" y2="3.1" layer="51"/>
+<rectangle x1="1.7" y1="2" x2="2.11" y2="3.1" layer="51"/>
+<rectangle x1="1.7" y1="-3.1" x2="2.11" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="0.43" y1="-3.1" x2="0.84" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="-0.84" y1="-3.1" x2="-0.43" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="-2.11" y1="-3.1" x2="-1.7" y2="-2" layer="51" rot="R180"/>
+</package>
+<package name="SOT-23-6">
+<description>&lt;h1&gt;6-Pin Small Outline Transistor (SOT-23)&lt;/h1&gt;
+&lt;h2&gt;TSOT-6&lt;/h2&gt;</description>
+<smd name="6" x="-0.95" y="1.4" dx="1.1" dy="0.6" layer="1" rot="R90"/>
+<smd name="5" x="0" y="1.4" dx="1.1" dy="0.6" layer="1" rot="R90"/>
+<smd name="4" x="0.95" y="1.4" dx="1.1" dy="0.6" layer="1" rot="R90"/>
+<smd name="3" x="0.95" y="-1.4" dx="1.1" dy="0.6" layer="1" rot="R270"/>
+<smd name="2" x="0" y="-1.4" dx="1.1" dy="0.6" layer="1" rot="R270"/>
+<smd name="1" x="-0.95" y="-1.4" dx="1.1" dy="0.6" layer="1" rot="R270"/>
+<wire x1="-1.27" y1="-0.635" x2="-1.27" y2="-0.3" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="-0.3" x2="-1.27" y2="0.635" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="1.27" y2="0.635" width="0.127" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="1.27" y2="-0.3" width="0.127" layer="21"/>
+<wire x1="1.27" y1="-0.3" x2="1.27" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="-1.27" y2="-0.635" width="0.127" layer="21"/>
+<text x="-1.905" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="3.175" y="-3.175" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-1.2" y1="0.9" x2="-0.69" y2="1.55" layer="51"/>
+<rectangle x1="-0.25" y1="0.9" x2="0.25" y2="1.55" layer="51"/>
+<rectangle x1="0.69" y1="0.9" x2="1.2" y2="1.55" layer="51"/>
+<rectangle x1="0.69" y1="-1.55" x2="1.2" y2="-0.9" layer="51"/>
+<rectangle x1="-0.25" y1="-1.55" x2="0.25" y2="-0.9" layer="51"/>
+<rectangle x1="-1.2" y1="-1.55" x2="-0.69" y2="-0.9" layer="51"/>
+<wire x1="-1.55" y1="-0.9" x2="-1.55" y2="0.9" width="0.127" layer="49"/>
+<wire x1="1.55" y1="0.9" x2="1.55" y2="-0.9" width="0.127" layer="49"/>
+<wire x1="-1.55" y1="0.9" x2="1.55" y2="0.9" width="0.127" layer="49"/>
+<wire x1="1.55" y1="-0.9" x2="-1.55" y2="-0.9" width="0.127" layer="49"/>
+<wire x1="-1.27" y1="-0.3" x2="1.27" y2="-0.3" width="0.127" layer="21"/>
+<wire x1="-1.5" y1="-1.905" x2="-1.5" y2="-1.27" width="0.127" layer="21"/>
+</package>
+<package name="SO-8">
+<description>&lt;h1&gt;8-Pin Small Outline Integrated Circuit (SOIC)&lt;/h1&gt;
+&lt;h2&gt;Plastic Small Outline&lt;/h2&gt;</description>
+<smd name="1" x="-1.905" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="2" x="-0.635" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="3" x="0.635" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="4" x="1.905" y="-2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="8" x="-1.905" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="7" x="-0.635" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="6" x="0.635" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<smd name="5" x="1.905" y="2.875" dx="2.2" dy="0.5" layer="1" rot="R90"/>
+<wire x1="-2.54" y1="-1.524" x2="-2.54" y2="1.524" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="1.524" x2="2.54" y2="1.524" width="0.127" layer="21"/>
+<wire x1="2.54" y1="1.524" x2="2.54" y2="-1.524" width="0.127" layer="21"/>
+<wire x1="2.54" y1="-1.524" x2="-2.54" y2="-1.524" width="0.127" layer="21"/>
+<circle x="-2.032" y="-1.016" radius="0.254" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-3.81" x2="-2.54" y2="-2.54" width="0.127" layer="21"/>
+<text x="-3.175" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="4.445" y="-3.175" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<wire x1="-2.5" y1="2" x2="2.5" y2="2" width="0.127" layer="49"/>
+<wire x1="2.5" y1="-2" x2="-2.5" y2="-2" width="0.127" layer="49"/>
+<wire x1="-2.5" y1="2" x2="-2.5" y2="-2" width="0.127" layer="49"/>
+<wire x1="2.5" y1="-2" x2="2.5" y2="2" width="0.127" layer="49"/>
+<rectangle x1="-2.11" y1="2" x2="-1.7" y2="3.1" layer="51"/>
+<rectangle x1="-0.84" y1="2" x2="-0.43" y2="3.1" layer="51"/>
+<rectangle x1="0.43" y1="2" x2="0.84" y2="3.1" layer="51"/>
+<rectangle x1="1.7" y1="2" x2="2.11" y2="3.1" layer="51"/>
+<rectangle x1="1.7" y1="-3.1" x2="2.11" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="0.43" y1="-3.1" x2="0.84" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="-0.84" y1="-3.1" x2="-0.43" y2="-2" layer="51" rot="R180"/>
+<rectangle x1="-2.11" y1="-3.1" x2="-1.7" y2="-2" layer="51" rot="R180"/>
+</package>
+</packages>
+<symbols>
+<symbol name="VOLTAGE_REGULATOR">
+<wire x1="-12.7" y1="7.62" x2="12.7" y2="7.62" width="0.254" layer="94"/>
+<wire x1="12.7" y1="7.62" x2="12.7" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-15.24" x2="-12.7" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-15.24" x2="-12.7" y2="7.62" width="0.254" layer="94"/>
+<pin name="INPUT" x="-17.78" y="2.54" visible="pin" length="middle" direction="in"/>
+<pin name="OUTPUT" x="17.78" y="2.54" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="ADJUST" x="0" y="-20.32" visible="pin" length="middle" direction="pwr" rot="R90"/>
+<text x="-12.7" y="11.43" size="1.778" layer="95">&gt;NAME</text>
+<text x="-12.7" y="8.636" size="1.778" layer="95">&gt;VALUE</text>
+</symbol>
+<symbol name="BUCK_CONVERTER">
+<pin name="BOOT" x="-15.24" y="5.08" visible="pin" length="middle"/>
+<pin name="VIN" x="-15.24" y="2.54" visible="pin" length="middle" direction="in"/>
+<pin name="EN" x="-15.24" y="0" visible="pin" length="middle" direction="in"/>
+<pin name="SS" x="-15.24" y="-2.54" visible="pin" length="middle"/>
+<pin name="VSNS" x="15.24" y="-2.54" visible="pin" length="middle" direction="in" rot="R180"/>
+<pin name="COMP" x="15.24" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="15.24" y="2.54" visible="pin" length="middle" direction="pwr" rot="R180"/>
+<pin name="PH" x="15.24" y="5.08" visible="pin" length="middle" rot="R180"/>
+<wire x1="-10.16" y1="7.62" x2="-10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-5.08" x2="10.16" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-5.08" x2="10.16" y2="7.62" width="0.254" layer="94"/>
+<wire x1="10.16" y1="7.62" x2="-10.16" y2="7.62" width="0.254" layer="94"/>
+<text x="-10.16" y="8.89" size="1.27" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-7.62" size="1.27" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="OP_AMP">
+<pin name="+" x="-10.16" y="5.08" length="middle"/>
+<pin name="-" x="-10.16" y="-5.08" length="middle"/>
+<pin name="OUT" x="12.7" y="0" length="middle" rot="R180"/>
+<wire x1="-5.08" y1="10.16" x2="0" y2="6.096" width="0.254" layer="94"/>
+<wire x1="0" y1="6.096" x2="7.62" y2="0" width="0.254" layer="94"/>
+<wire x1="7.62" y1="0" x2="0" y2="-6.096" width="0.254" layer="94"/>
+<wire x1="0" y1="-6.096" x2="-5.08" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-10.16" x2="-5.08" y2="10.16" width="0.254" layer="94"/>
+<text x="-5.08" y="11.43" size="1.778" layer="95">&gt;NAME</text>
+<text x="-5.08" y="-12.7" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="V+">
+<pin name="V+" x="0" y="2.54" length="middle" direction="pwr" rot="R270"/>
+<text x="-2.54" y="-7.62" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="3.81" y="-7.62" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+</symbol>
+<symbol name="V-">
+<pin name="V-" x="0" y="-5.08" length="middle" direction="pwr" rot="R90"/>
+<text x="-2.54" y="0" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="3.81" y="0" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+</symbol>
+<symbol name="SUPPLY">
+<pin name="V+" x="0" y="12.7" length="middle" rot="R270"/>
+<pin name="V-" x="0" y="-12.7" length="middle" rot="R90"/>
+<text x="-2.54" y="-7.62" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="3.81" y="-7.62" size="1.778" layer="95" rot="R90">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="LM317M?" prefix="U">
+<description>&lt;h1&gt;Voltage Regulator&lt;/h1&gt;
+&lt;h2&gt;3-Terminal Adjustable Regulator&lt;/h2&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ti.com/lit/ds/symlink/lm317m.pdf"&gt;Datasheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Output Voltage Range Adjustable from 1.25-V to 37-V&lt;/li&gt;
+&lt;li&gt;Output Current Greater Than 500-mA&lt;/li&gt;
+&lt;li&gt;Internal Short-Circuit Current Limiting&lt;/li&gt;
+&lt;li&gt;Output Safe-Area Compensation&lt;/li&gt;
+&lt;li&gt;Q Devices Meet Automotive Performance Requirements&lt;/li&gt;
+&lt;li&gt;Customer-Specific Configuration Control Can Be Supported for Q Devices Along With Major-Change Approval&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Applications&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Electronic Point-of-Sales&lt;/li&gt;
+&lt;li&gt;Medical/Health/Fitness Applications&lt;/li&gt;
+&lt;li&gt;Printers&lt;/li&gt;
+&lt;li&gt;Appliances/White Goods&lt;/li&gt;
+&lt;li&gt;TV/Set-Top Box&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="U$1" symbol="VOLTAGE_REGULATOR" x="0" y="2.54"/>
+</gates>
+<devices>
+<device name="DCY" package="SOT-223">
+<connects>
+<connect gate="U$1" pin="ADJUST" pad="1"/>
+<connect gate="U$1" pin="INPUT" pad="3"/>
+<connect gate="U$1" pin="OUTPUT" pad="2 4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="CURRENT_LIMIT" value="-"/>
+<attribute name="CURRENT_OUTPUT" value="500mA"/>
+<attribute name="DESCRIPTION" value="IC REG LDO ADJ 0.5A SOT223"/>
+<attribute name="DOCUMENTATION_LINK" value="&lt;a href=&quot;http://www.ti.com/lit/ds/symlink/lm317m.pdf&quot;&gt;Datasheet&lt;/a&gt;"/>
+<attribute name="DOCUMENTATION_URL" value="http://www.ti.com/lit/ds/symlink/lm317m.pdf"/>
+<attribute name="MANUFACTURER" value="Texas Instruments"/>
+<attribute name="MOUNTING_TYPE" value="Surface Mount"/>
+<attribute name="NUMBER_OF_REGULATORS" value="1"/>
+<attribute name="OPERATING_TEMPERATURE" value="0C ~ 125C"/>
+<attribute name="PART_NUMBER" value="LM317MDCYR"/>
+<attribute name="REGULATOR_TOPOLOGY" value="Positive Adjustable"/>
+<attribute name="SUPPLIER_ITEM_LINK" value="&lt;a href=&quot;http://www.digikey.com/product-detail/en/LM317MDCYR/296-12631-1-ND/454186&quot;&gt;Details&lt;/a&gt;"/>
+<attribute name="SUPPLIER_ITEM_NUMBER" value="296-12631-1-ND"/>
+<attribute name="SUPPLIER_ITEM_URL" value="http://www.digikey.com/product-detail/en/LM317MDCYR/296-12631-1-ND/454186"/>
+<attribute name="SUPPLIER_LINK" value="&lt;a href=&quot;http://www.digikey.com&quot;&gt;Home Page&lt;/a&gt;"/>
+<attribute name="SUPPLIER_NAME" value="Digi-Key"/>
+<attribute name="SUPPLIER_URL" value="http://www.digikey.com"/>
+<attribute name="VOLTAGE_DROPOUT" value="-"/>
+<attribute name="VOLTAGE_INPUT" value="4.2V ~ 40V"/>
+<attribute name="VOLTAGE_OUTPUT" value="1.25V ~ 37V"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TPS54531*" prefix="U">
+<description>&lt;h1&gt;DC-DC Converter&lt;/h1&gt;
+&lt;h2&gt;5-A, 28-V Input, Step-Down SWIFT&amp;trade; DC-DC Converter with Eco-Mode&amp;trade;&lt;/h2&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ti.com/lit/ds/symlink/tps54531.pdf"&gt;Datasheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Description&lt;/h3&gt;
+The TPS54531 device is a 28-V, 5-A non-synchronous buck converter that integrates a low R&lt;sub&gt;DS(on)&lt;/sub&gt; high-side MOSFET. To increase efficiency at light loads, a pulse skipping Eco-mode feature is automatically activated. Furthermore, the 1-uA shutdown supply current allows the device to be used in battery powered applications. Current mode control with internal slope compensation simplifies the external compensation calculations and reduces component count while allowing the use of ceramic output capacitors. A resistor divider programs the hysteresis of the input under-voltage lockout. An overvoltage transient protection circuit limits voltage overshoots during startup and transient conditions. A cycle-by-cycle current-limit scheme, frequency fold back, and thermal shutdown protect the device and the load in the event of an overload condition. The TPS54531 device is available in 8-pin SO PowerPAD&amp;trade; package that has been internally optimized to improve thermal performance.
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;3.5 to 28-V Input Voltage Range&lt;/li&gt;
+&lt;li&gt;Adjustable Output Voltage Down to 0.8V&lt;/li&gt;
+&lt;li&gt;Integrated 80-m&amp;Omega; High-Side MOSFET Support&lt;/li&gt;
+&lt;li&gt;High Efficiency at Light Loads with a Pulse Skipping Eco-mode&amp;trade;&lt;/li&gt;
+&lt;li&gt;Fixed 570kHz Switching Frequency&lt;/li&gt;
+&lt;li&gt;Typical 1uA Shutdown Quiescent Current&lt;/li&gt;
+&lt;li&gt;Adjustable Slow Start Limits Inrush Currents&lt;/li&gt;
+&lt;li&gt;Programmable UVLO Threshold&lt;/li&gt;
+&lt;li&gt;Overvoltage Transient Protection&lt;/li&gt;
+&lt;li&gt;Cycle-by-Cycle Current-Limit, Frequency Fold Back, and Thermal Shutdown Protection&lt;/li&gt;
+&lt;li&gt;Availabel in Easy-to-Use Thermally Enhanced 8-Pin SO PowerPAD&amp;trade; Package&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Applications&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Consumer Applications such as Set-Top Boxes, CPE Equipment, LCB Displays, Peripherals, and Battery Chargers&lt;/li&gt;
+&lt;li&gt; Industrial and Car Audio Power Supplies&lt;/li&gt;
+&lt;li&gt;5-V, 12-V and 24-V Distributed Power Systems&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="U$1" symbol="BUCK_CONVERTER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SO-8_POWERPAD">
+<connects>
+<connect gate="U$1" pin="BOOT" pad="1"/>
+<connect gate="U$1" pin="COMP" pad="6"/>
+<connect gate="U$1" pin="EN" pad="3"/>
+<connect gate="U$1" pin="GND" pad="7 POWERPAD_BOTTOM POWERPAD_TOP"/>
+<connect gate="U$1" pin="PH" pad="8"/>
+<connect gate="U$1" pin="SS" pad="4"/>
+<connect gate="U$1" pin="VIN" pad="2"/>
+<connect gate="U$1" pin="VSNS" pad="5"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="CATEGORY" value="Integrated Circuits (ICs)"/>
+<attribute name="CURRENT-OUTPUT" value="5A"/>
+<attribute name="DESCRIPTION" value="IC REG BUCK ADJ 5A 8SOPWRPAD"/>
+<attribute name="DOCUMENTATION_LINK" value="&lt;a href=&quot;http://www.ti.com/lit/ds/symlink/tps54531.pdf&quot;&gt;Datasheet&lt;/a&gt;"/>
+<attribute name="DOCUMENTATION_URL" value="http://www.ti.com/lit/ds/symlink/tps54531.pdf"/>
+<attribute name="FAMILY" value="PMIC - Voltage Regulators - DC DC Switching Regulators"/>
+<attribute name="FREQUENCY-SWITCHING" value="570kHz"/>
+<attribute name="MANUFACTURER" value="Texas Instruments"/>
+<attribute name="MOUNTING_TYPE" value="Surface Mount"/>
+<attribute name="NUMBER_OF_OUTPUTS" value="1"/>
+<attribute name="OPERATING_TEMPERATURE" value="-40°C ~ 150°C"/>
+<attribute name="OUTPUT_TYPE" value="Adjustable"/>
+<attribute name="PACKAGE-CASE" value="8-SOIC (0.154&quot;, 3.90mm Width) Exposed Pad"/>
+<attribute name="PART_NUMBER" value="TPS54531DDA"/>
+<attribute name="SERIES" value="SWIFT, Eco-Mode"/>
+<attribute name="SUPPLIER_DEVICE_PACKAGE" value="8-SO PowerPad"/>
+<attribute name="SUPPLIER_ITEM_LINK" value="&lt;a href=&quot;http://www.digikey.com/product-detail/en/TPS54531DDA/296-36206-5-ND/4172337&quot;&gt;Details&lt;/a&gt;"/>
+<attribute name="SUPPLIER_ITEM_NUMBER" value="296-36206-5-ND"/>
+<attribute name="SUPPLIER_ITEM_URL" value="http://www.digikey.com/product-detail/en/TPS54531DDA/296-36206-5-ND/4172337"/>
+<attribute name="SUPPLIER_LINK" value="&lt;a href=&quot;http://www.digikey.com&quot;&gt;Home Page&lt;/a&gt;"/>
+<attribute name="SUPPLIER_NAME" value="Digi-Key"/>
+<attribute name="SUPPLIER_URL" value="http://www.digikey.com"/>
+<attribute name="SYNCHRONOUS_RECTIFIER" value="No"/>
+<attribute name="TYPE" value="Step-Down (Buck)"/>
+<attribute name="VOLTAGE-INPUT" value="3.5 V ~ 28 V"/>
+<attribute name="VOLTAGE-OUTPUT" value="0.8 V ~ 25 V"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TPS54332*" prefix="U">
+<description>&lt;h1&gt;DC-DC Converter&lt;/h1&gt;
+&lt;h2&gt;3.5-A, 28-V, 1-MHz, Step-Down DC-DC Converter with Eco-Mode&amp;trade;&lt;/h2&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ti.com/lit/ds/symlink/tps54332.pdf"&gt;Datasheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Description&lt;/h3&gt;
+The TPS54531 device is a 28-V, 5-A non-synchronous buck converter that integrates a low R&lt;sub&gt;DS(on)&lt;/sub&gt; high-side MOSFET. To increase efficiency at light loads, a pulse skipping Eco-mode feature is automatically activated. Furthermore, the 1-uA shutdown supply current allows the device to be used in battery powered applications. Current mode control with internal slope compensation simplifies the external compensation calculations and reduces component count while allowing the use of ceramic output capacitors. A resistor divider programs the hysteresis of the input under-voltage lockout. An overvoltage transient protection circuit limits voltage overshoots during startup and transient conditions. A cycle-by-cycle current-limit scheme, frequency fold back, and thermal shutdown protect the device and the load in the event of an overload condition. The TPS54531 device is available in 8-pin SO PowerPAD&amp;trade; package that has been internally optimized to improve thermal performance.
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;3.5 to 28-V Input Voltage Range&lt;/li&gt;
+&lt;li&gt;Adjustable Output Voltage Down to 0.8V&lt;/li&gt;
+&lt;li&gt;Integrated 80-m&amp;Omega; High-Side MOSFET Supports up to 3.5-A Continuous Output Current&lt;/li&gt;
+&lt;li&gt;High Efficiency at Light Loads with a Pulse Skipping Eco-mode&amp;trade;&lt;/li&gt;
+&lt;li&gt;Fixed 1MHz Switching Frequency&lt;/li&gt;
+&lt;li&gt;Typical 1uA Shutdown Quiescent Current&lt;/li&gt;
+&lt;li&gt;Adjustable Slow Start Limits Inrush Currents&lt;/li&gt;
+&lt;li&gt;Programmable UVLO Threshold&lt;/li&gt;
+&lt;li&gt;Overvoltage Transient Protection&lt;/li&gt;
+&lt;li&gt;Cycle-by-Cycle Current-Limit, Frequency Fold Back, and Thermal Shutdown Protection&lt;/li&gt;
+&lt;li&gt;Available in Thermally Enhanced 8-Pin SOIC PowerPAD&amp;trade; Package&lt;/li&gt;
+&lt;li&gt;Supported by &lt;a href="http://www.ti.com/lsds/ti/analog/webench/overview.page"&gt;WEBENCH&lt;/a&gt;&amp;trade; Tool (http://www.ti.com/lsds/ti/analog/webench/overview.page)
+&lt;/ul&gt;
+&lt;h3&gt;Applications&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Consumer Applications such as Set-Top Boxes, CPE Equipment, LCB Displays, Peripherals, and Battery Chargers&lt;/li&gt;
+&lt;li&gt; Industrial and Car Audio Power Supplies&lt;/li&gt;
+&lt;li&gt;5-V, 12-V and 24-V Distributed Power Systems&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="U$1" symbol="BUCK_CONVERTER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SO-8_POWERPAD">
+<connects>
+<connect gate="U$1" pin="BOOT" pad="1"/>
+<connect gate="U$1" pin="COMP" pad="6"/>
+<connect gate="U$1" pin="EN" pad="3"/>
+<connect gate="U$1" pin="GND" pad="7 POWERPAD_BOTTOM POWERPAD_TOP"/>
+<connect gate="U$1" pin="PH" pad="8"/>
+<connect gate="U$1" pin="SS" pad="4"/>
+<connect gate="U$1" pin="VIN" pad="2"/>
+<connect gate="U$1" pin="VSNS" pad="5"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="CATEGORY" value="Integrated Circuits (ICs)"/>
+<attribute name="CURRENT-OUTPUT" value="3.5A"/>
+<attribute name="DESCRIPTION" value="IC REG BUCK ADJ 3.5A 8SOPWRPAD"/>
+<attribute name="DOCUMENTATION_LINK" value="&lt;a href=&quot;http://www.ti.com/lit/ds/symlink/tps54332.pdf&quot;&gt;Datasheet&lt;/a&gt;"/>
+<attribute name="DOCUMENTATION_URL" value="http://www.ti.com/lit/ds/symlink/tps54332.pdf"/>
+<attribute name="FAMILY" value="PMIC - Voltage Regulators - DC DC Switching Regulators"/>
+<attribute name="FREQUENCY-SWITCHING" value="1MHz"/>
+<attribute name="MANUFACTURER" value="Texas Instruments"/>
+<attribute name="MOUNTING_TYPE" value="Surface Mount"/>
+<attribute name="NUMBER_OF_OUTPUTS" value="1"/>
+<attribute name="OPERATING_TEMPERATURE" value="-40°C ~ 150°C"/>
+<attribute name="OUTPUT_TYPE" value="Adjustable"/>
+<attribute name="PACKAGE-CASE" value="8-SOIC (0.154&quot;, 3.90mm Width) Exposed Pad"/>
+<attribute name="PART_NUMBER" value="TPS54332DDA"/>
+<attribute name="SERIES" value="Eco-Mode"/>
+<attribute name="SUPPLIER_DEVICE_PACKAGE" value="8-SO PowerPad"/>
+<attribute name="SUPPLIER_ITEM_LINK" value="&lt;a href=&quot;http://www.digikey.com/product-detail/en/TPS54332DDA/296-24141-5-ND/2000741&quot;&gt;Details&lt;/a&gt;"/>
+<attribute name="SUPPLIER_ITEM_NUMBER" value="296-24141-5-ND"/>
+<attribute name="SUPPLIER_ITEM_URL" value="http://www.digikey.com/product-detail/en/TPS54332DDA/296-24141-5-ND/2000741"/>
+<attribute name="SUPPLIER_LINK" value="&lt;a href=&quot;http://www.digikey.com&quot;&gt;Home Page&lt;/a&gt;"/>
+<attribute name="SUPPLIER_NAME" value="Digi-Key"/>
+<attribute name="SUPPLIER_URL" value="http://www.digikey.com"/>
+<attribute name="SYNCHRONOUS_RECTIFIER" value="No"/>
+<attribute name="TYPE" value="Step-Down Buck"/>
+<attribute name="VOLTAGE-OUTPUT" value="0.8 V ~ 25 V"/>
+<attribute name="VOLTAGE_INPUT" value="3.5 V ~ 28 V"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TPS54331*" prefix="U">
+<description>&lt;h1&gt;DC-DC Converter&lt;/h1&gt;
+&lt;h2&gt;3-A, 28-V, Step-Down DC-DC Converter with Eco-Mode&amp;trade;&lt;/h2&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ti.com/lit/ds/symlink/tps54331.pdf"&gt;Datasheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Description&lt;/h3&gt;
+The TPS54331 device is a 28-V, 3-A non-synchronous buck converter that integrates a low R&lt;sub&gt;DS(on)&lt;/sub&gt; high-side MOSFET. To increase efficiency at light loads, a pulse skipping Eco-mode feature is automatically activated. Furthermore, the 1-uA shutdown supply current allows the device to be used in battery powered applications. Current mode control with internal slope compensation simplifies the external compensation calculations and reduces component count while allowing the use of ceramic output capacitors. A resistor divider programs the hysteresis of the input under-voltage lockout. An overvoltage transient protection circuit limits voltage overshoots during startup and transient conditions. A cycle-by-cycle current-limit scheme, frequency fold back, and thermal shutdown protect the device and the load in the event of an overload condition. The TPS54331 device is available in 8-pin SOIC package and 8-pin SO PowerPAD package that has been internally optimized to improve thermal performance.
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;3.5 to 28-V Input Voltage Range&lt;/li&gt;
+&lt;li&gt;Adjustable Output Voltage Down to 0.8V&lt;/li&gt;
+&lt;li&gt;Integrated 80-m&amp;Omega; High-Side MOSFET Supports up to 3-A Continuous Output Current&lt;/li&gt;
+&lt;li&gt;High Efficiency at Light Loads with a Pulse Skipping Eco-mode&amp;trade;&lt;/li&gt;
+&lt;li&gt;Fixed 1MHz Switching Frequency&lt;/li&gt;
+&lt;li&gt;Typical 1uA Shutdown Quiescent Current&lt;/li&gt;
+&lt;li&gt;Adjustable Slow Start Limits Inrush Currents&lt;/li&gt;
+&lt;li&gt;Programmable UVLO Threshold&lt;/li&gt;
+&lt;li&gt;Overvoltage Transient Protection&lt;/li&gt;
+&lt;li&gt;Cycle-by-Cycle Current-Limit, Frequency Fold Back, and Thermal Shutdown Protection&lt;/li&gt;
+&lt;li&gt;Available in Easy-to-Use SOIC8 Package or Thermally Enhanced 8-Pin SOIC PowerPAD&amp;trade; Package&lt;/li&gt;
+&lt;li&gt;Supported by &lt;a href="http://www.ti.com/lsds/ti/analog/webench/overview.page"&gt;WEBENCH&lt;/a&gt;&amp;trade; Tool (http://www.ti.com/lsds/ti/analog/webench/overview.page)
+&lt;/ul&gt;
+&lt;h3&gt;Applications&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Consumer Applications such as Set-Top Boxes, CPE Equipment, LCB Displays, Peripherals, and Battery Chargers&lt;/li&gt;
+&lt;li&gt; Industrial and Car Audio Power Supplies&lt;/li&gt;
+&lt;li&gt;5-V, 12-V and 24-V Distributed Power Systems&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="U$1" symbol="BUCK_CONVERTER" x="0" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="SOIC-8">
+<connects>
+<connect gate="U$1" pin="BOOT" pad="1"/>
+<connect gate="U$1" pin="COMP" pad="6"/>
+<connect gate="U$1" pin="EN" pad="3"/>
+<connect gate="U$1" pin="GND" pad="7"/>
+<connect gate="U$1" pin="PH" pad="8"/>
+<connect gate="U$1" pin="SS" pad="4"/>
+<connect gate="U$1" pin="VIN" pad="2"/>
+<connect gate="U$1" pin="VSNS" pad="5"/>
+</connects>
+<technologies>
+<technology name="DR">
+<attribute name="CATEGORY" value="Integrated Circuits (ICs)"/>
+<attribute name="CURRENT-OUTPUT" value="3A"/>
+<attribute name="DESCRIPTION" value="IC REG BUCK ADJ 3A 8SOIC"/>
+<attribute name="DOCUMENTATION_LINK" value="&lt;a href=&quot;http://www.ti.com/lit/ds/symlink/tps54331.pdf&quot;&gt;Datasheet&lt;/a&gt;"/>
+<attribute name="DOCUMENTATION_URL" value="http://www.ti.com/lit/ds/symlink/tps54331.pdf"/>
+<attribute name="FAMILY" value="PMIC - Voltage Regulators - DC DC Switching Regulators"/>
+<attribute name="FREQUENCY-SWITCHING" value="570kHz"/>
+<attribute name="MANUFACTURER" value="Texas Instruments"/>
+<attribute name="MOUNTING_TYPE" value="Surface Mount"/>
+<attribute name="NUMBER_OF_OUTPUTS" value="1"/>
+<attribute name="OPERATING_TEMPERATURE" value="-40C ~ 150C"/>
+<attribute name="OUTPUT_TYPE" value="Adjustable"/>
+<attribute name="PACKAGE" value="8-SOIC (0.154&quot;, 3.90mm Width)"/>
+<attribute name="PART_NUMBER" value="TPS54331DR"/>
+<attribute name="SEIRES" value="Swift, Eco-Mode"/>
+<attribute name="SUPPLIER_DEVICE_PACKAGE" value="8-SOIC"/>
+<attribute name="SUPPLIER_ITEM_LINK" value="&lt;a href=&quot;http://www.digikey.com/product-detail/en/TPS54331DR/296-26991-1-ND/2255284&quot;&gt;Details&lt;/a&gt;"/>
+<attribute name="SUPPLIER_ITEM_NUMBER" value="296-26991-1-ND"/>
+<attribute name="SUPPLIER_ITEM_URL" value="http://www.digikey.com/product-detail/en/TPS54331DR/296-26991-1-ND/2255284"/>
+<attribute name="SUPPLIER_LINK" value="&lt;a href=&quot;http://www.digikey.com&quot;&gt;Home Page&lt;/a&gt;"/>
+<attribute name="SUPPLIER_NAME" value="Digi-Key"/>
+<attribute name="SUPPLIER_URL" value="http://www.digikey.com"/>
+<attribute name="SYNCHRONOUS_RECTIFIER" value="No"/>
+<attribute name="TYPE" value="Step-Down (Buck)"/>
+<attribute name="VOLTAGE-INPUT" value="3.5V ~ 28V"/>
+<attribute name="VOLTAGE-OUTPUT" value="0.8V ~ 25V"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="OPA2171?*" prefix="U">
+<description>&lt;h1&gt;Operational Amplifier (OP-AMP)&lt;/h1&gt;
+&lt;h2&gt;36V, Single-Supply, SOT553, General-Purpose, Value Line Series&lt;/h2&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ti.com/lit/ds/symlink/opa2171.pdf"&gt;Datasheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Supply Range: +2.7V to +36V, ±1.35V to ±18V&lt;/li&gt;
+&lt;li&gt;Low Noise: 14nV/√Hz&lt;/li&gt;
+&lt;li&gt;Low Offset Drift: ±0.3µV/°C (typ)&lt;/li&gt;
+&lt;li&gt;RFI Filtered Inputs&lt;/li&gt;
+&lt;li&gt;Input Range Includes the Negative Supply&lt;/li&gt; 
+&lt;li&gt;Input Range Operates to Positive Supply&lt;/li&gt;
+&lt;li&gt;Rail-to-Rail Output&lt;/li&gt;
+&lt;li&gt;Gain Bandwidth: 3MHz&lt;/li&gt;
+&lt;li&gt;Low Quiescent Current: 475µA per Amplifier&lt;/li&gt;
+&lt;li&gt;High Common-Mode Rejection: 120dB (typ)&lt;/li&gt;
+&lt;li&gt;Low Input Bias Current: 8pA&lt;/li&gt;
+&lt;li&gt;Industry-Standard Packages:&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;8-Pin SOIC&lt;/li&gt;
+&lt;li&gt;8-Pin MSOP&lt;/li&gt;
+&lt;li&gt;14-Pin TSSOP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;&lt;i&gt;micro&lt;/i&gt;Packages:&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Single in SOT553&lt;/li&gt;
+&lt;li&gt;Dual in VSSOP-8&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Applications&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Tracking Amplifier in Power Modules&lt;/li&gt;
+&lt;li&gt;Merchant Power Supplies&lt;/li&gt;
+&lt;li&gt;Transducer Amplifiers&lt;/li&gt;
+&lt;li&gt;Bridge Amplifiers&lt;/li&gt;
+&lt;li&gt;Temperature Measurements&lt;/li&gt;
+&lt;li&gt;Strain Gauge Amplifiers&lt;/li&gt;
+&lt;li&gt;Precision Integrators&lt;/li&gt;
+&lt;li&gt;Battery-Powered Instruments&lt;/li&gt;
+&lt;li&gt;Test Equipment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Description&lt;/h3&gt;
+&lt;p&gt;
+The OPA171, OPA2171 and OPA4171 (OPAx171) are a family of 36V, single-supply, low-noise operational amplifiers with the ability to operate on supplies ranging from +2.7V (±1.35V) to +36V (±18V). These devices are available in micro-packages and offer low offset, drift, and bandwidth with low quiescent current. The single, dual, and quad versions all have identical specifications for maximum design flexibility.
+&lt;/p&gt;
+&lt;p&gt;
+Unlike most op amps, which are specified at only one supply voltage, the OPAx171 family is specified from +2.7V to +36V. Input signals beyond the supply rails do not cause phase reversal. The OPAx171 family is stable with capacitive loads up to 300pF. The input can operate 100mV below the negative rail and within 2V of the top rail during normal operation. Note that these devices can operate with full rail-to-rail input 100mV beyond the top rail, but with reduced performance within 2V of the top rail.
+&lt;/p&gt;
+&lt;p&gt;
+The OPAx171 series of op amps are specified from -40&lt;sup&gt;o&lt;/sup&gt;C to +125&lt;sup&gt;o&lt;/sup&gt;C.
+&lt;/p&gt;</description>
+<gates>
+<gate name="A" symbol="OP_AMP" x="0" y="12.7"/>
+<gate name="B" symbol="OP_AMP" x="0" y="-15.24"/>
+<gate name="-SUPPLY" symbol="SUPPLY" x="-27.94" y="2.54" addlevel="request"/>
+</gates>
+<devices>
+<device name="AIDR" package="SO-8">
+<connects>
+<connect gate="-SUPPLY" pin="V+" pad="8"/>
+<connect gate="-SUPPLY" pin="V-" pad="4"/>
+<connect gate="A" pin="+" pad="3"/>
+<connect gate="A" pin="-" pad="2"/>
+<connect gate="A" pin="OUT" pad="1"/>
+<connect gate="B" pin="+" pad="5"/>
+<connect gate="B" pin="-" pad="6"/>
+<connect gate="B" pin="OUT" pad="7"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="3DB_BANDWIDTH" value="-"/>
+<attribute name="AMPLIFIER_TYPE" value="General Purpose"/>
+<attribute name="CATEGORY" value="Integrated Circuits (ICs)"/>
+<attribute name="CURRENT-INPUT_BIAS" value="8pA"/>
+<attribute name="CURRENT-OUTPUT-CHANNEL" value="35mA"/>
+<attribute name="CURRENT-SUPPLY" value="475µA"/>
+<attribute name="DESCRIPTION" value="IC OPAMP GP 3MHZ RRO 8SOIC"/>
+<attribute name="DOCUMENTATION_LINK" value="&lt;a href=&quot;http://www.ti.com/lit/ds/symlink/opa2171.pdf&quot;&gt;Datasheet&lt;/a&gt;"/>
+<attribute name="DOCUMENTATION_URL" value="http://www.ti.com/lit/ds/symlink/opa2171.pdf"/>
+<attribute name="FAMILY" value="Linear - Amplifiers - Instrumentation, OP Amps, Buffer Amps"/>
+<attribute name="GAIN_BANDWIDTH_PRODUCT" value="3MHz"/>
+<attribute name="MANUFACTURER" value="Texas Instruments"/>
+<attribute name="MOUNTING_TYPE" value="Surface Mount"/>
+<attribute name="NUMBER_OF_CIRCUITS" value="2"/>
+<attribute name="OPERATING_TEMPERATURE" value="-40°C ~ 125°C"/>
+<attribute name="OUTPUT_TYPE" value="Rail-to-Rail"/>
+<attribute name="PART_NUMBER" value="OPA2171AIDR"/>
+<attribute name="SERIES" value="-"/>
+<attribute name="SLEW_RATE" value="1.5 V/µs"/>
+<attribute name="SUPPLIER_ITEM_LINK" value="&lt;a href=&quot;http://www.digikey.com/product-detail/en/OPA2171AIDR/296-29091-1-ND/2688394&quot;&gt;Details&lt;/a&gt;"/>
+<attribute name="SUPPLIER_ITEM_NUMBER" value="296-29091-1-ND"/>
+<attribute name="SUPPLIER_ITEM_URL" value="http://www.digikey.com/product-detail/en/OPA2171AIDR/296-29091-1-ND/2688394"/>
+<attribute name="SUPPLIER_LINK" value="&lt;a href=&quot;http://www.digikey.com&quot;&gt;Home Page&lt;/a&gt;"/>
+<attribute name="SUPPLIER_NAME" value="Digi-Key"/>
+<attribute name="SUPPLIER_URL" value="http://www.digikey.com"/>
+<attribute name="VOLTAGE-INPUT_OFFSET" value="250µV"/>
+<attribute name="VOLTAGE-SUPPLY" value="2.7 V ~ 36 V, ±1.35 V ~ 18 V"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>

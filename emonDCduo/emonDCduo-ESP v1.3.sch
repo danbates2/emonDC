@@ -19176,100 +19176,6 @@ Grid 3.5 mm&lt;p&gt;
 </deviceset>
 </devicesets>
 </library>
-<library name="smd-special" urn="urn:adsk.eagle:library:362">
-<description>&lt;b&gt;Special SMD Packages&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="SMS-002" urn="urn:adsk.eagle:footprint:26406/1" library_version="1">
-<description>&lt;b&gt;DIP SWITCH&lt;/b&gt;</description>
-<wire x1="-3.175" y1="-3.2004" x2="3.175" y2="-3.2004" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="3.2004" x2="3.175" y2="-3.2004" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="3.2004" x2="-3.175" y2="3.2004" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="-3.2004" x2="-3.175" y2="3.2004" width="0.1524" layer="21"/>
-<wire x1="-2.032" y1="2.032" x2="-0.508" y2="2.032" width="0.1524" layer="21"/>
-<wire x1="-0.508" y1="-2.032" x2="-2.032" y2="-2.032" width="0.1524" layer="21"/>
-<wire x1="-0.508" y1="2.032" x2="-0.508" y2="-2.032" width="0.1524" layer="21"/>
-<wire x1="-2.032" y1="-2.032" x2="-2.032" y2="2.032" width="0.1524" layer="21"/>
-<wire x1="0.508" y1="2.032" x2="2.032" y2="2.032" width="0.1524" layer="21"/>
-<wire x1="2.032" y1="-2.032" x2="0.508" y2="-2.032" width="0.1524" layer="21"/>
-<wire x1="2.032" y1="2.032" x2="2.032" y2="-2.032" width="0.1524" layer="21"/>
-<wire x1="0.508" y1="-2.032" x2="0.508" y2="2.032" width="0.1524" layer="21"/>
-<smd name="3" x="1.27" y="4.4958" dx="1.0922" dy="2.0066" layer="1"/>
-<smd name="2" x="1.27" y="-4.4958" dx="1.0922" dy="2.0066" layer="1"/>
-<smd name="1" x="-1.27" y="-4.4958" dx="1.0922" dy="2.0066" layer="1"/>
-<smd name="4" x="-1.27" y="4.4958" dx="1.0922" dy="2.0066" layer="1"/>
-<text x="-1.397" y="-1.27" size="1.016" layer="21">1</text>
-<text x="-3.556" y="-3.175" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
-<text x="4.826" y="-3.175" size="1.27" layer="27" ratio="10" rot="R90">&gt;VALUE</text>
-<rectangle x1="-2.032" y1="0.508" x2="-0.508" y2="2.032" layer="21"/>
-<rectangle x1="0.508" y1="0.508" x2="2.032" y2="2.032" layer="21"/>
-<rectangle x1="-2.0066" y1="-4.1148" x2="-0.508" y2="-3.2004" layer="51"/>
-<rectangle x1="-1.5748" y1="-5.1816" x2="-0.9652" y2="-4.1148" layer="51"/>
-<rectangle x1="0.5334" y1="-4.1148" x2="2.032" y2="-3.2004" layer="51"/>
-<rectangle x1="0.9652" y1="-5.1816" x2="1.5748" y2="-4.1148" layer="51"/>
-<rectangle x1="-2.032" y1="3.2004" x2="-0.5334" y2="4.1148" layer="51"/>
-<rectangle x1="-1.5748" y1="4.1148" x2="-0.9652" y2="5.1816" layer="51"/>
-<rectangle x1="0.508" y1="3.2004" x2="2.0066" y2="4.1148" layer="51"/>
-<rectangle x1="0.9652" y1="4.1148" x2="1.5748" y2="5.1816" layer="51"/>
-</package>
-</packages>
-<packages3d>
-<package3d name="SMS-002" urn="urn:adsk.eagle:package:26469/1" type="box" library_version="1">
-<description>DIP SWITCH</description>
-</package3d>
-</packages3d>
-<symbols>
-<symbol name="DIP02" urn="urn:adsk.eagle:symbol:26405/1" library_version="1">
-<wire x1="3.048" y1="0" x2="2.032" y2="0" width="0.1524" layer="94"/>
-<wire x1="2.032" y1="2.54" x2="3.048" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="3.048" y1="2.54" x2="3.048" y2="0" width="0.1524" layer="94"/>
-<wire x1="2.032" y1="0" x2="2.032" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="0.508" y1="0" x2="-0.508" y2="0" width="0.1524" layer="94"/>
-<wire x1="-0.508" y1="2.54" x2="0.508" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="0.508" y1="2.54" x2="0.508" y2="0" width="0.1524" layer="94"/>
-<wire x1="-0.508" y1="0" x2="-0.508" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="4.445" y1="5.08" x2="-1.905" y2="5.08" width="0.4064" layer="94"/>
-<wire x1="-1.905" y1="5.08" x2="-1.905" y2="-2.54" width="0.4064" layer="94"/>
-<wire x1="-1.905" y1="-2.54" x2="4.445" y2="-2.54" width="0.4064" layer="94"/>
-<wire x1="4.445" y1="-2.54" x2="4.445" y2="5.08" width="0.4064" layer="94"/>
-<text x="-2.54" y="-2.54" size="1.778" layer="95" rot="R90">&gt;NAME</text>
-<text x="6.985" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<text x="-0.635" y="3.175" size="0.9906" layer="94" ratio="14">ON</text>
-<text x="-0.254" y="-1.651" size="0.9906" layer="94" ratio="14">1</text>
-<text x="2.032" y="-1.651" size="0.9906" layer="94" ratio="14">2</text>
-<rectangle x1="-0.254" y1="0.254" x2="0.254" y2="1.27" layer="94"/>
-<rectangle x1="2.286" y1="0.254" x2="2.794" y2="1.27" layer="94"/>
-<pin name="3" x="2.54" y="7.62" visible="pad" length="short" direction="pas" rot="R270"/>
-<pin name="4" x="0" y="7.62" visible="pad" length="short" direction="pas" rot="R270"/>
-<pin name="1" x="0" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
-<pin name="2" x="2.54" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="SWS002" urn="urn:adsk.eagle:component:26478/1" prefix="S" library_version="1">
-<description>&lt;b&gt;SMD Dip Switch 2 pol.&lt;/b&gt;</description>
-<gates>
-<gate name="G$1" symbol="DIP02" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SMS-002">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:26469/1"/>
-</package3dinstances>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="jst-ph">
 <description>&lt;b&gt;JST Connectors&lt;/b&gt; - PH 2.0 MM Series&lt;p&gt;
 &lt;p&gt;THIS LIBRARY IS PROVIDED AS IS AND WITHOUT WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED.&lt;br&gt;
@@ -19921,11 +19827,13 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <part name="SCREW2" library="con-weidmueller-sl35" library_urn="urn:adsk.eagle:library:199" deviceset="180-3" device="" package3d_urn="urn:adsk.eagle:package:11339/1"/>
 <part name="GND3" library="supply1" deviceset="0V" device="" value="GND"/>
 <part name="GND10" library="supply1" deviceset="0V" device="" value="GND"/>
-<part name="CR1220" library="IotaWatt_parts" deviceset="CR1220SMD" device=""/>
+<part name="CR1220" library="IotaWatt_parts" deviceset="CR1220SMD" device="">
+<attribute name="MPN" value="Harwin
+S8411-45R"/>
+</part>
 <part name="ADC-PAD" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="2,15/1,0" device="" package3d_urn="urn:adsk.eagle:package:30831/1"/>
 <part name="FTDI2" library="JeeLabs" deviceset="MA06-1" device="" value="FTDI"/>
 <part name="C2" library="rcl" deviceset="C-EU" device="C0603" value="100nF"/>
-<part name="S1" library="smd-special" library_urn="urn:adsk.eagle:library:362" deviceset="SWS002" device="" package3d_urn="urn:adsk.eagle:package:26469/1"/>
 <part name="P1" library="jst-ph" deviceset="B4B-PH-K" device=""/>
 <part name="J5" library="SparkFun-Connectors" deviceset="CONN_02" device="" value="455-1750-1-ND"/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
@@ -19951,7 +19859,8 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <part name="C11T" library="rcl" deviceset="C-EU" device="C0603" value="10uF TANT"/>
 <part name="C14" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
 <part name="BOOTL" library="SparkFun" deviceset="M02" device="PTH"/>
-<part name="ESP_PWR" library="SparkFun" deviceset="M02" device="PTH"/>
+<part name="RX" library="SparkFun" deviceset="M02" device="PTH"/>
+<part name="TX" library="SparkFun" deviceset="M02" device="PTH"/>
 </parts>
 <sheets>
 <sheet>
@@ -20149,13 +20058,14 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </instance>
 <instance part="GND3" gate="1" x="-93.98" y="332.74"/>
 <instance part="GND10" gate="1" x="-91.44" y="429.26"/>
-<instance part="CR1220" gate="G$1" x="210.82" y="342.9" rot="R270"/>
+<instance part="CR1220" gate="G$1" x="210.82" y="342.9" rot="R270">
+<attribute name="MPN" x="210.82" y="342.9" size="1.778" layer="96" rot="R270" display="off"/>
+</instance>
 <instance part="ADC-PAD" gate="1" x="134.62" y="426.72" rot="R180"/>
 <instance part="FTDI2" gate="1" x="223.52" y="220.98" smashed="yes" rot="R90">
 <attribute name="NAME" x="222.758" y="212.09" size="1.778" layer="95" rot="R90"/>
 </instance>
 <instance part="C2" gate="G$1" x="248.92" y="238.76"/>
-<instance part="S1" gate="G$1" x="116.84" y="411.48" rot="R90"/>
 <instance part="P1" gate="G$1" x="256.54" y="452.12"/>
 <instance part="J5" gate="G$1" x="55.88" y="337.82"/>
 <instance part="R12" gate="G$1" x="48.26" y="464.82" rot="R90"/>
@@ -20184,7 +20094,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="C11T" gate="G$1" x="30.48" y="236.22"/>
 <instance part="C14" gate="G$1" x="91.44" y="236.22"/>
 <instance part="BOOTL" gate="G$1" x="43.18" y="440.69"/>
-<instance part="ESP_PWR" gate="G$1" x="130.81" y="490.22" rot="MR270"/>
+<instance part="RX" gate="G$1" x="115.57" y="403.86" rot="R90"/>
+<instance part="TX" gate="G$1" x="113.03" y="421.64" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -20444,8 +20355,42 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <segment>
 <wire x1="128.27" y1="487.68" x2="116.84" y2="487.68" width="0.1524" layer="91"/>
 <pinref part="P+2" gate="G$1" pin="3.3V"/>
-<pinref part="ESP_PWR" gate="G$1" pin="2"/>
-<wire x1="128.27" y1="487.68" x2="128.27" y2="482.6" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="444.5" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
+<pinref part="ESP-12" gate="G$1" pin="VCC"/>
+<wire x1="137.16" y1="444.5" x2="137.16" y2="457.2" width="0.1524" layer="91"/>
+<junction x="137.16" y="444.5"/>
+<pinref part="R19" gate="G$1" pin="2"/>
+<wire x1="137.16" y1="457.2" x2="111.76" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="457.2" x2="109.22" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="434.34" x2="137.16" y2="434.34" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="434.34" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
+<pinref part="C22" gate="G$1" pin="2"/>
+<wire x1="96.52" y1="467.36" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="457.2" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
+<label x="111.76" y="457.2" size="1.778" layer="95"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="487.68" x2="139.7" y2="480.06" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="480.06" x2="111.76" y2="480.06" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="480.06" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
+<junction x="111.76" y="467.36"/>
+<wire x1="147.32" y1="480.06" x2="139.7" y2="480.06" width="0.1524" layer="91"/>
+<junction x="139.7" y="480.06"/>
+<wire x1="68.58" y1="480.06" x2="111.76" y2="480.06" width="0.1524" layer="91"/>
+<junction x="111.76" y="480.06"/>
+<wire x1="147.32" y1="467.36" x2="147.32" y2="480.06" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="467.36" x2="147.32" y2="467.36" width="0.1524" layer="91"/>
+<wire x1="142.24" y1="444.5" x2="142.24" y2="467.36" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="2"/>
+<wire x1="68.58" y1="480.06" x2="68.58" y2="469.9" width="0.1524" layer="91"/>
+<pinref part="IO1" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="467.36" x2="133.35" y2="467.36" width="0.1524" layer="91"/>
+<junction x="142.24" y="467.36"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="48.26" y1="469.9" x2="48.26" y2="480.06" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="480.06" x2="68.58" y2="480.06" width="0.1524" layer="91"/>
+<junction x="68.58" y="480.06"/>
+<wire x1="139.7" y1="487.68" x2="116.84" y2="487.68" width="0.1524" layer="91"/>
+<junction x="116.84" y="487.68"/>
 </segment>
 <segment>
 <pinref part="GPIO_1" gate="G$1" pin="2"/>
@@ -20456,6 +20401,20 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH5"/>
 <wire x1="91.44" y1="345.44" x2="66.04" y2="345.44" width="0.1524" layer="91"/>
 <label x="60.96" y="345.44" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R9" gate="G$1" pin="2"/>
+<wire x1="261.62" y1="350.52" x2="259.08" y2="350.52" width="0.1524" layer="91"/>
+<label x="261.62" y="350.52" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="193.04" y1="447.04" x2="200.66" y2="447.04" width="0.1524" layer="91"/>
+<label x="196.85" y="447.04" size="1.778" layer="95"/>
+<pinref part="U$4" gate="G$1" pin="VDD"/>
+</segment>
+<segment>
+<pinref part="P1" gate="G$1" pin="3"/>
+<wire x1="251.46" y1="452.12" x2="243.84" y2="452.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="REF_INPUT" class="0">
@@ -20645,6 +20604,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="68.58" y="452.12"/>
 <label x="71.12" y="452.12" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="MCP3208" gate="G$1" pin="!CS"/>
+<wire x1="106.68" y1="335.28" x2="106.68" y2="327.66" width="0.1524" layer="91"/>
+<label x="106.68" y="322.58" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="GPIO16" class="0">
 <segment>
@@ -20743,62 +20707,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="-43.18" y="347.98"/>
 </segment>
 </net>
-<net name="3.3V-ESP" class="0">
-<segment>
-<wire x1="142.24" y1="444.5" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="ESP-12" gate="G$1" pin="VCC"/>
-<wire x1="137.16" y1="444.5" x2="137.16" y2="457.2" width="0.1524" layer="91"/>
-<junction x="137.16" y="444.5"/>
-<pinref part="R19" gate="G$1" pin="2"/>
-<wire x1="137.16" y1="457.2" x2="111.76" y2="457.2" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="457.2" x2="109.22" y2="457.2" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="434.34" x2="137.16" y2="434.34" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="434.34" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="C22" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="467.36" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="457.2" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
-<label x="111.76" y="457.2" size="1.778" layer="95"/>
-<pinref part="R7" gate="G$1" pin="2"/>
-<wire x1="139.7" y1="487.68" x2="139.7" y2="480.06" width="0.1524" layer="91"/>
-<wire x1="139.7" y1="480.06" x2="111.76" y2="480.06" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="480.06" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
-<junction x="111.76" y="467.36"/>
-<wire x1="147.32" y1="480.06" x2="139.7" y2="480.06" width="0.1524" layer="91"/>
-<junction x="139.7" y="480.06"/>
-<wire x1="68.58" y1="480.06" x2="111.76" y2="480.06" width="0.1524" layer="91"/>
-<junction x="111.76" y="480.06"/>
-<wire x1="147.32" y1="467.36" x2="147.32" y2="480.06" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="467.36" x2="147.32" y2="467.36" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="444.5" x2="142.24" y2="467.36" width="0.1524" layer="91"/>
-<pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="68.58" y1="480.06" x2="68.58" y2="469.9" width="0.1524" layer="91"/>
-<wire x1="130.81" y1="487.68" x2="139.7" y2="487.68" width="0.1524" layer="91"/>
-<pinref part="IO1" gate="G$1" pin="2"/>
-<wire x1="142.24" y1="467.36" x2="133.35" y2="467.36" width="0.1524" layer="91"/>
-<junction x="142.24" y="467.36"/>
-<pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="48.26" y1="469.9" x2="48.26" y2="480.06" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="480.06" x2="68.58" y2="480.06" width="0.1524" layer="91"/>
-<junction x="68.58" y="480.06"/>
-<pinref part="ESP_PWR" gate="G$1" pin="1"/>
-<wire x1="130.81" y1="482.6" x2="130.81" y2="487.68" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="193.04" y1="447.04" x2="200.66" y2="447.04" width="0.1524" layer="91"/>
-<label x="196.85" y="447.04" size="1.778" layer="95"/>
-<pinref part="U$4" gate="G$1" pin="VDD"/>
-</segment>
-<segment>
-<wire x1="259.08" y1="350.52" x2="264.16" y2="350.52" width="0.1524" layer="91"/>
-<pinref part="R9" gate="G$1" pin="2"/>
-<label x="264.16" y="350.52" size="1.778" layer="91" xref="yes"/>
-<junction x="259.08" y="350.52"/>
-</segment>
-<segment>
-<pinref part="P1" gate="G$1" pin="3"/>
-<wire x1="251.46" y1="452.12" x2="243.84" y2="452.12" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="GPIO0" class="0">
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="GPIO0"/>
@@ -20810,13 +20718,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="BOOTL" gate="G$1" pin="2"/>
 <wire x1="50.8" y1="443.23" x2="50.8" y2="449.58" width="0.1524" layer="91"/>
 <junction x="50.8" y="449.58"/>
-</segment>
-</net>
-<net name="GPIO4" class="0">
-<segment>
-<pinref part="MCP3208" gate="G$1" pin="!CS"/>
-<wire x1="106.68" y1="335.28" x2="106.68" y2="327.66" width="0.1524" layer="91"/>
-<label x="106.68" y="322.58" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="VSENSEA" class="0">
@@ -20894,8 +20795,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="226.06" y1="228.6" x2="226.06" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="S1" gate="G$1" pin="1"/>
-<wire x1="121.92" y1="411.48" x2="127" y2="411.48" width="0.1524" layer="91"/>
+<pinref part="RX" gate="G$1" pin="1"/>
+<wire x1="115.57" y1="411.48" x2="127" y2="411.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="D0/RX" class="0">
@@ -20909,8 +20810,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="228.6" y1="228.6" x2="228.6" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="S1" gate="G$1" pin="2"/>
-<wire x1="121.92" y1="414.02" x2="127" y2="414.02" width="0.1524" layer="91"/>
+<pinref part="TX" gate="G$1" pin="2"/>
+<wire x1="127" y1="414.02" x2="115.57" y2="414.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="_RESET" class="0">
@@ -21039,8 +20940,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </net>
 <net name="ESPTX" class="0">
 <segment>
-<pinref part="S1" gate="G$1" pin="3"/>
-<wire x1="109.22" y1="414.02" x2="104.14" y2="414.02" width="0.1524" layer="91"/>
+<wire x1="113.03" y1="414.02" x2="104.14" y2="414.02" width="0.1524" layer="91"/>
+<pinref part="TX" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="TXD"/>
@@ -21056,8 +20957,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </net>
 <net name="ESPRX" class="0">
 <segment>
-<pinref part="S1" gate="G$1" pin="4"/>
-<wire x1="109.22" y1="411.48" x2="104.14" y2="411.48" width="0.1524" layer="91"/>
+<wire x1="113.03" y1="411.48" x2="104.14" y2="411.48" width="0.1524" layer="91"/>
+<pinref part="RX" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <pinref part="R17" gate="G$1" pin="2"/>
