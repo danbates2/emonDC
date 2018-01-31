@@ -264,10 +264,7 @@
 <connect gate="G$1" pin="V_IN" pad="7"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="MAX5035BASA+"/>
-<attribute name="VENDOR" value="MAXIM" constant="no"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
 <device name="21-0111D_SBE-14-M" package="21-0111D_SBE-14-M">

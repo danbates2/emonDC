@@ -19530,10 +19530,7 @@ MICRO_SD</text>
 <connect gate="G$1" pin="V_IN" pad="7"/>
 </connects>
 <technologies>
-<technology name="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="MAX5035BASA+"/>
-<attribute name="VENDOR" value="MAXIM" constant="no"/>
-</technology>
+<technology name=""/>
 </technologies>
 </device>
 <device name="21-0111D_SBE-14-M" package="21-0111D_SBE-14-M">
@@ -19828,8 +19825,7 @@ USE AT YOUR OWN RISK!&lt;p&gt;
 <part name="GND3" library="supply1" deviceset="0V" device="" value="GND"/>
 <part name="GND10" library="supply1" deviceset="0V" device="" value="GND"/>
 <part name="CR1220" library="IotaWatt_parts" deviceset="CR1220SMD" device="">
-<attribute name="MPN" value="Harwin
-S8411-45R"/>
+<attribute name="MPN" value="Harwin S8411-45R"/>
 </part>
 <part name="ADC-PAD" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="2,15/1,0" device="" package3d_urn="urn:adsk.eagle:package:30831/1"/>
 <part name="FTDI2" library="JeeLabs" deviceset="MA06-1" device="" value="FTDI"/>
@@ -19839,7 +19835,6 @@ S8411-45R"/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="U$4" library="MOLEX 47219-2001" deviceset="47219-2001_MICROSD" device=""/>
 <part name="REG0" library="MAX5035" deviceset="MAX5035" device="">
-<attribute name="MANUFACTURER_PART_NUMBER" value="MAX5035EASA+"/>
 <attribute name="MPN" value="MAX5035EASA+"/>
 </part>
 <part name="C4" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 16V MLCC"/>
