@@ -3,8 +3,11 @@ emonDC
 Measurement of direct current (DC).
 This is a project description but also a collection of ideas and findings. All thoughts welcome.
 The diversity of approaches could be illustrated by these two websites:
+
 https://www.coolcomponents.co.uk/attopilot-voltage-and-current-sense-breakout-180a.html
+
 http://www.victronenergy.com/upload/documents/Datasheet-Battery-monitoring-EN.pdf
+
 My approach won’t be the only way but you’ll get an idea as you read on. Hopefully it makes sense. I welcome any and all feedback and hope for this to be as complete a project in theory before I begin schematic and PCB designs. Hey, I might even be close to making a decision by now… Also, this isn’t intended to claim ownership of the idea, if anyone wants to pick up the pieces and go for it they’re welcome.
 
 emonDC Project
