@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.7.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -83,7 +83,7 @@
 <layer number="101" name="Patch_Top" color="12" fill="4" visible="no" active="yes"/>
 <layer number="102" name="Vscore" color="7" fill="1" visible="no" active="yes"/>
 <layer number="103" name="tMap" color="7" fill="1" visible="no" active="yes"/>
-<layer number="104" name="Name" color="7" fill="1" visible="no" active="yes"/>
+<layer number="104" name="Name" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="105" name="tPlate" color="7" fill="1" visible="no" active="yes"/>
 <layer number="106" name="bPlate" color="7" fill="1" visible="no" active="yes"/>
 <layer number="107" name="Crop" color="7" fill="1" visible="no" active="yes"/>
@@ -19905,6 +19905,7 @@ RFM69CW</text>
 <text x="203.2" y="309.88" size="1.778" layer="91">Credit: Bob Lemaire. IoTaWatt v4.4
 https://github.com/boblemaire/IoTaWatt/</text>
 <text x="231.394" y="419.1" size="3.81" layer="91">SPI LCD DISPLAY</text>
+<text x="-91.44" y="293.878" size="1.778" layer="104">note: VSENSE A &amp; B changed to leaded resisted for end-user adaptation?</text>
 </plain>
 <instances>
 <instance part="LOGO1" gate="G$1" x="30.48" y="203.2">
