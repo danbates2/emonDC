@@ -1,5 +1,6 @@
-emonDC
-Project status: in production. expected release May 2018.
+##emonDC
+####Project status:
+#####in production. expected release May 2018.
 
 Measurement of direct current (DC).
 This is a project description but also a collection of ideas and findings. All thoughts welcome.
@@ -62,6 +63,12 @@ Would a particular amperage range require soldered connection? Do specific appli
 Could the PCB safely handle the required amps? What’s the current carrying capacity of header pins and PCB track?
 Can PCB track be used as the shunt?
 How does heat dissipate through the PCB and how does this effect the value being monitored? Is a temp sensor required for factoring in temperature drift?
+
+###Licence
+- Hardware licensed according to the TAPR Open Hardware Licence v1.0. Documentation free to use and change.
+https://www.tapr.org/TAPR_Open_Hardware_License_v1.0.txt
+- Software licensed licensed to GNU General Public License v3. Free to use and change.
+https://www.gnu.org/licenses/gpl.html
 
 
 Notes:
