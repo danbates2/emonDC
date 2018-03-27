@@ -1,8 +1,18 @@
 ## emonDC
-#### Project status:
-##### in production. expected release May 2018.
 
-Measurement of direct current (DC).
+A dual-channel bidirectional internet connected power datalogger and meter for DC applications. With integral 12 bit ADC, configurable reference voltage for bidirectional measurement, RTC and coin-cell holder.
+
+### Project status: pending production, release Summer 2018.
+
+#### Features
+
+- Two channel shunt monitoring via 2 x LMP8481 chips. Each channel with either screw clamps or solder pads for internal/external shunt option.
+- Internet connectivity through ESP8266 module, ESP-12S.
+- 
+
+
+#####Measurement of direct current (DC).
+
 This is a project description but also a collection of ideas and findings. All thoughts welcome.
 The diversity of approaches could be illustrated by these two websites:
 https://www.coolcomponents.co.uk/attopilot-voltage-and-current-sense-breakout-180a.html
