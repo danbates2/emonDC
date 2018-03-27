@@ -1,6 +1,6 @@
-##emonDC
-####Project status:
-#####in production. expected release May 2018.
+## emonDC
+#### Project status:
+##### in production. expected release May 2018.
 
 Measurement of direct current (DC).
 This is a project description but also a collection of ideas and findings. All thoughts welcome.
