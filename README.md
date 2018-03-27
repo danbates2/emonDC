@@ -10,6 +10,7 @@ A dual-channel bidirectional internet connected power datalogger and meter for D
 - Internet connectivity through ESP8266 module, ESP-12S.
 - 
 
+# README to be revised..
 
 #####Measurement of direct current (DC).
 
