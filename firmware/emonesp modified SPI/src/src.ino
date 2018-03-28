@@ -129,7 +129,7 @@ void loop()
 {
   //
   SPI.begin();
-  SPI.setClockDivider(SPI_CLOCK_DIV32);
+  SPI.setClockDivider(SPI_CLOCK_DIV128);
   channel0 = (Read3202(0, CS_3202));
   channel1 = (Read3202(1, CS_3202));
   SPI.end();
