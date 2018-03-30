@@ -6,8 +6,8 @@
    by Trystan Lea, Glyn Hudson, OpenEnergyMonitor
    All adaptation GNU General Public License as below.
    -------------------------------------------------------------------
-   Modified by Daniel Bates for integration of ADC, MCP3202, for emonDC
-   project, 2017.
+   Modified by Daniel Bates for integration of ADC, MCP3204/8, for emonDC
+   project, 2017-18.
 
    -------------------------------------------------------------------
 
@@ -34,32 +34,20 @@
 #include "input.h"
 #include "emoncms.h"
 #include "mqtt.h"
-#include <SPI.h>
+#include "SPI.h"
+#include "Mcp3208.h"
 
-#define CS_3202 15
+#define SPI_CS      15       // SPI slave select
+#define ADC_VREF    5000     // Vref
+#define ADC_CLK     100000  // SPI clock Freq(Hz)
 
-int channel0;
-int channel1;
-int channel0accumulator;
-int channel1accumulator;
-int numberofsamples;
-int channel0avgA;
-int channel1avgA;
-
-float step1currentAcalibrated;
-float step2currentAcalibrated;
-float step3currentAcalibrated;
-float done_currentAcalibrated;
-
-float step1voltageAcalibrated;
-float step2voltageAcalibrated;
-float done_voltageAcalibrated;
-
-double powerAcalc;
-
-double Whaccumulator;
-
-const float ADCsteps = 4096.00;
+MCP3208 adc(ADC_VREF, SPI_CS);
+/*
+ * The plan is to have 6 channels monitored and for a calculation to be made to convert raw ADC values
+ * to legible data for posting to emonCMS.
+ * The channel pairs are multiplied to create two values of Power.
+ * The power is accumulated for each pair as Wh.
+ */
 
 // Current calibration constants
 float supplyvoltage = 5.00; //voltage dictating Vref for ADC
@@ -67,7 +55,19 @@ const float shunt_resistance = 0.00050;
 const float shunt_monitor_gain = 100.00;
 
 // Voltage calibration constants
-const float Vdiv = 17.949152542;
+const float R1 = 47000;
+const float R2 = 3300;
+const float R2 = 3300;
+
+
+int numberofsamples;
+
+double powerAcalc;
+double powerBcalc;
+
+const float ADCsteps = 4096.00;
+
+
 
 //Step1 of Calibration should be to read the Vcc then creat a calibration factor to ADC steps 4096
 
@@ -92,8 +92,11 @@ String adcstringinput = "starttest";
 void setup() {
   delay(2000);
 
-  pinMode(CS_3202, OUTPUT);
-  digitalWrite(CS_3202, HIGH);
+  // configure PIN mode
+  pinMode(SPI_CS, OUTPUT);
+
+  // set initial PIN state
+  digitalWrite(SPI_CS, HIGH);
 
   Serial.begin(115200);
 #ifdef DEBUG_SERIAL1
@@ -128,56 +131,22 @@ void setup() {
 void loop()
 {
   //
+  SPISettings settings(ADC_CLK, MSBFIRST, SPI_MODE0);
   SPI.begin();
-  SPI.setClockDivider(SPI_CLOCK_DIV128);
-  channel0 = (Read3202(0, CS_3202));
-  channel1 = (Read3202(1, CS_3202));
+  SPI.beginTransaction(settings);
+  uint16_t ch0_raw = adc.read(MCP3208::SINGLE_0); //CHANNEL A current
+  uint16_t ch1_raw = adc.read(MCP3208::SINGLE_1); //CHANNEL A volts
+  uint16_t ch2_raw = adc.read(MCP3208::SINGLE_2); //CHANNEL B current
+  uint16_t ch3_raw = adc.read(MCP3208::SINGLE_3); //CHANNEL B volts
+  uint16_t ch4_raw = adc.read(MCP3208::SINGLE_4); //BIDIRECTIONAL REF
+  //uint16_t ch5_raw = adc.read(MCP3208::SINGLE_5); //3.3V REF 
   SPI.end();
-  channel0accumulator = channel0accumulator + channel0;
-  channel1accumulator = channel1accumulator + channel1;
   numberofsamples++;
 
   unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= interval) {
-    // save the last time you blinked the LED
-    previousMillis = currentMillis;
-    //  Serial.println("START");
-    Serial.print("Samples - ");
-    Serial.println(numberofsamples);
 
-    channel0avgA = channel0accumulator / numberofsamples;
-    channel1avgA = channel1accumulator / numberofsamples;
-
-    step1currentAcalibrated = channel0avgA / ADCsteps;
-    step2currentAcalibrated = step1currentAcalibrated * supplyvoltage;
-    step3currentAcalibrated = step2currentAcalibrated / shunt_monitor_gain;
-    done_currentAcalibrated = step3currentAcalibrated / shunt_resistance;
-
-    step1voltageAcalibrated = channel1avgA / ADCsteps;
-    step2voltageAcalibrated = step1voltageAcalibrated * supplyvoltage;
-    done_voltageAcalibrated = step2voltageAcalibrated * Vdiv;
-
-    powerAcalc = done_currentAcalibrated * done_voltageAcalibrated;
-    Whaccumulator = Whaccumulator + powerAcalc;
-
-    Serial.print("channel0avgA - ");
-    Serial.println(channel0avgA);
-    Serial.print("done_currentAcalibrated - ");
-    Serial.println(done_currentAcalibrated);
-    Serial.print("channel1avgA - ");
-    Serial.println(channel1avgA);
-    Serial.print("done_voltageAcalibrated - ");
-    Serial.println(done_voltageAcalibrated);
-    Serial.print("powerAcalc - ");
-    Serial.println(powerAcalc);
-    Serial.print("Whaccumulator - ");
-    Serial.println(Whaccumulator / 3600);
-
-    Serial.print("numberofintervals - ");
-    Serial.println(numberofintervals);
-    Serial.println();
-    numberofintervals++;
-
+   
     numberofsamples = 0;
     channel0accumulator = 0;
     channel1accumulator = 0;
@@ -189,8 +158,8 @@ void loop()
   wifi_loop();
 
 
-  unsigned long currentMillis2 = millis();
-  if (currentMillis2 - previousMillis2 >= interval2) {
+  unsigned long currentMillis10sec = millis();
+  if (currentMillis10sec - previousMillis10sec >= interval2) {
     // save the last time done
     previousMillis2 = currentMillis2;
 
@@ -228,18 +197,3 @@ void loop()
   }
 
 } // end loop
-
-int Read3202(int CHANNEL, int CS) {
-  int msb;
-  int lsb;
-  int commandBytes = B10100000 ;// channel 0
-  if (CHANNEL == 1) commandBytes = B11100000 ; // channel 1
-  digitalWrite(CS, LOW);
-  SPI.transfer (B00000001);// Start bit
-  msb = SPI.transfer(commandBytes) ;
-  msb = msb & B00001111;
-  lsb = SPI.transfer(0x00);
-  digitalWrite(CS, HIGH);
-  return ((int) msb) << 8 | lsb;
-}
-

@@ -18721,7 +18721,6 @@ Grid 3.5 mm&lt;p&gt;
 <part name="SCREW_TERM_1" library="EBW series shunt" deviceset="EBW_SERIES_15.2MM" device=""/>
 <part name="SUPPLY2" library="supply1" deviceset="GND" device=""/>
 <part name="SUPPLY3" library="supply1" deviceset="GND" device=""/>
-<part name="SUPPLY6" library="supply1" deviceset="GND" device=""/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="1K">
 <attribute name="MPN" value=" MCWR06X5901FTL"/>
 </part>
@@ -18940,7 +18939,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="SCREW_TERM_1" gate="EBW_SERIES_SHUNT" x="-109.22" y="429.26" rot="R90"/>
 <instance part="SUPPLY2" gate="1" x="121.92" y="378.46" rot="R180"/>
 <instance part="SUPPLY3" gate="1" x="106.68" y="378.46" rot="R180"/>
-<instance part="SUPPLY6" gate="1" x="111.76" y="373.38" rot="R180"/>
 <instance part="R4" gate="G$1" x="152.4" y="355.6" rot="R90">
 <attribute name="MPN" x="152.4" y="355.6" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
@@ -19187,11 +19185,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="DGND"/>
 <wire x1="106.68" y1="363.22" x2="106.68" y2="375.92" width="0.1524" layer="91"/>
 <pinref part="SUPPLY3" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="MCP3208" gate="G$1" pin="VREF"/>
-<wire x1="111.76" y1="363.22" x2="111.76" y2="370.84" width="0.1524" layer="91"/>
-<pinref part="SUPPLY6" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="R8" gate="G$1" pin="1"/>
@@ -19990,6 +19983,9 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="VDD"/>
 <wire x1="116.84" y1="363.22" x2="116.84" y2="375.92" width="0.1524" layer="91"/>
 <label x="116.84" y="375.92" size="1.778" layer="95" rot="R90"/>
+<pinref part="MCP3208" gate="G$1" pin="VREF"/>
+<wire x1="111.76" y1="363.22" x2="116.84" y2="363.22" width="0.1524" layer="91"/>
+<junction x="116.84" y="363.22"/>
 </segment>
 <segment>
 <pinref part="R10" gate="G$1" pin="2"/>
