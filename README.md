@@ -34,8 +34,8 @@ Also:
 
 This is a project description but also a collection of ideas and findings.
 The diversity of approaches could be illustrated by these two websites:
-https://www.coolcomponents.co.uk/attopilot-voltage-and-current-sense-breakout-180a.html
-http://www.victronenergy.com/upload/documents/Datasheet-Battery-monitoring-EN.pdf
+- https://www.coolcomponents.co.uk/attopilot-voltage-and-current-sense-breakout-180a.html
+- http://www.victronenergy.com/upload/documents/Datasheet-Battery-monitoring-EN.pdf
 
 ### Safety
 
