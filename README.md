@@ -30,9 +30,7 @@ Also:
 - Designed for clear top waterproof case.
 
 
-# README to be revised..
-
-#####Measurement of direct current (DC).
+### Measurement of direct current (DC).
 
 This is a project description but also a collection of ideas and findings.
 The diversity of approaches could be illustrated by these two websites:
