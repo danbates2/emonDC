@@ -12,3 +12,5 @@ v1.2 by this version there’s a worked out RTC chip based on Bob Lemaire IoTaWa
 v1.3 minor changes for production. The resistor divider is changed for the reference voltage for the bi-directional monitoring. The resistors are solderable through-hole type now, to enable the end-user to easily change the reference voltage. This philosophy could apply to the voltage dividers for the channel A and B voltage monitoring.
 
 v1.4 ‘designed by Megni’ changed to ‘designed by Daniel Bates’. The shunts and PCB traces have more isolation and 4.5mm drill hole via have been introduced for soldering directly 4mm cable to the board, for higher current applications.
+
+v2.0 Fuse and transient protection added. Board reorganised. Connectors reorganised.
