@@ -8,7 +8,7 @@ A dual-channel bidirectional internet connected power data-logger and meter for 
 
 - 48V Solar PV systems.
 - Battery monitoring.
-- Any generator / battery system up to 76V.
+- Any generator / battery system up to 64.4V.
 
 Several spinoff boards have derived of this project, in various stages of completion, these include and isolated FTDI adaptor, an emonDCmini targeted at single channel DC monitoring with WiFi capabilities, and an emonDC shield for Arduino pattern.
 
@@ -21,10 +21,10 @@ Latest spec:
 - ESP-12S wireless module for internet connectivity. The module also manages the sampling through the external ADC.
 - 12-bit 8 channel ADC used for monitoring two channels of current, two channels of voltage, the bidirectional reference voltage, and the 3.3V for another reference.
 - MicroSD card slot for storing data locally.
-- Suitable for up to 76V DC systems. Onboard DC-DC step-down (buck) switching power supply based on MAX5035 set at 7V.
+- Suitable for up to 65V DC systems. Onboard DC-DC step-down (buck) switching power supply based on MAX5035 set at 6.5V. Two regulators bring this down to 5V and 3.3V.
 
 Also:
-- Extendable with RFM69pi module
+- Extendable with RFM69Pi module
 - I2C connector for LCD screen.
 
 - Designed for clear top waterproof case.
