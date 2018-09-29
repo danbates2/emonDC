@@ -17,17 +17,16 @@ Several spinoff boards have derived of this project, in various stages of comple
 Latest spec:
 
 - High-side DC sensing based on two LMP8481 chips, using either external shunts for higher currents, or an internal shunt soldered across a bridge on board, now rated at 20 amps, pending testing.
-- Bidirectional monitoring achieved with onboard reference voltage, set by R10 & R11, easily modified by the end-user. 
+- Bidirectional monitoring achieved with onboard reference voltage, set by leaded resistors R10 & R11, which are easier to modify by soldering than SMC resistors. 
 - ESP-12S wireless module for internet connectivity. The module also manages the sampling through the external ADC.
 - 12-bit 8 channel ADC used for monitoring two channels of current, two channels of voltage, the bidirectional reference voltage, and the 3.3V for another reference.
 - MicroSD card slot for storing data locally.
-- Suitable for up to 65V DC systems. Onboard DC-DC step-down (buck) switching power supply based on MAX5035 set at 6.5V. Two regulators bring this down to 5V and 3.3V.
+- Suitable for up to 65V DC systems (48V nominal). Onboard DC-DC step-down (buck) switching power supply based on MAX5035 set at 6.5V. Two regulators bring this down to 5V and 3.3V.
 
 Also:
 - Extendable with RFM69Pi module
 - I2C connector for LCD screen.
-
-- Designed for clear top waterproof case.
+- Form designed for clear top waterproof case (WP1258555 from Lincoln-Binns).
 
 
 ### Measurement of direct current (DC).
@@ -44,22 +43,20 @@ Secondly, protection of connected devices and users from floating ground voltage
 
 ### Approach
 - Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly.
-- Shunt monitoring provides much greater flexibility, accuracy and cost-effectiveness.
+- Shunt monitoring provides greater flexibility, accuracy and cost-effectiveness.
 
 1. The range of requirements in DC monitoring applications require a flexible approach because of:
 a. Unidirectional and bidirectional requirements.
 b. Amperage Ranges and associated cable cross sectional areas (CSA). For example, household 100A cables are 25mm2 or 16mm2, whereas wire for headers and breadboard carrying up to about 5A are about 0.9mm2. The target measurement range has significant physical design implications. 
 c. Different cable/wire CSAs require terminations suitable to their size and application (screw terminals, bolted bus bars, soldered connections, etc.) there is no single solution.
 d. Whole battery systems can be monitored with one shunt or individual cells of the system can require a multi-cell monitoring unit.
-e. There are also high humidity, marine and automotive applications.
+e. There are also high humidity, marine and automotive applications to consider in the future.
 
 2. If we consider cable sizes and suitable cable terminations, the issues make it difficult to see any one PCB realistically and cost-effectively meeting ALL possible requirements. Unlike in many AC requirements where a different CT and burden resistor can be selected, DC demands a more targeted approach.
-This possibly leads to the solution of designing several different boards according to the different requirements. First suggestions might look like:
-emonDC50 – Bidirectional DC monitor with integrated yet replaceable / bypassable shunt, accepting up to 6mm2 cable up to 50A, but with customisable sensitivity down for micro amps.
-emonDC500 – Unidirectional shunt monitor with external shunt rated up to 500A.
-emonDC500duo – Two unidirectional shunt monitors in parallel for measuring two external shunts rated up to 500A, for battery/generator applications.
+This possibly leads to the solution of designing several different boards according to the different requirements.
+I'm designed emonDCduo to be an alrounder as much as possible, with the option of external shunts for amperages up to 1000A.
 
-The approach selected for first production has been dubbed emonDCduo, onboard shunts and pheonix connectors for external shunts ensure some flexibility.
+The approach selected for first production has been dubbed emonDCduo, onboard shunts and pheonix connectors for external shunts ensure flexibility.
 
 3. Another option might be to have a two-part system where Tx functions are separated from shunt monitoring functions in two separate PCBs, connected via RJ11 or ribbon cable. This could lend itself to multi-source monitoring effectively. Also, galvanic isolation would become easier. Also, the standalone Tx PCB may be compatible with other emon projects in the future.
 
