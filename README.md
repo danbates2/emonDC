@@ -46,6 +46,7 @@ Thirdly, transient protection. The TVS diodes specified seem to do a good job. I
 ### Approach
 - Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly.
 - Shunt monitoring provides greater flexibility, accuracy and cost-effectiveness.
+UPDATE: I'm looking into the use of Allegro ACS series hall-effect devices, as they seem to provide a high degree of accuracy, have intrinsic isolation, and are relatively cheap.
 
 1. The range of requirements in DC monitoring applications require a flexible approach because of:
 a. Unidirectional and bidirectional requirements.
