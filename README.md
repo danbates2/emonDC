@@ -55,7 +55,7 @@ c. Different cable/wire CSAs require terminations suitable to their size and app
 d. Whole battery systems can be monitored with one shunt or individual cells of the system can require a multi-cell monitoring unit.
 e. There are also high humidity, marine and automotive applications to consider in the future.
 
-2. If we consider cable sizes and suitable cable terminations, the issues make it difficult to see any one PCB realistically and cost-effectively meeting ALL possible requirements. Unlike in many AC requirements where a different CT and burden resistor can be selected, DC demands a more targeted approach.
+2. When I consider cable sizes and suitable cable terminations, the design challenge of making a suitable unit for a wide current range makes it difficult to see any one PCB realistically and cost-effectively meeting ALL requirements. Unlike in many AC requirements where a different CT and burden resistor can be selected, DC demands a more targeted approach due to the different physical dimensions of suitable terminations.
 This possibly leads to the solution of designing several different boards according to the different requirements.
 I'm designed emonDCduo to be an alrounder as much as possible, with the option of external shunts for amperages up to 1000A.
 
