@@ -1,6 +1,6 @@
 ## emonDC
 
-A dual-channel bidirectional internet connected power data-logger and meter for DC applications. With integral DC-DC buck power supply, 12-bit ADC, configurable reference voltage for bidirectional measurement, backup battery powered RTC, local microSD card data-logging, and extensibility through RFM radio module and LCD.
+emonDC is a prject aiming to develop DC current and voltage measuring tools. The main board in development is emonDCdue, a dual-channel bidirectional internet connected power data-logger and meter. With integral DC-DC buck power supply, 12-bit ADC, configurable reference voltage for bidirectional measurement, backup battery powered RTC, local microSD card data-logging, and extensibility through RFM radio module and LCD.
 
 ###### Project status: prototype release, Summer 2018.
 
