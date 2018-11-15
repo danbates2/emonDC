@@ -1,6 +1,6 @@
 ## emonDC
 
-emonDC is a project aiming to develop DC current and voltage measuring tools compatible with openenergymonitor.org project. The main board in development is emonDCduo, a dual-channel bidirectional internet connected power data-logger and meter. With integral DC-DC buck power supply, 12-bit ADC, configurable reference voltage for bidirectional measurement, backup battery powered RTC, local microSD card data-logging, and extensibility through RFM radio module and LCD.
+emonDC is a project aiming to develop DC current and voltage measuring tools compatible with openenergymonitor.org project. The main board in development is emonDCduo, a dual-channel bidirectional internet connected power data-logger and meter, aimed at generator / battery system monitoring. With modular plug-in DC-DC buck power supply, 12-bit ADC, configurable reference voltage for bidirectional measurement, backup battery powered RTC, local microSD card data-logging, and extensibility through RFM radio module and LCD.
 
 ###### Project status: prototype release, Summer 2018.
 
