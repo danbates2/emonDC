@@ -1,5 +1,6 @@
 ##emonDCduo changelog
-This changelog has been written retrospectively and will miss out detail.
+
+#This changelog has been written retrospectively and will miss out detail.
 
 v0.1 old versions were basically changes to the emonTX with a two shunt-monitors introduced. A dedicated power supply for DC-DC buck conversion was designed in with help from Ken Boak for the electrical theory side of things. 
 
