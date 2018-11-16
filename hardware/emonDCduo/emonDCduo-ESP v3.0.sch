@@ -633,12 +633,6 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 </package>
 </packages>
 <symbols>
-<symbol name="3.3V">
-<wire x1="0.762" y1="1.27" x2="0" y2="2.54" width="0.254" layer="94"/>
-<wire x1="0" y1="2.54" x2="-0.762" y2="1.27" width="0.254" layer="94"/>
-<text x="-1.016" y="3.556" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="3.3V" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
 <symbol name="M02">
 <wire x1="3.81" y1="-2.54" x2="-2.54" y2="-2.54" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="2.54" x2="2.54" y2="2.54" width="0.6096" layer="94"/>
@@ -653,19 +647,6 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="3.3V" prefix="P+">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="G$1" symbol="3.3V" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="M02" prefix="JP" uservalue="yes">
 <description>&lt;b&gt;Header 2&lt;/b&gt;
 Standard 2-pin 0.1" header. Use with straight break away headers (SKU : PRT-00116), right angle break away headers (PRT-00553), swiss pins (PRT-00743), machine pins (PRT-00117), and female headers (PRT-00115). Molex polarized connector foot print use with SKU : PRT-08233 with associated crimp pins and housings.</description>
@@ -20962,12 +20943,12 @@ W = angled&lt;p&gt;
 <text x="18.415" y="28.575" size="1.27" layer="25" ratio="10" rot="R270">&gt;NAME</text>
 <text x="26.6446" y="29.5148" size="1.27" layer="21" ratio="10">1</text>
 <text x="19.8374" y="20.447" size="1.27" layer="21" ratio="10" rot="R180">10</text>
-<wire x1="27.94" y1="0" x2="27.94" y2="32.512" width="0.2032" layer="21"/>
-<wire x1="27.94" y1="32.512" x2="0" y2="32.512" width="0.2032" layer="21"/>
+<wire x1="27.94" y1="0" x2="27.94" y2="32.512" width="0.2032" layer="51"/>
+<wire x1="27.94" y1="32.512" x2="0" y2="32.512" width="0.2032" layer="51"/>
 <wire x1="23.241" y1="24.892" x2="23.241" y2="26.162" width="0.127" layer="21"/>
 <wire x1="23.241" y1="24.892" x2="24.511" y2="24.892" width="0.127" layer="21"/>
-<wire x1="27.94" y1="0" x2="0" y2="0" width="0.2032" layer="21"/>
-<wire x1="0" y1="0" x2="0" y2="32.512" width="0.2032" layer="21"/>
+<wire x1="27.94" y1="0" x2="0" y2="0" width="0.2032" layer="51"/>
+<wire x1="0" y1="0" x2="0" y2="32.512" width="0.2032" layer="51"/>
 </package>
 <package name="FE05-2" urn="urn:adsk.eagle:footprint:8099/1">
 <description>&lt;b&gt;FEMALE HEADER&lt;/b&gt;</description>
@@ -21111,73 +21092,6 @@ W = angled&lt;p&gt;
 Devices GSMBAxx and GMSTBVxx transferred from con-phoenix-508.lbr&lt;br&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="GMSTBV2" urn="urn:adsk.eagle:footprint:9729/1" library_version="1">
-<description>&lt;b&gt;PHOENIX&lt;/b&gt;</description>
-<wire x1="7.62" y1="-3.81" x2="-7.62" y2="-3.81" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="-3.81" x2="-7.62" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="4.064" x2="-7.62" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-7.112" y1="2.794" x2="-4.318" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="-3.302" y1="2.794" x2="3.302" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="3.302" y1="2.794" x2="4.318" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="4.318" y1="2.794" x2="7.112" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="-7.112" y1="-2.54" x2="-7.112" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="7.62" y1="-3.81" x2="7.62" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="7.62" y1="4.064" x2="7.62" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="4.572" x2="-4.318" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-4.318" y1="4.572" x2="-3.302" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-3.302" y1="4.572" x2="3.302" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="3.302" y1="4.572" x2="4.318" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="4.318" y1="4.572" x2="7.62" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="0.635" x2="-4.445" y2="-0.635" width="0.1524" layer="51"/>
-<wire x1="-4.445" y1="-0.635" x2="-3.175" y2="-0.635" width="0.1524" layer="51"/>
-<wire x1="-3.175" y1="-0.635" x2="-3.175" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="-3.175" y1="0.635" x2="-4.445" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="-4.445" y1="0.635" x2="-3.175" y2="-0.635" width="0.1524" layer="51"/>
-<wire x1="-4.445" y1="-0.635" x2="-3.175" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="3.175" y1="0.635" x2="3.175" y2="-0.635" width="0.1524" layer="51"/>
-<wire x1="3.175" y1="-0.635" x2="4.445" y2="-0.635" width="0.1524" layer="51"/>
-<wire x1="4.445" y1="-0.635" x2="4.445" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="4.445" y1="0.635" x2="3.175" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="3.175" y1="0.635" x2="4.445" y2="-0.635" width="0.1524" layer="51"/>
-<wire x1="3.175" y1="-0.635" x2="4.445" y2="0.635" width="0.1524" layer="51"/>
-<wire x1="7.112" y1="2.794" x2="7.112" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-6.35" y1="-2.54" x2="-1.27" y2="-2.54" width="0.1524" layer="21" curve="90"/>
-<wire x1="1.27" y1="-2.54" x2="6.35" y2="-2.54" width="0.1524" layer="21" curve="90"/>
-<wire x1="7.112" y1="-2.54" x2="6.35" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="1.27" y1="-2.54" x2="-1.27" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-6.35" y1="-2.54" x2="-7.112" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-3.302" y1="2.794" x2="-3.302" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="4.064" x2="-4.572" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="-4.572" y1="4.064" x2="-4.318" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-7.112" y1="2.794" x2="-7.112" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="-7.112" y1="3.048" x2="-4.572" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="-4.572" y1="3.048" x2="-4.318" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="-4.318" y1="2.794" x2="-3.302" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="-4.318" y1="2.794" x2="-4.318" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-4.572" y1="3.048" x2="-4.572" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="-3.302" y1="4.572" x2="-3.048" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="-3.048" y1="4.064" x2="-3.048" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="-3.048" y1="3.048" x2="-3.302" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="3.302" y1="2.794" x2="3.302" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="4.318" y1="2.794" x2="4.318" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="-3.048" y1="4.064" x2="3.048" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="3.048" y1="4.064" x2="3.302" y2="4.572" width="0.1524" layer="21"/>
-<wire x1="3.048" y1="4.064" x2="3.048" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="3.048" y1="3.048" x2="3.302" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="3.048" y1="3.048" x2="-3.048" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="4.318" y1="4.572" x2="4.572" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="4.572" y1="4.064" x2="7.62" y2="4.064" width="0.1524" layer="21"/>
-<wire x1="4.572" y1="4.064" x2="4.572" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="4.572" y1="3.048" x2="4.318" y2="2.794" width="0.1524" layer="21"/>
-<wire x1="4.572" y1="3.048" x2="7.112" y2="3.048" width="0.1524" layer="21"/>
-<wire x1="7.112" y1="3.048" x2="7.112" y2="2.794" width="0.1524" layer="21"/>
-<pad name="1" x="-3.81" y="0" drill="1.397" shape="long" rot="R90"/>
-<pad name="2" x="3.81" y="0" drill="1.397" shape="long" rot="R90"/>
-<text x="-6.858" y="-0.635" size="1.27" layer="21" ratio="10">1</text>
-<text x="-7.62" y="-5.969" size="1.778" layer="25" ratio="10">&gt;NAME</text>
-<text x="0" y="-5.969" size="1.778" layer="27" ratio="10">&gt;VALUE</text>
-<text x="0.508" y="-0.635" size="1.27" layer="21" ratio="10">2</text>
-</package>
 <package name="GMSTBA2" urn="urn:adsk.eagle:footprint:9720/1" library_version="1">
 <description>&lt;b&gt;PHOENIX&lt;/b&gt;</description>
 <wire x1="-7.62" y1="7.112" x2="-4.953" y2="7.112" width="0.1524" layer="21"/>
@@ -21206,12 +21120,6 @@ Devices GSMBAxx and GMSTBVxx transferred from con-phoenix-508.lbr&lt;br&gt;
 </package>
 </packages>
 <packages3d>
-<package3d name="GMSTBV2" urn="urn:adsk.eagle:package:9756/1" type="box" library_version="1">
-<description>PHOENIX</description>
-<packageinstances>
-<packageinstance name="GMSTBV2"/>
-</packageinstances>
-</package3d>
 <package3d name="GMSTBA2" urn="urn:adsk.eagle:package:9748/1" type="box" library_version="1">
 <description>PHOENIX</description>
 <packageinstances>
@@ -21245,32 +21153,6 @@ Devices GSMBAxx and GMSTBVxx transferred from con-phoenix-508.lbr&lt;br&gt;
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="GMSTBV2" urn="urn:adsk.eagle:component:9775/1" prefix="X" library_version="1">
-<description>&lt;b&gt;PHOENIX&lt;/b&gt;</description>
-<gates>
-<gate name="-1" symbol="SKB" x="0" y="5.08" addlevel="always"/>
-<gate name="-2" symbol="SKBV" x="0" y="0" addlevel="always"/>
-</gates>
-<devices>
-<device name="" package="GMSTBV2">
-<connects>
-<connect gate="-1" pin="1" pad="1"/>
-<connect gate="-2" pin="1" pad="2"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:9756/1"/>
-</package3dinstances>
-<technologies>
-<technology name="">
-<attribute name="MF" value="" constant="no"/>
-<attribute name="MPN" value="GMSTBVA2,5/2-G-7,62" constant="no"/>
-<attribute name="OC_FARNELL" value="1793079" constant="no"/>
-<attribute name="OC_NEWARK" value="69R9520" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="GMSTBA2" urn="urn:adsk.eagle:component:9769/1" prefix="X" library_version="1">
 <description>&lt;b&gt;PHOENIX&lt;/b&gt;</description>
 <gates>
@@ -31354,6 +31236,129 @@ Wickmann</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="jumper" urn="urn:adsk.eagle:library:252">
+<description>&lt;b&gt;Jumpers&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SJ" urn="urn:adsk.eagle:footprint:15432/1" library_version="1">
+<description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
+<wire x1="1.397" y1="-1.016" x2="-1.397" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="1.397" y1="1.016" x2="1.651" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.651" y1="0.762" x2="-1.397" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.651" y1="-0.762" x2="-1.397" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.397" y1="-1.016" x2="1.651" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.651" y1="-0.762" x2="1.651" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-1.651" y1="-0.762" x2="-1.651" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-1.397" y1="1.016" x2="1.397" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="1.016" y1="0" x2="1.524" y2="0" width="0.1524" layer="51"/>
+<wire x1="-1.016" y1="0" x2="-1.524" y2="0" width="0.1524" layer="51"/>
+<wire x1="-0.254" y1="-0.127" x2="-0.254" y2="0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<wire x1="0.254" y1="0.127" x2="0.254" y2="-0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
+<smd name="1" x="-0.762" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<smd name="2" x="0.762" y="0" dx="1.1684" dy="1.6002" layer="1"/>
+<text x="-1.651" y="1.143" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0.4001" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.0762" y1="-0.9144" x2="0.0762" y2="0.9144" layer="29"/>
+</package>
+<package name="SJW" urn="urn:adsk.eagle:footprint:15433/1" library_version="1">
+<description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
+<wire x1="1.905" y1="-1.524" x2="-1.905" y2="-1.524" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="1.524" x2="2.159" y2="1.27" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.159" y1="1.27" x2="-1.905" y2="1.524" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.159" y1="-1.27" x2="-1.905" y2="-1.524" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.905" y1="-1.524" x2="2.159" y2="-1.27" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.159" y1="-1.27" x2="2.159" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-2.159" y1="-1.27" x2="-2.159" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="1.524" x2="1.905" y2="1.524" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="1.524" y1="0" x2="2.032" y2="0" width="0.1524" layer="51"/>
+<wire x1="-1.524" y1="0" x2="-2.032" y2="0" width="0.1524" layer="51"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.1524" layer="51" curve="-180"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="51" curve="180"/>
+<smd name="1" x="-1.27" y="0" dx="1.27" dy="2.54" layer="1"/>
+<smd name="2" x="1.27" y="0" dx="1.27" dy="2.54" layer="1"/>
+<text x="-2.159" y="1.778" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="1" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="0.762" y1="-0.762" x2="1.016" y2="0.762" layer="51"/>
+<rectangle x1="1.016" y1="-0.635" x2="1.27" y2="0.635" layer="51"/>
+<rectangle x1="1.27" y1="-0.508" x2="1.397" y2="0.508" layer="51"/>
+<rectangle x1="1.397" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+<rectangle x1="-1.016" y1="-0.762" x2="-0.762" y2="0.762" layer="51"/>
+<rectangle x1="-1.27" y1="-0.635" x2="-1.016" y2="0.635" layer="51"/>
+<rectangle x1="-1.397" y1="-0.508" x2="-1.27" y2="0.508" layer="51"/>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.397" y2="0.254" layer="51"/>
+<rectangle x1="0.9652" y1="-0.7112" x2="1.0922" y2="-0.5842" layer="51"/>
+<rectangle x1="1.3462" y1="-0.3556" x2="1.4732" y2="-0.2286" layer="51"/>
+<rectangle x1="1.3462" y1="0.2032" x2="1.4732" y2="0.3302" layer="51"/>
+<rectangle x1="0.9652" y1="0.5842" x2="1.0922" y2="0.7112" layer="51"/>
+<rectangle x1="-1.0922" y1="-0.7112" x2="-0.9652" y2="-0.5842" layer="51"/>
+<rectangle x1="-1.4478" y1="-0.3302" x2="-1.3208" y2="-0.2032" layer="51"/>
+<rectangle x1="-1.4732" y1="0.2032" x2="-1.3462" y2="0.3302" layer="51"/>
+<rectangle x1="-1.1176" y1="0.5842" x2="-0.9906" y2="0.7112" layer="51"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="SJ" urn="urn:adsk.eagle:package:15471/1" type="box" library_version="1">
+<description>Solder jumper</description>
+<packageinstances>
+<packageinstance name="SJ"/>
+</packageinstances>
+</package3d>
+<package3d name="SJW" urn="urn:adsk.eagle:package:15507/1" type="box" library_version="1">
+<description>Solder jumper</description>
+<packageinstances>
+<packageinstance name="SJW"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="SJ" urn="urn:adsk.eagle:symbol:15431/1" library_version="1">
+<wire x1="0.381" y1="0.635" x2="0.381" y2="-0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="-0.381" y1="-0.635" x2="-0.381" y2="0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="2.54" y1="0" x2="1.651" y2="0" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.651" y2="0" width="0.1524" layer="94"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="-3.81" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="2" x="5.08" y="0" visible="pad" length="short" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="1" x="-5.08" y="0" visible="pad" length="short" direction="pas" swaplevel="1"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SJ" urn="urn:adsk.eagle:component:15508/1" prefix="SJ" uservalue="yes" library_version="1">
+<description>SMD solder &lt;b&gt;JUMPER&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="SJ" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SJ">
+<connects>
+<connect gate="1" pin="1" pad="1"/>
+<connect gate="1" pin="2" pad="2"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:15471/1"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="W" package="SJW">
+<connects>
+<connect gate="1" pin="1" pad="1"/>
+<connect gate="1" pin="2" pad="2"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:15507/1"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -31390,18 +31395,18 @@ Wickmann</description>
 <attribute name="MF" value="TEXAS INSTRUMENTS"/>
 <attribute name="MPN" value="REG1117-3.3"/>
 </part>
-<part name="C24" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<part name="C4" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
 <attribute name="MPN" value="C1608X7S2A104K080AB"/>
 </part>
 <part name="C6" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
 <attribute name="MPN" value="C1608X7S2A104K080AB"/>
 </part>
-<part name="C1T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
-<part name="C18T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="1M 100V">
+<part name="C31T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
+<part name="C32T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
+<part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="1M 100V">
 <attribute name="MPN" value="MCWR06X1003FTL"/>
 </part>
-<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="56K">
+<part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="56K">
 <attribute name="MPN" value=" MCWR06X5901FTL"/>
 </part>
 <part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -31411,10 +31416,10 @@ Wickmann</description>
 <attribute name="OC_FARNELL" value="2322044"/>
 </part>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C23" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<part name="C1" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
 <attribute name="MPN" value="C1608X7S2A104K080AB"/>
 </part>
-<part name="C25" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<part name="C3" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
 <attribute name="MPN" value="C1608X7S2A104K080AB"/>
 </part>
 <part name="REF_SEL_B" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND">
@@ -31422,28 +31427,28 @@ Wickmann</description>
 <attribute name="MPN" value="2212S-02SG-85"/>
 <attribute name="OC_FARNELL" value="1593458"/>
 </part>
-<part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="1M 100V">
+<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="1M 100V">
 <attribute name="MPN" value="MCWR06X1003FTL"/>
 </part>
-<part name="R15" library="rcl" deviceset="R-EU_" device="R0603" value="56K">
+<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="56K">
 <attribute name="MPN" value=" MCWR06X5901FTL"/>
 </part>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="ESP-12" library="ESP8266-ESP12" deviceset="ESP8266_ESP-12" device=""/>
 <part name="SUPPLY8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="UART_ESP" library="JeeLabs" deviceset="MA06-1" device="" value="UART_ESP"/>
-<part name="R17" library="rcl" deviceset="R-EU_" device="R0603" value="1k"/>
-<part name="R18" library="rcl" deviceset="R-EU_" device="R0603" value="2k"/>
-<part name="C21" library="rcl" deviceset="C-EU" device="C0603" value="100nF"/>
-<part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
-<part name="C22" library="rcl" deviceset="C-EU" device="C0603" value="100nF"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="UART" library="JeeLabs" deviceset="MA06-1" device="" value="UART"/>
+<part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="R15" library="rcl" deviceset="R-EU_" device="R0603" value="2k"/>
+<part name="C18" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
+<part name="R16" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="C17" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
+<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="SUPPLY1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="R17" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="GND18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="0V" device="" value="GND"/>
 <part name="IO16" library="SparkFun" deviceset="M02" device="PTH" value="FACTORY_RESET"/>
 <part name="PWR" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND"/>
-<part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="REF_SEL_A" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND">
 <attribute name="MF" value="MULTICOMP"/>
 <attribute name="MPN" value="2212S-02SG-85"/>
@@ -31454,10 +31459,10 @@ Wickmann</description>
 <part name="EBW_B" library="EBW series SHUNT" deviceset="EBW_SERIES_15.2MM" device=""/>
 <part name="SUPPLY2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SUPPLY3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="1K">
+<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="1K">
 <attribute name="MPN" value=" MCWR06X5901FTL"/>
 </part>
-<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="2K">
+<part name="R10" library="rcl" deviceset="R-EU_" device="R0603" value="2K">
 <attribute name="MPN" value=" MCWR06X5901FTL"/>
 </part>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -31468,21 +31473,21 @@ Wickmann</description>
 <part name="Y1" library="microbuilder" deviceset="CRYSTAL" device="8X3.8SMT" value="32Khz"/>
 <part name="PCF8523" library="emonDC parts" deviceset="PCF8523_RTC" device=""/>
 <part name="SUPPLY12" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
-<part name="C7T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF"/>
-<part name="R9" library="rcl@1" deviceset="R-EU_" device="R0603" value="1K"/>
+<part name="C33T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
+<part name="R22" library="rcl@1" deviceset="R-EU_" device="R0603" value="1K"/>
 <part name="CR1220" library="IotaWatt_parts" deviceset="CR1220SMD" device="">
 <attribute name="MPN" value="Harwin S8411-45R"/>
 </part>
 <part name="ADC" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="2,15/1,0" device="" package3d_urn="urn:adsk.eagle:package:30831/1"/>
 <part name="P1" library="JST-PH" deviceset="B4B-PH-K" device=""/>
 <part name="J5" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="R13" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="MICRO_SD" library="MOLEX 47219-2001" deviceset="47219-2001_MICROSD" device=""/>
 <part name="REG1" library="burr-brown-db" deviceset="REG1117" device="" package3d_urn="urn:adsk.eagle:package:4940/1" value="REG1117-5.0V">
 <attribute name="MF" value="TEXAS INSTRUMENTS"/>
 <attribute name="MPN" value="REG1117-5.0"/>
 </part>
-<part name="C11T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
+<part name="C30T" library="rcl7" deviceset="CPOL-EU" device="C0603POL" value="10uF TANT"/>
 <part name="ESPBOOT" library="SparkFun" deviceset="M02" device="PTH"/>
 <part name="RX" library="SparkFun" deviceset="M02" device="PTH"/>
 <part name="TX" library="SparkFun" deviceset="M02" device="PTH"/>
@@ -31492,18 +31497,17 @@ Wickmann</description>
 <part name="D4" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="DO214AA" package3d_urn="urn:adsk.eagle:package:43433/2" value="P6SMB75A"/>
 <part name="D5" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="DO214AA" package3d_urn="urn:adsk.eagle:package:43433/2" value="P6SMB75A"/>
 <part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="C1" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<part name="C2" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
 <attribute name="MPN" value="C1608X7S2A104K080AB"/>
 </part>
-<part name="C8" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<part name="C5" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
 <attribute name="MPN" value="C1608X7S2A104K080AB"/>
 </part>
 <part name="F1" library="LITTELFUSE 455:030 SERIES" deviceset="445/030_SERIES" device=""/>
 <part name="C19" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
-<part name="R26" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/2" value="174R"/>
-<part name="LED1" library="microbuilder" deviceset="LED" device="1206"/>
-<part name="SJ2" library="jumper-con_db" deviceset="SJ-CON" device="CON"/>
-<part name="SJ3" library="jumper-con_db" deviceset="SJ-CON" device="CON"/>
+<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/2" value="174R"/>
+<part name="LED1" library="microbuilder" deviceset="LED" device="1206" value="PWR_ON"/>
+<part name="SJ2" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="" package3d_urn="urn:adsk.eagle:package:15471/1"/>
 <part name="CH_PD" library="SparkFun" deviceset="M02" device="PTH"/>
 <part name="SUPPLY6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SJ4" library="jumper-con" deviceset="SJ-CON" device="CON"/>
@@ -31517,33 +31521,30 @@ Wickmann</description>
 <part name="MH3" library="holes-db" deviceset="MOUNT-PAD-ROUND" device="5.3" value="5.3mm"/>
 <part name="MH4" library="holes-db" deviceset="MOUNT-PAD-ROUND" device="5.3" value="5.3mm"/>
 <part name="3.3V_BAT" library="jumper-con" deviceset="SJ-CON" device="CON"/>
-<part name="R27" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
-<part name="R28" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
-<part name="P+1" library="SparkFun" deviceset="3.3V" device=""/>
+<part name="R21" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="R20" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="+3V1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="MOUNT_7.62_B" library="con-phoenix-762" library_urn="urn:adsk.eagle:library:177" deviceset="GMSTBV2" device="" package3d_urn="urn:adsk.eagle:package:9756/1"/>
-<part name="MOUNT_7.62_A" library="con-phoenix-762" library_urn="urn:adsk.eagle:library:177" deviceset="GMSTBV2" device="" package3d_urn="urn:adsk.eagle:package:9756/1"/>
 <part name="LM258" library="microbuilder" deviceset="LM358" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="D7" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="DO214AA" package3d_urn="urn:adsk.eagle:package:43433/2" value="P6SMB75A"/>
-<part name="R13" library="rcl7" deviceset="R-EU_" device="0207/10" value="10k"/>
+<part name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="DO214AA" package3d_urn="urn:adsk.eagle:package:43433/2" value="P6SMB75A"/>
+<part name="R6" library="rcl7" deviceset="R-EU_" device="0207/10" value="10k"/>
 <part name="SUPPLY4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SUPPLY5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C10" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
 <part name="C11" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
 <part name="C12" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
 <part name="C14" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
+<part name="C9" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
 <part name="C15" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
-<part name="C17" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
-<part name="C18" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
-<part name="C20" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
+<part name="C16" library="rcl" deviceset="C-EU" device="C0603" value="1nF"/>
 <part name="F2" library="fuse" library_urn="urn:adsk.eagle:library:233" deviceset="TR5" device="" package3d_urn="urn:adsk.eagle:package:14061/1"/>
 <part name="F3" library="fuse" library_urn="urn:adsk.eagle:library:233" deviceset="TR5" device="" package3d_urn="urn:adsk.eagle:package:14061/1"/>
 <part name="F4" library="fuse" library_urn="urn:adsk.eagle:library:233" deviceset="TR5" device="" package3d_urn="urn:adsk.eagle:package:14061/1"/>
 <part name="F5" library="fuse" library_urn="urn:adsk.eagle:library:233" deviceset="TR5" device="" package3d_urn="urn:adsk.eagle:package:14061/1"/>
-<part name="R5" library="rcl7" deviceset="R-EU_" device="0207/10" value="5.6k"/>
-<part name="R10" library="rcl7" deviceset="R-EU_" device="0207/10" value="174R"/>
+<part name="R7" library="rcl7" deviceset="R-EU_" device="0207/10" value="5.6k"/>
+<part name="R8" library="rcl7" deviceset="R-EU_" device="0207/10" value="174R"/>
 <part name="MOUNT_10.16_A" library="10.16mm terminal block" deviceset="MOLEX_39970-003" device=""/>
 <part name="MOUNT_10.16_B" library="10.16mm terminal block" deviceset="MOLEX_39970-003" device=""/>
 <part name="TP4" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
@@ -31553,6 +31554,16 @@ Wickmann</description>
 <part name="7.62_BARRIER" library="con-phoenix-762" library_urn="urn:adsk.eagle:library:177" deviceset="GMSTBA2" device="" package3d_urn="urn:adsk.eagle:package:9748/1"/>
 <part name="SJ1" library="jumper-con_db" deviceset="SJ-CON" device="CON"/>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="C7" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<attribute name="MPN" value="C1608X7S2A104K080AB"/>
+</part>
+<part name="C8" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF 100V">
+<attribute name="MPN" value="C1608X7S2A104K080AB"/>
+</part>
+<part name="TP8" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
+<part name="TP9" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
+<part name="TP10" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
+<part name="TP11" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -31586,7 +31597,7 @@ use of ESP module inspired by Heatpumpmonitor project. RTC layout taken from IoT
 <wire x1="-137.16" y1="495.3" x2="-137.16" y2="391.16" width="0.1524" layer="94"/>
 <text x="35.56" y="425.196" size="5.08" layer="91" rot="R90">Shunt Monitor A</text>
 <wire x1="38.1" y1="495.3" x2="38.1" y2="391.16" width="0.1524" layer="94"/>
-<text x="82.55" y="483.235" size="5.08" layer="91">ESP-12S</text>
+<text x="49.276" y="483.997" size="5.08" layer="91">ESP-12E/S/F</text>
 <text x="158.75" y="467.995" size="3.81" layer="91">MICRO SD CARD</text>
 <wire x1="284.48" y1="495.3" x2="284.48" y2="391.16" width="0.1524" layer="94"/>
 <wire x1="284.48" y1="391.16" x2="284.48" y2="287.02" width="0.1524" layer="94"/>
@@ -31637,30 +31648,30 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="NAME" x="106.68" y="249.555" size="1.778" layer="95" ratio="10"/>
 <attribute name="VALUE" x="106.68" y="251.46" size="1.778" layer="96" ratio="10"/>
 </instance>
-<instance part="C24" gate="G$1" x="-66.04" y="355.6" smashed="yes">
-<attribute name="MPN" x="-66.04" y="355.6" size="1.778" layer="96" display="off"/>
-<attribute name="NAME" x="-64.516" y="355.981" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-64.516" y="350.901" size="1.778" layer="96"/>
+<instance part="C4" gate="G$1" x="-66.04" y="353.06" smashed="yes" rot="R180">
+<attribute name="MPN" x="-66.04" y="353.06" size="1.778" layer="96" rot="R180" display="off"/>
+<attribute name="NAME" x="-67.564" y="352.679" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="-67.564" y="357.759" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="C6" gate="G$1" x="-66.04" y="320.04" smashed="yes">
 <attribute name="MPN" x="-66.04" y="320.04" size="1.778" layer="96" display="off"/>
 <attribute name="NAME" x="-64.516" y="320.421" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-64.516" y="315.341" size="1.778" layer="96"/>
 </instance>
-<instance part="C1T" gate="G$1" x="71.12" y="236.22" smashed="yes">
+<instance part="C31T" gate="G$1" x="71.12" y="236.22" smashed="yes">
 <attribute name="NAME" x="72.644" y="236.601" size="1.778" layer="95"/>
 <attribute name="VALUE" x="72.644" y="231.521" size="1.778" layer="96"/>
 </instance>
-<instance part="C18T" gate="G$1" x="129.54" y="236.22" smashed="yes">
+<instance part="C32T" gate="G$1" x="129.54" y="236.22" smashed="yes">
 <attribute name="NAME" x="131.064" y="236.601" size="1.778" layer="95"/>
 <attribute name="VALUE" x="131.064" y="231.521" size="1.778" layer="96"/>
 </instance>
-<instance part="R1" gate="G$1" x="-83.82" y="317.5" smashed="yes" rot="R90">
+<instance part="R3" gate="G$1" x="-83.82" y="317.5" smashed="yes" rot="R90">
 <attribute name="NAME" x="-85.3186" y="313.69" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-80.518" y="313.69" size="1.778" layer="96" rot="R90"/>
 <attribute name="MPN" x="-83.82" y="317.5" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="R2" gate="G$1" x="-83.82" y="302.26" smashed="yes" rot="R90">
+<instance part="R4" gate="G$1" x="-83.82" y="302.26" smashed="yes" rot="R90">
 <attribute name="MPN" x="-83.82" y="302.26" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="NAME" x="-85.3186" y="298.45" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-80.518" y="298.45" size="1.778" layer="96" rot="R90"/>
@@ -31676,12 +31687,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="GND13" gate="1" x="-66.04" y="472.44" smashed="yes" rot="R180">
 <attribute name="VALUE" x="-63.5" y="474.98" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C23" gate="G$1" x="-66.04" y="464.82" smashed="yes">
-<attribute name="MPN" x="-66.04" y="464.82" size="1.778" layer="96" display="off"/>
-<attribute name="NAME" x="-64.516" y="465.201" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-64.516" y="460.121" size="1.778" layer="96"/>
+<instance part="C1" gate="G$1" x="-66.04" y="462.28" smashed="yes" rot="R180">
+<attribute name="MPN" x="-66.04" y="462.28" size="1.778" layer="96" rot="R180" display="off"/>
+<attribute name="NAME" x="-67.564" y="461.899" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="-67.564" y="466.979" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C25" gate="G$1" x="-66.04" y="429.26" smashed="yes">
+<instance part="C3" gate="G$1" x="-66.04" y="429.26" smashed="yes">
 <attribute name="MPN" x="-66.04" y="429.26" size="1.778" layer="96" display="off"/>
 <attribute name="NAME" x="-64.516" y="429.641" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-64.516" y="424.561" size="1.778" layer="96"/>
@@ -31692,12 +31703,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="MPN" x="-43.18" y="378.46" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="NAME" x="-36.83" y="383.032" size="1.778" layer="95"/>
 </instance>
-<instance part="R14" gate="G$1" x="-83.82" y="426.72" smashed="yes" rot="R90">
+<instance part="R1" gate="G$1" x="-83.82" y="426.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="-85.3186" y="422.91" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-80.518" y="422.91" size="1.778" layer="96" rot="R90"/>
 <attribute name="MPN" x="-83.82" y="426.72" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="R15" gate="G$1" x="-83.82" y="411.48" smashed="yes" rot="R90">
+<instance part="R2" gate="G$1" x="-83.82" y="411.48" smashed="yes" rot="R90">
 <attribute name="MPN" x="-83.82" y="411.48" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="NAME" x="-85.3186" y="407.67" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-80.518" y="407.67" size="1.778" layer="96" rot="R90"/>
@@ -31711,37 +31722,37 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="SUPPLY8" gate="1" x="58.42" y="414.02" smashed="yes">
 <attribute name="VALUE" x="55.88" y="411.48" size="1.778" layer="96"/>
 </instance>
-<instance part="UART_ESP" gate="1" x="88.9" y="421.64" smashed="yes" rot="R180">
+<instance part="UART" gate="1" x="88.9" y="421.64" smashed="yes" rot="R180">
 <attribute name="NAME" x="78.74" y="411.226" size="1.778" layer="95"/>
 </instance>
-<instance part="R17" gate="G$1" x="73.66" y="424.18" smashed="yes" rot="R180">
+<instance part="R14" gate="G$1" x="73.66" y="424.18" smashed="yes" rot="R180">
 <attribute name="NAME" x="77.47" y="422.6814" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="77.47" y="427.482" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R18" gate="G$1" x="63.5" y="424.18" smashed="yes" rot="R180">
+<instance part="R15" gate="G$1" x="63.5" y="424.18" smashed="yes" rot="R180">
 <attribute name="NAME" x="67.31" y="422.6814" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="67.31" y="427.482" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C21" gate="G$1" x="101.6" y="434.34" smashed="yes" rot="R270">
+<instance part="C18" gate="G$1" x="101.6" y="434.34" smashed="yes" rot="R270">
 <attribute name="NAME" x="101.981" y="432.816" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="96.901" y="432.816" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="R19" gate="G$1" x="116.84" y="434.34" smashed="yes">
+<instance part="R16" gate="G$1" x="116.84" y="434.34" smashed="yes">
 <attribute name="NAME" x="113.03" y="435.8386" size="1.778" layer="95"/>
 <attribute name="VALUE" x="113.03" y="431.038" size="1.778" layer="96"/>
 </instance>
-<instance part="C22" gate="G$1" x="91.44" y="467.36" smashed="yes" rot="R90">
+<instance part="C17" gate="G$1" x="91.44" y="467.36" smashed="yes" rot="R90">
 <attribute name="NAME" x="91.059" y="468.884" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="96.139" y="468.884" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R6" gate="G$1" x="68.58" y="464.82" smashed="yes" rot="R90">
+<instance part="R12" gate="G$1" x="68.58" y="464.82" smashed="yes" rot="R90">
 <attribute name="NAME" x="67.0814" y="461.01" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="71.882" y="461.01" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="SUPPLY1" gate="1" x="162.56" y="429.26" smashed="yes">
 <attribute name="VALUE" x="160.02" y="426.72" size="1.778" layer="96"/>
 </instance>
-<instance part="R7" gate="G$1" x="132.08" y="444.5" smashed="yes">
+<instance part="R17" gate="G$1" x="132.08" y="444.5" smashed="yes">
 <attribute name="NAME" x="128.27" y="445.9986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="128.27" y="441.198" size="1.778" layer="96"/>
 </instance>
@@ -31755,7 +31766,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="VALUE" x="-109.22" y="371.094" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="-109.22" y="384.048" size="1.778" layer="95" font="vector"/>
 </instance>
-<instance part="R3" gate="G$1" x="55.88" y="454.66" smashed="yes" rot="R180">
+<instance part="R11" gate="G$1" x="55.88" y="454.66" smashed="yes" rot="R180">
 <attribute name="NAME" x="59.69" y="453.1614" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="59.69" y="457.962" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -31781,12 +31792,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="SUPPLY3" gate="1" x="106.68" y="378.46" smashed="yes" rot="R180">
 <attribute name="VALUE" x="109.22" y="381" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R4" gate="G$1" x="137.16" y="327.66" smashed="yes">
+<instance part="R9" gate="G$1" x="137.16" y="327.66" smashed="yes">
 <attribute name="MPN" x="137.16" y="327.66" size="1.778" layer="96" display="off"/>
 <attribute name="NAME" x="133.35" y="329.1586" size="1.778" layer="95"/>
 <attribute name="VALUE" x="133.35" y="324.358" size="1.778" layer="96"/>
 </instance>
-<instance part="R8" gate="G$1" x="152.4" y="327.66" smashed="yes">
+<instance part="R10" gate="G$1" x="152.4" y="327.66" smashed="yes">
 <attribute name="MPN" x="152.4" y="327.66" size="1.778" layer="96" display="off"/>
 <attribute name="NAME" x="148.59" y="329.1586" size="1.778" layer="95"/>
 <attribute name="VALUE" x="148.59" y="324.358" size="1.778" layer="96"/>
@@ -31817,11 +31828,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="SUPPLY12" gate="GND" x="243.84" y="363.22" smashed="yes" rot="MR90">
 <attribute name="VALUE" x="240.665" y="361.315" size="1.778" layer="96" rot="MR90"/>
 </instance>
-<instance part="C7T" gate="G$1" x="248.92" y="358.14" smashed="yes" rot="MR180">
+<instance part="C33T" gate="G$1" x="248.92" y="358.14" smashed="yes" rot="MR180">
 <attribute name="NAME" x="250.444" y="357.759" size="1.778" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="250.444" y="362.839" size="1.778" layer="96" rot="MR180"/>
 </instance>
-<instance part="R9" gate="G$1" x="254" y="350.52" smashed="yes">
+<instance part="R22" gate="G$1" x="254" y="350.52" smashed="yes">
 <attribute name="NAME" x="252.476" y="352.0186" size="1.778" layer="95"/>
 <attribute name="VALUE" x="251.714" y="347.218" size="1.778" layer="96"/>
 </instance>
@@ -31840,7 +31851,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="VALUE" x="45.72" y="335.534" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="45.72" y="345.948" size="1.778" layer="95" font="vector"/>
 </instance>
-<instance part="R12" gate="G$1" x="48.26" y="464.82" smashed="yes" rot="R90">
+<instance part="R13" gate="G$1" x="48.26" y="464.82" smashed="yes" rot="R90">
 <attribute name="NAME" x="46.7614" y="461.01" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="51.562" y="461.01" size="1.778" layer="96" rot="R90"/>
 </instance>
@@ -31849,7 +31860,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="NAME" x="43.18" y="249.555" size="1.778" layer="95" ratio="10"/>
 <attribute name="VALUE" x="43.18" y="251.46" size="1.778" layer="96" ratio="10"/>
 </instance>
-<instance part="C11T" gate="G$1" x="30.48" y="236.22" smashed="yes">
+<instance part="C30T" gate="G$1" x="30.48" y="236.22" smashed="yes">
 <attribute name="NAME" x="32.004" y="236.601" size="1.778" layer="95"/>
 <attribute name="VALUE" x="32.004" y="231.521" size="1.778" layer="96"/>
 </instance>
@@ -31888,12 +31899,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="GND10" gate="1" x="-88.9" y="467.36" smashed="yes">
 <attribute name="VALUE" x="-91.44" y="464.82" size="1.778" layer="96"/>
 </instance>
-<instance part="C1" gate="G$1" x="-66.04" y="447.04" smashed="yes">
+<instance part="C2" gate="G$1" x="-66.04" y="447.04" smashed="yes">
 <attribute name="MPN" x="-66.04" y="447.04" size="1.778" layer="96" display="off"/>
 <attribute name="NAME" x="-64.516" y="447.421" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-64.516" y="442.341" size="1.778" layer="96"/>
 </instance>
-<instance part="C8" gate="G$1" x="-66.04" y="337.82" smashed="yes">
+<instance part="C5" gate="G$1" x="-66.04" y="337.82" smashed="yes">
 <attribute name="MPN" x="-66.04" y="337.82" size="1.778" layer="96" display="off"/>
 <attribute name="NAME" x="-64.516" y="338.201" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-64.516" y="333.121" size="1.778" layer="96"/>
@@ -31906,7 +31917,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="NAME" x="114.681" y="371.856" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="109.601" y="371.856" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="R26" gate="G$1" x="157.48" y="243.84" smashed="yes" rot="R180">
+<instance part="R5" gate="G$1" x="157.48" y="243.84" smashed="yes" rot="R180">
 <attribute name="NAME" x="161.29" y="242.3414" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="161.29" y="247.142" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -31917,10 +31928,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="SJ2" gate="1" x="264.16" y="355.6" smashed="yes" rot="R270">
 <attribute name="NAME" x="266.7" y="358.14" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="260.35" y="358.14" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="SJ3" gate="1" x="137.16" y="487.68" smashed="yes" rot="R180">
-<attribute name="NAME" x="139.7" y="485.14" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="139.7" y="491.49" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="CH_PD" gate="G$1" x="116.84" y="422.91" smashed="yes" rot="R180">
 <attribute name="VALUE" x="119.38" y="427.99" size="1.778" layer="96" rot="R180"/>
@@ -31973,36 +31980,18 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="NAME" x="200.66" y="347.98" size="1.778" layer="95"/>
 <attribute name="VALUE" x="200.66" y="341.63" size="1.778" layer="96"/>
 </instance>
-<instance part="R27" gate="G$1" x="60.96" y="436.88" smashed="yes" rot="R90">
-<attribute name="NAME" x="59.4614" y="433.07" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="64.262" y="433.07" size="1.778" layer="96" rot="R90"/>
+<instance part="R21" gate="G$1" x="259.08" y="345.44" smashed="yes" rot="R180">
+<attribute name="NAME" x="262.89" y="343.9414" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="262.89" y="348.742" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R28" gate="G$1" x="53.34" y="441.96" smashed="yes" rot="R90">
-<attribute name="NAME" x="51.8414" y="438.15" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="56.642" y="438.15" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="P+1" gate="G$1" x="53.34" y="429.26" smashed="yes" rot="R180">
-<attribute name="VALUE" x="54.61" y="426.974" size="1.778" layer="96"/>
+<instance part="R20" gate="G$1" x="259.08" y="340.36" smashed="yes" rot="R180">
+<attribute name="NAME" x="262.89" y="338.8614" size="1.778" layer="95" rot="R180"/>
 </instance>
 <instance part="P+3" gate="1" x="91.44" y="281.94" smashed="yes">
 <attribute name="VALUE" x="91.44" y="284.48" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="+3V1" gate="G$1" x="147.32" y="256.54" smashed="yes">
 <attribute name="VALUE" x="147.32" y="259.08" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="MOUNT_7.62_B" gate="-1" x="-99.06" y="444.5" smashed="yes" rot="R180">
-<attribute name="NAME" x="-93.98" y="443.611" size="1.778" layer="95"/>
-</instance>
-<instance part="MOUNT_7.62_B" gate="-2" x="-99.06" y="447.04" smashed="yes" rot="R180">
-<attribute name="NAME" x="-93.726" y="446.151" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-92.71" y="450.85" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="MOUNT_7.62_A" gate="-1" x="-99.06" y="335.28" smashed="yes" rot="R180">
-<attribute name="NAME" x="-93.98" y="334.391" size="1.778" layer="95"/>
-</instance>
-<instance part="MOUNT_7.62_A" gate="-2" x="-99.06" y="337.82" smashed="yes" rot="R180">
-<attribute name="NAME" x="-93.726" y="336.931" size="1.778" layer="95"/>
-<attribute name="VALUE" x="-92.71" y="341.63" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="LM258" gate="G$1" x="-22.86" y="421.64" smashed="yes">
 <attribute name="NAME" x="-20.32" y="426.72" size="1.27" layer="95"/>
@@ -32015,11 +32004,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="P+2" gate="1" x="-25.4" y="439.42" smashed="yes">
 <attribute name="VALUE" x="-25.4" y="441.96" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="D7" gate="G$1" x="-109.22" y="238.76" smashed="yes" rot="R90">
+<instance part="D1" gate="G$1" x="-109.22" y="238.76" smashed="yes" rot="R90">
 <attribute name="NAME" x="-109.7026" y="241.3" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-106.9086" y="241.3" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="R13" gate="G$1" x="99.06" y="274.32" smashed="yes" rot="R180">
+<instance part="R6" gate="G$1" x="99.06" y="274.32" smashed="yes" rot="R180">
 <attribute name="NAME" x="102.87" y="272.8214" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="102.87" y="277.622" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -32029,35 +32018,35 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="SUPPLY5" gate="1" x="58.42" y="335.28" smashed="yes">
 <attribute name="VALUE" x="55.88" y="332.74" size="1.778" layer="96"/>
 </instance>
-<instance part="C11" gate="G$1" x="91.44" y="368.3" smashed="yes" rot="R180">
+<instance part="C10" gate="G$1" x="91.44" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="89.916" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="89.916" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C12" gate="G$1" x="83.82" y="368.3" smashed="yes" rot="R180">
+<instance part="C11" gate="G$1" x="83.82" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="82.296" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="82.296" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C13" gate="G$1" x="76.2" y="368.3" smashed="yes" rot="R180">
+<instance part="C12" gate="G$1" x="76.2" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="74.676" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="74.676" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C14" gate="G$1" x="68.58" y="368.3" smashed="yes" rot="R180">
+<instance part="C13" gate="G$1" x="68.58" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="67.056" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="67.056" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C15" gate="G$1" x="60.96" y="368.3" smashed="yes" rot="R180">
+<instance part="C14" gate="G$1" x="60.96" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="59.436" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="59.436" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C17" gate="G$1" x="99.06" y="368.3" smashed="yes" rot="R180">
+<instance part="C9" gate="G$1" x="99.06" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="97.536" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="97.536" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C18" gate="G$1" x="53.34" y="368.3" smashed="yes" rot="R180">
+<instance part="C15" gate="G$1" x="53.34" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="51.816" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="51.816" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C20" gate="G$1" x="45.72" y="368.3" smashed="yes" rot="R180">
+<instance part="C16" gate="G$1" x="45.72" y="368.3" smashed="yes" rot="R180">
 <attribute name="NAME" x="44.196" y="367.919" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="44.196" y="372.999" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -32077,11 +32066,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <attribute name="NAME" x="-102.87" y="326.517" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-102.87" y="322.199" size="1.778" layer="96"/>
 </instance>
-<instance part="R5" gate="G$1" x="114.3" y="274.32" smashed="yes" rot="R180">
+<instance part="R7" gate="G$1" x="114.3" y="274.32" smashed="yes" rot="R180">
 <attribute name="NAME" x="118.11" y="272.8214" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="118.11" y="277.622" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="R10" gate="G$1" x="129.54" y="274.32" smashed="yes" rot="R180">
+<instance part="R8" gate="G$1" x="129.54" y="274.32" smashed="yes" rot="R180">
 <attribute name="NAME" x="133.35" y="272.8214" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="133.35" y="277.622" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -32116,13 +32105,35 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <instance part="P+4" gate="1" x="-27.94" y="327.66" smashed="yes">
 <attribute name="VALUE" x="-27.94" y="330.2" size="1.778" layer="96" rot="R180"/>
 </instance>
+<instance part="C7" gate="G$1" x="-48.26" y="469.9" smashed="yes" rot="R270">
+<attribute name="MPN" x="-48.26" y="469.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="NAME" x="-47.879" y="468.376" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="-52.959" y="468.376" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="C8" gate="G$1" x="-48.26" y="360.68" smashed="yes" rot="R270">
+<attribute name="MPN" x="-48.26" y="360.68" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="NAME" x="-47.879" y="359.156" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="-52.959" y="359.156" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="TP8" gate="G$1" x="-101.6" y="335.28" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="-102.87" y="334.01" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="TP9" gate="G$1" x="-101.6" y="337.82" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="-102.87" y="336.55" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="TP10" gate="G$1" x="-101.6" y="444.5" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="-102.87" y="443.23" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="TP11" gate="G$1" x="-101.6" y="447.04" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="-102.87" y="445.77" size="1.778" layer="97" rot="R270"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="R2" gate="G$1" pin="1"/>
+<pinref part="R4" gate="G$1" pin="1"/>
 <pinref part="GND11" gate="1" pin="GND"/>
 <junction x="-83.82" y="294.64"/>
 <pinref part="SHUNTMON-B" gate="G$1" pin="GND"/>
@@ -32140,8 +32151,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </segment>
 <segment>
 <pinref part="GND13" gate="1" pin="GND"/>
-<wire x1="-66.04" y1="467.36" x2="-66.04" y2="469.9" width="0.1524" layer="91"/>
-<pinref part="C23" gate="G$1" pin="1"/>
+<pinref part="C7" gate="G$1" pin="2"/>
+<wire x1="-53.34" y1="469.9" x2="-66.04" y2="469.9" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="2"/>
+<wire x1="-66.04" y1="469.9" x2="-66.04" y2="467.36" width="0.1524" layer="91"/>
+<junction x="-66.04" y="469.9"/>
 </segment>
 <segment>
 <pinref part="GND16" gate="1" pin="GND"/>
@@ -32153,9 +32167,9 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="-66.04" y1="403.86" x2="-40.64" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="434.34" x2="-40.64" y2="403.86" width="0.1524" layer="91"/>
 <wire x1="-91.44" y1="403.86" x2="-83.82" y2="403.86" width="0.1524" layer="91"/>
-<pinref part="R15" gate="G$1" pin="1"/>
+<pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="-83.82" y1="403.86" x2="-83.82" y2="406.4" width="0.1524" layer="91"/>
-<pinref part="C25" gate="G$1" pin="2"/>
+<pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="-66.04" y1="424.18" x2="-66.04" y2="403.86" width="0.1524" layer="91"/>
 <junction x="-66.04" y="403.86"/>
 <pinref part="LM258" gate="G$1" pin="V-"/>
@@ -32174,12 +32188,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="124.46" y="414.02"/>
 </segment>
 <segment>
-<pinref part="UART_ESP" gate="1" pin="6"/>
+<pinref part="UART" gate="1" pin="6"/>
 <wire x1="45.72" y1="457.2" x2="45.72" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="416.56" x2="58.42" y2="416.56" width="0.1524" layer="91"/>
 <pinref part="SUPPLY8" gate="1" pin="GND"/>
 <wire x1="58.42" y1="416.56" x2="50.8" y2="416.56" width="0.1524" layer="91"/>
-<pinref part="R18" gate="G$1" pin="2"/>
+<pinref part="R15" gate="G$1" pin="2"/>
 <wire x1="50.8" y1="416.56" x2="45.72" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="416.56" x2="58.42" y2="424.18" width="0.1524" layer="91"/>
 <junction x="58.42" y="416.56"/>
@@ -32187,12 +32201,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="50.8" y="416.56"/>
 <pinref part="ESP-12" gate="G$1" pin="GND"/>
 <wire x1="78.74" y1="457.2" x2="76.2" y2="457.2" width="0.1524" layer="91"/>
-<pinref part="C22" gate="G$1" pin="1"/>
+<pinref part="C17" gate="G$1" pin="1"/>
 <wire x1="88.9" y1="467.36" x2="76.2" y2="467.36" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="467.36" x2="76.2" y2="457.2" width="0.1524" layer="91"/>
 <junction x="76.2" y="457.2"/>
 <wire x1="76.2" y1="457.2" x2="50.8" y2="457.2" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="2"/>
+<pinref part="R11" gate="G$1" pin="2"/>
 <wire x1="50.8" y1="457.2" x2="45.72" y2="457.2" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="454.66" x2="50.8" y2="457.2" width="0.1524" layer="91"/>
 <junction x="50.8" y="457.2"/>
@@ -32213,7 +32227,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="129.54" y1="226.06" x2="114.3" y2="226.06" width="0.1524" layer="91"/>
 <junction x="129.54" y="226.06"/>
 <junction x="114.3" y="226.06"/>
-<pinref part="C18T" gate="G$1" pin="-"/>
+<pinref part="C32T" gate="G$1" pin="-"/>
 <pinref part="GND23" gate="1" pin="0V"/>
 <junction x="147.32" y="226.06"/>
 <pinref part="GND18" gate="1" pin="0V"/>
@@ -32221,10 +32235,10 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="REG1" gate="G$1" pin="GND"/>
 <wire x1="50.8" y1="231.14" x2="50.8" y2="226.06" width="0.1524" layer="91"/>
 <junction x="50.8" y="226.06"/>
-<pinref part="C11T" gate="G$1" pin="-"/>
+<pinref part="C30T" gate="G$1" pin="-"/>
 <wire x1="30.48" y1="231.14" x2="30.48" y2="226.06" width="0.1524" layer="91"/>
 <junction x="30.48" y="226.06"/>
-<pinref part="C1T" gate="G$1" pin="-"/>
+<pinref part="C31T" gate="G$1" pin="-"/>
 <wire x1="71.12" y1="231.14" x2="71.12" y2="226.06" width="0.1524" layer="91"/>
 <junction x="71.12" y="226.06"/>
 <wire x1="-101.6" y1="226.06" x2="-109.22" y2="226.06" width="0.1524" layer="91"/>
@@ -32236,7 +32250,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="LED1" gate="G$1" pin="C"/>
 <wire x1="167.64" y1="231.14" x2="167.64" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="226.06" x2="147.32" y2="226.06" width="0.1524" layer="91"/>
-<pinref part="D7" gate="G$1" pin="A"/>
+<pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="-109.22" y1="236.22" x2="-109.22" y2="226.06" width="0.1524" layer="91"/>
 <junction x="-109.22" y="226.06"/>
 <pinref part="TP6" gate="G$1" pin="TP"/>
@@ -32276,7 +32290,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="106.68" y="373.38"/>
 </segment>
 <segment>
-<pinref part="R8" gate="G$1" pin="2"/>
+<pinref part="R10" gate="G$1" pin="2"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 <wire x1="157.48" y1="327.66" x2="160.02" y2="327.66" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="325.12" x2="160.02" y2="327.66" width="0.1524" layer="91"/>
@@ -32305,7 +32319,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </segment>
 <segment>
 <pinref part="SUPPLY12" gate="GND" pin="GND"/>
-<pinref part="C7T" gate="G$1" pin="-"/>
+<pinref part="C33T" gate="G$1" pin="-"/>
 <wire x1="248.92" y1="363.22" x2="246.38" y2="363.22" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -32322,10 +32336,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="D4" gate="G$1" pin="A"/>
 <wire x1="-76.2" y1="360.68" x2="-76.2" y2="353.06" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="-66.04" y1="358.14" x2="-66.04" y2="360.68" width="0.1524" layer="91"/>
-<pinref part="C24" gate="G$1" pin="1"/>
 <wire x1="-76.2" y1="360.68" x2="-66.04" y2="360.68" width="0.1524" layer="91"/>
 <junction x="-66.04" y="360.68"/>
+<pinref part="C8" gate="G$1" pin="2"/>
+<wire x1="-53.34" y1="360.68" x2="-66.04" y2="360.68" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="-66.04" y1="358.14" x2="-66.04" y2="360.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J5" gate="G$1" pin="2"/>
@@ -32334,7 +32350,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="58.42" y1="342.9" x2="58.42" y2="337.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R10" gate="G$1" pin="1"/>
+<pinref part="R8" gate="G$1" pin="1"/>
 <pinref part="SUPPLY4" gate="1" pin="GND"/>
 <wire x1="134.62" y1="274.32" x2="139.7" y2="274.32" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="274.32" x2="139.7" y2="269.24" width="0.1524" layer="91"/>
@@ -32345,7 +32361,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="147.32" y1="254" x2="147.32" y2="243.84" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="243.84" x2="142.24" y2="243.84" width="0.1524" layer="91"/>
 <junction x="147.32" y="243.84"/>
-<pinref part="R26" gate="G$1" pin="2"/>
+<pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="243.84" x2="152.4" y2="243.84" width="0.1524" layer="91"/>
 <pinref part="SJ6" gate="1" pin="2"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
@@ -32375,25 +32391,42 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <label x="193.04" y="345.44" size="1.778" layer="91" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="R27" gate="G$1" pin="1"/>
-<wire x1="60.96" y1="431.8" x2="60.96" y2="429.26" width="0.1524" layer="91"/>
-<pinref part="P+1" gate="G$1" pin="3.3V"/>
-<wire x1="60.96" y1="429.26" x2="53.34" y2="429.26" width="0.1524" layer="91"/>
-<pinref part="R28" gate="G$1" pin="1"/>
-<wire x1="53.34" y1="436.88" x2="53.34" y2="431.8" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="431.8" x2="53.34" y2="429.26" width="0.1524" layer="91"/>
-<junction x="53.34" y="429.26"/>
-</segment>
-<segment>
-<pinref part="SJ3" gate="1" pin="2"/>
-<wire x1="124.46" y1="487.68" x2="132.08" y2="487.68" width="0.1524" layer="91"/>
 <label x="124.46" y="487.68" size="1.778" layer="95" rot="R180" xref="yes"/>
+<wire x1="142.24" y1="444.5" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
+<pinref part="ESP-12" gate="G$1" pin="VCC"/>
+<wire x1="137.16" y1="444.5" x2="137.16" y2="457.2" width="0.1524" layer="91"/>
+<junction x="137.16" y="444.5"/>
+<pinref part="R16" gate="G$1" pin="2"/>
+<wire x1="137.16" y1="457.2" x2="111.76" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="457.2" x2="109.22" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="434.34" x2="137.16" y2="434.34" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="434.34" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
+<pinref part="C17" gate="G$1" pin="2"/>
+<wire x1="96.52" y1="467.36" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="457.2" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
+<label x="111.76" y="457.2" size="1.778" layer="95"/>
+<pinref part="R17" gate="G$1" pin="2"/>
+<wire x1="142.24" y1="477.52" x2="111.76" y2="477.52" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="477.52" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
+<junction x="111.76" y="467.36"/>
+<wire x1="68.58" y1="477.52" x2="111.76" y2="477.52" width="0.1524" layer="91"/>
+<junction x="111.76" y="477.52"/>
+<wire x1="142.24" y1="444.5" x2="142.24" y2="477.52" width="0.1524" layer="91"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="68.58" y1="477.52" x2="68.58" y2="469.9" width="0.1524" layer="91"/>
+<pinref part="R13" gate="G$1" pin="2"/>
+<wire x1="48.26" y1="469.9" x2="48.26" y2="477.52" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="477.52" x2="68.58" y2="477.52" width="0.1524" layer="91"/>
+<junction x="68.58" y="477.52"/>
+<wire x1="142.24" y1="487.68" x2="142.24" y2="477.52" width="0.1524" layer="91"/>
+<junction x="142.24" y="477.52"/>
+<wire x1="124.46" y1="487.68" x2="142.24" y2="487.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="MCP3208" gate="G$1" pin="CH6"/>
 <wire x1="91.44" y1="342.9" x2="83.82" y2="342.9" width="0.1524" layer="91"/>
 <label x="83.82" y="342.9" size="1.778" layer="95" rot="R180"/>
-<pinref part="C18" gate="G$1" pin="1"/>
+<pinref part="C15" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="342.9" x2="53.34" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="342.9"/>
 </segment>
@@ -32411,11 +32444,11 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="-111.76" y1="454.66" x2="-111.76" y2="464.82" width="0.1524" layer="91"/>
 <junction x="-111.76" y="454.66"/>
 <wire x1="-104.14" y1="447.04" x2="-106.68" y2="447.04" width="0.1524" layer="91"/>
-<pinref part="MOUNT_7.62_B" gate="-2" pin="1"/>
 <pinref part="F2" gate="1" pin="1"/>
 <pinref part="MOUNT_10.16_A" gate="G$1" pin="P$1"/>
 <wire x1="-124.46" y1="450.85" x2="-124.46" y2="454.66" width="0.1524" layer="91"/>
 <wire x1="-124.46" y1="454.66" x2="-111.76" y2="454.66" width="0.1524" layer="91"/>
+<pinref part="TP11" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="ADCSHUNT_A" class="0">
@@ -32430,7 +32463,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH0"/>
 <wire x1="91.44" y1="358.14" x2="83.82" y2="358.14" width="0.1524" layer="91"/>
 <label x="83.82" y="358.14" size="1.778" layer="95" rot="R180"/>
-<pinref part="C17" gate="G$1" pin="1"/>
+<pinref part="C9" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="358.14" x2="99.06" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="358.14"/>
 </segment>
@@ -32442,8 +32475,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="-88.9" y1="330.2" x2="-88.9" y2="375.92" width="0.1524" layer="91"/>
 <pinref part="MH3" gate="G$1" pin="MOUNT"/>
 <wire x1="-104.14" y1="325.12" x2="-106.68" y2="325.12" width="0.1524" layer="91"/>
-<pinref part="MOUNT_7.62_A" gate="-1" pin="1"/>
-<wire x1="-104.14" y1="335.28" x2="-106.68" y2="335.28" width="0.1524" layer="91"/>
 <wire x1="-106.68" y1="335.28" x2="-106.68" y2="330.2" width="0.1524" layer="91"/>
 <junction x="-106.68" y="330.2"/>
 <wire x1="-106.68" y1="330.2" x2="-106.68" y2="327.66" width="0.1524" layer="91"/>
@@ -32459,6 +32490,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MOUNT_10.16_B" gate="G$1" pin="P$2"/>
 <wire x1="-124.46" y1="331.47" x2="-124.46" y2="327.66" width="0.1524" layer="91"/>
 <wire x1="-124.46" y1="327.66" x2="-111.76" y2="327.66" width="0.1524" layer="91"/>
+<pinref part="TP8" gate="G$1" pin="TP"/>
+<wire x1="-104.14" y1="335.28" x2="-106.68" y2="335.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="LOAD-NEG-B" class="1">
@@ -32473,12 +32506,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MH4" gate="G$1" pin="MOUNT"/>
 <wire x1="-111.76" y1="355.6" x2="-111.76" y2="345.44" width="0.1524" layer="91"/>
 <junction x="-111.76" y="345.44"/>
-<wire x1="-104.14" y1="337.82" x2="-106.68" y2="337.82" width="0.1524" layer="91"/>
-<pinref part="MOUNT_7.62_A" gate="-2" pin="1"/>
 <pinref part="F4" gate="1" pin="1"/>
 <pinref part="MOUNT_10.16_B" gate="G$1" pin="P$1"/>
 <wire x1="-124.46" y1="341.63" x2="-124.46" y2="345.44" width="0.1524" layer="91"/>
 <wire x1="-124.46" y1="345.44" x2="-111.76" y2="345.44" width="0.1524" layer="91"/>
+<pinref part="TP9" gate="G$1" pin="TP"/>
+<wire x1="-106.68" y1="337.82" x2="-104.14" y2="337.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SOURCE-POS-A" class="1">
@@ -32500,17 +32533,17 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="-111.76" y1="436.88" x2="-111.76" y2="426.72" width="0.1524" layer="91"/>
 <junction x="-111.76" y="436.88"/>
 <wire x1="-104.14" y1="444.5" x2="-106.68" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="MOUNT_7.62_B" gate="-1" pin="1"/>
 <pinref part="F3" gate="1" pin="1"/>
 <pinref part="MOUNT_10.16_A" gate="G$1" pin="P$2"/>
 <wire x1="-124.46" y1="440.69" x2="-124.46" y2="436.88" width="0.1524" layer="91"/>
 <wire x1="-124.46" y1="436.88" x2="-111.76" y2="436.88" width="0.1524" layer="91"/>
+<pinref part="TP10" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="N$36" class="0">
 <segment>
-<pinref part="UART_ESP" gate="1" pin="3"/>
-<pinref part="R17" gate="G$1" pin="1"/>
+<pinref part="UART" gate="1" pin="3"/>
+<pinref part="R14" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="424.18" x2="78.74" y2="424.18" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -32519,13 +32552,13 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="ESP-12" gate="G$1" pin="CH_PD"/>
 <wire x1="127" y1="444.5" x2="119.38" y2="444.5" width="0.1524" layer="91"/>
 <label x="111.76" y="444.5" size="1.778" layer="95"/>
-<pinref part="R7" gate="G$1" pin="1"/>
+<pinref part="R17" gate="G$1" pin="1"/>
 <pinref part="CH_PD" gate="G$1" pin="1"/>
 <wire x1="119.38" y1="444.5" x2="109.22" y2="444.5" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="444.5" x2="119.38" y2="422.91" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="422.91" x2="109.22" y2="422.91" width="0.1524" layer="91"/>
 <junction x="119.38" y="444.5"/>
-<pinref part="C21" gate="G$1" pin="1"/>
+<pinref part="C18" gate="G$1" pin="1"/>
 <wire x1="104.14" y1="434.34" x2="104.14" y2="422.91" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="422.91" x2="109.22" y2="422.91" width="0.1524" layer="91"/>
 <junction x="109.22" y="422.91"/>
@@ -32546,16 +32579,16 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </net>
 <net name="RESET" class="0">
 <segment>
-<pinref part="C21" gate="G$1" pin="2"/>
+<pinref part="C18" gate="G$1" pin="2"/>
 <wire x1="96.52" y1="434.34" x2="81.28" y2="434.34" width="0.1524" layer="91"/>
-<pinref part="UART_ESP" gate="1" pin="1"/>
+<pinref part="UART" gate="1" pin="1"/>
 <wire x1="81.28" y1="434.34" x2="81.28" y2="429.26" width="0.1524" layer="91"/>
 <label x="91.44" y="435.102" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="GPIO2" class="0">
 <segment>
-<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="R12" gate="G$1" pin="1"/>
 <wire x1="68.58" y1="452.12" x2="68.58" y2="459.74" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="452.12" x2="63.5" y2="452.12" width="0.1524" layer="91"/>
 <pinref part="ESP-12" gate="G$1" pin="GPIO2"/>
@@ -32598,9 +32631,9 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MICRO_SD" gate="G$1" pin="DAT0"/>
 </segment>
 <segment>
-<pinref part="R4" gate="G$1" pin="2"/>
+<pinref part="R9" gate="G$1" pin="2"/>
 <wire x1="142.24" y1="327.66" x2="144.78" y2="327.66" width="0.1524" layer="91"/>
-<pinref part="R8" gate="G$1" pin="1"/>
+<pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="144.78" y1="327.66" x2="147.32" y2="327.66" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="327.66" x2="144.78" y2="317.5" width="0.1524" layer="91"/>
 <junction x="144.78" y="327.66"/>
@@ -32652,8 +32685,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="SHUNTMON-B" gate="G$1" pin="REFA"/>
 <pinref part="SHUNTMON-B" gate="G$1" pin="REFB"/>
 <wire x1="-45.72" y1="347.98" x2="-43.18" y2="347.98" width="0.1524" layer="91"/>
-<wire x1="-43.18" y1="370.84" x2="-43.18" y2="347.98" width="0.1524" layer="91"/>
+<wire x1="-43.18" y1="370.84" x2="-43.18" y2="360.68" width="0.1524" layer="91"/>
 <junction x="-43.18" y="347.98"/>
+<pinref part="C8" gate="G$1" pin="1"/>
+<wire x1="-43.18" y1="360.68" x2="-43.18" y2="347.98" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="360.68" x2="-43.18" y2="360.68" width="0.1524" layer="91"/>
+<junction x="-43.18" y="360.68"/>
 </segment>
 </net>
 <net name="GPIO0" class="0">
@@ -32663,7 +32700,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <label x="71.12" y="449.58" size="1.778" layer="95"/>
 <wire x1="50.8" y1="449.58" x2="48.26" y2="449.58" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="449.58" x2="48.26" y2="459.74" width="0.1524" layer="91"/>
-<pinref part="R12" gate="G$1" pin="1"/>
+<pinref part="R13" gate="G$1" pin="1"/>
 <pinref part="ESPBOOT" gate="G$1" pin="2"/>
 <wire x1="50.8" y1="443.23" x2="50.8" y2="449.58" width="0.1524" layer="91"/>
 <junction x="50.8" y="449.58"/>
@@ -32672,8 +32709,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <net name="VSENSE_A" class="0">
 <segment>
 <label x="-60.452" y="416.56" size="1.778" layer="95"/>
-<pinref part="R14" gate="G$1" pin="1"/>
-<pinref part="R15" gate="G$1" pin="2"/>
+<pinref part="R1" gate="G$1" pin="1"/>
+<pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="-83.82" y1="421.64" x2="-83.82" y2="419.1" width="0.1524" layer="91"/>
 <wire x1="-83.82" y1="419.1" x2="-83.82" y2="416.56" width="0.1524" layer="91"/>
 <wire x1="-83.82" y1="419.1" x2="-73.66" y2="419.1" width="0.1524" layer="91"/>
@@ -32687,7 +32724,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="ESP-12" gate="G$1" pin="GPIO15"/>
 <wire x1="78.74" y1="454.66" x2="60.96" y2="454.66" width="0.1524" layer="91"/>
 <label x="71.12" y="454.66" size="1.778" layer="95"/>
-<pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="R11" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <wire x1="193.04" y1="452.12" x2="198.12" y2="452.12" width="0.1524" layer="91"/>
@@ -32701,8 +32738,12 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="SHUNTMON-A" gate="G$1" pin="REFB"/>
 <wire x1="-45.72" y1="457.2" x2="-43.18" y2="457.2" width="0.1524" layer="91"/>
 <junction x="-43.18" y="457.2"/>
-<wire x1="-43.18" y1="480.06" x2="-43.18" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="-43.18" y1="480.06" x2="-43.18" y2="469.9" width="0.1524" layer="91"/>
 <pinref part="REF_SEL_A" gate="J$1" pin="2"/>
+<pinref part="C7" gate="G$1" pin="1"/>
+<wire x1="-43.18" y1="469.9" x2="-43.18" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="469.9" x2="-43.18" y2="469.9" width="0.1524" layer="91"/>
+<junction x="-43.18" y="469.9"/>
 </segment>
 </net>
 <net name="CH7" class="0">
@@ -32710,14 +32751,14 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH7"/>
 <wire x1="91.44" y1="340.36" x2="55.88" y2="340.36" width="0.1524" layer="91"/>
 <pinref part="J5" gate="G$1" pin="1"/>
-<pinref part="C20" gate="G$1" pin="1"/>
+<pinref part="C16" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="340.36" x2="45.72" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="340.36"/>
 </segment>
 </net>
 <net name="GPIO12A" class="0">
 <segment>
-<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="R9" gate="G$1" pin="1"/>
 <pinref part="MCP3208" gate="G$1" pin="DOUT"/>
 <wire x1="121.92" y1="335.28" x2="121.92" y2="327.66" width="0.1524" layer="91"/>
 <label x="120.65" y="322.58" size="1.778" layer="95" rot="R90"/>
@@ -32759,8 +32800,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="PCF8523" gate="G$1" pin="SDA"/>
 <junction x="241.3" y="342.9"/>
 <label x="246.38" y="340.36" size="1.778" layer="91" xref="yes"/>
-<wire x1="241.3" y1="342.9" x2="246.38" y2="342.9" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="342.9" x2="246.38" y2="340.36" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="342.9" x2="246.38" y2="340.36" width="0.1524" layer="91"/>
 <label x="66.04" y="447.04" size="1.778" layer="91" rot="R180" xref="yes"/>
 </segment>
 <segment>
@@ -32770,8 +32810,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="GPIO4"/>
 <wire x1="66.04" y1="447.04" x2="78.74" y2="447.04" width="0.1524" layer="91"/>
-<pinref part="R28" gate="G$1" pin="2"/>
-<wire x1="66.04" y1="447.04" x2="53.34" y2="447.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -32789,9 +32827,6 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="GPIO5"/>
 <wire x1="66.04" y1="444.5" x2="78.74" y2="444.5" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="444.5" x2="60.96" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="R27" gate="G$1" pin="2"/>
-<wire x1="60.96" y1="444.5" x2="60.96" y2="441.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$44" class="0">
@@ -32817,8 +32852,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </net>
 <net name="VDD_PCF" class="0">
 <segment>
-<pinref part="C7T" gate="G$1" pin="+"/>
-<pinref part="R9" gate="G$1" pin="1"/>
+<pinref part="C33T" gate="G$1" pin="+"/>
+<pinref part="R22" gate="G$1" pin="1"/>
 <pinref part="PCF8523" gate="G$1" pin="VDD"/>
 <junction x="241.3" y="350.52"/>
 <wire x1="241.3" y1="350.52" x2="248.92" y2="350.52" width="0.1524" layer="91"/>
@@ -32836,7 +32871,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="ESP-12" gate="G$1" pin="TXD"/>
 <wire x1="78.74" y1="439.42" x2="76.2" y2="439.42" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="439.42" x2="76.2" y2="436.88" width="0.1524" layer="91"/>
-<pinref part="UART_ESP" gate="1" pin="2"/>
+<pinref part="UART" gate="1" pin="2"/>
 <wire x1="76.2" y1="436.88" x2="76.2" y2="426.72" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="426.72" x2="81.28" y2="426.72" width="0.1524" layer="91"/>
 <label x="71.12" y="439.42" size="1.778" layer="95"/>
@@ -32850,8 +32885,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="RX" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="R17" gate="G$1" pin="2"/>
-<pinref part="R18" gate="G$1" pin="1"/>
+<pinref part="R14" gate="G$1" pin="2"/>
+<pinref part="R15" gate="G$1" pin="1"/>
 <wire x1="68.58" y1="424.18" x2="68.58" y2="441.96" width="0.1524" layer="91"/>
 <pinref part="ESP-12" gate="G$1" pin="RXD"/>
 <wire x1="68.58" y1="441.96" x2="78.74" y2="441.96" width="0.1524" layer="91"/>
@@ -32873,15 +32908,15 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH2"/>
 <wire x1="91.44" y1="353.06" x2="83.82" y2="353.06" width="0.1524" layer="91"/>
 <label x="83.82" y="353.06" size="1.778" layer="95" rot="R180"/>
-<pinref part="C12" gate="G$1" pin="1"/>
+<pinref part="C11" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="353.06" x2="83.82" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="353.06"/>
 </segment>
 </net>
 <net name="VSENSE_B" class="0">
 <segment>
-<pinref part="R1" gate="G$1" pin="1"/>
-<pinref part="R2" gate="G$1" pin="2"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="R4" gate="G$1" pin="2"/>
 <label x="-61.341" y="307.34" size="1.778" layer="95"/>
 <wire x1="-83.82" y1="307.34" x2="-83.82" y2="309.88" width="0.1524" layer="91"/>
 <wire x1="-83.82" y1="309.88" x2="-83.82" y2="312.42" width="0.1524" layer="91"/>
@@ -32896,28 +32931,28 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="-81.28" y="457.2"/>
 <pinref part="SHUNTMON-A" gate="G$1" pin="RSN"/>
 <wire x1="-66.04" y1="457.2" x2="-48.26" y2="457.2" width="0.1524" layer="91"/>
-<pinref part="C23" gate="G$1" pin="2"/>
-<wire x1="-66.04" y1="459.74" x2="-66.04" y2="457.2" width="0.1524" layer="91"/>
 <junction x="-66.04" y="457.2"/>
-<pinref part="C1" gate="G$1" pin="1"/>
+<pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="-66.04" y1="457.2" x2="-66.04" y2="449.58" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="457.2" x2="-66.04" y2="457.2" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="457.2" x2="-93.98" y2="457.2" width="0.1524" layer="91"/>
 <pinref part="F2" gate="1" pin="2"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="-66.04" y1="457.2" x2="-66.04" y2="459.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SOURCE-POS-A_T" class="2">
 <segment>
-<pinref part="R14" gate="G$1" pin="2"/>
+<pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="-83.82" y1="431.8" x2="-83.82" y2="434.34" width="0.1524" layer="91"/>
 <junction x="-83.82" y="434.34"/>
 <pinref part="D3" gate="G$1" pin="C"/>
-<pinref part="C25" gate="G$1" pin="1"/>
+<pinref part="C3" gate="G$1" pin="1"/>
 <pinref part="SHUNTMON-A" gate="G$1" pin="RSP"/>
 <wire x1="-66.04" y1="434.34" x2="-48.26" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="-66.04" y1="434.34" x2="-66.04" y2="431.8" width="0.1524" layer="91"/>
 <junction x="-66.04" y="434.34"/>
-<pinref part="C1" gate="G$1" pin="2"/>
+<pinref part="C2" gate="G$1" pin="2"/>
 <wire x1="-66.04" y1="441.96" x2="-66.04" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="-83.82" y1="434.34" x2="-66.04" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="-93.98" y1="434.34" x2="-91.44" y2="434.34" width="0.1524" layer="91"/>
@@ -32935,14 +32970,14 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="-76.2" y="347.98"/>
 <pinref part="SHUNTMON-B" gate="G$1" pin="RSN"/>
 <wire x1="-66.04" y1="347.98" x2="-48.26" y2="347.98" width="0.1524" layer="91"/>
-<pinref part="C24" gate="G$1" pin="2"/>
-<wire x1="-66.04" y1="350.52" x2="-66.04" y2="347.98" width="0.1524" layer="91"/>
 <junction x="-66.04" y="347.98"/>
-<pinref part="C8" gate="G$1" pin="1"/>
+<pinref part="C5" gate="G$1" pin="1"/>
 <wire x1="-66.04" y1="340.36" x2="-66.04" y2="347.98" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="347.98" x2="-66.04" y2="347.98" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="347.98" x2="-93.98" y2="347.98" width="0.1524" layer="91"/>
 <pinref part="F4" gate="1" pin="2"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="-66.04" y1="350.52" x2="-66.04" y2="347.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="V_IN_POSTFUSE" class="1">
@@ -32950,7 +32985,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="-111.76" y1="259.08" x2="-109.22" y2="259.08" width="0.1524" layer="91"/>
 <wire x1="-109.22" y1="259.08" x2="-86.36" y2="259.08" width="0.1524" layer="91"/>
 <pinref part="F1" gate="G$1" pin="2"/>
-<pinref part="D7" gate="G$1" pin="C"/>
+<pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="-109.22" y1="241.3" x2="-109.22" y2="259.08" width="0.1524" layer="91"/>
 <junction x="-109.22" y="259.08"/>
 <label x="-86.36" y="264.16" size="1.778" layer="95" xref="yes"/>
@@ -32963,57 +32998,17 @@ https://github.com/boblemaire/IoTaWatt/</text>
 </net>
 <net name="N$5" class="0">
 <segment>
-<pinref part="R26" gate="G$1" pin="1"/>
+<pinref part="R5" gate="G$1" pin="1"/>
 <pinref part="LED1" gate="G$1" pin="A"/>
 <wire x1="162.56" y1="243.84" x2="167.64" y2="243.84" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="243.84" x2="167.64" y2="238.76" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$24" class="0">
-<segment>
-<pinref part="R9" gate="G$1" pin="2"/>
-<pinref part="SJ2" gate="1" pin="2"/>
-<wire x1="264.16" y1="350.52" x2="259.08" y2="350.52" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="VCC_ESP" class="0">
-<segment>
-<wire x1="142.24" y1="444.5" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="ESP-12" gate="G$1" pin="VCC"/>
-<wire x1="137.16" y1="444.5" x2="137.16" y2="457.2" width="0.1524" layer="91"/>
-<junction x="137.16" y="444.5"/>
-<pinref part="R19" gate="G$1" pin="2"/>
-<wire x1="137.16" y1="457.2" x2="111.76" y2="457.2" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="457.2" x2="109.22" y2="457.2" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="434.34" x2="137.16" y2="434.34" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="434.34" x2="137.16" y2="444.5" width="0.1524" layer="91"/>
-<pinref part="C22" gate="G$1" pin="2"/>
-<wire x1="96.52" y1="467.36" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="457.2" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
-<label x="111.76" y="457.2" size="1.778" layer="95"/>
-<pinref part="R7" gate="G$1" pin="2"/>
-<wire x1="142.24" y1="477.52" x2="111.76" y2="477.52" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="477.52" x2="111.76" y2="467.36" width="0.1524" layer="91"/>
-<junction x="111.76" y="467.36"/>
-<wire x1="68.58" y1="477.52" x2="111.76" y2="477.52" width="0.1524" layer="91"/>
-<junction x="111.76" y="477.52"/>
-<wire x1="142.24" y1="444.5" x2="142.24" y2="477.52" width="0.1524" layer="91"/>
-<pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="68.58" y1="477.52" x2="68.58" y2="469.9" width="0.1524" layer="91"/>
-<pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="48.26" y1="469.9" x2="48.26" y2="477.52" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="477.52" x2="68.58" y2="477.52" width="0.1524" layer="91"/>
-<junction x="68.58" y="477.52"/>
-<pinref part="SJ3" gate="1" pin="1"/>
-<wire x1="142.24" y1="487.68" x2="142.24" y2="477.52" width="0.1524" layer="91"/>
-<junction x="142.24" y="477.52"/>
 </segment>
 </net>
 <net name="6.5V" class="2">
 <segment>
 <pinref part="REG1" gate="G$1" pin="VIN"/>
 <wire x1="30.48" y1="243.84" x2="38.1" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="C11T" gate="G$1" pin="+"/>
+<pinref part="C30T" gate="G$1" pin="+"/>
 <wire x1="30.48" y1="238.76" x2="30.48" y2="243.84" width="0.1524" layer="91"/>
 <pinref part="SJ4" gate="1" pin="2"/>
 <wire x1="25.4" y1="251.46" x2="30.48" y2="251.46" width="0.1524" layer="91"/>
@@ -33025,7 +33020,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <segment>
 <pinref part="SJ5" gate="1" pin="1"/>
 <wire x1="71.12" y1="243.84" x2="73.66" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="C1T" gate="G$1" pin="+"/>
+<pinref part="C31T" gate="G$1" pin="+"/>
 <wire x1="73.66" y1="243.84" x2="76.2" y2="243.84" width="0.1524" layer="91"/>
 <wire x1="71.12" y1="238.76" x2="71.12" y2="243.84" width="0.1524" layer="91"/>
 <junction x="71.12" y="243.84"/>
@@ -33050,7 +33045,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="129.54" y1="243.84" x2="127" y2="243.84" width="0.1524" layer="91"/>
 <junction x="129.54" y="243.84"/>
 <wire x1="129.54" y1="238.76" x2="129.54" y2="243.84" width="0.1524" layer="91"/>
-<pinref part="C18T" gate="G$1" pin="+"/>
+<pinref part="C32T" gate="G$1" pin="+"/>
 <pinref part="TP3" gate="G$1" pin="TP"/>
 <wire x1="129.54" y1="243.84" x2="129.54" y2="248.92" width="0.1524" layer="91"/>
 </segment>
@@ -33066,7 +33061,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="3.3V_BAT" gate="1" pin="2"/>
 </segment>
 </net>
-<net name="+5V" class="2">
+<net name="+5V" class="3">
 <segment>
 <pinref part="P+3" gate="1" pin="+5V"/>
 <wire x1="91.44" y1="279.4" x2="91.44" y2="274.32" width="0.1524" layer="91"/>
@@ -33078,10 +33073,10 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="91.44" y1="243.84" x2="101.6" y2="243.84" width="0.1524" layer="91"/>
 <wire x1="93.98" y1="274.32" x2="91.44" y2="274.32" width="0.1524" layer="91"/>
 <junction x="91.44" y="274.32"/>
-<pinref part="R13" gate="G$1" pin="2"/>
+<pinref part="R6" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="UART_ESP" gate="1" pin="4"/>
+<pinref part="UART" gate="1" pin="4"/>
 <wire x1="81.28" y1="421.64" x2="78.74" y2="421.64" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -33129,7 +33124,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH1"/>
 <wire x1="91.44" y1="355.6" x2="83.82" y2="355.6" width="0.1524" layer="91"/>
 <label x="83.82" y="355.6" size="1.778" layer="95" rot="R180"/>
-<pinref part="C11" gate="G$1" pin="1"/>
+<pinref part="C10" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="355.6" x2="91.44" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="355.6"/>
 </segment>
@@ -33151,7 +33146,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH3"/>
 <wire x1="91.44" y1="350.52" x2="83.82" y2="350.52" width="0.1524" layer="91"/>
 <label x="83.82" y="350.52" size="1.778" layer="95" rot="R180"/>
-<pinref part="C13" gate="G$1" pin="1"/>
+<pinref part="C12" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="350.52" x2="76.2" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="350.52"/>
 </segment>
@@ -33160,7 +33155,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <segment>
 <wire x1="-83.82" y1="325.12" x2="-91.44" y2="325.12" width="0.1524" layer="91"/>
 <wire x1="-91.44" y1="325.12" x2="-91.44" y2="312.42" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="2"/>
+<pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="-83.82" y1="322.58" x2="-83.82" y2="325.12" width="0.1524" layer="91"/>
 <junction x="-83.82" y="325.12"/>
 <junction x="-91.44" y="325.12"/>
@@ -33170,7 +33165,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <junction x="-66.04" y="325.12"/>
 <wire x1="-66.04" y1="325.12" x2="-66.04" y2="322.58" width="0.1524" layer="91"/>
 <pinref part="C6" gate="G$1" pin="1"/>
-<pinref part="C8" gate="G$1" pin="2"/>
+<pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="-66.04" y1="332.74" x2="-66.04" y2="325.12" width="0.1524" layer="91"/>
 <wire x1="-83.82" y1="325.12" x2="-66.04" y2="325.12" width="0.1524" layer="91"/>
 <wire x1="-91.44" y1="325.12" x2="-93.98" y2="325.12" width="0.1524" layer="91"/>
@@ -33197,8 +33192,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <segment>
 <wire x1="121.92" y1="274.32" x2="121.92" y2="281.94" width="0.1524" layer="91"/>
 <label x="121.92" y="281.94" size="1.778" layer="95" xref="yes"/>
-<pinref part="R5" gate="G$1" pin="1"/>
-<pinref part="R10" gate="G$1" pin="2"/>
+<pinref part="R7" gate="G$1" pin="1"/>
+<pinref part="R8" gate="G$1" pin="2"/>
 <wire x1="119.38" y1="274.32" x2="121.92" y2="274.32" width="0.1524" layer="91"/>
 <wire x1="121.92" y1="274.32" x2="124.46" y2="274.32" width="0.1524" layer="91"/>
 <junction x="121.92" y="274.32"/>
@@ -33217,7 +33212,7 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH5"/>
 <wire x1="91.44" y1="345.44" x2="83.82" y2="345.44" width="0.1524" layer="91"/>
 <label x="83.82" y="345.44" size="1.778" layer="95" rot="R180"/>
-<pinref part="C15" gate="G$1" pin="1"/>
+<pinref part="C14" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="345.44" x2="60.96" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="345.44"/>
 </segment>
@@ -33225,8 +33220,8 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <net name="BI_REF" class="0">
 <segment>
 <label x="106.68" y="281.94" size="1.778" layer="95" xref="yes"/>
-<pinref part="R13" gate="G$1" pin="1"/>
-<pinref part="R5" gate="G$1" pin="2"/>
+<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="R7" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="274.32" x2="106.68" y2="274.32" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="274.32" x2="109.22" y2="274.32" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="281.94" x2="106.68" y2="274.32" width="0.1524" layer="91"/>
@@ -33246,14 +33241,14 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <pinref part="MCP3208" gate="G$1" pin="CH4"/>
 <label x="83.82" y="347.98" size="1.778" layer="95" rot="R180"/>
 <wire x1="91.44" y1="347.98" x2="83.82" y2="347.98" width="0.1524" layer="91"/>
-<pinref part="C14" gate="G$1" pin="1"/>
+<pinref part="C13" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="347.98" x2="68.58" y2="365.76" width="0.1524" layer="91"/>
 <junction x="91.44" y="347.98"/>
 </segment>
 </net>
 <net name="RST" class="0">
 <segment>
-<pinref part="R19" gate="G$1" pin="1"/>
+<pinref part="R16" gate="G$1" pin="1"/>
 <pinref part="ESP-12" gate="G$1" pin="REST"/>
 <wire x1="109.22" y1="439.42" x2="109.22" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="434.34" x2="111.76" y2="434.34" width="0.1524" layer="91"/>
@@ -33272,6 +33267,19 @@ https://github.com/boblemaire/IoTaWatt/</text>
 <wire x1="15.24" y1="254" x2="15.24" y2="251.46" width="0.1524" layer="91"/>
 <junction x="10.16" y="254"/>
 <pinref part="TP5" gate="G$1" pin="TP"/>
+</segment>
+</net>
+<net name="VDD_RTC_POSTJUMPER" class="0">
+<segment>
+<pinref part="R20" gate="G$1" pin="1"/>
+<pinref part="R21" gate="G$1" pin="1"/>
+<wire x1="264.16" y1="340.36" x2="264.16" y2="345.44" width="0.1524" layer="91"/>
+<pinref part="R22" gate="G$1" pin="2"/>
+<pinref part="SJ2" gate="1" pin="2"/>
+<wire x1="264.16" y1="350.52" x2="259.08" y2="350.52" width="0.1524" layer="91"/>
+<wire x1="264.16" y1="345.44" x2="264.16" y2="350.52" width="0.1524" layer="91"/>
+<junction x="264.16" y="345.44"/>
+<junction x="264.16" y="350.52"/>
 </segment>
 </net>
 </nets>
