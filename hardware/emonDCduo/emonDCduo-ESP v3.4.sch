@@ -32466,7 +32466,7 @@ Jan Kandziora &amp;lt;jjj@gmx.de&amp;gt;</description>
 <sheets>
 <sheet>
 <plain>
-<text x="-82.55" y="184.15" size="1.778" layer="97">emonDC v3.0
+<text x="-82.55" y="184.15" size="1.778" layer="97">emonDC v3.4
 use of ESP module inspired by Heatpumpmonitor project. RTC layout taken from IoTaWatt.</text>
 <text x="-82.55" y="180.34" size="1.778" layer="97">designed by Daniel Bates     November 2018</text>
 <wire x1="38.1" y1="391.16" x2="38.1" y2="312.42" width="0.1524" layer="94"/>
