@@ -1,7 +1,7 @@
 {
     "Header": {
         "Comment": "All values are metric (mm)",
-        "CreationDate": "2018-11-27T00:36:22Z",
+        "CreationDate": "2018-12-06T07:43:54Z",
         "GenerationSoftware": {
             "Application": "EAGLE",
             "Vendor": "Autodesk",
@@ -13,7 +13,7 @@
         "BoardThickness": 1.57,
         "LayerNumber": 2,
         "Name": {
-            "ProjectId": "emonDCduo-ESP v3.2"
+            "ProjectId": "emonDCduo-ESP v3.3"
         },
         "Owner": "Daniel Bates <dgbates2@gmail.com>",
         "Size": {
