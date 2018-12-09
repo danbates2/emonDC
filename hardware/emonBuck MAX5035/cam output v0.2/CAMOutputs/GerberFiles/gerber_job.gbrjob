@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2018-12-07T14:44:05Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.2.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 0.22,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "emonBuck v0.2"
+        },
+        "Owner": "Daniel Bates <dgbates2@gmail.com>",
+        "Size": {
+            "X": 54.28,
+            "Y": 21.58
+        }
+    }
+}

@@ -1,7 +1,7 @@
 ##emonDCduo changelog
 This changelog has been written retrospectively and will miss out detail.
 
-v0.1 old versions were basically changes to the emonTX with a two shunt-monitors introduced. A dedicated power supply for DC-DC buck conversion was designed in with help from Ken Boak for the electrical theory side of things. 
+v0.1 old versions were basically changes to the emonTX with a two shunt-monitors introduced. A dedicated power supply for DC-DC buck conversion was designed in with help from Ken Boak for the electrical theory side of things.
 
 v0.4 contained in the _previous version archive attempts to integrate an atmel chip, rfm, and esp8266 module, and microSD card.
 
@@ -14,3 +14,5 @@ v1.3 minor changes for production. The resistor divider is changed for the refer
 v1.4 ‘designed by Megni’ changed to ‘designed by Daniel Bates’. The shunts and PCB traces have more isolation and 4.5mm drill hole via have been introduced for soldering directly 4mm cable to the board, for higher current applications.
 
 v2.0 Fuse and transient protection added. Board reorganised. Connectors reorganised.
+
+v3.0 All inputs fused. DC-DC Buck removed, in favour of module, dubbed emonBuck. Mounting options diversified. RTC moved under-side.
