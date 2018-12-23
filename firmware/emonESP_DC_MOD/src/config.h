@@ -58,6 +58,9 @@ extern String mqtt_user;
 extern String mqtt_pass;
 extern String mqtt_feed_prefix;
 
+// MQTT Settings
+extern String adcpost_interval;
+
 // -------------------------------------------------------------------
 // Load saved settings
 // -------------------------------------------------------------------
@@ -77,6 +80,12 @@ extern void config_save_mqtt(String server, String topic, String prefix, String 
 // Save the admin/web interface details
 // -------------------------------------------------------------------
 extern void config_save_admin(String user, String pass);
+
+// -------------------------------------------------------------------
+// Save the emonDC settings
+// -------------------------------------------------------------------
+extern void config_save_emondc(String adcinterval);
+
 
 // -------------------------------------------------------------------
 // Save the Wifi details

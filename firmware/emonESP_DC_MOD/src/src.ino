@@ -24,9 +24,10 @@
    Boston, MA 02111-1307, USA.
 */
 
-const int main_interval = 10000; // milliseconds interval for averaging samples and sending to emonCMS.
+const int main_adcpost_interval = 5000; // milliseconds interval for averaging samples and sending to emonCMS.
 
-int ADC_DelayTest = 5;
+int ADC_DelayTest = 5; //microsecond delay in ADC routine, to improve accuracy,
+                      // related to the Sample and Hold architecture of the ADC.
 
 #include "emonesp.h"
 #include "config.h"
@@ -51,7 +52,6 @@ char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursd
 #define DATAOUT           13 // MOSI 
 #define DATAIN            12 // MISO 
 #define SPICLOCK          14 // CLK
-
 
 unsigned long previousMillis = 0;
 int CH_A_CURRENT = 0;
@@ -180,11 +180,11 @@ void loop()
   CH7_ACCUMULATOR = CH7_ACCUMULATOR + CH7;
   numberofsamples++;
 
-  if (currentMillis - previousMillis >= main_interval) {
+  if (currentMillis - previousMillis >= main_adcpost_interval) {
     Serial.print("Micros: ");
     Serial.println(micros());
 
-    int overrunMillis = currentMillis % main_interval;
+    int overrunMillis = currentMillis % main_adcpost_interval;
     previousMillis = currentMillis;
     previousMillis = previousMillis - overrunMillis;
 

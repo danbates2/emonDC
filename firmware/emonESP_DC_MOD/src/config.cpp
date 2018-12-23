@@ -51,6 +51,7 @@ String mqtt_user = "";
 String mqtt_pass = "";
 String mqtt_feed_prefix = "";
 
+String adcpost_interval = "";
 
 #define EEPROM_ESID_SIZE          32
 #define EEPROM_EPASS_SIZE         64
@@ -66,6 +67,7 @@ String mqtt_feed_prefix = "";
 #define EEPROM_MQTT_FEED_PREFIX_SIZE  10
 #define EEPROM_WWW_USER_SIZE      16
 #define EEPROM_WWW_PASS_SIZE      16
+#define EEPROM_EMONDC_SETTINGS_SIZE   16
 #define EEPROM_SIZE               512
 
 #define EEPROM_ESID_START         0
@@ -96,6 +98,8 @@ String mqtt_feed_prefix = "";
 #define EEPROM_WWW_PASS_END       (EEPROM_WWW_PASS_START + EEPROM_WWW_PASS_SIZE)
 #define EEPROM_EMON_PATH_START    EEPROM_WWW_PASS_END
 #define EEPROM_EMON_PATH_END      (EEPROM_EMON_PATH_START + EEPROM_EMON_PATH_SIZE)
+#define EEPROM_EMONDC_SETTINGS_START  EEPROM_EMON_PATH_END
+#define EEPROM_EMONDC_SETTINGS_END    (EEPROM_EMONDC_SETTINGS_START + EEPROM_EMONDC_SETTINGS_SIZE)
 
 // -------------------------------------------------------------------
 // Reset EEPROM, wipes all settings
@@ -222,6 +226,15 @@ void config_save_admin(String user, String pass)
 
   EEPROM_write_string(EEPROM_WWW_USER_START, EEPROM_WWW_USER_SIZE, user);
   EEPROM_write_string(EEPROM_WWW_PASS_START, EEPROM_WWW_PASS_SIZE, pass);
+
+  EEPROM.commit();
+}
+
+void config_save_emondc(String adcinterval)
+{
+  adcpost_interval = adcinterval;
+
+  EEPROM_write_string(EEPROM_EMONDC_SETTINGS_START, EEPROM_EMONDC_SETTINGS_SIZE, adcinterval);
 
   EEPROM.commit();
 }

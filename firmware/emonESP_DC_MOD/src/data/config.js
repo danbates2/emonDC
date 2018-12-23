@@ -101,6 +101,7 @@ function ConfigViewModel() {
     "mqtt_pass": "",
     "www_username": "",
     "www_password": "",
+    "adcpost_interval": "",
     "espflash": "",
     "version": "0.0.0"
   }, baseEndpoint + '/config');
@@ -291,6 +292,23 @@ function EmonEspViewModel() {
       alert("Failed to save Admin config");
     }).always(function () {
       self.saveAdminFetching(false);
+    });
+  };
+
+  // -----------------------------------------------------------------------
+  // Event: emonDC save
+  // -----------------------------------------------------------------------
+  self.saveEmonDCFetching = ko.observable(false);
+  self.saveEmonDCSuccess = ko.observable(false);
+  self.saveEmonDC = function () {
+    self.saveEmonDCFetching(true);
+    self.saveEmonDCSuccess(false);
+    $.post(baseEndpoint + "/saveemondc", { adcinterval: self.config.adcpost_interval() }, function (data) {
+      self.saveEmonDCSuccess(true);
+    }).fail(function () {
+      alert("pisehfpkjsbdfl;gkj");
+    }).always(function () {
+      self.saveEmonDCFetching(false);
     });
   };
 

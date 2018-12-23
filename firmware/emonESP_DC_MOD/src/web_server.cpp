@@ -259,6 +259,26 @@ handleSaveAdmin(AsyncWebServerRequest *request) {
 }
 
 // -------------------------------------------------------------------
+// Save emonDC settings
+// url: /saveemondc
+// -------------------------------------------------------------------
+void
+handleSaveEmonDC(AsyncWebServerRequest *request) {
+  AsyncResponseStream *response;
+  if(false == requestPreProcess(request, response, "text/plain")) {
+    return;
+  }
+
+  String qpost_interval = request->arg("adcinterval");
+
+  config_save_emondc(qpost_interval);
+  Serial.println("testing testing saving admin settings");
+  response->setCode(200);
+  response->print("saved");
+  request->send(response);
+}
+
+// -------------------------------------------------------------------
 // Last values on atmega serial
 // url: /lastvalues
 // -------------------------------------------------------------------
@@ -618,6 +638,7 @@ web_server_setup()
   server.on("/saveemoncms", handleSaveEmoncms);
   server.on("/savemqtt", handleSaveMqtt);
   server.on("/saveadmin", handleSaveAdmin);
+  server.on("/saveemondc", handleSaveEmonDC);
 
   server.on("/reset", handleRst);
   server.on("/restart", handleRestart);

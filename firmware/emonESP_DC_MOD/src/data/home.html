@@ -251,6 +251,20 @@
           </table><br>
         </div>
       </div>
+      <!--//////////////////////////////////////////////////////////////////////////////////-->
+      <div id="nine">
+        <h2>9. EmonDC Settings</h2>
+        <div class="itembody-wrapper">
+          <p>
+            <b>ADC Post Interval:</b><br>
+            <input type="text" data-bind="textInput: config.adcpost_interval"><br><br>
+            <span></span><br><br>
+            <button data-bind="click: saveEmonDC, text: (saveEmonDCFetching() ? 'Saving' : (saveEmonDCSuccess() ? 'Saved' : 'Save')), disable: saveEmonDCFetching">Save</button>
+          </p>
+        </div>
+      </div>
+      <!--//////////////////////////////////////////////////////////////////////////////////-->
+
     </div>
   </div>
   <div id="footer-small-scrn">
