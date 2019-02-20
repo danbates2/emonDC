@@ -4,6 +4,9 @@ emonDC is a project aiming to develop DC current and voltage measuring tools com
 
 ###### Project status: prototype release, Summer 2018.
 
+![Example System Schematic](/images/emonDC_system.jpg)
+
+
 ### Target use:
 
 - 48V Solar PV systems.
