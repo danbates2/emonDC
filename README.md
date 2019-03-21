@@ -2,7 +2,8 @@
 
 emonDC is a project aiming to develop DC current and voltage measuring tools compatible with openenergymonitor.org project. The main board in development is emonDCduo, a dual-channel bidirectional shunt monitor, internet connected power data-logger and meter, aimed at generator / battery system monitoring. With modular plug-in DC-DC buck power supply, 12-bit ADC, configurable reference voltage for bidirectional measurement, backup battery powered RTC, local microSD card data-logging, and extensibility through RFM radio module and LCD.
 
-###### Project status: prototype release, Summer 2018.
+###### Project status: Development units available. Crowd-funding application in development.
+  <br/>
 
 ![Example System Schematic](/images/emonDC_system.jpg)
 
@@ -13,23 +14,22 @@ emonDC is a project aiming to develop DC current and voltage measuring tools com
 - Battery monitoring.
 - Any generator / battery system up to 64.4V.
 
-Several spinoff boards have derived of this project, in various stages of completion, the latest being the ACS770 or 772 series hall-effect current sensor breakout board. Also, an isolated FTDI adaptor, emonDCmini targeted at single channel DC monitoring with WiFi capabilities, and an emonDC shield for Arduino pattern.
-
-#### Features
+### Features
 
 Latest spec:
 
-- High-side DC sensing based on two LMP8481 chips, using either external shunts for higher currents, or an internal shunt soldered across a bridge on board, now rated at 20 amps, pending testing.
-- Bidirectional monitoring achieved with onboard reference voltage, set by leaded resistors R10 & R11, which are easier to modify by soldering than SMC resistors.
-- ESP-12S wireless module for internet connectivity. The module also manages the sampling through the external ADC.
-- 12-bit 8 channel ADC used for monitoring two channels of current, two channels of voltage, the bidirectional reference voltage, and the 3.3V for another reference.
-- MicroSD card slot for storing data locally.
-- Suitable for up to 65V DC systems (48V nominal). Onboard DC-DC step-down (buck) switching power supply based on MAX5035 set at 6.5V. Two regulators bring this down to 5V and 3.3V.
+- Two-channel high side **only** DC current and voltage sensing, up to 64.4V or 75V, suitable for a wide range of low-voltage generator/battery systems.
+- 50Amps onboard shunt rating or 1000A external shunt rating.
+- Waterproof, clear-top plastic case.
+- OLED display.
+- WiFi Connectivity.
+- Low-power mode (10mA draw).
+- Accurate 12-bit ADC.
 
 Also:
-- Extendable with RFM69Pi module
-- I2C connector for LCD screen.
-- Form designed for clear top waterproof case (WP1258555 from Lincoln-Binns).
+- It can function as independent unit, self-powered from either the generator or battery, using a buck-regulator module, storing the data to a local MicroSD card, keeping time with on-board RTC and coin-cell.
+- Radio transmission of data possible through RFM69Pi module.
+- Voltage divisions for reference voltages easily modified by soldering for maximum resolution for given system.
 
 
 ### Measurement of direct current (DC).
@@ -41,22 +41,30 @@ The diversity of approaches could be illustrated by these two websites:
 
 ### Safety
 
-Firstly, isolation! The protection of users and connected devices from floating ground voltages in certain applications. The approach at present is to make use of double isolation and warning labels. Bright warning labels stating ‘disconnect DC system before attaching USB/FTDI’ or ‘ensure common ground between DC system and other devices to be connected’ or something similar, pending advice.
-Secondly, short circuit protection needs to exist at different levels of the hardware design to avoid inadvertent damage to the unit, by mal-assembly on part of the manufacturer (PCB and assembly) or myself, or the user upon installation. This can be achieved with adding fuses and buffering certain inputs with resistors. The layout of the components will factor in safety also.
-Thirdly, transient protection. The TVS diodes specified seem to do a good job. I've taken a sparker from a cigarette lighter and shoved a few kV into the inputs while it was running. It worked just fine after a reset.
+Firstly, isolation! The protection of users and connected devices from floating ground voltages in certain applications is very important. The approach at present is to make use of suitable physical isolation and warning labels. Bright warning labels stating ‘disconnect DC system before connecting UART’ or ‘ensure common ground between DC system and other devices to be connected’ or something similar, pending advice.
+<br/>
+
+Secondly, short circuit protection needs to exist at different levels of the hardware design to avoid inadvertent damage to the unit, by mal-assembly on part of the manufacturer (PCB and assembly) or assembler, or the user upon installation. This can be achieved with adding fuses and buffering certain inputs with resistors. The layout of the components factors into the safety significantly!
+<br/>
+
+Thirdly, transient and reverse voltage protection. The TVS diodes specified seem to do a good job. I've taken a sparker from a cigarette lighter and shoved a few kV into the inputs while it was running. It worked just fine, after a reset.
+<br/>
+
+The unit is defined as a Protected Extra-Low Voltage (PELV) device, and should be, if all goes well, certified for up to 75VDC by European and 110VDC by International regulations.
 
 
 ### Approach
-- Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly.
-- Shunt monitoring provides greater flexibility, accuracy and cost-effectiveness.
-UPDATE: I'm looking into the use of Allegro ACS series hall-effect devices, as they seem to provide a high degree of accuracy, have intrinsic isolation, and are relatively cheap.
+Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly. This will change in time as the technology develops.
+<br/>
 
-1. The range of requirements in DC monitoring applications require a flexible approach because of:
-a. Unidirectional and bidirectional requirements.
-b. Amperage Ranges and associated cable cross sectional areas (CSA). For example, household 100A cables are 25mm2 or 16mm2, whereas wire for headers and breadboard carrying up to about 5A are about 0.9mm2. The target measurement range has significant physical design implications.
-c. Different cable/wire CSAs require terminations suitable to their size and application (screw terminals, bolted bus bars, soldered connections, etc.) there is no single solution.
-d. Whole battery systems can be monitored with one shunt or individual cells of the system can require a multi-cell monitoring unit.
-e. There are also high humidity, marine and automotive applications to consider in the future.
+Shunt monitoring potentially provides greater flexibility, accuracy and cost-effectiveness.
+
+1. The range of requirements in DC monitoring applications require a flexible approach because of:<br/>
+a. Unidirectional vs bidirectional measurement needs.<br/>
+b. Amperage ranges and associated cable cross sectional area. Current carriers in DC systems can range from 4mm<sup>2</sup> to over 25mm<sup>2</sup>. The target measurement range has significant physical design implications.<br/>
+c. Different cable dimensions require terminations suitable to their size and application (screw terminals, bolt ring terminals, soldered connections, etc.) there is no single solution.<br/>
+d. Whole battery systems can be monitored with one shunt or individual cells of the system can require a multi-cell monitoring unit.<br/>
+e. There are also high humidity, marine and automotive applications to consider in the future.<br/>
 
 2. When I consider cable sizes and suitable cable terminations, the design challenge of making a suitable unit for a wide current range makes it difficult to see any one PCB realistically and cost-effectively meeting ALL requirements. Unlike in many AC requirements where a different CT and burden resistor can be selected, DC demands a more targeted approach due to the different physical dimensions of suitable terminations.
 This possibly leads to the solution of designing several different boards according to the different requirements.
@@ -92,6 +100,8 @@ Could the PCB safely handle the required amps? What’s the current carrying cap
 Can PCB track be used as the shunt?
 How does heat dissipate through the PCB and how does this effect the value being monitored? Is a temperature sensor required for factoring in temperature drift?
 How much responsibility does the installer have in installing correct cable terminations for this board? What are the divisions of responsibility?
+
+Several spinoff boards have derived of this project, in various stages of completion, the latest being the ACS770 or 772 series hall-effect current sensor breakout board. Also, an isolated FTDI adaptor, emonDCmini targeted at single channel DC monitoring with WiFi capabilities, and an emonDC shield for Arduino pattern.
 
 
 ### Licence
