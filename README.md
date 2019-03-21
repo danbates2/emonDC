@@ -39,7 +39,7 @@ Also:
 emonDCduo as designed here has shunt, termination, power-supply and other module options.
 
 ##### The Shunt
-Onboard @ 50Amps max  ||  External @ 1000Amps max.
+Onboard @ 50Amps max  ||  External @ 1000Amps max.<br>
 Onboard shunts should be selected to not dissipate more than 50% of their rated value continuously [shunt power calculator](https://github.com/danbates2/emonDC/tree/master/calculators).
 
 ##### Terminations for Onboard Shunts
