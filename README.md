@@ -33,6 +33,36 @@ Also:
 - Voltage divisions for reference voltages easily modified by soldering for maximum resolution for given system.
 - The I2C port can connect control boards for power management, in development.
 
+### Hardware Options
+
+emonDCduo as designed here has shunt, termination, power-supply and other module options.
+
+###### The Shunt
+Onboard | External
+
+###### Terminations for Onboard Shunts
+- 10.16mm Pitch Terminal Block Connector, such as https://uk.farnell.com/2668653
+- 7.62mm Pitch Terminal Block Connector, such as https://uk.farnell.com/2579818
+- 5mm ring terminal bolted termination.
+
+###### Terminations for External Shunts
+- Any of the above, 7.62mm Pitch Terminal Block recommended.
+
+###### Power Supply Options
+- 5.08mm or 5.00mm Pitch terminal block for 5V direct input.
+- Buck regulator module mounting, made compatible with cheap modules on ebay, or my own modules sold for a bit more.
+
+###### Module Options
+**I2C modules:**
+- OLED Display cycles through real-time and daily data, including network information if connected.
+- RTC based on PCF8523, with coin cell backup.
+- Any I2C control module for power management.
+<br>
+
+And..
+- RFM69Pi radio module, typically 433MHz.
+
+<br>
 
 ### Measurement of direct current (DC).
 
