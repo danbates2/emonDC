@@ -1,4 +1,4 @@
-## emonDC
+## **emonDC**
 
 emonDC is a project aiming to develop DC current and voltage measuring tools compatible with openenergymonitor.org project.<br>
 The main board in development is emonDCduo, a dual-channel generator/battery monitor, WiFi enabled, aimed at solar/battery systems.
@@ -32,13 +32,15 @@ Also:
 - Radio transmission of data possible through RFM69Pi module.
 - Voltage divisions for reference voltages easily modified by soldering for maximum resolution for given system.
 - The I2C port can connect control boards for power management, in development.
+- Skipping wireless transmission, a physical cable UART connection is possible, compatible with RS485 pending testing.
 
 ### Hardware Options
 
 emonDCduo as designed here has shunt, termination, power-supply and other module options.
 
 ###### The Shunt
-Onboard | External
+Onboard @ 50Amps max  ||  External @ 1000Amps max.
+[this](https://uk.farnell.com/2668653)
 
 ###### Terminations for Onboard Shunts
 - 10.16mm Pitch Terminal Block Connector, such as [this](https://uk.farnell.com/2668653).
@@ -49,8 +51,8 @@ Onboard | External
 - Any of the above, 7.62mm Pitch Terminal Block recommended for simplicity.
 
 ###### Power Supply Options
-- 5.08mm or 5.00mm Pitch terminal block for 5V direct input.
-- Buck regulator module mounting, made compatible with [LM2596 modules on ebay](https://github.com/danbates2/emonDC/blob/master/images/LM2596_dc-dc_buck_module.jpg), or my own modules sold for a bit more. The buck module is jumper connected to one of the current sense channels.
+- 5.08mm or 5.00mm Pitch terminal block for 5V direct input. I could not enable a USB connection for the safety reasons in floating-ground systems.
+- Buck regulator module mounting, made compatible with [LM2596 modules on ebay](https://github.com/danbates2/emonDC/blob/master/images/LM2596_dc-dc_buck_module.jpg), or my own modules sold for a bit more. The buck module is jumper connected to one of the current sense channels. Note the external shunt option and buck module combination has not been tested, but should work fine theoretically.
 
 ###### Module Options
 **I2C modules:**
