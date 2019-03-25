@@ -78,6 +78,7 @@ And..
 <summary>RFM69Pi headers</summary>
 <br>
 ![RFM69Pi headers](/images/v3.6_overlay_rfm.jpg)
+</br>
 </details>
 
 <details>
