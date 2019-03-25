@@ -68,50 +68,19 @@ And..
 <br>
 
 ### Other Customisation
-<details>
-<summary>Reference voltage and line voltage divider resistors.</summary>
-<br>
-<p>
+
 [Reference voltage and line voltage divider resistors.](/images/v3.6_overlay_resistors.jpg)
-</p>
-</details>
 
-<details>
-<summary>RFM69Pi headers</summary>
-<br>
 [RFM69Pi headers](/images/v3.6_overlay_rfm.jpg)
-</br>
-</details>
 
-<details>
-<summary>Power Select header, for bringing power into an on-board buck regulator.</summary>
-<br>
 [Power Select header, for bringing power into an on-board buck regulator.](/images/v3.6_overlay_pwr.jpg)
-</details>
 
-<details>
-<summary>I2C port for the OLED or other expansions.</summary>
-<br>
-[I2C port for the OLED or other expansions.](/images/v3.6_overlay_i2c.jpg)
-</details>
-
-<details>
-<summary>GND connections, for the power-supply earth and shunt-lead shielding, if used.</summary>
-<br>
 [GND connections, for the power-supply earth and shunt-lead shielding, if used.](/images/v3.6_overlay_gnd.jpg)
-</details>
 
-<details>
-<summary>5V input location</summary>
-<br>
 [5V input location](/images/v3.6_overlay_5v.jpg)
-</details>
 
-<details>
-<summary>Shunt monitor reference select headers.</summary>
-<br>
 [Shunt monitor reference select headers.](/images/v3.6_overlay_refsel.jpg)
-</details>
+
 
 
 ### Measurement of direct current (DC).
