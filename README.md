@@ -69,9 +69,12 @@ And..
 
 ### Other Customisation
 
+Below are a set of images outlining some other customisations.
+<br>
+
 [GND connections, for the power-supply earth with a 4mm ring terminal on a mount. The terminal block for a gnd connection or shunt-lead shielding, if used.](/images/v3.6_overlay_gnd.jpg)
 
-[5V input location](/images/v3.6_overlay_5v.jpg)
+[5V input location.](/images/v3.6_overlay_5v.jpg)
 
 [Power Select header, for bringing power into an on-board buck regulator, if used.](/images/v3.6_overlay_pwr.jpg)
 
@@ -79,7 +82,7 @@ And..
 
 [Shunt monitor reference select headers.](/images/v3.6_overlay_refsel.jpg)
 
-[RFM69Pi headers](/images/v3.6_overlay_rfm.jpg)
+[RFM69Pi headers.](/images/v3.6_overlay_rfm.jpg)
 
 
 ### Measurement of direct current (DC).
