@@ -90,26 +90,25 @@ And..
 <summary>I2C port for the OLED or other expansions.</summary>
 <br>
 ![I2C port for the OLED or other expansions.](/images/v3.6_overlay_i2c.jpg)
-<details>
+</details>
 
 <details>
 <summary>GND connections, for the power-supply earth and shunt-lead shielding, if used.</summary>
 <br>
 ![GND connections, for the power-supply earth and shunt-lead shielding, if used.](/images/v3.6_overlay_gnd.jpg)
-
-<details>
+</details>
 
 <details>
 <summary>5V input location</summary>
 <br>
 ![5V input location](/images/v3.6_overlay_5v.jpg)
-<details>
+</details>
 
 <details>
 <summary>Shunt monitor reference select headers.</summary>
 <br>
 ![Shunt monitor reference select headers.](/images/v3.6_overlay_refsel.jpg)
-<details>
+</details>
 
 
 ### Measurement of direct current (DC).
