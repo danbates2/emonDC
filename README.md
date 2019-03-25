@@ -71,7 +71,9 @@ And..
 <details>
 <summary>Reference voltage and line voltage divider resistors.</summary>
 <br>
+<p>
 ![Reference voltage and line voltage divider resistors.](/images/v3.6_overlay_resistors.jpg)
+</p>
 </details>
 
 <details>
