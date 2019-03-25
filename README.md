@@ -72,19 +72,19 @@ And..
 <summary>Reference voltage and line voltage divider resistors.</summary>
 <br>
 ![Reference voltage and line voltage divider resistors.](/images/v3.6_overlay_resistors.jpg)
-<details>
+</details>
 
 <details>
 <summary>RFM69Pi headers</summary>
 <br>
 ![RFM69Pi headers](/images/v3.6_overlay_rfm.jpg)
-<details>
+</details>
 
 <details>
 <summary>Power Select header, for bringing power into an on-board buck regulator.</summary>
 <br>
 ![Power Select header, for bringing power into an on-board buck regulator.](/images/v3.6_overlay_pwr.jpg)
-<details>
+</details>
 
 <details>
 <summary>I2C port for the OLED or other expansions.</summary>
