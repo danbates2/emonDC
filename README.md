@@ -47,6 +47,7 @@ Onboard shunts should be selected to not dissipate more than 50% of their rated 
 - 10.16mm Pitch Terminal Block Connector, such as [this](https://uk.farnell.com/2668653).
 - 7.62mm Pitch Terminal Block Connector, such as [this](https://uk.farnell.com/2579818).
 - 5mm ring terminal bolted termination. Ring terminal outer-diameter not exceeding 11.5mm.
+- Directly soldered cable, using the bolt mounts.
 
 ##### Terminations for External Shunts
 - Any of the above, 7.62mm Pitch Terminal Block recommended for simplicity.
@@ -54,6 +55,7 @@ Onboard shunts should be selected to not dissipate more than 50% of their rated 
 ##### Power Supply Options
 - 5.08mm or 5.00mm Pitch terminal block for 5V direct input. I could not enable a USB connection for the safety reasons in floating-ground systems.
 - Buck regulator module mounting, made compatible with [LM2596 modules on ebay](https://github.com/danbates2/emonDC/blob/master/images/LM2596_dc-dc_buck_module.jpg), or my own modules sold for a bit more. The buck module is jumper connected to one of the current sense channels. Note the external shunt option and buck module combination has not been tested, but should work fine theoretically.
+- Buck regulator [image 1](/images/buck_reg_blue.jpg) showing cheap and available buck reg based LM2596, and [image 2](/images/buck_reg_green.jpg) using my own board which features under-voltage lockout for battery protection and adjustable output, rated 3A for 10s, or 1A continuous.
 
 ##### Module Options
 **I2C modules:**
@@ -121,7 +123,7 @@ e. There are also high humidity, marine and automotive applications to consider 
 
 2. When I consider cable sizes and suitable cable terminations, the design challenge of making a suitable unit for a wide current range makes it difficult to see any one PCB realistically and cost-effectively meeting ALL requirements. Unlike in many AC requirements where a different CT and burden resistor can be selected, DC demands a more targeted approach due to the different physical dimensions of suitable terminations.
 This possibly leads to the solution of designing several different boards according to the different requirements.
-I'm designed emonDCduo to be an alrounder as much as possible, with the option of external shunts for amperages up to 1000A.
+I'm designed emonDCduo to be an allrounder as much as possible, with the option of external shunts for amperages up to 1000A.
 
 The approach selected for first production has been dubbed emonDCduo, onboard shunts and pheonix connectors for external shunts ensure flexibility.
 
