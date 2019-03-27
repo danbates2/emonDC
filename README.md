@@ -42,7 +42,7 @@ Also:
 ### Hardware Options
 
 emonDCduo as designed here has shunt, termination, power-supply and other module options.<br>
-[See this quick demo video of the options](https://vimeo.com/319164161) and listed below in detail.
+[See this demo video of the options](https://vimeo.com/319164161) and listed below in detail.
 
 #### The Shunt
 Onboard @ 50Amps max  ||  External @ 1000Amps max.<br>
