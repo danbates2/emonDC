@@ -79,9 +79,11 @@ _note: using an onboard buck regulator is preceded by fuse F1._
 #### Enclosures
 
 emonDCduo has been designed for waterproof plastic enclosures from Lincoln Binns.
-
-![See image.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/enclosures_labelled.jpg)
 <br>
+Holes can be drilled easily, or prepared units can be bought from the OpenEnergyMonitor shop.
+<br>
+![See image.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/enclosures_labelled.jpg)
+
 <br>
 
 #### Module Options
