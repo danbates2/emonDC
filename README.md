@@ -34,8 +34,7 @@ Also:
 - The I2C port can connect control boards for power management, in development.
 - Skipping wireless transmission, a physical cable UART connection is possible, compatible with RS485 pending testing.
 
-![Ring terms, OLED display](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg
-&s=200)
+![Ring terms, OLED display](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg?&v=3&s=200)
 
 <br>
 <br>
