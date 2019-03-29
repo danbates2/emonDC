@@ -28,7 +28,7 @@ Latest spec:
 - Accurate 12-bit ADC.
 
 Also:
-- It can function as independent unit, self-powered from either the generator or battery, using a buck-regulator module, storing the data to a local MicroSD card, keeping time with on-board RTC and coin-cell.
+- It can function as independent unit self-powere using an onboard buck regulator module, connected to either channel, generator or battery. Data can be stored locally to a MicroSD card, keeping time with on-board RTC and coin-cell.
 - Radio transmission of data possible through RFM69Pi module.
 - Voltage divisions for reference voltages easily modified by soldering for maximum resolution for given system.
 - The I2C port can connect control boards for power management, in development.
@@ -48,13 +48,14 @@ Onboard @ 50Amps max  ||  External @ 1000Amps max.<br>
 Onboard shunts should be selected to not dissipate more than 50% of their rated value continuously [shunt power calculator](https://github.com/danbates2/emonDC/tree/master/calculators).
 
 #### Terminations for Onboard Shunts (up to 50Amps)
-- [For 10mm2 cable. 10.16mm pitch Terminal Block](/images/v3.6_terms_10.16mm.jpg), such as [this](https://uk.farnell.com/2668653).
-- [For 4mm2 cable. 7.62mm pitch Terminal Block](/images/v3.6_terms_7.62mm.jpg), such as [this](https://uk.farnell.com/2579818).
-- [For 6mm2 cable. 5mm Ring Terminals bolted on](/images/v3.6_terms_ring.jpg). Ring terminal outer-diameter not exceeding 11.0mm.
+- For 10mm2 cable (50Amps approx). [10.16mm pitch Terminal Block](/images/v3.6_terms_10.16mm.jpg), such as [this](https://uk.farnell.com/2668653).
+- For 4mm2 cable  (25Amps approx). [7.62mm pitch Terminal Block](/images/v3.6_terms_7.62mm.jpg), such as [this](https://uk.farnell.com/2579818).
+- For 6mm2 cable (35Amps approx). [5mm Ring Terminals bolted on](/images/v3.6_terms_ring.jpg). Ring terminal outer-diameter not exceeding 11.0mm.  
 - [Directly soldered cable](/images/v3.6_terms_bare.jpg), using the bolt mounts.
 
 #### Terminations for External Shunts
 - Any of the above, 7.62mm pitch Terminal Block recommended.
+- [Example of external shunt (external link)](https://uk.farnell.com/1339341).
 
 #### Power Supply Options
 Using a buck regulator the board can be self-powered from either current sense channel.
