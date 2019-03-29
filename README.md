@@ -63,15 +63,19 @@ Onboard shunts should be selected to not dissipate more than 50% of their rated 
 Using a buck regulator the board can be self-powered from either current sense channel.
 
 -  [My own DC-DC buck regulator](https://raw.githubusercontent.com/danbates2/emonDC/master/images/buck_reg_green.jpg) featuring under-voltage lockout for battery protection, adjustable output voltage, rated at 3A for 10s or 1A continuous.
+_note: using an onboard buck regulator is preceded by fuse F1._
 
 - The [LM2596 buck modules on ebay](https://raw.githubusercontent.com/danbates2/emonDC/master/images/LM2596_dc-dc_buck_module.jpg), shown [here](/images/buck_reg_blue.jpg) fitted.
+_note: using an onboard buck regulator is preceded by fuse F1._
 
 - [5V input with 5.08mm pitch Terminal Block](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_v5input_block.jpg) for 5V direct input. I could not enable a USB connection for the safety reasons in floating-ground systems.
 
-_note: using an onboard buck regulator is preceded by fuse F1._
+
+<br>
+<br>
 <br>
 <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/rfm68_module.jpg" width="400">
-
+_The board sets sail with a RFM69Pi module_
 <br>
 
 #### Enclosures
