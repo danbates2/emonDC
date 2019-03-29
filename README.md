@@ -28,13 +28,13 @@ Latest spec:
 - Accurate 12-bit ADC.
 
 Also:
-- It can function as independent unit self-powere using an onboard buck regulator module, connected to either channel, generator or battery. Data can be stored locally to a MicroSD card, keeping time with on-board RTC and coin-cell.
+- It can function as independent unit self-powered using an onboard buck regulator module, connected to either channel, generator or battery. Data can be stored locally to a MicroSD card, keeping time with on-board RTC and coin-cell.
 - Radio transmission of data possible through RFM69Pi module.
 - Voltage divisions for reference voltages easily modified by soldering for maximum resolution for given system.
 - The I2C port can connect control boards for power management, in development.
 - Skipping wireless transmission, a physical cable UART connection is possible, compatible with RS485 pending testing.
 <br>
- <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg" width="400">
+ <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/shoot1/clear_enclosure_standing.jpg" width="300"> <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg" width="300">
 <br>
 <br>
 
