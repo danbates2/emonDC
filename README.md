@@ -34,9 +34,9 @@ Also:
 - The I2C port can connect control boards for power management, in development.
 - Skipping wireless transmission, a physical cable UART connection is possible, compatible with RS485 pending testing.
 <br>
- <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/shoot1/clear_enclosure_standing.JPG" height="600" align="left"> <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg" height="600" align="right">
-<br>
-<br>
+ <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/shoot1/clear_enclosure_standing.JPG" height="500" align="left"> <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg" height="500" align="right">
+<br/>
+<br/>
 <p></p>
 ### Hardware Options
 
