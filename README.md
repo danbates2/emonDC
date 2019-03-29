@@ -88,7 +88,7 @@ emonDCduo has been designed for waterproof plastic enclosures from Lincoln Binns
 **I2C modules:**
 - **128x32 I2C OLED Display module** cycles through real-time and daily data, including network information if connected.
 - **RTC based on PCF8523**, with coin cell backup, parts sold as kit.
-- Any I2C control module can be fitted in parallel. Search for 'i2c gpio expander module' for some options.
+- Any I2C control module can be fitted in parallel. Search for 'i2c io expander module board' for some options, PCF8574 and PCF8575 based modules have been tested and work fine.
 <br>
 
 **Other modules:**
