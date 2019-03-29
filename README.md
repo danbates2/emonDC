@@ -50,10 +50,10 @@ Onboard @ 50Amps max  ||  External @ 1000Amps max.<br>
 Onboard shunts should be selected to not dissipate more than 50% of their rated value continuously [shunt power calculator](https://github.com/danbates2/emonDC/tree/master/calculators).
 
 #### Terminations for Onboard Shunts (up to 50Amps)
-- For 10mm2 cable (50Amps approx). [10.16mm pitch Terminal Block](/images/v3.6_terms_10.16mm.jpg), such as [this](https://uk.farnell.com/2668653).
-- For 4mm2 cable  (25Amps approx). [7.62mm pitch Terminal Block](/images/v3.6_terms_7.62mm.jpg), such as [this](https://uk.farnell.com/2579818).
-- For 6mm2 cable (35Amps approx). [5mm Ring Terminals bolted on](/images/v3.6_terms_ring.jpg). Ring terminal outer-diameter not exceeding 11.0mm.  
-- [Directly soldered cable](/images/v3.6_terms_bare.jpg), using the bolt mounts.
+- For 10mm2 cable (50Amps approx). [10.16mm pitch Terminal Block](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_10.16mm.jpg), such as [this](https://uk.farnell.com/2668653).
+- For 4mm2 cable  (25Amps approx). [7.62mm pitch Terminal Block](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_7.62mm.jpg), such as [this](https://uk.farnell.com/2579818).
+- For 6mm2 cable (35Amps approx). [5mm Ring Terminals bolted on](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_ring.jpg). Ring terminal outer-diameter not exceeding 11.0mm.  
+- [Directly soldered cable](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_bare.jpg), using the bolt mounts.
 
 #### Terminations for External Shunts
 - Any of the above, 7.62mm pitch Terminal Block recommended.
@@ -62,11 +62,11 @@ Onboard shunts should be selected to not dissipate more than 50% of their rated 
 #### Power Supply Options
 Using a buck regulator the board can be self-powered from either current sense channel.
 
--  [My own DC-DC buck regulator](/images/buck_reg_green.jpg) featuring under-voltage lockout for battery protection, adjustable output voltage, rated at 3A for 10s or 1A continuous.
+-  [My own DC-DC buck regulator](https://raw.githubusercontent.com/danbates2/emonDC/master/images/buck_reg_green.jpg) featuring under-voltage lockout for battery protection, adjustable output voltage, rated at 3A for 10s or 1A continuous.
 
-- The [LM2596 buck modules on ebay](/images/LM2596_dc-dc_buck_module.jpg), shown [here](/images/buck_reg_blue.jpg) fitted.
+- The [LM2596 buck modules on ebay](https://raw.githubusercontent.com/danbates2/emonDC/master/images/LM2596_dc-dc_buck_module.jpg), shown [here](/images/buck_reg_blue.jpg) fitted.
 
-- [5V input with 5.08mm pitch Terminal Block](/images/v3.6_terms_v5input_block.jpg) for 5V direct input. I could not enable a USB connection for the safety reasons in floating-ground systems.
+- [5V input with 5.08mm pitch Terminal Block](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_v5input_block.jpg) for 5V direct input. I could not enable a USB connection for the safety reasons in floating-ground systems.
 
 _note: using an onboard buck regulator is preceded by fuse F1._
 <br>
@@ -76,7 +76,7 @@ _note: using an onboard buck regulator is preceded by fuse F1._
 
 emonDCduo has been designed for waterproof plastic enclosures from Lincoln Binns.
 
-![See image.](/images/enclosures_labelled.jpg)
+![See image.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/enclosures_labelled.jpg)
 <br>
 <br>
 
@@ -97,15 +97,19 @@ emonDCduo has been designed for waterproof plastic enclosures from Lincoln Binns
 Below are a set of images outlining some other customisations.
 <br>
 
-- [GND connections, for the power-supply earth with a 4mm ring terminal on a mount. The terminal block for a gnd connection or shunt-lead shielding, if used.](/images/v3.6_overlay_gnd.jpg)
-- [5V input location.](/images/v3.6_overlay_5v.jpg)
-- [Power Select header, for bringing power into an on-board buck regulator, if used.](/images/v3.6_overlay_pwr.jpg)
-- [Reference voltage and line voltage divider resistors.](/images/v3.6_overlay_resistors.jpg)
-- [Shunt monitor reference select headers.](/images/v3.6_overlay_refsel.jpg)
-- [RFM69Pi headers.](/images/v3.6_overlay_rfm.jpg)
-- [3D Printed Case.](/images/3dprinted_case_1.jpg)
-- [Lightning protection using GDT.](https://uk.farnell.com/1843306)
+- [GND connections, for the power-supply earth with a 4mm ring terminal on a mount. The terminal block for a gnd connection or shunt-lead shielding, if used.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_gnd.jpg)
+- [5V input location.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_5v.jpg)
+- [Power Select header, for bringing power into an on-board buck regulator, if used.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_pwr.jpg)
+- [Reference voltage and line voltage divider resistors.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_resistors.jpg)
+- [Shunt monitor reference select headers.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_refsel.jpg)
+- [RFM69Pi headers.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_rfm.jpg)
+- [3D Printed Case.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/3dprinted_case_1.jpg)
+- [Lightning protection using GDT (external link).](https://uk.farnell.com/1843306)
 
+
+### Online Support
+
+Post questions and find answers at https://community.openenergymonitor.org/
 ### Measurement of direct current (DC).
 
 This is a project description but also a collection of ideas and findings.
