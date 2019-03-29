@@ -70,6 +70,8 @@ Using a buck regulator the board can be self-powered from either current sense c
 
 _note: using an onboard buck regulator is preceded by fuse F1._
 <br>
+<img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/rfm68_module.jpg" width="400">
+
 <br>
 
 #### Enclosures
