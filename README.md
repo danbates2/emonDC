@@ -35,7 +35,7 @@ Also:
 - Skipping wireless transmission, a physical cable UART connection is possible, compatible with RS485 pending testing.
 <br>
 
- <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/shoot1/shoot1clear_insideDisplay.jpg" height="500">
+ <img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/shoot1clear_insideDisplay.jpg" height="500">
 
 <br>
 <br>
