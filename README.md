@@ -74,8 +74,7 @@ _note: using an onboard buck regulator is preceded by fuse F1._
 <br>
 <br>
 <br>
-<div style="width:400px; font-size:80%; text-align:center;"><img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/rfm68_module.jpg" alt="The board sets sail with a RFM69Pi module" width="400" />The board sets sail with a RFM69Pi module</div>
-<br>
+
 
 #### Enclosures
 
@@ -94,6 +93,9 @@ emonDCduo has been designed for waterproof plastic enclosures from Lincoln Binns
 
 **Other modules:**
 - **RFM69Pi radio module** from OpenEnergyMonitor, typically 433MHz.
+<div style="width:400px; font-size:80%; text-align:center;"><img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/rfm68_module.jpg" alt="The board sets sail with a RFM69Pi module" width="400" /></div>
+The board sets sail with a RFM69Pi module
+<br>
 
 <br>
 
