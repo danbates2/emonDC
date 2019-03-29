@@ -11,9 +11,9 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 
 ### Target use:
 
-- 48V Solar PV systems.
+- 12V, 24V and 48V Solar PV systems, up to 65V
 - Battery monitoring.
-- Any generator / battery system up to 75V.
+- Remote DC datalogging.
 
 ### Features
 
@@ -34,7 +34,7 @@ Also:
 - The I2C port can connect control boards for power management, in development.
 - Skipping wireless transmission, a physical cable UART connection is possible, compatible with RS485 pending testing.
 
-![Ring terms, OLED display](/images/v3.6_terms_ring.jpg)
+![Ring terms, OLED display](/images/v3.6_terms_ring.jpg | width = 640)
 
 <br>
 <br>
