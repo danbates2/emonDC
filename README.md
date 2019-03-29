@@ -101,6 +101,12 @@ The board sets sail with a RFM69Pi module
 
 <br>
 
+### Firmware
+
+The firmware contained in the firmware folder here is based on emonESP, and follows the same flashing instructions and setup.
+https://github.com/openenergymonitor/EmonESP
+<br>
+
 ### Other Customisation
 
 Below are a set of images outlining some other customisations.
