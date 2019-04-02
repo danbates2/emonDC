@@ -105,7 +105,9 @@ The firmware contained in the firmware folder here is based on emonESP, and foll
 https://github.com/openenergymonitor/EmonESP
 <br>
 <div style="width:400px; font-size:80%; text-align:center;"><img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/emonesp_dcmod.png" alt="Firmware web-interface screengrab" width="400" /></div>
+
 <br>
+
 ### Other Customisation
 
 Below are a set of images outlining some other customisations.
