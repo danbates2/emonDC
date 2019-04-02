@@ -37,7 +37,9 @@
 #include "ota.h"
 #include "debug.h"
 
-AsyncWebServer server(80);          //Create class for Web server
+#include "emondc.h"
+
+AsyncWebServer server(80);          // Create class for Web server
 
 bool enableCors = true;
 
@@ -258,6 +260,29 @@ handleSaveAdmin(AsyncWebServerRequest *request) {
   request->send(response);
 }
 
+
+// -------------------------------------------------------------------
+// Handle emonDC sampling setting
+// url /emondc
+// -------------------------------------------------------------------
+void handleEmonDC(AsyncWebServerRequest *request) {
+  AsyncResponseStream *response;
+  if(false == requestPreProcess(request, response, "text/plain")) {
+    return;
+  }
+
+  String inStringInterval = request->arg("interval");    // string to hold input
+  
+  unsigned long qinterval = inStringInterval.toInt();
+  config_save_emondc(qinterval);
+  
+  response->setCode(200);
+  response->print("saved");
+  request->send(response);
+
+  DBUGLN(inStringInterval);
+}
+
 // -------------------------------------------------------------------
 // Last values on atmega serial
 // url: /lastvalues
@@ -303,6 +328,7 @@ handleStatus(AsyncWebServerRequest *request) {
   s += "\"packets_success\":\""+String(packets_success)+"\",";
 
   s += "\"mqtt_connected\":\""+String(mqtt_connected())+"\",";
+  
 
   s += "\"free_heap\":\"" + String(ESP.getFreeHeap()) + "\"";
 
@@ -322,6 +348,7 @@ handleStatus(AsyncWebServerRequest *request) {
   s += ",\"mqtt_feed_prefix\":\""+mqtt_feed_prefix+"\"";
   s += ",\"www_username\":\"" + www_username + "\"";
   //s += ",\"www_password\":\""+www_password+"\""; security risk: DONT RETURN PASSWORDS
+
 #endif
   s += "}";
 
@@ -427,122 +454,37 @@ handleInput(AsyncWebServerRequest *request) {
 }
 
 // -------------------------------------------------------------------
-// Check for updates and display current version
-// url: /firmware
-// -------------------------------------------------------------------
-void handleUpdateCheck(AsyncWebServerRequest *request) {
-  AsyncResponseStream *response;
-  if(false == requestPreProcess(request, response)) {
-    return;
-  }
-
-  DBUGLN("Running: " + currentfirmware);
-  // Get latest firmware version number
-  // BUG/HACK/TODO: This will block, should be done in the loop call
-  String latestfirmware = ota_get_latest_version();
-  DBUGLN("Latest: " + latestfirmware);
-  // Update web interface with firmware version(s)
-  String s = "{";
-  s += "\"current\":\""+currentfirmware+"\",";
-  s += "\"latest\":\""+latestfirmware+"\"";
-  s += "}";
-
-  response->setCode(200);
-  response->print(s);
-  request->send(response);
-}
-
-// -------------------------------------------------------------------
 // Update firmware
 // url: /update
 // -------------------------------------------------------------------
-void handleUpdate(AsyncWebServerRequest *request) {
-  // BUG/HACK/TODO: This will block, should be done in the loop call
-
-  AsyncResponseStream *response;
-  if(false == requestPreProcess(request, response, "text/plain")) {
-    return;
-  }
-
-
-  DBUGLN("UPDATING...");
-  delay(500);
-
-  t_httpUpdate_return ret = ota_http_update();
-
-  int retCode = 400;
-  String str = "Error";
-  switch(ret) {
-    case HTTP_UPDATE_FAILED:
-      str = "Update failed error (";
-      str += ESPhttpUpdate.getLastError();
-      str += "): ";
-      str += ESPhttpUpdate.getLastErrorString();
-      break;
-    case HTTP_UPDATE_NO_UPDATES:
-      str = "No update, running latest firmware";
-      break;
-    case HTTP_UPDATE_OK:
-      retCode = 200;
-      str = "Update done!";
-      break;
-  }
-  response->setCode(retCode);
-  response->print(str);
-  request->send(response);
-
-  DBUGLN(str);
-}
-
-// -------------------------------------------------------------------
-// Update firmware
-// url: /update
-// -------------------------------------------------------------------
-void
-handleUpdateGet(AsyncWebServerRequest *request) {
-  request->send(200, "text/html", "<form method='POST' action='/update' enctype='multipart/form-data'><input type='file' name='update'><input type='submit' value='Update'></form>");
-}
-
-void
-handleUpdatePost(AsyncWebServerRequest *request) {
-  bool shouldReboot = !Update.hasError();
-  AsyncWebServerResponse *response = request->beginResponse(200, "text/plain", shouldReboot ? "OK" : "FAIL");
-  response->addHeader("Connection", "close");
-  request->send(response);
-
-  if(shouldReboot) {
-    systemRestartTime = millis() + 1000;
-  }
-}
-
-void
-handleUpdateUpload(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final) {
-  if(!index){
-    DBUGF("Update Start: %s\n", filename.c_str());
+static void handle_update_progress_cb(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final) {
+  uint32_t free_space = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
+  if (!index) {
+    Serial.println("Update");
     Update.runAsync(true);
-    if(!Update.begin((ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000)){
-#ifdef ENABLE_DEBUG
-      Update.printError(DEBUG_PORT);
-#endif
+    if (!Update.begin(free_space)) {
+      Update.printError(Serial);
     }
   }
-  if(!Update.hasError()){
-    if(Update.write(data, len) != len){
-#ifdef ENABLE_DEBUG
-      Update.printError(DEBUG_PORT);
-#endif
-    }
+
+  if (Update.write(data, len) != len) {
+    Update.printError(Serial);
   }
-  if(final){
-    if(Update.end(true)){
-      DBUGF("Update Success: %uB\n", index+len);
+
+  if (final) {
+    if (!Update.end(true)) {
+      Update.printError(Serial);
     } else {
-#ifdef ENABLE_DEBUG
-      Update.printError(DEBUG_PORT);
-#endif
+      // restartNow = true;//Set flag so main loop can issue restart call
+      Serial.println("Update complete");
+      delay(1000);
+      ESP.reset();
     }
   }
 }
+
+
+
 
 
 void handleNotFound(AsyncWebServerRequest *request)
@@ -627,14 +569,17 @@ web_server_setup()
   server.on("/input", handleInput);
   server.on("/lastvalues", handleLastValues);
 
-  
+  server.on("/emondc", handleEmonDC);
 
   // Simple Firmware Update Form
-  server.on("/upload", HTTP_GET, handleUpdateGet);
-  server.on("/upload", HTTP_POST, handleUpdatePost, handleUpdateUpload);
+  server.on("/upload", HTTP_POST, [](AsyncWebServerRequest * request) { request->send(200); }, handle_update_progress_cb);
 
-  server.on("/firmware", handleUpdateCheck);
-  server.on("/update", handleUpdate);
+  // Simple Firmware Update Form
+  //server.on("/upload", HTTP_GET, handleUpdateGet);
+  //server.on("/upload", HTTP_POST, handleUpdatePost, handleUpdateUpload);
+
+  //server.on("/firmware", handleUpdateCheck);
+//  server.on("/update", handleUpdate);
 
   server.onNotFound(handleNotFound);
   server.begin();

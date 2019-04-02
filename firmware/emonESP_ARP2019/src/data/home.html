@@ -200,26 +200,12 @@
       <div id="six">
         <h2>6. Firmware</h2>
         <div class="itembody-wrapper">
-          <div id="firmware" style="display:none">
-            <table>
-              <tr>
-                <th>Running</th>
-                <th>Latest</th>
-              </tr>
-              <tbody id="firmware-version">
-                <tr>
-                  <td data-bind="text: status.version"></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table><br>
-            <a href="https://github.com/openenergymonitor/EmonESP/releases">
-              View changelog</a><br>
-          </div><br>
-          <!-- <button id="updatecheck">Check for Updates</button> -->
-          <!-- <button id="update" style="display:none">Apply
-          Update</button><p><span id="update-info"></span>-->
-          </p><button id="upload">Upload</button>
+            <H3>Choose .bin file</H3>
+             <form id="uploadform" enctype="multipart/form-data" method="post" action="/upload">
+               <input id="fileupload" name="inobinfile" type="file" />
+               <br><br>
+               <button type="submit" value="submit" id="submit">Upload</button>
+             </form><br>
         </div>
       </div>
       <!--//////////////////////////////////////////////////////////////////////////////////-->
@@ -228,7 +214,7 @@
         <div class="itembody-wrapper">
           <p><b>Free RAM:</b> <span data-bind="text: scaleString(status.free_heap(), 1024, 0) + 'K'"></span></p>
           <p><b>Flash Size:</b> <span data-bind="text: scaleString(config.espflash(), 1024, 0) + 'K'"></span></p>
-          <p><b>Version:</b> <a href="https://github.com/openenergymonitor/EmonESP/releases">v<span data-bind="text: config.version"></span></a></p>
+          <p><b>Version:</b> <a href="https://github.com/danbates2/emonDC">v<span data-bind="text: config.version"></span></a></p>
           <button id="restart">Restart</button>
           <button id="reset">Factory Reset</button>
         </div>
@@ -251,6 +237,18 @@
           </table><br>
         </div>
       </div>
+      <!--//////////////////////////////////////////////////////////////////////////////////-->
+      <div id="nine">
+        <h2>9. emonDC Sampling</h2>
+        <div class="itembody-wrapper">
+          <p>
+            <b>Sampling and posting rate (milliseconds):</b><br>
+            <input type="text" value="emondc" data-bind="textInput: config.thisinterval">
+            <button data-bind="click: saveEmonDC, text: (saveEmonDCFetching() ? 'Saving' : (saveEmonDCSuccess() ? 'Saved' : 'Save')), disable: saveEmonDCFetching">Save</button>
+          </p>
+        </div>
+      </div>
+      <!--//////////////////////////////////////////////////////////////////////////////////-->
     </div>
   </div>
   <div id="footer-small-scrn">

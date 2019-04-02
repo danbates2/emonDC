@@ -101,6 +101,7 @@ function ConfigViewModel() {
     "mqtt_pass": "",
     "www_username": "",
     "www_password": "",
+    "thisinterval": "",
     "espflash": "",
     "version": "0.0.0"
   }, baseEndpoint + '/config');
@@ -294,6 +295,24 @@ function EmonEspViewModel() {
     });
   };
 
+
+  // -----------------------------------------------------------------------
+  // Event: EmonDC save
+  // -----------------------------------------------------------------------
+  self.saveEmonDCFetching = ko.observable(false);
+  self.saveEmonDCSuccess = ko.observable(false);
+  self.saveEmonDC = function () {
+    self.saveEmonDCFetching(true);
+    self.saveEmonDCSuccess(false);
+    $.post(baseEndpoint + "/emondc", { interval: self.config.thisinterval() }, function (data) {
+      self.saveEmonDCSuccess(true);
+    }).fail(function () {
+      alert("Failed to save config");
+    }).always(function () {
+      self.saveEmonDCFetching(false);
+    });
+  };
+
   // -----------------------------------------------------------------------
   // Event: Emoncms save
   // -----------------------------------------------------------------------
@@ -426,6 +445,10 @@ document.getElementById("restart").addEventListener("click", function (e) {
 // -----------------------------------------------------------------------
 // Event:Upload Firmware
 // -----------------------------------------------------------------------
-//document.getElementById("upload").addEventListener("click", function(e) {
-//  window.location.href='/upload'
-//});
+document.getElementById("submit").addEventListener("click", function(e) {
+  if (confirm("Flashing takes a minute.\nOnly flash with compatible .bin file.")) {
+  }
+  else {
+  e.preventDefault();
+  }
+});
