@@ -72,8 +72,6 @@ _note: using an onboard buck regulator is preceded by fuse F1._
 
 
 <br>
-<br>
-<br>
 
 
 #### Enclosures
@@ -107,7 +105,7 @@ The firmware contained in the firmware folder here is based on emonESP, and foll
 https://github.com/openenergymonitor/EmonESP
 <br>
 <div style="width:400px; font-size:80%; text-align:center;"><img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/emonesp_dcmod.png" alt="Firmware web-interface screengrab" width="400" /></div>
-
+<br>
 ### Other Customisation
 
 Below are a set of images outlining some other customisations.
@@ -125,7 +123,11 @@ Below are a set of images outlining some other customisations.
 
 ### Online Support
 
-Post questions and find answers at https://community.openenergymonitor.org/
+Post questions and find answers at https://community.openenergymonitor.org/   Tag me in the post with @danbates
+
+Raise issues through this repo at the Issues tab.
+
+<br>
 ### Measurement of direct current (DC).
 
 This is a project description but also a collection of ideas and findings.
