@@ -9,7 +9,7 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 ![Example System Schematic](/images/emonDC_system.jpg)
 
 
-## Target use:
+## Target Uses
 
 - 12V, 24V and 48V Solar PV systems, up to 65V
 - Battery monitoring.
@@ -19,9 +19,15 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 
 ## Contents
 <!-- toc -->
+- [Target Uses](#Target Uses)
 - [Features](#Features)
-  * [Requirements](#requirements)
-    +
+- [Hardware Options](#Hardware Options)
+  - [The Shunt](#The Shunt)
+  - [The Shunt](#The Shunt)
+  - [The Shunt](#The Shunt)
+  - [The Shunt](#The Shunt)
+  - [The Shunt](#The Shunt)
+  - 
 
 <!-- tocstop -->
 
