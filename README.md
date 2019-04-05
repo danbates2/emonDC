@@ -200,7 +200,7 @@ Thirdly, transient and reverse voltage protection. The TVS diodes specified seem
 The unit is defined as a Protected Extra-Low Voltage (PELV) device, and should be, if all goes well, certified for up to 75VDC by European and 110VDC by International regulations.
 
 
-## Approach
+## Approaches
 Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly. This will change in time as the technology develops.
 <br/>
 
@@ -227,15 +227,16 @@ The approach selected for first production has been dubbed emonDCduo, onboard sh
 
 6. High-side vs. low-side sensing… This shunt monitor needs to be capable of handling both applications, which means using a shunt monitor IC capable of high-side measurement. The device should ideally handle a wide common-mode voltage range, say up to 80V, and protection be in place for voltage over the common-mode voltage limit of the chip.
 
-## Project Aims
+## Wider Project Aims
 
+Educated on working with installing hardware, cabling, the use of tools and various practical aspects.
 Create as flexible as possible unit. Aiming primarily at domestic solar, wind and battery applications.
 Compare hall-effect type to shunt monitor type DC measuring approaches, particularly in relation to safety, accuracy and flexibility.
 Integrate wireless Tx function using RFM69pi and ESP8266.
 Explore potential for AC monitoring applications.
 To ascertain for certain the viability or necessity of a two part system. Such as Part A: Tx PCB and Part B: DC monitoring shield.
 Investigate a calibration routine.
-Look at case design.
+Look at case design in more detail.
 Look at the energy efficiency of different manufacturing approaches.
 Make a unit!
 
