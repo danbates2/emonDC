@@ -22,12 +22,13 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 - [Target Uses](#Target-Uses)
 - [Features](#Features)
 - [Hardware Options](#Hardware-Options)
-  - [The Shunt](#The Shunt)
-  - [The Shunt](#The Shunt)
-  - [The Shunt](#The Shunt)
-  - [The Shunt](#The Shunt)
-  - [The Shunt](#The Shunt)
-  -
+  * [The Shunt](#The-Shunt)
+  * [Internal Shunt Cable Terminations](#terminations-for-onboard-shunts-up-to-50amps)
+  * [External Shunt](#terminations-for-external-shunts)
+  * [Power Supply](#power-supply-options)
+  * [Enclosures](#Enclosures)
+  * [Extra Modules](#module-options)
+- [Firmware](#Firmware)
 
 <!-- tocstop -->
 
