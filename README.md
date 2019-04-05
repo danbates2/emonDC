@@ -29,6 +29,13 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
   * [Enclosures](#Enclosures)
   * [Extra Modules](#module-options)
 - [Firmware](#Firmware)
+- [Customisations](#other-customisation)
+- [Setup Guides](#setup-guide)
+- [Support](#online-support)
+- [Safety](#Safety)
+- [DC Monitoring Approaches][#approach]
+- [Project Aims](#project-aims)
+- [License](#license)
 
 <!-- tocstop -->
 
@@ -172,14 +179,14 @@ When looking at the PCB board top-side, the inputs are labelled 'source' and 'lo
 . Raise issues through this repo at the Issues tab.
 
 <br>
-### Measurement of direct current (DC).
+## Measurement of direct current (DC).
 
 This is a project description but also a collection of ideas and findings.
 The diversity of approaches could be illustrated by these two websites:
 - https://www.coolcomponents.co.uk/attopilot-voltage-and-current-sense-breakout-180a.html
 - http://www.victronenergy.com/upload/documents/Datasheet-Battery-monitoring-EN.pdf
 
-### Safety
+## Safety
 
 Firstly, isolation! The protection of users and connected devices from floating ground voltages in certain applications is very important. The approach at present is to make use of suitable physical isolation and warning labels. Bright warning labels stating ‘disconnect DC system before connecting UART’ or ‘ensure common ground between DC system and other devices to be connected’ or something similar, pending advice.
 <br/>
@@ -193,7 +200,7 @@ Thirdly, transient and reverse voltage protection. The TVS diodes specified seem
 The unit is defined as a Protected Extra-Low Voltage (PELV) device, and should be, if all goes well, certified for up to 75VDC by European and 110VDC by International regulations.
 
 
-### Approach
+## Approach
 Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly. This will change in time as the technology develops.
 <br/>
 
@@ -220,7 +227,7 @@ The approach selected for first production has been dubbed emonDCduo, onboard sh
 
 6. High-side vs. low-side sensing… This shunt monitor needs to be capable of handling both applications, which means using a shunt monitor IC capable of high-side measurement. The device should ideally handle a wide common-mode voltage range, say up to 80V, and protection be in place for voltage over the common-mode voltage limit of the chip.
 
-### Project Aims
+## Project Aims
 
 Create as flexible as possible unit. Aiming primarily at domestic solar, wind and battery applications.
 Compare hall-effect type to shunt monitor type DC measuring approaches, particularly in relation to safety, accuracy and flexibility.
@@ -244,7 +251,7 @@ How much responsibility does the installer have in installing correct cable term
 Several spinoff boards have derived of this project, in various stages of completion, the latest being the ACS770 or 772 series hall-effect current sensor breakout board. Also, an isolated FTDI adaptor, emonDCmini targeted at single channel DC monitoring with WiFi capabilities, and an emonDC shield for Arduino pattern.
 
 
-### Licence
+## License
 - Hardware licensed according to the TAPR Open Hardware Licence v1.0. Documentation free to use and change with accreditation to Daniel Bates @danbates2.
 https://www.tapr.org/TAPR_Open_Hardware_License_v1.0.txt
 - Software licensed licensed to GNU General Public License v3. Free to use and change with accreditation to OpenEnergyMonitor.org.
