@@ -33,7 +33,7 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 - [Setup Guides](#setup-guide)
 - [Support](#online-support)
 - [Safety](#Safety)
-- [DC Monitoring Approaches][#approach]
+- [DC Monitoring Approaches](#approach)
 - [Project Aims](#project-aims)
 - [License](#license)
 
