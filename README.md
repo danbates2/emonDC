@@ -1,4 +1,4 @@
-## **emonDC**
+# **emonDC**
 
 emonDC is a project aiming to develop DC current and voltage measuring tools compatible with openenergymonitor.org project.<br>
 The main board in development is emonDCduo, a dual-channel generator/battery monitor, WiFi enabled, aimed at solar/battery systems.
@@ -9,13 +9,23 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 ![Example System Schematic](/images/emonDC_system.jpg)
 
 
-### Target use:
+## Target use:
 
 - 12V, 24V and 48V Solar PV systems, up to 65V
 - Battery monitoring.
 - Remote DC datalogging.
 
-### Features
+**Be safe. Extra-low voltages can still mean high currents.**
+
+## Contents
+<!-- toc -->
+- [Features](#Features)
+  * [Requirements](#requirements)
+    +
+
+<!-- tocstop -->
+
+## Features
 
 Latest spec:
 
@@ -40,7 +50,7 @@ Also:
 <br>
 <br>
 
-### Hardware Options
+## Hardware Options
 
 emonDCduo as designed here has shunt, termination, power-supply and other module options.<br>
 [See this demo video of the options](https://vimeo.com/319164161), listed below in detail.
@@ -99,7 +109,7 @@ The board sets sail with a RFM69Pi module
 
 <br>
 
-### Firmware
+## Firmware
 
 The firmware contained in the firmware folder here is based on emonESP, and follows the same flashing instructions and setup.
 https://github.com/openenergymonitor/EmonESP
@@ -108,7 +118,7 @@ https://github.com/openenergymonitor/EmonESP
 
 <br>
 
-### Other Customisation
+## Other Customisation
 
 Below are a set of images outlining some other customisations.
 <br>
@@ -117,17 +127,42 @@ Below are a set of images outlining some other customisations.
 - [5V input location.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_5v.jpg)
 - [Power Select header, for bringing power into an on-board buck regulator, if used.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_pwr.jpg)
 - [Reference voltage and line voltage divider resistors.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_resistors.jpg)
-- [Shunt monitor reference select headers.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_refsel.jpg)
+- [Shunt amplifier 'reference select' headers, for uni or bi-directional measurement.. Typically generator (uni-directional and battery (bi-directional).](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_refsel.jpg)
 - [RFM69Pi headers.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_overlay_rfm.jpg)
 - [3D Printed Case.](https://raw.githubusercontent.com/danbates2/emonDC/master/images/3dprinted_case_1.jpg)
-- [Lightning protection using GDT (external link).](https://uk.farnell.com/1843306)
+- [Lightning protection using Gas Discharge Tube (GDT) (external link).](https://uk.farnell.com/1843306)
 
 
-### Online Support
+## Setup Guide
 
-Post questions and find answers at https://community.openenergymonitor.org/   Tag me in the post with @danbates
+*Plan your cabling and equipment to allow installation of this energy monitor.*<br>
+*Have an understanding of [shunts](https://en.wikipedia.org/wiki/Current_sensing#Shunt_resistors), [high-side vs low-side shunt monitoring](http://www.worldofindie.co.uk/?p=216) (emonDCduo is high-side only), and whether or not your electrical Ground needs earthing or can float.*
 
-Raise issues through this repo at the Issues tab.
+#### Example 1; 'standard' emonDCduo with enclosure, ring terminals and on-board power supply.
+
+Tools needed: screw driver / drill, crimper / pliers, 8mm spanner or ring socket (ring socket easier). And of course, something to cut cable and strip the plastic insulation from the ends.
+
+When looking at the PCB board top-side, the inputs are labelled 'source' and 'load'. The source is connected to the current origin (+ive side of shunt) and the load is connected to the destination (-ive side of shunt).
+
+1. Purchase 'standard' board through Megni shop, select hardware options to complete purchase.
+2. Take the enclosure and drill out access according to [this diagram]() (pre-drilled available from shop).
+3. Select a location near the current carrying cables and mount the empty enclosure, screwing or bolting it to a surface.
+4. You need two M5 bolts for each current channel. Put a serrated washer on each bolt, insert the bolts from the underside of the PCB, and then insert the PCB, perhaps applying sideways pressure to the bolt threads to keep them from falling out.
+5. Use the M3 screws provided to mount the PCB to the enclosure.
+6. **Disconnect power from cables to be cut.** Make the cuts and strip 15mm from the ends.
+6. With a crimping tool or pliers, crunch the ring terminals onto the copper cable ends, you should not be able to pull the cable out of the crimped end..
+7. Note the 'source' and 'load' labelling on the board, bring the ring terminals onto the bolts and place the flat washer, then fit the nut.
+8. Tighten all bolts holding onto the crimp to keep it from spinning, the serrated washer will eventually grip and greatly help to make it tight.
+9. Connect the earth via the terminal or a by using a small ring under a mounting screw.
+
+9. Install buck-regulator, power up and connect to the device by WiFi.
+
+
+## Online Support
+
+. Find answers, post questions, or msg me directly at https://community.openenergymonitor.org/  .  My username is @danbates
+
+. Raise issues through this repo at the Issues tab.
 
 <br>
 ### Measurement of direct current (DC).
