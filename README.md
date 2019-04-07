@@ -161,10 +161,10 @@ Tools needed: screw driver / drill, crimper / pliers, 8mm spanner or ring socket
 When looking at the PCB board top-side, the inputs are labelled 'source' and 'load'. The source is connected to the current origin (+ive side of shunt) and the load is connected to the destination (-ive side of shunt).
 
 - Mount enclosure, then mount PCB with bolts ready.
-- Connect current-carriers.
+- Connect current-carriers, cut cables and crimp on the ring terminals.
 - Power up and log in via WiFi to enter credentials and other emonESP settings.
 
-<details><summary>Detailed Instruction (spoiler alert!)</summary>
+<details><summary>Detailed instructions (spoiler alert!) :</summary>
 <p>
 
 1. Purchase 'standard' board through Megni shop, select hardware options to complete purchase.
@@ -183,7 +183,9 @@ When looking at the PCB board top-side, the inputs are labelled 'source' and 'lo
 </p>
 </details>
 
+#### Example 2; 'minimal' PCB, with enclosure, 5V input block, and external shunts.
 
+Soldering required, instructions to be done.
 
 ## Online Support
 
