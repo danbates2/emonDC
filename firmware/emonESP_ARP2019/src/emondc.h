@@ -7,6 +7,8 @@
 
 extern unsigned long main_emondc_interval; // default milliseconds interval for averaging samples and sending to emonCMS.
 
+extern byte emondc_settings;
+
 // extern bool go_or_no = 0; // start or stop adc sampling, saving and posting.
 
 int read_adc(int);

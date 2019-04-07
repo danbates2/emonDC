@@ -160,18 +160,29 @@ Tools needed: screw driver / drill, crimper / pliers, 8mm spanner or ring socket
 
 When looking at the PCB board top-side, the inputs are labelled 'source' and 'load'. The source is connected to the current origin (+ive side of shunt) and the load is connected to the destination (-ive side of shunt).
 
+- Mount enclosure, then mount PCB with bolts ready.
+- Connect current-carriers.
+- Power up and log in via WiFi to enter credentials and other emonESP settings.
+
+<details><summary>Detailed Instruction (spoiler alert!)</summary>
+<p>
+
 1. Purchase 'standard' board through Megni shop, select hardware options to complete purchase.
 2. Take the enclosure and drill out access according to [this diagram]() (pre-drilled available from shop).
 3. Select a location near the current carrying cables and mount the empty enclosure, screwing or bolting it to a surface.
-4. You need two M5 bolts for each current channel. Put a serrated washer on each bolt, insert the bolts from the underside of the PCB, and then insert the PCB, perhaps applying sideways pressure to the bolt threads to keep them from falling out.
+4. You need two M5 bolts for each current channel. Put a serrated washer on each bolt, insert the bolts from the underside of the PCB, and then mount the PCB with the bolt threads showing, perhaps applying sideways pressure to the bolt to keep them from falling out.
 5. Use the M3 screws provided to mount the PCB to the enclosure.
 6. **Disconnect power from cables to be cut.** Make the cuts and strip 15mm from the ends.
-6. With a crimping tool or pliers, crunch the ring terminals onto the copper cable ends, you should not be able to pull the cable out of the crimped end..
-7. Note the 'source' and 'load' labelling on the board, bring the ring terminals onto the bolts and place the flat washer, then fit the nut.
-8. Tighten all bolts holding onto the crimp to keep it from spinning, the serrated washer will eventually grip and greatly help to make it tight.
-9. Connect the earth via the terminal or a by using a small ring under a mounting screw.
+7. With a crimping tool or pliers, crunch the ring terminals onto the copper cable ends, you should not be able to pull the cable out of the crimped end..
+8. Note the 'source' and 'load' labelling on the board, bring the ring terminals onto the bolts and place the flat washer, then fit the nut.
+9. Tighten all bolts holding onto the crimp to keep it from spinning, the serrated washer will eventually grip and greatly help to make it tight.
+10. Connect the earth via the terminal or a by using a small ring under a mounting screw.
 
-9. Install buck-regulator, power up and connect to the device by WiFi.
+11. Install buck-regulator, power up and log in to to the device by WiFi, here you can enter emoncms credentials, and other settings as found in emonESP.
+
+</p>
+</details>
+
 
 
 ## Online Support
