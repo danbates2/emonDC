@@ -84,6 +84,13 @@ extern void config_save_admin(String user, String pass);
 extern void config_save_wifi(String qsid, String qpass);
 
 // -------------------------------------------------------------------
+// Save the emonDC details
+// -------------------------------------------------------------------
+extern void config_save_emondc_interval(long qinterval);
+extern void config_save_emondc_settings(byte qsettings);
+
+
+// -------------------------------------------------------------------  
 // Reset the config back to defaults
 // -------------------------------------------------------------------
 extern void config_reset();

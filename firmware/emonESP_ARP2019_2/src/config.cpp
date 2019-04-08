@@ -1,30 +1,32 @@
 /*
- * -------------------------------------------------------------------
- * EmonESP Serial to Emoncms gateway
- * -------------------------------------------------------------------
- * Adaptation of Chris Howells OpenEVSE ESP Wifi
- * by Trystan Lea, Glyn Hudson, OpenEnergyMonitor
- * All adaptation GNU General Public License as below.
- *
- * -------------------------------------------------------------------
- *
- * This file is part of OpenEnergyMonitor.org project.
- * EmonESP is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
- * EmonESP is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with EmonESP; see the file COPYING.  If not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- */
+   -------------------------------------------------------------------
+   EmonESP Serial to Emoncms gateway
+   -------------------------------------------------------------------
+   Adaptation of Chris Howells OpenEVSE ESP Wifi
+   by Trystan Lea, Glyn Hudson, OpenEnergyMonitor
+   All adaptation GNU General Public License as below.
+
+   -------------------------------------------------------------------
+
+   This file is part of OpenEnergyMonitor.org project.
+   EmonESP is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3, or (at your option)
+   any later version.
+   EmonESP is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   You should have received a copy of the GNU General Public License
+   along with EmonESP; see the file COPYING.  If not, write to the
+   Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+   Boston, MA 02111-1307, USA.
+*/
 
 #include "emonesp.h"
 #include "config.h"
+
+#include "emondc.h"
 
 #include <Arduino.h>
 #include <EEPROM.h>                   // Save config settings
@@ -107,7 +109,7 @@ String mqtt_feed_prefix = "";
 // -------------------------------------------------------------------
 // Reset EEPROM, wipes all settings
 // -------------------------------------------------------------------
-void ResetEEPROM(){
+void ResetEEPROM() {
   //DEBUG.println("Erasing EEPROM");
   for (int i = 0; i < EEPROM_SIZE; ++i) {
     EEPROM.write(i, 0);
@@ -117,22 +119,54 @@ void ResetEEPROM(){
 }
 
 void EEPROM_read_string(int start, int count, String & val) {
-  for (int i = 0; i < count; ++i){
-    byte c = EEPROM.read(start+i);
+  for (int i = 0; i < count; ++i) {
+    byte c = EEPROM.read(start + i);
     if (c != 0 && c != 255)
       val += (char) c;
   }
 }
 
 void EEPROM_write_string(int start, int count, String val) {
-  for (int i = 0; i < count; ++i){
-    if (i<val.length()) {
-      EEPROM.write(start+i, val[i]);
+  for (int i = 0; i < count; ++i) {
+    if (i < val.length()) {
+      EEPROM.write(start + i, val[i]);
     } else {
-      EEPROM.write(start+i, 0);
+      EEPROM.write(start + i, 0);
     }
   }
 }
+
+//This function will write a 4 byte (32bit) long to the eeprom at
+//the specified address to address + 3.
+void EEPROMWritelong(int address, long value)
+{
+  //Decomposition from a long to 4 bytes by using bitshift.
+  //One = Most significant -> Four = Least significant byte
+  byte four = (value & 0xFF);
+  byte three = ((value >> 8) & 0xFF);
+  byte two = ((value >> 16) & 0xFF);
+  byte one = ((value >> 24) & 0xFF);
+
+  //Write the 4 bytes into the eeprom memory.
+  EEPROM.write(address, four);
+  EEPROM.write(address + 1, three);
+  EEPROM.write(address + 2, two);
+  EEPROM.write(address + 3, one);
+}
+
+long EEPROMReadlong(int address)
+{
+  //Read the 4 bytes from the eeprom memory.
+  byte four = EEPROM.read(address);
+  byte three = EEPROM.read(address + 1);
+  byte two = EEPROM.read(address + 2);
+  byte one = EEPROM.read(address + 3);
+
+  //Return the recomposed long by using bitshift.
+  Serial.println(((four << 0) & 0xFF) + ((three << 8) & 0xFFFF) + ((two << 16) & 0xFFFFFF) + ((one << 24) & 0xFFFFFFFF));
+  return ((four << 0) & 0xFF) + ((three << 8) & 0xFFFF) + ((two << 16) & 0xFFFFFF) + ((one << 24) & 0xFFFFFFFF);
+}
+
 
 // -------------------------------------------------------------------
 // Load saved settings from EEPROM
@@ -169,8 +203,11 @@ void config_load_settings()
   EEPROM_read_string(EEPROM_WWW_PASS_START, EEPROM_WWW_PASS_SIZE, www_password);
 
   // emonDC settings
-  EEPROM_read_string(EEPROM_POST_INTERVAL_START, EEPROM_POST_INTERVAL_END, main_emondc_interval);
-  EEPROM_read_string(EEPROM_EMONDC_SETS_START, EEPROM_EMONDC_SETS_END, emondc_settings);
+  main_emondc_interval = EEPROMReadlong(EEPROM_POST_INTERVAL_START);
+  if (main_emondc_interval <= 3000) {
+    main_emondc_interval = 5000;
+  }
+  emondc_settings = EEPROM.read(EEPROM_EMONDC_SETS_START);
 
 }
 
@@ -248,16 +285,18 @@ void config_save_wifi(String qsid, String qpass)
   EEPROM.commit();
 }
 
-void config_save_post_interval(long qinterval)
+void config_save_emondc_interval(long qinterval)
 {
-  EEPROM_write_string(EEPROM_POST_INTERVAL_START, EEPROM_POST_INTERVAL_END, qinterval);
+  main_emondc_interval = qinterval;
+  
+  EEPROMWritelong(EEPROM_POST_INTERVAL_START, qinterval);
 
   EEPROM.commit();
 }
 
 void config_save_emondc_settings(byte qsettings)
 {
-  EEPROM_write_string(EEPROM_EMONDC_SETS_START, EEPROM_EMONDC_SETS_END, qinterval);
+  EEPROM.write(EEPROM_EMONDC_SETS_START, qsettings);
 
   EEPROM.commit();
 }

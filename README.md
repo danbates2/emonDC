@@ -30,7 +30,7 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
   * [Extra Modules](#module-options)
 - [Firmware](#Firmware)
 - [Customisations](#other-customisation)
-- [Setup Guides](#setup-guide)
+- [Setup Guides](#setup-guides)
 - [Support](#online-support)
 - [Safety](#Safety)
 - [DC Monitoring Approaches](#approach)
@@ -149,7 +149,7 @@ Below are a set of images outlining some other customisations.
 - [Lightning protection using Gas Discharge Tube (GDT) (external link).](https://uk.farnell.com/1843306)
 
 
-## Setup Guide
+## Setup Guides
 
 *Plan your cabling and equipment to allow installation of this energy monitor.*<br>
 *Have an understanding of [shunts](https://en.wikipedia.org/wiki/Current_sensing#Shunt_resistors), [high-side vs low-side shunt monitoring](http://www.worldofindie.co.uk/?p=216) (emonDCduo is high-side only), and whether or not your electrical Ground needs earthing or can float.*

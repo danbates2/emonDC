@@ -8,8 +8,9 @@
 
 unsigned long main_emondc_interval = 10000;
 
-byte emondc_settings = B10010011;
-
+char emondc_settings = B10010011;
+char qsettings = B10010011;
+  
 int ADC_DelayTest = 2; // microsecond delay in ADC routine, to improve accuracy, related to the Sample and Hold architecture of the ADC.
 
 
@@ -340,16 +341,17 @@ void drawvalues(void) {
 
   display.display();
 }
-
+/*
 void config_save_emondc(unsigned long  interval)
 {
   main_emondc_interval = interval;
 
-  /*
+  
     EEPROM_write_string(EEPROM_WWW_USER_START, EEPROM_WWW_USER_SIZE, user);
     EEPROM_write_string(EEPROM_WWW_PASS_START, EEPROM_WWW_PASS_SIZE, pass);
 
     EEPROM.commit();
-  */
+  
 
 }
+*/

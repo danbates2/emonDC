@@ -43,12 +43,15 @@ void setup() {
   Serial.begin(115200);
 
   main_emondc_interval = 10000; // emondc post interval in milliseconds
-  currentfirmware = "v2.3.0_emonDCmod";
+  currentfirmware = "2.3.0_emonDCmod";
   
   DEBUG.println();
   DEBUG.print("EmonESP ");
   DEBUG.println(ESP.getChipId());
   DEBUG.println("Firmware: " + currentfirmware);
+
+  // emonDC adc sampling setup.
+  emondcsetup();
 
   // Read saved settings from the config
   config_load_settings();
@@ -61,9 +64,7 @@ void setup() {
 
   // Start the OTA update systems
   ota_setup();
-
-  // emonDC adc sampling setup.
-  emondcsetup();
+  
 
   DEBUG.println("Server started");
 

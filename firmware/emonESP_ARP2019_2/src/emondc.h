@@ -7,7 +7,7 @@
 
 extern unsigned long main_emondc_interval; // default milliseconds interval for averaging samples and sending to emonCMS.
 
-extern byte emondc_settings;
+extern char emondc_settings;
 
 // extern bool go_or_no = 0; // start or stop adc sampling, saving and posting.
 
@@ -17,7 +17,9 @@ void drawvalues(void);
 void emondcsetup(void);
 void emondcsampling(void);
 
-extern void config_save_emondc(unsigned long interval);
-
+extern void config_save_emondc_interval(long interval);
+extern void config_save_emondc_settings(char settings);
+extern long qinterval;
+extern char qsettings;
 
 #endif // _EMONESP_EMONCMS_H

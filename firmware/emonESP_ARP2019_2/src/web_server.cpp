@@ -274,7 +274,7 @@ void handleEmonDC(AsyncWebServerRequest *request) {
   String inStringInterval = request->arg("interval");    // string to hold input
   
   unsigned long qinterval = inStringInterval.toInt();
-  config_save_emondc(qinterval);
+  config_save_emondc_interval(qinterval);
   
   response->setCode(200);
   response->print("saved");
@@ -437,8 +437,7 @@ handleRestart(AsyncWebServerRequest *request) {
 // url /input
 // e.g http://192.168.0.75/input?string=CT1:3935,CT2:325,T1:12.5,T2:16.9,T3:11.2,T4:34.7
 // -------------------------------------------------------------------
-void
-handleInput(AsyncWebServerRequest *request) {
+void handleInput(AsyncWebServerRequest *request) {
   AsyncResponseStream *response;
   if(false == requestPreProcess(request, response, "text/plain")) {
     return;
