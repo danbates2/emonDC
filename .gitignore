@@ -8,3 +8,5 @@ expenses/emonDC invoices/historic dev/INVOICE_EMAIL57281612.pdf
 expenses/expenses 2.ods
 
 *.ods#
+*.odt#
+doco/DC current and voltage monitoring v1.3.odt
