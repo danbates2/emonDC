@@ -184,13 +184,11 @@ When looking at the PCB board top-side, the inputs are labelled 'source' and 'lo
 </details>
 
 #### Example 2; 'minimal' PCB, with enclosure, 5V input block, and external shunts.
-<br>
 Soldering required for minimal functioning shown below.<br>
 Then solder in two 5.08mm terminal blocks for the 5V and GND inputs.<br>
-Then [7.62mm terminal blocks](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_7.62mm.jpg) (recommended) for connecting external shunts.<br>
-
+Then [7.62mm terminal blocks](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6_terms_7.62mm.jpg) (recommended) for connecting external shunts.
+<br>
 ![Soldering Required](https://raw.githubusercontent.com/danbates2/emonDC/master/images/v3.6-mini-soldering-required.jpg)
-
 
 
 ## Online Support
