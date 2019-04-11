@@ -17,7 +17,7 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 
 **Be safe. Extra-low voltages can still mean high currents.**
 
-Find Documentation on some fundamental DC monitoring concepts in the 'doco' folder, which contains a reference pdf.
+[Find Documentation on some fundamental DC monitoring concepts in the 'doco' folder, which contains a reference pdf.](/doco/)
 
 ## Contents
 <!-- toc -->
