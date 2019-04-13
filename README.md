@@ -233,7 +233,7 @@ The unit is defined as a Protected Extra-Low Voltage (PELV) device, and should b
 Hall-effect DC monitoring ICs are simple and provide a degree of electrical isolation, however, they are inflexible and costly. This will certainly change in time as the technology develops.
 <br/>
 
-Shunt monitoring potentially provides greater flexibility, high accuracy and cost-effectiveness.
+Shunt monitoring potentially provides greater flexibility, high accuracy and cost-effectiveness, and is the route selected for emonDCduo.
 
 1. The range of requirements in DC monitoring applications require a flexible approach because of:<br/>
 a. Unidirectional vs bidirectional measurement needs.<br/>
@@ -241,6 +241,7 @@ b. Amperage ranges and associated cable cross sectional area. Current carriers i
 c. Different cable dimensions require terminations suitable to their size and application (screw terminals, bolt ring terminals, soldered connections, etc.) there is no single solution.<br/>
 d. Whole battery systems can be monitored with one shunt or individual cells of the system can require a multi-cell monitoring unit.<br/>
 e. I also consider high humidity, marine and automotive applications, and have designed DCduo for a waterproof case.<br/>
+f. A wide range of working voltages.
 
 2. When I consider cable sizes and suitable cable terminations, the design challenge of making a suitable unit for a wide current range makes it difficult to see any one PCB realistically and cost-effectively meeting ALL requirements. Unlike in many AC requirements where a different CT and burden resistor can be selected, DC demands a more targeted approach due to the different physical dimensions of suitable terminations.
 This possibly leads to the solution of designing several different boards according to the different requirements.
