@@ -25,6 +25,7 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
+#define FS_NO_GLOBALS
 #include <FS.h>                       // SPIFFS file-system: store web server html, CSS etc.
 
 #include "emonesp.h"
@@ -84,7 +85,12 @@ handleHome(AsyncWebServerRequest *request) {
       && wifi_mode == WIFI_MODE_STA) {
     return request->requestAuthentication();
   }
-
+/*
+fs::File currentfile = SPIFFS.open("/home.html", "r");
+//size_t sent = server.streamFile(file, contentType);
+request->send(currentfile, "/home.html");
+currentfile.close();
+*/
   if (SPIFFS.exists("/home.html")) {
     request->send(SPIFFS, "/home.html");
   } else {

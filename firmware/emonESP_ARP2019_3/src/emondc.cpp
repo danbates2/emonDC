@@ -72,8 +72,26 @@ String ADC_KeyValue_String = "";
 
 unsigned long currentMillis;
 
+
+// SD card
+#include <SPI.h>
+#include <SD.h>
+const int SDcard_chipSelect = 15;
+
+
 //Setup()
 void emondcsetup(void) {
+
+  Serial.print("Initializing SD card...");
+  // see if the card is present and can be initialized:
+  if (!SD.begin(SDcard_chipSelect)) {
+    Serial.println("Card failed, or not present");
+  }
+  else {
+  Serial.println("card initialized.");
+  }
+
+  
   //MCP3208
   //set pin modes
   pinMode(CHIP_SELECT_MCP, OUTPUT);
