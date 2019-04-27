@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.3.2">
+<eagle version="9.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
@@ -2952,8 +2952,8 @@ by Daniel Bates</text>
 <text x="80.247946875" y="30.054140625" size="0.889" layer="25" font="vector" ratio="15" align="bottom-center">RST</text>
 <text x="72.6230125" y="30.06135625" size="0.889" layer="25" font="vector" ratio="15" align="bottom-center">5V</text>
 <text x="105.261790625" y="42.165378125" size="1.778" layer="25" font="vector" rot="SR270">RFM69Pi</text>
-<text x="55.05763125" y="9.575534375" size="1.778" layer="25" font="vector" ratio="15" rot="R180">LCD</text>
-<text x="52.72615625" y="6.280196875" size="1.016" layer="25" font="vector" ratio="10" rot="R180">I2C</text>
+<text x="56.365125" y="10.9708625" size="1.778" layer="25" font="vector" ratio="15" rot="R180">LCD</text>
+<text x="52.72615625" y="3.54578125" size="1.016" layer="25" font="vector" ratio="10" rot="R180">I2C</text>
 <wire x1="-10" y1="40" x2="-15" y2="40" width="0.1524" layer="156"/>
 <wire x1="-7.366" y1="14.478" x2="-12.7" y2="14.478" width="0.1524" layer="156"/>
 <wire x1="-7.366" y1="65.532" x2="-12.446" y2="65.532" width="0.1524" layer="156"/>
@@ -2966,9 +2966,9 @@ by Daniel Bates</text>
 _duo_</text>
 <text x="25.95126875" y="13.377971875" size="0.889" layer="25" font="vector" ratio="15" rot="SR180">Wireless Energy 
 Monitoring Node</text>
-<text x="59.316346875" y="35.973521875" size="1.016" layer="25" font="vector" ratio="12" rot="R180">UNI</text>
-<text x="59.086159375" y="59.070703125" size="1.016" layer="25" font="vector" ratio="12" rot="R180">UNI</text>
-<text x="59.055" y="49.022" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="center-left">BI</text>
+<text x="59.196015625" y="36.093875" size="1.016" layer="25" font="vector" ratio="12" rot="R180">UNI</text>
+<text x="59.152740625" y="58.993290625" size="1.016" layer="25" font="vector" ratio="12" rot="R180">UNI</text>
+<text x="58.9862375" y="49.090775" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="center-left">BI</text>
 <text x="58.8831625" y="26.2084625" size="1.27" layer="25" font="vector" ratio="12" rot="R180" align="center-left">BI</text>
 <text x="46.42933125" y="66.17834375" size="1.905" layer="25" font="vector" ratio="13" distance="40" rot="R180" align="center">***PREPARE FOR***
 HIGH FLOATING
@@ -3000,10 +3000,10 @@ FUSES</text>
 <wire x1="96.266" y1="2.794" x2="96.266" y2="1.778" width="0.254" layer="20"/>
 <wire x1="107.95" y1="65.532" x2="96.266" y2="77.216" width="0.254" layer="20" curve="-90"/>
 <wire x1="96.266" y1="77.216" x2="96.266" y2="78.232" width="0.254" layer="20"/>
-<text x="54.468684375" y="6.862" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="center">SDA</text>
-<text x="56.878290625" y="7.58808125" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="center">SCL</text>
-<text x="59.465325" y="6.80084375" size="1.016" layer="25" font="vector" ratio="12" align="center">3V3</text>
-<text x="61.918403125" y="7.470115625" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="center">GND</text>
+<text x="54.438975" y="7.9319875" size="1.016" layer="25" font="vector" ratio="12" rot="R180" align="center">SDA</text>
+<text x="56.84858125" y="8.89584375" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="center">SCL</text>
+<text x="59.524746875" y="8.0491625" size="1.016" layer="25" font="vector" ratio="12" align="center">3V3</text>
+<text x="63.938665625" y="6.01374375" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="center">GND</text>
 <text x="97.94743125" y="29.34561875" size="0.889" layer="25" font="vector" ratio="15" align="bottom-center">Tx</text>
 <text x="103.04061875" y="29.4551875" size="0.889" layer="25" font="vector" ratio="15" align="bottom-center">Rx</text>
 <text x="78.473865625" y="72.61594375" size="1.27" layer="25" ratio="15" rot="R180" align="center">GND</text>
@@ -3023,12 +3023,14 @@ FUSES</text>
 <text x="-4.49275" y="16.118128125" size="2.54" layer="25" font="vector" ratio="17" rot="SR270" align="center">1</text>
 <text x="80.645" y="34.671" size="1.27" layer="25" font="vector">UNI</text>
 <text x="93.599" y="36.322" size="1.27" layer="25" font="vector">BI</text>
-<text x="36.10579375" y="55.046496875" size="1.27" layer="25" font="vector">Vout</text>
-<text x="36.22628125" y="49.147471875" size="1.27" layer="25" font="vector">Vcc</text>
-<text x="36.09195" y="29.6492125" size="1.27" layer="25" font="vector">Vout</text>
-<text x="36.1717" y="23.67551875" size="1.27" layer="25" font="vector">Vcc</text>
+<text x="37.520496875" y="59.52520625" size="1.27" layer="25" font="vector" ratio="12" rot="SR270">Vout</text>
+<text x="37.463471875" y="50.00671875" size="1.27" layer="25" font="vector" ratio="12" rot="SR270">Vcc</text>
+<text x="37.9042125" y="33.75805" size="1.27" layer="25" font="vector" ratio="12" rot="SR270">Vout</text>
+<text x="37.77251875" y="24.6613" size="1.27" layer="25" font="vector" ratio="12" rot="SR270">Vcc</text>
 <text x="61.4483625" y="44.645015625" size="1.397" layer="25" font="vector" ratio="12" align="bottom-center">A</text>
 <text x="61.576265625" y="40.8768375" size="1.397" layer="25" font="vector" ratio="12" align="bottom-center">B</text>
+<rectangle x1="35.091215625" y1="17.84700625" x2="37.036515625" y2="63.13890625" layer="41"/>
+<rectangle x1="35.353484375" y1="17.84700625" x2="37.298784375" y2="63.13890625" layer="42" rot="R180"/>
 </plain>
 <libraries>
 <library name="rcl">
@@ -7157,32 +7159,49 @@ type 0207, grid 2.5 mm</description>
 <description>&lt;b&gt;Jumpers&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="SJ" urn="urn:adsk.eagle:footprint:15432/1" library_version="1">
+<package name="SJW" urn="urn:adsk.eagle:footprint:15433/1" library_version="1">
 <description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
-<wire x1="1.397" y1="-1.016" x2="-1.397" y2="-1.016" width="0.1524" layer="21"/>
-<wire x1="1.397" y1="1.016" x2="1.651" y2="0.762" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-1.651" y1="0.762" x2="-1.397" y2="1.016" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-1.651" y1="-0.762" x2="-1.397" y2="-1.016" width="0.1524" layer="21" curve="90"/>
-<wire x1="1.397" y1="-1.016" x2="1.651" y2="-0.762" width="0.1524" layer="21" curve="90"/>
-<wire x1="1.651" y1="-0.762" x2="1.651" y2="0.762" width="0.1524" layer="21"/>
-<wire x1="-1.651" y1="-0.762" x2="-1.651" y2="0.762" width="0.1524" layer="21"/>
-<wire x1="-1.397" y1="1.016" x2="1.397" y2="1.016" width="0.1524" layer="21"/>
-<wire x1="1.016" y1="0" x2="1.524" y2="0" width="0.1524" layer="51"/>
-<wire x1="-1.016" y1="0" x2="-1.524" y2="0" width="0.1524" layer="51"/>
-<wire x1="-0.254" y1="-0.127" x2="-0.254" y2="0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
-<wire x1="0.254" y1="0.127" x2="0.254" y2="-0.127" width="1.27" layer="51" curve="-180" cap="flat"/>
-<smd name="1" x="-0.762" y="0" dx="1.1684" dy="1.6002" layer="1"/>
-<smd name="2" x="0.762" y="0" dx="1.1684" dy="1.6002" layer="1"/>
-<text x="-1.651" y="1.143" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="0.4001" y="0" size="0.02" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.0762" y1="-0.9144" x2="0.0762" y2="0.9144" layer="29"/>
+<wire x1="1.905" y1="-1.524" x2="-1.905" y2="-1.524" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="1.524" x2="2.159" y2="1.27" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.159" y1="1.27" x2="-1.905" y2="1.524" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-2.159" y1="-1.27" x2="-1.905" y2="-1.524" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.905" y1="-1.524" x2="2.159" y2="-1.27" width="0.1524" layer="21" curve="90"/>
+<wire x1="2.159" y1="-1.27" x2="2.159" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-2.159" y1="-1.27" x2="-2.159" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="1.524" x2="1.905" y2="1.524" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="51"/>
+<wire x1="1.524" y1="0" x2="2.032" y2="0" width="0.1524" layer="51"/>
+<wire x1="-1.524" y1="0" x2="-2.032" y2="0" width="0.1524" layer="51"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="-0.762" width="0.1524" layer="51" curve="-180"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="51" curve="180"/>
+<smd name="1" x="-1.27" y="0" dx="1.27" dy="2.54" layer="1"/>
+<smd name="2" x="1.27" y="0" dx="1.27" dy="2.54" layer="1"/>
+<text x="-2.159" y="1.778" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="1" y="0" size="0.02" layer="27">&gt;VALUE</text>
+<rectangle x1="0.762" y1="-0.762" x2="1.016" y2="0.762" layer="51"/>
+<rectangle x1="1.016" y1="-0.635" x2="1.27" y2="0.635" layer="51"/>
+<rectangle x1="1.27" y1="-0.508" x2="1.397" y2="0.508" layer="51"/>
+<rectangle x1="1.397" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+<rectangle x1="-1.016" y1="-0.762" x2="-0.762" y2="0.762" layer="51"/>
+<rectangle x1="-1.27" y1="-0.635" x2="-1.016" y2="0.635" layer="51"/>
+<rectangle x1="-1.397" y1="-0.508" x2="-1.27" y2="0.508" layer="51"/>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.397" y2="0.254" layer="51"/>
+<rectangle x1="0.9652" y1="-0.7112" x2="1.0922" y2="-0.5842" layer="51"/>
+<rectangle x1="1.3462" y1="-0.3556" x2="1.4732" y2="-0.2286" layer="51"/>
+<rectangle x1="1.3462" y1="0.2032" x2="1.4732" y2="0.3302" layer="51"/>
+<rectangle x1="0.9652" y1="0.5842" x2="1.0922" y2="0.7112" layer="51"/>
+<rectangle x1="-1.0922" y1="-0.7112" x2="-0.9652" y2="-0.5842" layer="51"/>
+<rectangle x1="-1.4478" y1="-0.3302" x2="-1.3208" y2="-0.2032" layer="51"/>
+<rectangle x1="-1.4732" y1="0.2032" x2="-1.3462" y2="0.3302" layer="51"/>
+<rectangle x1="-1.1176" y1="0.5842" x2="-0.9906" y2="0.7112" layer="51"/>
 </package>
 </packages>
 <packages3d>
-<package3d name="SJ" urn="urn:adsk.eagle:package:15471/1" type="box" library_version="1">
+<package3d name="SJW" urn="urn:adsk.eagle:package:15507/1" type="box" library_version="1">
 <description>Solder jumper</description>
 <packageinstances>
-<packageinstance name="SJ"/>
+<packageinstance name="SJW"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -7292,7 +7311,7 @@ Version 1.0&lt;br&gt;
 </package3d>
 </packages3d>
 </library>
-<library name="con-lstb" urn="urn:adsk.eagle:library:162">
+<library name="con-lstb">
 <description>&lt;b&gt;Pin Headers&lt;/b&gt;&lt;p&gt;
 Naming:&lt;p&gt;
 MA = male&lt;p&gt;
@@ -7300,7 +7319,7 @@ MA = male&lt;p&gt;
 W = angled&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="MA04-1" urn="urn:adsk.eagle:footprint:8285/1" library_version="1">
+<package name="MA04-1" urn="urn:adsk.eagle:footprint:8285/1" locally_modified="yes">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
 <wire x1="-4.445" y1="1.27" x2="-3.175" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="-3.175" y1="1.27" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
@@ -7333,9 +7352,9 @@ W = angled&lt;p&gt;
 <pad name="3" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
 <pad name="4" x="3.81" y="0" drill="1.016" shape="long" rot="R90"/>
 <text x="-5.08" y="1.651" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-6.223" y="-0.635" size="1.27" layer="21" ratio="10">1</text>
+<text x="-6.223" y="-0.635" size="1.27" layer="51" ratio="10">1</text>
 <text x="0.635" y="1.651" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="5.334" y="-0.635" size="1.27" layer="21" ratio="10">4</text>
+<text x="5.334" y="-0.635" size="1.27" layer="51" ratio="10">4</text>
 <rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
 <rectangle x1="-4.064" y1="-0.254" x2="-3.556" y2="0.254" layer="51"/>
 <rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
@@ -7343,7 +7362,7 @@ W = angled&lt;p&gt;
 </package>
 </packages>
 <packages3d>
-<package3d name="MA04-1" urn="urn:adsk.eagle:package:8337/1" type="box" library_version="1">
+<package3d name="MA04-1" urn="urn:adsk.eagle:package:8337/1" type="box">
 <description>PIN HEADER</description>
 <packageinstances>
 <packageinstance name="MA04-1"/>
@@ -7435,10 +7454,10 @@ Wickmann</description>
 <package name="2/5.08">
 <pad name="P$1" x="-2.54" y="0" drill="1.3" shape="long" rot="R90"/>
 <pad name="P$3" x="2.54" y="0" drill="1.3" shape="long" rot="R90"/>
-<wire x1="-5.84" y1="-3.91" x2="5.84" y2="-3.91" width="0.2" layer="51"/>
-<wire x1="5.84" y1="-3.91" x2="5.84" y2="3.36" width="0.2" layer="51"/>
-<wire x1="5.84" y1="3.36" x2="-5.84" y2="3.36" width="0.2" layer="51"/>
-<wire x1="-5.84" y1="3.36" x2="-5.84" y2="-3.91" width="0.2" layer="51"/>
+<wire x1="-5.84" y1="-3.91" x2="5.84" y2="-3.91" width="0.2" layer="21"/>
+<wire x1="5.84" y1="-3.91" x2="5.84" y2="3.36" width="0.2" layer="21"/>
+<wire x1="5.84" y1="3.36" x2="-5.84" y2="3.36" width="0.2" layer="21"/>
+<wire x1="-5.84" y1="3.36" x2="-5.84" y2="-3.91" width="0.2" layer="21"/>
 </package>
 </packages>
 </library>
@@ -10311,6 +10330,9 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <class number="3" name="thin_power2" width="0.254" drill="0">
 <clearance class="3" value="0.254"/>
 </class>
+<class number="4" name="HV" width="0" drill="0">
+<clearance class="4" value="0.508"/>
+</class>
 </classes>
 <designrules name="jlcpcb *">
 <description language="de">&lt;b&gt;Dirty Cheap Dirty Board Design Rules&lt;/b&gt;
@@ -10489,23 +10511,23 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 </element>
 <element name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uF 100V" x="48.21003125" y="31.306403125" smashed="yes" rot="R90">
 <attribute name="MPN" value="C1608X7S2A104K080AB" x="48.21003125" y="31.306403125" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="47.48545" y="33.088084375" size="1.016" layer="25" font="vector"/>
+<attribute name="NAME" x="47.48545" y="33.257553125" size="1.016" layer="25" font="vector"/>
 <attribute name="SPICEPREFIX" value="C" x="48.21003125" y="31.306403125" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C6" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uF 100V" x="48.18" y="23.25" smashed="yes" rot="R270">
 <attribute name="MPN" value="C1608X7S2A104K080AB" x="48.18" y="23.25" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="46.9153125" y="20.3839125" size="1.016" layer="25" font="vector"/>
+<attribute name="NAME" x="47.05084375" y="20.146659375" size="1.016" layer="25" font="vector"/>
 <attribute name="SPICEPREFIX" value="C" x="48.18" y="23.25" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R3" library="rcl7" package="0207/2V" value="1M 100V" x="50.03835" y="19.3318375" smashed="yes" rot="R270">
-<attribute name="MPN" value="MCMF006FF1004A50" x="50.03835" y="19.3318375" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="46.8321875" y="17.171475" size="1.27" layer="25" font="vector"/>
-<attribute name="OC_FARNELL" value="2401833RL" x="50.03835" y="19.3318375" size="1.778" layer="27" rot="R270" display="off"/>
+<element name="R3" library="rcl7" package="0207/2V" value="1M 100V" x="50.3433" y="19.535196875" smashed="yes" rot="R270">
+<attribute name="MPN" value="MCMF006FF1004A50" x="50.3433" y="19.535196875" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="47.069371875" y="17.171471875" size="1.27" layer="25" font="vector"/>
+<attribute name="OC_FARNELL" value="2401833RL" x="50.3433" y="19.535196875" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R4" library="rcl7" package="0207/2V" value="56K" x="53.014578125" y="14.691440625" smashed="yes" rot="R180">
-<attribute name="MPN" value="MCMF006FF7502A50" x="53.014578125" y="14.691440625" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="51.764003125" y="12.017240625" size="1.27" layer="25" font="vector"/>
-<attribute name="OC_FARNELL" value="2401804RL" x="53.014578125" y="14.691440625" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="R4" library="rcl7" package="0207/2V" value="56K" x="52.60798125" y="15.50488125" smashed="yes" rot="R180">
+<attribute name="MPN" value="MCMF006FF7502A50" x="52.60798125" y="15.50488125" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="51.35740625" y="12.7967875" size="1.27" layer="25" font="vector"/>
+<attribute name="OC_FARNELL" value="2401804RL" x="52.60798125" y="15.50488125" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="SHUNTMON-A" library="lmp8481b" package="S-PDSO-G08" value="LMP8481" x="51.43" y="52.75" smashed="yes">
 <attribute name="MF" value="TEXAS INSTRUMENTS" x="43.556" y="74.848" size="1.778" layer="27" display="off"/>
@@ -10514,12 +10536,12 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 </element>
 <element name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uF 100V" x="48.3955875" y="56.85314375" smashed="yes" rot="R90">
 <attribute name="MPN" value="C1608X7S2A104K080AB" x="26.8055875" y="10.11714375" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="47.645875" y="58.9410375" size="1.016" layer="25" font="vector"/>
+<attribute name="NAME" x="47.589403125" y="58.9410375" size="1.016" layer="25" font="vector"/>
 <attribute name="SPICEPREFIX" value="C" x="48.3955875" y="56.85314375" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C3" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1uF 100V" x="48.15666875" y="49.023334375" smashed="yes" rot="R270">
 <attribute name="MPN" value="C1608X7S2A104K080AB" x="77.11266875" y="70.613334375" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="46.67349375" y="46.046365625" size="1.016" layer="25" font="vector"/>
+<attribute name="NAME" x="46.842903125" y="46.046365625" size="1.016" layer="25" font="vector"/>
 <attribute name="SPICEPREFIX" value="C" x="48.15666875" y="49.023334375" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="REF_SEL_B" library="SparkFun-Connectors" package="1X03" value="455-1750-1-ND" x="57.86483125" y="33.554384375" smashed="yes" rot="R270">
@@ -10530,15 +10552,15 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <attribute name="PROD_ID" value="XXX-00000" x="57.86483125" y="33.554384375" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" value="455-1750-1-ND" x="57.86483125" y="33.554384375" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R1" library="rcl7" package="0207/2V" value="1M 100V" x="49.3173625" y="44.045990625" smashed="yes" rot="R270">
-<attribute name="MPN" value="MCMF006FF1004A50" x="49.3173625" y="44.045990625" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="46.297765625" y="41.99390625" size="1.27" layer="25" font="vector"/>
-<attribute name="OC_FARNELL" value="2401833RL" x="49.3173625" y="44.045990625" size="1.778" layer="27" rot="R270" display="off"/>
+<element name="R1" library="rcl7" package="0207/2V" value="1M 100V" x="49.486771875" y="43.904790625" smashed="yes" rot="R270">
+<attribute name="MPN" value="MCMF006FF1004A50" x="49.486771875" y="43.904790625" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="46.41070625" y="41.965665625" size="1.27" layer="25" font="vector"/>
+<attribute name="OC_FARNELL" value="2401833RL" x="49.486771875" y="43.904790625" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R2" library="rcl7" package="0207/2V" value="56K" x="49.354609375" y="39.587865625" smashed="yes" rot="R180">
-<attribute name="MPN" value="MCMF006FF7502A50" x="49.354609375" y="39.587865625" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="48.137" y="36.8497625" size="1.27" layer="25" font="vector"/>
-<attribute name="OC_FARNELL" value="2401804RL" x="49.354609375" y="39.587865625" size="1.778" layer="27" rot="R180" display="off"/>
+<element name="R2" library="rcl7" package="0207/2V" value="56K" x="49.52401875" y="39.587865625" smashed="yes" rot="R180">
+<attribute name="MPN" value="MCMF006FF7502A50" x="49.52401875" y="39.587865625" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="48.306409375" y="36.8497625" size="1.27" layer="25" font="vector"/>
+<attribute name="OC_FARNELL" value="2401804RL" x="49.52401875" y="39.587865625" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="ESP-12" library="ESP8266-ESP12" package="ESP8266-ESP12" value="ESP8266_ESP-12" x="81.884" y="26.67" smashed="yes" rot="R180"/>
 <element name="UART" library="JeeLabs" package="MA06-1" value="UART" x="80.256" y="28.202" smashed="yes" rot="R180">
@@ -10566,7 +10588,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <element name="REF_SEL_A" library="SparkFun-Connectors" package="1X03" value="455-1750-1-ND" x="57.855490625" y="56.409" smashed="yes" rot="R270">
 <attribute name="MF" value="MULTICOMP" x="57.855490625" y="56.409" size="1.016" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="2212S-02SG-85" x="57.855490625" y="56.409" size="1.016" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="59.797140625" y="54.06445625" size="1.27" layer="25" font="vector" ratio="20" rot="SR270" align="bottom-center"/>
+<attribute name="NAME" x="59.77238125" y="53.693028125" size="1.27" layer="25" font="vector" ratio="20" rot="SR270" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="1593458" x="57.855490625" y="56.409" size="1.016" layer="27" rot="R270" display="off"/>
 <attribute name="PROD_ID" value="XXX-00000" x="57.855490625" y="56.409" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" value="455-1750-1-ND" x="57.855490625" y="56.409" size="1.778" layer="27" rot="R270" display="off"/>
@@ -10590,9 +10612,9 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <element name="GPIO_1" library="con-lsta-RFM69Pi" package="FE05-2_RFM69PI_OULTINE" value="" x="80.124" y="24.289" smashed="yes">
 <attribute name="VALUE" x="73.774" y="19.59" size="1.27" layer="28" ratio="10"/>
 </element>
-<element name="Y1" library="microbuilder" package="CRYSTAL_8X3.8" value="32Khz" x="55.56323125" y="9.800415625" smashed="yes" rot="MR0">
-<attribute name="NAME" x="57.9987875" y="12.60669375" size="1.27" layer="26" ratio="18" rot="MR0"/>
-<attribute name="VALUE" x="57.46323125" y="12.127415625" size="0.4064" layer="28" ratio="10" rot="MR0"/>
+<element name="Y1" library="microbuilder" package="CRYSTAL_8X3.8" value="32Khz" x="55.327809375" y="11.31450625" smashed="yes" rot="MR0">
+<attribute name="NAME" x="57.763365625" y="14.120784375" size="1.27" layer="26" ratio="18" rot="MR0"/>
+<attribute name="VALUE" x="57.227809375" y="13.64150625" size="0.4064" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="PCF8523" library="emonDC parts" package="SOIC_8" value="PCF8523_RTC" x="63.8100625" y="15.43063125" smashed="yes" rot="MR180">
 <attribute name="NAME" x="63.663928125" y="18.3178875" size="1.27" layer="22" font="vector" rot="MR90"/>
@@ -10606,12 +10628,12 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <attribute name="NAME" x="71.86270625" y="14.7074625" size="1.016" layer="26" font="vector" rot="MR180"/>
 <attribute name="VALUE" x="72.657553125" y="17.7205625" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="CR1220" library="IotaWatt_parts" package="CR1220SMD" value="CR1220SMD" x="43.552059375" y="12.2472875" smashed="yes" rot="MR90">
-<attribute name="MPN" value="Harwin S8411-45R" x="43.552059375" y="12.2472875" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="35.630171875" y="13.2934125" size="1.778" layer="22" font="vector" rot="SMR270"/>
+<element name="CR1220" library="IotaWatt_parts" package="CR1220SMD" value="CR1220SMD" x="43.485003125" y="11.5516625" smashed="yes" rot="MR90">
+<attribute name="MPN" value="Harwin S8411-45R" x="43.485003125" y="11.5516625" size="1.778" layer="28" rot="MR90" display="off"/>
+<attribute name="NAME" x="35.563115625" y="12.5977875" size="1.778" layer="22" font="vector" rot="SMR270"/>
 </element>
 <element name="J5" library="SparkFun-Connectors" package="1X02" value="" x="65.989046875" y="35.549890625" smashed="yes"/>
-<element name="MICRO_SD" library="MOLEX 47219-2001" package="47219-2001_MICROSD" value="47219-2001_MICROSD" x="44.045571875" y="2.9516625" smashed="yes" rot="R90"/>
+<element name="MICRO_SD" library="MOLEX 47219-2001" package="47219-2001_MICROSD" value="47219-2001_MICROSD" x="44.5784875" y="3.098790625" smashed="yes" rot="R90"/>
 <element name="REG1" library="burr-brown-db" package="SOT223" package3d_urn="urn:adsk.eagle:package:4940/1" value="REG1117-5.0V" x="84.5" y="49.537828125" smashed="yes" rot="R180">
 <attribute name="MF" value="TEXAS INSTRUMENTS" x="84.5" y="49.537828125" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="REG1117-5.0" x="84.5" y="49.537828125" size="1.778" layer="27" rot="R180" display="off"/>
@@ -10775,14 +10797,14 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <attribute name="OC_NEWARK" value="unknown" x="81.661" y="43.18" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="82.961" y="45.78" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="SJ3" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJ" package3d_urn="urn:adsk.eagle:package:15471/1" value="" x="31.073446875" y="42.29840625" smashed="yes" rot="R180">
-<attribute name="VALUE" x="30.673346875" y="42.29840625" size="0.02" layer="27" rot="R180"/>
+<element name="SJ3" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJW" package3d_urn="urn:adsk.eagle:package:15507/1" value="" x="31.435640625" y="42.287790625" smashed="yes" rot="R180">
+<attribute name="VALUE" x="31.035540625" y="42.287790625" size="0.02" layer="27" rot="R180"/>
 </element>
-<element name="SJ7" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJ" package3d_urn="urn:adsk.eagle:package:15471/1" value="" x="31.0319375" y="16.750490625" smashed="yes">
-<attribute name="VALUE" x="31.4320375" y="16.750490625" size="0.02" layer="27"/>
+<element name="SJ7" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJW" package3d_urn="urn:adsk.eagle:package:15507/1" value="" x="31.442653125" y="18.51793125" smashed="yes">
+<attribute name="VALUE" x="31.842753125" y="18.51793125" size="0.02" layer="27"/>
 </element>
-<element name="SJ8" library="microbuilder" package="SOLDERJUMPER_CLOSEDWIRE" value="" x="51.898978125" y="44.2193375" smashed="yes" rot="R90">
-<attribute name="VALUE" x="51.898978125" y="44.6194375" size="0.02" layer="27" rot="R90"/>
+<element name="SJ8" library="microbuilder" package="SOLDERJUMPER_CLOSEDWIRE" value="" x="52.068390625" y="44.078140625" smashed="yes" rot="R90">
+<attribute name="VALUE" x="52.068390625" y="44.478240625" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="SJ9" library="microbuilder" package="SOLDERJUMPER_CLOSEDWIRE" value="" x="52.832" y="18.796" smashed="yes" rot="R90">
 <attribute name="VALUE" x="52.832" y="19.1961" size="0.02" layer="27" rot="R90"/>
@@ -10812,11 +10834,11 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <attribute name="SPICEPREFIX" value="C" x="52.03373125" y="33.5519" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="52.66873125" y="31.6469" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="C21" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1nF 100V" x="51.816" y="44.958" smashed="yes" rot="MR270">
-<attribute name="MPN" value="C1608X7S2A104K080AB" x="51.816" y="44.958" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="50.434678125" y="43.163190625" size="1.27" layer="26" rot="MR180"/>
-<attribute name="SPICEPREFIX" value="C" x="51.816" y="44.958" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="VALUE" x="53.721" y="45.593" size="1.27" layer="28" rot="MR270"/>
+<element name="C21" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="1nF 100V" x="52.07" y="44.831" smashed="yes" rot="MR270">
+<attribute name="MPN" value="C1608X7S2A104K080AB" x="52.07" y="44.831" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="NAME" x="50.688678125" y="42.909190625" size="1.27" layer="26" rot="MR180"/>
+<attribute name="SPICEPREFIX" value="C" x="52.07" y="44.831" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="VALUE" x="53.975" y="45.466" size="1.27" layer="28" rot="MR270"/>
 </element>
 <element name="RESET" library="switch-omron" library_urn="urn:adsk.eagle:library:377" package="B3F-10XX" package3d_urn="urn:adsk.eagle:package:27496/1" value="RESET_BUTT" x="102.489" y="19.939" smashed="yes" rot="R90">
 <attribute name="MF" value="" x="102.489" y="19.939" size="1.778" layer="27" rot="R90" display="off"/>
@@ -10826,12 +10848,12 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <attribute name="OC_NEWARK" value="" x="102.489" y="19.939" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="108.458" y="16.256" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="SV1" library="con-lstb" library_urn="urn:adsk.eagle:library:162" package="MA04-1" package3d_urn="urn:adsk.eagle:package:8337/1" value="" x="58.1423375" y="4.382984375" smashed="yes">
-<attribute name="MF" value="MULTICOMP" x="58.1423375" y="4.382984375" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="2212S-04SG-85" x="58.1423375" y="4.382984375" size="1.778" layer="27" display="off"/>
-<attribute name="OC_FARNELL" value="1593460" x="58.1423375" y="4.382984375" size="1.778" layer="27" display="off"/>
-<attribute name="OC_NEWARK" value="unknown" x="58.1423375" y="4.382984375" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="58.7773375" y="6.033984375" size="1.27" layer="27" ratio="10"/>
+<element name="SV1" library="con-lstb" package="MA04-1" package3d_urn="urn:adsk.eagle:package:8337/1" value="" x="58.1423375" y="5.652984375" smashed="yes">
+<attribute name="MF" value="MULTICOMP" x="58.1423375" y="5.652984375" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="2212S-04SG-85" x="58.1423375" y="5.652984375" size="1.778" layer="27" display="off"/>
+<attribute name="OC_FARNELL" value="1593460" x="58.1423375" y="5.652984375" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="58.1423375" y="5.652984375" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="58.7773375" y="7.303984375" size="1.27" layer="27" ratio="10"/>
 </element>
 <element name="U$7" library="testpad_db" package="TP0.8" value="TP0.8MM" x="80.899" y="46.228" smashed="yes"/>
 <element name="U$8" library="testpad_db" package="TP0.8" value="TP0.8MM" x="97.155" y="46.355" smashed="yes"/>
@@ -10941,17 +10963,24 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <element name="U$17" library="testpad_db" package="TP0.8" value="TP0.8MM" x="42.545" y="51.816" smashed="yes"/>
 <element name="U$18" library="testpad_db" package="TP0.8" value="TP0.8MM" x="87.412553125" y="46.2456625" smashed="yes"/>
 <element name="U$19" library="testpad_db" package="TP0.8" value="TP0.8MM" x="90.45745625" y="46.259590625" smashed="yes"/>
-<element name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJ" package3d_urn="urn:adsk.eagle:package:15471/1" value="" x="31.044203125" y="63.7467375" smashed="yes">
-<attribute name="VALUE" x="31.444303125" y="63.7467375" size="0.02" layer="27"/>
+<element name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJW" package3d_urn="urn:adsk.eagle:package:15507/1" value="" x="31.4655625" y="63.2387375" smashed="yes">
+<attribute name="VALUE" x="31.8656625" y="63.2387375" size="0.02" layer="27"/>
 </element>
-<element name="SJ14" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJ" package3d_urn="urn:adsk.eagle:package:15471/1" value="" x="31.04974375" y="38.283146875" smashed="yes">
-<attribute name="VALUE" x="31.44984375" y="38.283146875" size="0.02" layer="27"/>
+<element name="SJ14" library="jumper" library_urn="urn:adsk.eagle:library:252" package="SJW" package3d_urn="urn:adsk.eagle:package:15507/1" value="" x="31.4178375" y="37.701746875" smashed="yes">
+<attribute name="VALUE" x="31.8179375" y="37.701746875" size="0.02" layer="27"/>
 </element>
 <element name="U$20" library="DRAGON_LOGO" package="DRAGON_LOGO_NOTEXT" value="" x="27.83934375" y="5.310096875" smashed="yes" rot="MR0"/>
+<element name="SV2" library="con-lstb" package="MA04-1" package3d_urn="urn:adsk.eagle:package:8337/1" value="" x="58.1423375" y="3.112984375" smashed="yes">
+<attribute name="MF" value="MULTICOMP" x="58.1423375" y="3.112984375" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="2212S-04SG-85" x="58.1423375" y="3.112984375" size="1.778" layer="27" display="off"/>
+<attribute name="OC_FARNELL" value="1593460" x="58.1423375" y="3.112984375" size="1.778" layer="27" display="off"/>
+<attribute name="OC_NEWARK" value="unknown" x="58.1423375" y="3.112984375" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="58.7773375" y="4.763984375" size="1.27" layer="27" ratio="10"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
-<polygon width="0.127" layer="16" isolate="0.3048" thermals="no" rank="3">
+<polygon width="0.127" layer="16" isolate="0.3048" rank="3">
 <vertex x="7.112" y="77.978"/>
 <vertex x="7.112" y="65.885"/>
 <vertex x="35.06" y="65.885"/>
@@ -10963,7 +10992,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <vertex x="107.56" y="65.278"/>
 <vertex x="96.012" y="77.978"/>
 </polygon>
-<polygon width="0.254" layer="1" isolate="0.254" thermals="no" rank="3">
+<polygon width="0.254" layer="1" isolate="0.254" rank="3">
 <vertex x="-2.366" y="78.1046375"/>
 <vertex x="-2.366" y="65.909"/>
 <vertex x="35.179" y="65.909"/>
@@ -11012,10 +11041,10 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <via x="93.332925" y="68.99475" extent="1-16" drill="3.3" diameter="5.588"/>
 <via x="11.338628125" y="10.96651875" extent="1-16" drill="3.3" diameter="5.588"/>
 <via x="93.332925" y="10.96475" extent="1-16" drill="3.3" diameter="5.588"/>
-<via x="52.5890625" y="23.911775" extent="1-16" drill="0.5"/>
-<via x="46.88206875" y="19.2423125" extent="1-16" drill="0.5"/>
+<via x="52.705109375" y="23.97809375" extent="1-16" drill="0.5"/>
+<via x="46.95331875" y="19.22511875" extent="1-16" drill="0.5"/>
 <via x="42.694325" y="60.902346875" extent="1-16" drill="0.5"/>
-<via x="46.908925" y="44.2516625" extent="1-16" drill="0.5"/>
+<via x="46.513634375" y="44.64701875" extent="1-16" drill="0.5"/>
 <via x="42.546278125" y="44.09998125" extent="1-16" drill="0.5"/>
 <via x="46.91406875" y="35.5043125" extent="1-16" drill="0.5"/>
 <via x="42.7019625" y="35.7889125" extent="1-16" drill="0.5"/>
@@ -11025,7 +11054,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <via x="46.5316875" y="70.938609375" extent="1-16" drill="0.5"/>
 <contactref element="D1" pad="A"/>
 <via x="90.56719375" y="48.831146875" extent="1-16" drill="0.5"/>
-<via x="53.72064375" y="46.096759375" extent="1-16" drill="0.5"/>
+<via x="53.756453125" y="46.347465625" extent="1-16" drill="0.5"/>
 <via x="74.8856375" y="50.168459375" extent="1-16" drill="0.5"/>
 <contactref element="J5" pad="2"/>
 <contactref element="R8" pad="1"/>
@@ -11077,12 +11106,13 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <via x="75.001240625" y="17.110390625" extent="1-16" drill="0.5"/>
 <contactref element="Q1" pad="1"/>
 <contactref element="C25" pad="2"/>
-<via x="46.88206875" y="20.6393125" extent="1-16" drill="0.5"/>
+<via x="41.06334375" y="18.643725" extent="1-16" drill="0.5"/>
 <contactref element="IC1" pad="2"/>
 <contactref element="IC2" pad="2"/>
 <via x="61.44196875" y="38.467575" extent="1-16" drill="0.8"/>
 <via x="54.759334375" y="49.347740625" extent="1-16" drill="0.8"/>
 <via x="61.334065625" y="50.62259375" extent="1-16" drill="0.8"/>
+<contactref element="SV2" pad="4"/>
 </signal>
 <signal name="+3V3" class="3">
 <contactref element="GPIO_1" pad="2"/>
@@ -11132,7 +11162,8 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="73.984428125" y1="24.6148375" x2="73.984428125" y2="22.48946875" width="0.254" layer="1"/>
 <wire x1="73.984428125" y1="22.48946875" x2="69.162178125" y2="17.66721875" width="0.254" layer="1" curve="-90"/>
 <wire x1="69.162178125" y1="17.66721875" x2="61.9893125" y2="17.66721875" width="0.254" layer="1"/>
-<wire x1="41.445571875" y1="9.7316625" x2="55.662615625" y2="9.7316625" width="0.254" layer="1"/>
+<wire x1="55.662615625" y1="9.7316625" x2="42.125615625" y2="9.7316625" width="0.254" layer="1"/>
+<wire x1="41.9784875" y1="9.878790625" x2="42.125615625" y2="9.7316625" width="0.254" layer="1"/>
 <wire x1="58.6110125" y1="12.680059375" x2="58.6110125" y2="14.28891875" width="0.254" layer="1"/>
 <wire x1="58.6110125" y1="14.28891875" x2="61.9893125" y2="17.66721875" width="0.254" layer="1" curve="-90"/>
 <wire x1="102.13354375" y1="54.29954375" x2="102.095" y2="54.261" width="0.254" layer="1" curve="-90"/>
@@ -11174,9 +11205,9 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="55.662615625" y1="9.7316625" x2="58.6110125" y2="12.680059375" width="0.254" layer="1" curve="90"/>
 <wire x1="62.120575" y1="10.251209375" x2="61.601028125" y2="9.7316625" width="0.254" layer="1" curve="-90"/>
 <wire x1="61.601028125" y1="9.7316625" x2="55.662615625" y2="9.7316625" width="0.254" layer="1"/>
-<wire x1="60.25665" y1="21.0159875" x2="60.25665" y2="22.80135" width="0.254" layer="16"/>
-<wire x1="60.25665" y1="22.80135" x2="58.039" y2="25.019" width="0.254" layer="16" curve="90"/>
-<wire x1="58.039" y1="25.019" x2="57.023" y2="25.019" width="0.254" layer="16"/>
+<wire x1="60.25665" y1="21.0159875" x2="60.25665" y2="23.8450125" width="0.254" layer="16"/>
+<wire x1="60.25665" y1="23.8450125" x2="59.0826625" y2="25.019" width="0.254" layer="16" curve="90"/>
+<wire x1="59.0826625" y1="25.019" x2="57.023" y2="25.019" width="0.254" layer="16"/>
 <wire x1="57.023" y1="25.019" x2="55.753" y2="23.749" width="0.254" layer="16" curve="90"/>
 <wire x1="55.753" y1="23.749" x2="55.118" y2="23.114" width="0.254" layer="16" curve="-90"/>
 <wire x1="102.63143125" y1="56.762428125" x2="102.095" y2="55.1528625" width="0.254" layer="1"/>
@@ -11184,9 +11215,11 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="55.118" y1="23.114" x2="45.95968125" y2="23.114" width="0.254" layer="16"/>
 <wire x1="45.95968125" y1="23.114" x2="45.946765625" y2="23.126915625" width="0.254" layer="16"/>
 <wire x1="62.120575" y1="10.251209375" x2="61.81605625" y2="9.946690625" width="0.254" layer="16"/>
-<wire x1="59.4123375" y1="4.4447625" x2="59.4123375" y2="4.382984375" width="0.254" layer="16"/>
-<wire x1="61.81605625" y1="9.946690625" x2="61.81605625" y2="6.84848125" width="0.254" layer="16"/>
-<wire x1="61.81605625" y1="6.84848125" x2="59.4123375" y2="4.4447625" width="0.254" layer="16"/>
+<wire x1="59.4123375" y1="6.3273875" x2="59.4123375" y2="3.112984375" width="0.254" layer="16"/>
+<wire x1="61.81605625" y1="9.946690625" x2="61.81605625" y2="8.73110625" width="0.254" layer="16"/>
+<wire x1="61.81605625" y1="8.73110625" x2="59.4123375" y2="6.3273875" width="0.254" layer="16"/>
+<contactref element="SV2" pad="3"/>
+<wire x1="59.4123375" y1="6.3273875" x2="59.4123375" y2="5.652984375" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$14">
 </signal>
@@ -11215,7 +11248,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="54.8597125" y1="53.26144375" x2="55.008515625" y2="53.410246875" width="0.254" layer="1"/>
 <wire x1="55.008515625" y1="53.410246875" x2="55.008515625" y2="52.108046875" width="0.254" layer="1"/>
 </signal>
-<signal name="SOURCE-POS-B" class="1">
+<signal name="SOURCE-POS-B" class="4">
 <polygon width="0.1524" layer="1" thermals="no">
 <vertex x="-6" y="26.5"/>
 <vertex x="30.81" y="26.5"/>
@@ -11274,7 +11307,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <contactref element="IC2" pad="IP-@8" route="any" routetag="G$1.IP-"/>
 <contactref element="IC2" pad="IP-@17" route="any" routetag="G$1.IP-"/>
 </signal>
-<signal name="LOAD-NEG-B" class="1">
+<signal name="LOAD-NEG-B" class="4">
 <contactref element="EBW_A" pad="P$2"/>
 <contactref element="EBW_A" pad="P$18"/>
 <contactref element="EBW_A" pad="P$19"/>
@@ -11332,7 +11365,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <contactref element="IC2" pad="IP+@8" route="any" routetag="G$1.IP+"/>
 <contactref element="SJ14" pad="1"/>
 </signal>
-<signal name="SOURCE-POS-A" class="1">
+<signal name="SOURCE-POS-A" class="4">
 <contactref element="EBW_B" pad="P$1"/>
 <contactref element="EBW_B" pad="P$3"/>
 <contactref element="EBW_B" pad="P$4"/>
@@ -11449,12 +11482,10 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="81.330925" y1="18.575553125" x2="81.789553125" y2="18.575553125" width="0.254" layer="1"/>
 <wire x1="81.789553125" y1="18.575553125" x2="81.884" y2="18.67" width="0.254" layer="1" curve="90"/>
 <wire x1="62.63065" y1="9.014903125" x2="63.472075" y2="10.036359375" width="0.254" layer="16" curve="-90"/>
-<wire x1="41.445571875" y1="8.6316625" x2="42.16379375" y2="8.6316625" width="0.254" layer="1"/>
-<wire x1="42.16379375" y1="8.6316625" x2="42.72361875" y2="8.0718375" width="0.254" layer="1" curve="-90"/>
-<wire x1="42.72361875" y1="8.0718375" x2="42.72361875" y2="7.963628125" width="0.254" layer="1"/>
-<wire x1="42.72361875" y1="7.963628125" x2="43.047828125" y2="7.63941875" width="0.254" layer="1" curve="90"/>
-<wire x1="43.047828125" y1="7.63941875" x2="61.255165625" y2="7.63941875" width="0.254" layer="1"/>
-<wire x1="61.255165625" y1="7.63941875" x2="62.63065" y2="9.014903125" width="0.254" layer="1" curve="90"/>
+<wire x1="42.906609375" y1="8.9705125" x2="62.586259375" y2="8.9705125" width="0.254" layer="1"/>
+<wire x1="62.586259375" y1="8.9705125" x2="62.63065" y2="9.014903125" width="0.254" layer="1" curve="90"/>
+<wire x1="41.9784875" y1="8.778790625" x2="42.7148875" y2="8.778790625" width="0.254" layer="1"/>
+<wire x1="42.7148875" y1="8.778790625" x2="42.906609375" y2="8.9705125" width="0.254" layer="1"/>
 </signal>
 <signal name="GPIO12">
 <contactref element="ESP-12" pad="14"/>
@@ -11479,8 +11510,10 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="81.885565625" y1="20.671565625" x2="81.884" y2="20.67" width="0.254" layer="1" curve="90"/>
 <wire x1="83.44364375" y1="29.6504625" x2="83.642871875" y2="29.6504625" width="0.254" layer="16"/>
 <wire x1="83.642871875" y1="29.6504625" x2="84.682559375" y2="28.610775" width="0.254" layer="16" curve="-90"/>
-<wire x1="41.445571875" y1="6.4316625" x2="61.90703125" y2="6.4316625" width="0.254" layer="1"/>
-<wire x1="61.90703125" y1="6.4316625" x2="63.72790625" y2="8.2525375" width="0.254" layer="1" curve="90"/>
+<wire x1="63.64394375" y1="8.168575" x2="45.31885" y2="8.168575" width="0.254" layer="1"/>
+<wire x1="45.31885" y1="8.168575" x2="43.729065625" y2="6.578790625" width="0.254" layer="1"/>
+<wire x1="41.9784875" y1="6.578790625" x2="43.729065625" y2="6.578790625" width="0.254" layer="1"/>
+<wire x1="63.64394375" y1="8.168575" x2="63.72790625" y2="8.2525375" width="0.254" layer="1" curve="90"/>
 <via x="63.72790625" y="8.2525375" extent="1-16" drill="0.5"/>
 <wire x1="63.72790625" y1="8.2525375" x2="63.72790625" y2="8.564459375" width="0.254" layer="16"/>
 <wire x1="63.72790625" y1="8.564459375" x2="64.624809375" y2="9.4613625" width="0.254" layer="16" curve="-90"/>
@@ -11538,8 +11571,8 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <via x="83.620640625" y="22.77696875" extent="1-16" drill="0.5"/>
 <wire x1="83.620640625" y1="22.77696875" x2="81.99096875" y2="22.77696875" width="0.254" layer="1"/>
 <wire x1="81.99096875" y1="22.77696875" x2="81.884" y2="22.67" width="0.254" layer="1" curve="90"/>
-<wire x1="41.445571875" y1="10.8316625" x2="52.147840625" y2="10.8316625" width="0.254" layer="1"/>
-<wire x1="52.147840625" y1="10.8316625" x2="56.376059375" y2="15.05988125" width="0.254" layer="1" curve="90"/>
+<wire x1="41.9784875" y1="10.978790625" x2="52.29496875" y2="10.978790625" width="0.254" layer="1"/>
+<wire x1="52.29496875" y1="10.978790625" x2="56.376059375" y2="15.05988125" width="0.254" layer="1" curve="90"/>
 <wire x1="56.376059375" y1="15.05988125" x2="56.376059375" y2="15.236815625" width="0.254" layer="1"/>
 <via x="60.11985625" y="19.530846875" extent="1-16" drill="0.5"/>
 <wire x1="68.0043625" y1="19.483240625" x2="67.95675625" y2="19.530846875" width="0.254" layer="16"/>
@@ -11596,16 +11629,16 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <signal name="VSENSE_A">
 <contactref element="R2" pad="2"/>
 <contactref element="SJ8" pad="1"/>
-<wire x1="51.543384375" y1="43.10174375" x2="51.898978125" y2="43.4573375" width="0.254" layer="1" curve="90"/>
+<wire x1="51.712796875" y1="42.960546875" x2="52.068390625" y2="43.316140625" width="0.254" layer="1" curve="90"/>
 <wire x1="48.63895" y1="41.418990625" x2="49.302578125" y2="42.08261875" width="0.254" layer="1" curve="90"/>
 <wire x1="48.106228125" y1="40.934559375" x2="48.590659375" y2="41.418990625" width="0.254" layer="1" curve="-90"/>
-<wire x1="48.106228125" y1="40.934559375" x2="48.106228125" y2="39.609484375" width="0.254" layer="1"/>
-<wire x1="48.106228125" y1="39.609484375" x2="48.084609375" y2="39.587865625" width="0.4064" layer="1" curve="-90"/>
+<wire x1="48.106228125" y1="40.934559375" x2="48.106228125" y2="39.73565625" width="0.254" layer="1"/>
+<wire x1="48.106228125" y1="39.73565625" x2="48.25401875" y2="39.587865625" width="0.4064" layer="1" curve="-90"/>
 <contactref element="R1" pad="2"/>
-<wire x1="49.3173625" y1="42.775990625" x2="49.302578125" y2="42.76120625" width="0.254" layer="1" curve="90"/>
-<wire x1="49.302578125" y1="42.76120625" x2="49.302578125" y2="42.08261875" width="0.254" layer="1"/>
-<wire x1="49.3173625" y1="42.775990625" x2="49.998709375" y2="43.4573375" width="0.254" layer="1" curve="-90"/>
-<wire x1="49.998709375" y1="43.4573375" x2="51.898978125" y2="43.4573375" width="0.254" layer="1"/>
+<wire x1="49.486771875" y1="42.634790625" x2="49.302578125" y2="42.450596875" width="0.254" layer="1" curve="90"/>
+<wire x1="49.302578125" y1="42.450596875" x2="49.302578125" y2="42.08261875" width="0.254" layer="1"/>
+<wire x1="49.486771875" y1="42.634790625" x2="50.168121875" y2="43.316140625" width="0.254" layer="1" curve="-90"/>
+<wire x1="50.168121875" y1="43.316140625" x2="52.068390625" y2="43.316140625" width="0.254" layer="1"/>
 <wire x1="48.590659375" y1="41.418990625" x2="48.63895" y2="41.418990625" width="0.254" layer="1"/>
 </signal>
 <signal name="GPIO15">
@@ -11617,12 +11650,11 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="63.144890625" y1="22.710534375" x2="63.144890625" y2="23.21999375" width="0.254" layer="1"/>
 <wire x1="63.144890625" y1="23.21999375" x2="61.442834375" y2="24.92205" width="0.254" layer="1" curve="90"/>
 <wire x1="61.442834375" y1="24.92205" x2="59.06660625" y2="24.92205" width="0.254" layer="1"/>
-<wire x1="41.667734375" y1="11.937590625" x2="41.66180625" y2="11.9316625" width="0.254" layer="1"/>
-<wire x1="41.445571875" y1="11.9316625" x2="41.66180625" y2="11.9316625" width="0.254" layer="1" curve="-90"/>
+<wire x1="41.9784875" y1="12.078790625" x2="41.9784875" y2="11.937590625" width="0.254" layer="1" curve="-90"/>
 <wire x1="52.78315" y1="11.937590625" x2="55.764046875" y2="14.9184875" width="0.254" layer="1" curve="90"/>
 <wire x1="55.764046875" y1="14.9184875" x2="55.764046875" y2="21.619490625" width="0.254" layer="1"/>
 <wire x1="55.764046875" y1="21.619490625" x2="59.06660625" y2="24.92205" width="0.254" layer="1" curve="-90"/>
-<wire x1="41.667734375" y1="11.937590625" x2="52.78315" y2="11.937590625" width="0.254" layer="1"/>
+<wire x1="41.9784875" y1="11.937590625" x2="52.78315" y2="11.937590625" width="0.254" layer="1"/>
 </signal>
 <signal name="N$2">
 </signal>
@@ -11721,54 +11753,60 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <contactref element="PCF8523" pad="5"/>
 <contactref element="ESP-12" pad="5"/>
 <contactref element="SV1" pad="1"/>
-<wire x1="62.757640625" y1="13.589396875" x2="62.757640625" y2="14.0508875" width="0.254" layer="16"/>
-<wire x1="62.757640625" y1="14.0508875" x2="65.610878125" y2="16.904125" width="0.254" layer="16"/>
 <wire x1="65.610878125" y1="16.904125" x2="66.5100625" y2="17.33063125" width="0.254" layer="16"/>
 <wire x1="65.684" y1="16.67" x2="65.890034375" y2="16.876034375" width="0.254" layer="1" curve="-90"/>
 <wire x1="65.890034375" y1="16.876034375" x2="67.909409375" y2="16.876034375" width="0.254" layer="1"/>
 <via x="67.909409375" y="16.876034375" extent="1-16" drill="0.5"/>
 <wire x1="67.909409375" y1="16.876034375" x2="67.4548125" y2="17.33063125" width="0.254" layer="16" curve="90"/>
 <wire x1="67.4548125" y1="17.33063125" x2="66.5100625" y2="17.33063125" width="0.254" layer="16"/>
-<wire x1="62.757640625" y1="13.589396875" x2="60.53803125" y2="11.3697875" width="0.254" layer="16"/>
-<wire x1="60.53803125" y1="11.3697875" x2="60.53803125" y2="7.62" width="0.254" layer="16"/>
-<wire x1="60.53803125" y1="7.62" x2="59.766603125" y2="6.848571875" width="0.254" layer="16"/>
-<wire x1="59.766603125" y1="6.848571875" x2="56.65014375" y2="6.848571875" width="0.254" layer="16"/>
-<wire x1="56.65014375" y1="6.848571875" x2="54.3323375" y2="4.530765625" width="0.254" layer="16"/>
-<wire x1="54.3323375" y1="4.530765625" x2="54.3323375" y2="4.382984375" width="0.254" layer="16"/>
+<wire x1="62.757640625" y1="13.589396875" x2="62.684121875" y2="13.515878125" width="0.254" layer="16"/>
+<wire x1="62.684121875" y1="13.515878125" x2="60.365634375" y2="11.197390625" width="0.254" layer="16"/>
+<wire x1="56.874784375" y1="8.28735" x2="54.3323375" y2="5.744903125" width="0.254" layer="16"/>
+<wire x1="54.3323375" y1="5.744903125" x2="54.3323375" y2="3.112984375" width="0.254" layer="16"/>
+<contactref element="SV2" pad="1"/>
+<wire x1="56.874784375" y1="8.28735" x2="59.045559375" y2="8.28735" width="0.254" layer="16"/>
+<wire x1="59.045559375" y1="8.28735" x2="60.365634375" y2="9.607425" width="0.254" layer="16"/>
+<wire x1="60.365634375" y1="9.607425" x2="60.365634375" y2="11.197390625" width="0.254" layer="16"/>
+<wire x1="62.684121875" y1="13.515878125" x2="65.610878125" y2="16.904125" width="0.254" layer="16"/>
+<wire x1="54.3323375" y1="5.744903125" x2="54.3323375" y2="5.652984375" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="SCL">
 <contactref element="PCF8523" pad="6"/>
 <contactref element="ESP-12" pad="6"/>
 <contactref element="SV1" pad="2"/>
 <wire x1="66.5100625" y1="16.03063125" x2="66.3873" y2="15.90786875" width="0.254" layer="16"/>
-<wire x1="66.3873" y1="15.90786875" x2="65.956021875" y2="15.90786875" width="0.254" layer="16"/>
-<wire x1="56.8723375" y1="4.382984375" x2="56.8936625" y2="4.382984375" width="0.254" layer="16"/>
+<wire x1="56.8723375" y1="3.112984375" x2="56.8936625" y2="3.112984375" width="0.254" layer="16"/>
 <wire x1="66.5100625" y1="16.03063125" x2="66.77336875" y2="16.03063125" width="0.254" layer="16"/>
 <wire x1="66.77336875" y1="16.03063125" x2="68.072" y2="14.732" width="0.254" layer="16" curve="-90"/>
 <via x="68.072" y="14.732" extent="1-16" drill="0.5"/>
 <wire x1="68.072" y1="14.732" x2="65.746" y2="14.732" width="0.254" layer="1"/>
 <wire x1="65.746" y1="14.732" x2="65.684" y2="14.67" width="0.254" layer="1" curve="90"/>
-<wire x1="61.30805625" y1="11.259903125" x2="61.30805625" y2="7.144578125" width="0.254" layer="16"/>
-<wire x1="61.30805625" y1="7.144578125" x2="60.48730625" y2="6.323828125" width="0.254" layer="16"/>
-<wire x1="60.48730625" y1="6.323828125" x2="58.668078125" y2="6.323828125" width="0.254" layer="16"/>
-<wire x1="58.668078125" y1="6.323828125" x2="56.8723375" y2="4.5280875" width="0.254" layer="16"/>
-<wire x1="56.8723375" y1="4.5280875" x2="56.8723375" y2="4.382984375" width="0.254" layer="16"/>
-<wire x1="65.956021875" y1="15.90786875" x2="61.30805625" y2="11.259903125" width="0.254" layer="16"/>
+<wire x1="56.8723375" y1="5.5965625" x2="56.8723375" y2="3.112984375" width="0.254" layer="16"/>
+<contactref element="SV2" pad="2"/>
+<wire x1="56.8723375" y1="5.652984375" x2="58.849740625" y2="7.6303875" width="0.254" layer="16"/>
+<wire x1="58.849740625" y1="7.6303875" x2="59.548796875" y2="7.6303875" width="0.254" layer="16"/>
+<wire x1="59.548796875" y1="7.6303875" x2="61.040896875" y2="9.1224875" width="0.254" layer="16"/>
+<wire x1="61.040896875" y1="10.285415625" x2="61.040896875" y2="9.1224875" width="0.254" layer="16"/>
+<wire x1="66.5100625" y1="16.03063125" x2="65.5445" y2="15.718265625" width="0.254" layer="16"/>
+<wire x1="65.5445" y1="15.718265625" x2="61.362196875" y2="10.881875" width="0.254" layer="16"/>
+<wire x1="61.362196875" y1="10.881875" x2="61.040896875" y2="10.285415625" width="0.254" layer="16"/>
+<wire x1="56.8723375" y1="5.5965625" x2="56.8723375" y2="5.652984375" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$44">
 <contactref element="PCF8523" pad="2"/>
 <contactref element="Y1" pad="P$4"/>
-<wire x1="58.31323125" y1="11.400415625" x2="58.31320625" y2="11.933775" width="0.254" layer="16"/>
-<wire x1="58.31320625" y1="11.933775" x2="61.2100625" y2="14.83063125" width="0.254" layer="16" curve="-90"/>
+<wire x1="61.254221875" y1="14.796715625" x2="59.9603375" y2="14.797034375" width="0.254" layer="16"/>
+<wire x1="58.077809375" y1="12.91450625" x2="59.9603375" y2="14.797034375" width="0.254" layer="16"/>
+<wire x1="61.254221875" y1="14.796715625" x2="61.22030625" y2="14.83063125" width="0.254" layer="16"/>
+<wire x1="61.22030625" y1="14.83063125" x2="61.2100625" y2="14.83063125" width="0.254" layer="16" curve="-90"/>
 </signal>
 <signal name="N$45">
 <contactref element="PCF8523" pad="1"/>
 <contactref element="Y1" pad="P$1"/>
 <wire x1="61.2100625" y1="13.53063125" x2="61.15598125" y2="13.53063125" width="0.254" layer="16"/>
-<wire x1="58.31323125" y1="8.200415625" x2="59.468090625" y2="9.355275" width="0.254" layer="16"/>
-<wire x1="59.468090625" y1="9.355275" x2="59.468090625" y2="12.4409" width="0.254" layer="16"/>
-<wire x1="59.468090625" y1="12.4409" x2="60.557821875" y2="13.53063125" width="0.254" layer="16"/>
-<wire x1="60.557821875" y1="13.53063125" x2="61.2100625" y2="13.53063125" width="0.254" layer="16"/>
+<wire x1="61.2100625" y1="13.27310625" x2="58.077809375" y2="10.140853125" width="0.254" layer="16"/>
+<wire x1="58.077809375" y1="9.71450625" x2="58.077809375" y2="10.140853125" width="0.254" layer="16"/>
+<wire x1="61.2100625" y1="13.53063125" x2="61.2100625" y2="13.27310625" width="0.254" layer="16"/>
 </signal>
 <signal name="VDD_PCF">
 <contactref element="C33" pad="1"/>
@@ -11801,12 +11839,12 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <contactref element="R4" pad="2"/>
 <contactref element="SJ9" pad="1"/>
 <wire x1="50.44868125" y1="18.034" x2="52.832" y2="18.034" width="0.254" layer="1"/>
-<wire x1="51.744578125" y1="14.691440625" x2="51.526603125" y2="14.909415625" width="0.254" layer="1" curve="-90"/>
+<wire x1="51.33798125" y1="15.50488125" x2="51.12000625" y2="15.72285625" width="0.254" layer="1" curve="-90"/>
 <contactref element="R3" pad="2"/>
-<wire x1="50.03835" y1="18.0618375" x2="50.42084375" y2="18.0618375" width="0.254" layer="1"/>
-<wire x1="50.42084375" y1="18.0618375" x2="50.44868125" y2="18.034" width="0.254" layer="1" curve="-90"/>
-<wire x1="50.03835" y1="18.0618375" x2="50.03835" y2="16.39766875" width="0.254" layer="1"/>
-<wire x1="50.03835" y1="16.39766875" x2="51.744578125" y2="14.691440625" width="0.254" layer="1" curve="90"/>
+<wire x1="50.3433" y1="18.265196875" x2="50.3433" y2="18.13938125" width="0.254" layer="1"/>
+<wire x1="50.3433" y1="18.13938125" x2="50.44868125" y2="18.034" width="0.254" layer="1" curve="-90"/>
+<wire x1="50.3433" y1="18.265196875" x2="50.3433" y2="16.4995625" width="0.254" layer="1"/>
+<wire x1="50.3433" y1="16.4995625" x2="51.33798125" y2="15.50488125" width="0.254" layer="1" curve="90"/>
 </signal>
 <signal name="+5V" class="3">
 <contactref element="UART" pad="4"/>
@@ -11873,14 +11911,14 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="56.017528125" y1="28.176253125" x2="56.4659375" y2="28.6246625" width="0.254" layer="1" curve="90"/>
 <wire x1="56.017528125" y1="28.176253125" x2="55.4125125" y2="28.176253125" width="0.254" layer="1"/>
 <wire x1="55.4125125" y1="28.176253125" x2="53.495225" y2="26.258965625" width="0.254" layer="1" curve="90"/>
-<wire x1="53.495225" y1="26.258965625" x2="53.495225" y2="24.206915625" width="0.254" layer="1"/>
-<wire x1="53.495225" y1="24.206915625" x2="52.250890625" y2="22.96258125" width="0.254" layer="1" curve="-90"/>
-<wire x1="52.250890625" y1="22.96258125" x2="52.012628125" y2="22.96258125" width="0.254" layer="1"/>
+<wire x1="53.495225" y1="26.258965625" x2="53.495225" y2="23.9996875" width="0.254" layer="1"/>
+<wire x1="53.495225" y1="23.9996875" x2="52.45811875" y2="22.96258125" width="0.254" layer="1" curve="-90"/>
+<wire x1="52.45811875" y1="22.96258125" x2="52.012628125" y2="22.96258125" width="0.254" layer="1"/>
 <wire x1="52.012628125" y1="22.96258125" x2="51.124975" y2="23.850234375" width="0.254" layer="1" curve="-90"/>
 <wire x1="56.4659375" y1="35.875615625" x2="56.860453125" y2="36.27013125" width="0.254" layer="1" curve="-90"/>
 <wire x1="56.4659375" y1="28.6246625" x2="56.4659375" y2="35.875615625" width="0.254" layer="1"/>
 </signal>
-<signal name="LOAD-NEG-A" class="1">
+<signal name="LOAD-NEG-A" class="4">
 <contactref element="EBW_B" pad="P$2"/>
 <contactref element="EBW_B" pad="P$18"/>
 <contactref element="EBW_B" pad="P$19"/>
@@ -11981,10 +12019,11 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="45.33131875" y1="50.74631875" x2="45.335" y2="50.75" width="0.4064" layer="1" curve="90"/>
 <wire x1="50.455" y1="50.5933" x2="50.455" y2="47.788" width="0.254" layer="1"/>
 <wire x1="50.455" y1="47.788" x2="49.911" y2="47.244" width="0.254" layer="1" curve="-90"/>
-<wire x1="49.911" y1="47.244" x2="49.302578125" y2="46.635578125" width="0.254" layer="1" curve="90"/>
+<wire x1="49.911" y1="47.244" x2="49.657" y2="47.244" width="0.254" layer="1"/>
+<wire x1="49.657" y1="47.244" x2="49.556578125" y2="47.143578125" width="0.254" layer="1" curve="90"/>
 <contactref element="R1" pad="1"/>
-<wire x1="49.302578125" y1="46.635578125" x2="49.3173625" y2="46.62079375" width="0.254" layer="1" curve="-90"/>
-<wire x1="49.3173625" y1="46.62079375" x2="49.3173625" y2="45.315990625" width="0.254" layer="1"/>
+<wire x1="49.556578125" y1="47.143578125" x2="49.486771875" y2="47.213384375" width="0.254" layer="1" curve="-90"/>
+<wire x1="49.486771875" y1="47.213384375" x2="49.486771875" y2="45.174790625" width="0.254" layer="1"/>
 </signal>
 <signal name="LOAD-NEG-B_T" class="2">
 <contactref element="D4" pad="C"/>
@@ -12008,7 +12047,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="43.136678125" y1="29.4213" x2="45.20530625" y2="29.4213" width="0.254" layer="1"/>
 <wire x1="45.20530625" y1="29.4213" x2="45.37660625" y2="29.25" width="0.4064" layer="1" curve="-90"/>
 </signal>
-<signal name="V_IN_POSTFUSE" class="1">
+<signal name="V_IN_POSTFUSE" class="4">
 <contactref element="F1" pad="P$3"/>
 <contactref element="F1" pad="P$4"/>
 <wire x1="33.053315625" y1="74.64781875" x2="38.253315625" y2="74.64781875" width="1.27" layer="16"/>
@@ -12134,12 +12173,13 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="61.168134375" y1="16.072559375" x2="61.14585" y2="16.072559375" width="0.254" layer="16"/>
 <wire x1="61.15805" y1="16.084759375" x2="61.14585" y2="16.072559375" width="0.254" layer="16"/>
 <wire x1="61.2100625" y1="16.03063125" x2="61.168134375" y2="16.072559375" width="0.254" layer="16"/>
-<wire x1="54.001796875" y1="16.121884375" x2="61.120925" y2="16.121884375" width="0.254" layer="16"/>
-<wire x1="47.946765625" y1="22.176915625" x2="43.552059375" y2="20.5472875" width="0.254" layer="16"/>
 <wire x1="47.946765625" y1="22.176915625" x2="50.3225875" y2="22.176915625" width="0.254" layer="16"/>
 <wire x1="50.3225875" y1="22.176915625" x2="51.7331375" y2="20.766365625" width="0.254" layer="16" curve="-90"/>
-<wire x1="51.7331375" y1="20.766365625" x2="51.7331375" y2="18.39054375" width="0.254" layer="16"/>
-<wire x1="51.7331375" y1="18.39054375" x2="54.001796875" y2="16.121884375" width="0.254" layer="16" curve="90"/>
+<wire x1="51.7331375" y1="20.766365625" x2="51.7331375" y2="19.3625125" width="0.254" layer="16"/>
+<wire x1="51.7331375" y1="19.3625125" x2="53.250628125" y2="17.845021875" width="0.254" layer="16" curve="90"/>
+<wire x1="60.28160625" y1="16.03063125" x2="61.2100625" y2="16.03063125" width="0.254" layer="16"/>
+<wire x1="53.250628125" y1="17.845021875" x2="60.28160625" y2="16.03063125" width="0.254" layer="16"/>
+<wire x1="43.485003125" y1="19.8516625" x2="47.946765625" y2="22.176915625" width="0.254" layer="16"/>
 </signal>
 <signal name="VSENSE_A_BUFFED">
 <contactref element="MCP3208" pad="2"/>
@@ -12191,31 +12231,31 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="43.281190625" y1="25.300871875" x2="45.284128125" y2="25.300871875" width="0.254" layer="1"/>
 <wire x1="45.284128125" y1="25.300871875" x2="45.335" y2="25.25" width="0.4064" layer="1" curve="-90"/>
 <contactref element="R3" pad="1"/>
-<wire x1="50.03835" y1="20.6018375" x2="50.455" y2="21.0184875" width="0.254" layer="1" curve="90"/>
-<wire x1="50.455" y1="21.0184875" x2="50.455" y2="25.0933" width="0.254" layer="1"/>
+<wire x1="50.3433" y1="20.805196875" x2="50.455" y2="20.916896875" width="0.254" layer="1" curve="90"/>
+<wire x1="50.455" y1="20.916896875" x2="50.455" y2="25.0933" width="0.254" layer="1"/>
 </signal>
-<signal name="V_IN_PREFUSE" class="1">
+<signal name="V_IN_PREFUSE" class="4">
 <contactref element="F1" pad="P$1"/>
 <contactref element="F1" pad="P$2"/>
 <wire x1="17.753315625" y1="74.64781875" x2="22.953315625" y2="74.64781875" width="1.016" layer="16"/>
 <contactref element="SJ7" pad="2"/>
 <contactref element="SJ3" pad="1"/>
-<via x="31.7939375" y="16.750490625" extent="1-16" drill="0.5"/>
-<wire x1="31.7939375" y1="16.750490625" x2="31.7939375" y2="38.311646875" width="0.8128" layer="16"/>
-<wire x1="31.7939375" y1="38.311646875" x2="31.7939375" y2="42.256896875" width="0.8128" layer="16"/>
-<wire x1="31.7939375" y1="42.256896875" x2="31.835446875" y2="42.29840625" width="0.8128" layer="16"/>
-<via x="31.835446875" y="42.29840625" extent="1-16" drill="0.5"/>
-<wire x1="31.835446875" y1="42.29840625" x2="31.835446875" y2="63.5" width="0.8128" layer="16"/>
-<wire x1="31.835446875" y1="63.5" x2="31.835446875" y2="65.7656875" width="0.8128" layer="16"/>
-<wire x1="31.835446875" y1="65.7656875" x2="22.953315625" y2="74.64781875" width="0.8128" layer="16" curve="90"/>
 <contactref element="SJ14" pad="2"/>
 <contactref element="SJ1" pad="2"/>
-<via x="31.81174375" y="38.283146875" extent="1-16" drill="0.5"/>
-<wire x1="31.81174375" y1="38.283146875" x2="31.7939375" y2="38.300953125" width="0.254" layer="16"/>
-<wire x1="31.7939375" y1="38.300953125" x2="31.7939375" y2="38.311646875" width="0.254" layer="16"/>
-<via x="31.806203125" y="63.7467375" extent="1-16" drill="0.5"/>
-<wire x1="31.806203125" y1="63.7467375" x2="31.835446875" y2="63.71749375" width="0.254" layer="16"/>
-<wire x1="31.835446875" y1="63.71749375" x2="31.835446875" y2="63.5" width="0.254" layer="16"/>
+<via x="32.571596875" y="37.662990625" extent="1-16" drill="0.5"/>
+<via x="32.693278125" y="18.285371875" extent="1-16" drill="0.5"/>
+<wire x1="32.693278125" y1="18.285371875" x2="32.693278125" y2="37.541309375" width="1.016" layer="16"/>
+<wire x1="32.693278125" y1="37.541309375" x2="32.571596875" y2="37.662990625" width="1.016" layer="16"/>
+<wire x1="32.571596875" y1="37.662990625" x2="32.705640625" y2="37.797034375" width="1.016" layer="16"/>
+<wire x1="32.705640625" y1="37.797034375" x2="32.705640625" y2="42.287790625" width="1.016" layer="16"/>
+<via x="32.705640625" y="42.287790625" extent="1-16" drill="0.5"/>
+<wire x1="32.705640625" y1="63.208815625" x2="32.705640625" y2="42.287790625" width="1.016" layer="16"/>
+<via x="32.7355625" y="63.2387375" extent="1-16" drill="0.5"/>
+<wire x1="32.7355625" y1="63.2387375" x2="32.705640625" y2="63.208815625" width="1.016" layer="16"/>
+<wire x1="32.7355625" y1="63.2387375" x2="32.7355625" y2="64.865571875" width="1.016" layer="16"/>
+<wire x1="32.7355625" y1="64.865571875" x2="22.953315625" y2="74.64781875" width="1.016" layer="16" curve="90"/>
+<wire x1="32.705640625" y1="37.797034375" x2="32.6878375" y2="37.701746875" width="0" layer="19" extent="1-16"/>
+<wire x1="32.712653125" y1="18.51793125" x2="32.693278125" y2="18.285371875" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="UNI_REF">
 <contactref element="REF_SEL_A" pad="1"/>
@@ -12336,10 +12376,10 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <wire x1="55.245" y1="46.355" x2="55.245" y2="45.406453125" width="0.254" layer="1"/>
 <wire x1="55.245" y1="45.406453125" x2="55.288825" y2="45.362628125" width="0.254" layer="1" curve="90"/>
 <contactref element="C21" pad="1"/>
-<wire x1="51.943" y1="46.99" x2="51.943" y2="45.935" width="0.254" layer="16"/>
-<wire x1="51.816" y1="45.908" x2="51.943" y2="45.935" width="0.254" layer="16"/>
-<wire x1="51.898978125" y1="44.9813375" x2="51.943" y2="45.025359375" width="0.254" layer="1" curve="90"/>
-<wire x1="51.943" y1="45.025359375" x2="51.943" y2="46.99" width="0.254" layer="1"/>
+<wire x1="51.943" y1="46.99" x2="51.943" y2="45.808" width="0.254" layer="16"/>
+<wire x1="52.07" y1="45.781" x2="51.943" y2="45.808" width="0.254" layer="16"/>
+<wire x1="52.068390625" y1="44.840140625" x2="51.943" y2="44.96553125" width="0.254" layer="1" curve="90"/>
+<wire x1="51.943" y1="44.96553125" x2="51.943" y2="46.99" width="0.254" layer="1"/>
 <wire x1="51.943" y1="46.99" x2="52.324" y2="47.371" width="0.254" layer="1" curve="-90"/>
 <wire x1="52.324" y1="47.371" x2="54.229" y2="47.371" width="0.254" layer="1"/>
 </signal>
@@ -12490,18 +12530,10 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <approved hash="5,1,45fef8f59bae6af2"/>
 <approved hash="19,1,7bdd37bd2010ef94"/>
 <approved hash="23,1,0a5228382760050a"/>
-<approved hash="7,39,5f0adaaef5297cfa"/>
 <approved hash="7,39,0ef4f6252c8bd82d"/>
 <approved hash="7,40,0ef4f6252c8bd82d"/>
-<approved hash="7,39,739461cb3109d13c"/>
-<approved hash="7,39,66253308e762aa24"/>
-<approved hash="7,39,4fc3c94c68a0fecf"/>
 <approved hash="7,39,8e3fc07f407f0e3f"/>
 <approved hash="7,39,20666026e026a066"/>
-<approved hash="19,1,044db8e6d20e231a"/>
-<approved hash="19,1,940f9ad7adb2eed5"/>
-<approved hash="19,1,242abae7c6651d7d"/>
-<approved hash="19,1,4a5e9a32b3a6261f"/>
 <approved hash="19,1,e9400bc91d4e0480"/>
 <approved hash="19,1,02b2f2f3848c8f8a"/>
 <approved hash="19,1,9e8cf37384b50bb1"/>
@@ -12516,14 +12548,11 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <approved hash="5,1,b06334b3d383f5d7"/>
 <approved hash="5,1,aef9bef764e1834a"/>
 <approved hash="5,1,ca8150cb2d807dc4"/>
-<approved hash="5,1,82ef98d6952e50b4"/>
 <approved hash="5,1,2b4c8a620b528a84"/>
 <approved hash="5,16,7701cc107599cf79"/>
-<approved hash="4,1,53416db1c99fd5bb"/>
 <approved hash="7,39,558ed99e6dffe844"/>
 <approved hash="7,40,8d600d6f290da575"/>
 <approved hash="7,40,558ed99e6dffe844"/>
-<approved hash="19,1,8626360f70334649"/>
 <approved hash="19,1,5093f067f5856237"/>
 <approved hash="19,1,734bd9f1276af5a0"/>
 <approved hash="19,1,7779fd1d3fb14bf0"/>
@@ -12534,11 +12563,9 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <approved hash="19,1,5c5dc34ad774e53e"/>
 <approved hash="19,1,7fc0f0140c0da683"/>
 <approved hash="19,1,5a6f6932bea9e7cb"/>
-<approved hash="19,1,7f9cb0abdbb76cea"/>
 <approved hash="5,1,60550fa74c6f8c1b"/>
 <approved hash="19,1,a1bb49f0061a9bd0"/>
 <approved hash="19,1,f6a34fe7a8eb6eb7"/>
-<approved hash="19,16,4b2050c5f227b30e"/>
 <approved hash="5,1,c5fb76840c090e9e"/>
 <approved hash="5,1,0f10c2fba3ad336a"/>
 <approved hash="5,1,d6856e48a452d163"/>
@@ -12558,6 +12585,31 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <approved hash="19,1,6dcbb4fa55ba4120"/>
 <approved hash="19,1,4862edcdd71781a2"/>
 <approved hash="19,1,bbf0a25f46f21eaf"/>
+<approved hash="21,19,c677c269c269c667"/>
+<approved hash="21,19,4b5c4958495c4d5c"/>
+<approved hash="21,19,8fcd8fcf8fcf8fcd"/>
+<approved hash="21,19,1f931d911d911f93"/>
+<approved hash="21,19,027b02790279027b"/>
+<approved hash="5,1,94e0eed57b470213"/>
+<approved hash="5,1,1075d183ce7b2ae9"/>
+<approved hash="5,1,d979208ebecf41ba"/>
+<approved hash="5,1,4f89aa5d2fbfd76b"/>
+<approved hash="5,1,76e2c06eb5882286"/>
+<approved hash="5,1,5ec2a40f3d4ec421"/>
+<approved hash="5,1,1a65618af9c6809a"/>
+<approved hash="5,1,d5ee2fd2b23e4d12"/>
+<approved hash="5,1,f659c668b288a31d"/>
+<approved hash="5,1,9bdf666afbeb035c"/>
+<approved hash="5,1,60361ae28730fec5"/>
+<approved hash="5,1,e4e89f3f0adb720f"/>
+<approved hash="5,1,8b0cd78dcf78ae7b"/>
+<approved hash="5,1,e2be996200ee7841"/>
+<approved hash="5,1,1645ecea756b8ca6"/>
+<approved hash="5,1,66941db9845bff97"/>
+<approved hash="5,1,41f767d0588537d7"/>
+<approved hash="5,1,3e41051159f3dca9"/>
+<approved hash="5,1,2e9c5dcc1ef7ce6c"/>
+<approved hash="5,1,8fe493009fd22d0b"/>
 </errors>
 </board>
 </drawing>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.3.2">
+<eagle version="9.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="yes"/>
@@ -26686,7 +26686,7 @@ Source: &lt;a href="http://www.littelfuse.com/~/media/electronics/datasheets/tvs
 </deviceset>
 </devicesets>
 </library>
-<library name="con-lstb" urn="urn:adsk.eagle:library:162">
+<library name="con-lstb">
 <description>&lt;b&gt;Pin Headers&lt;/b&gt;&lt;p&gt;
 Naming:&lt;p&gt;
 MA = male&lt;p&gt;
@@ -26694,7 +26694,7 @@ MA = male&lt;p&gt;
 W = angled&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="MA04-1" urn="urn:adsk.eagle:footprint:8285/1" library_version="1">
+<package name="MA04-1" urn="urn:adsk.eagle:footprint:8285/1" locally_modified="yes">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
 <wire x1="-4.445" y1="1.27" x2="-3.175" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="-3.175" y1="1.27" x2="-2.54" y2="0.635" width="0.1524" layer="21"/>
@@ -26727,9 +26727,9 @@ W = angled&lt;p&gt;
 <pad name="3" x="1.27" y="0" drill="1.016" shape="long" rot="R90"/>
 <pad name="4" x="3.81" y="0" drill="1.016" shape="long" rot="R90"/>
 <text x="-5.08" y="1.651" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-6.223" y="-0.635" size="1.27" layer="21" ratio="10">1</text>
+<text x="-6.223" y="-0.635" size="1.27" layer="51" ratio="10">1</text>
 <text x="0.635" y="1.651" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="5.334" y="-0.635" size="1.27" layer="21" ratio="10">4</text>
+<text x="5.334" y="-0.635" size="1.27" layer="51" ratio="10">4</text>
 <rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
 <rectangle x1="-4.064" y1="-0.254" x2="-3.556" y2="0.254" layer="51"/>
 <rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
@@ -26737,7 +26737,7 @@ W = angled&lt;p&gt;
 </package>
 </packages>
 <packages3d>
-<package3d name="MA04-1" urn="urn:adsk.eagle:package:8337/1" type="box" library_version="1">
+<package3d name="MA04-1" urn="urn:adsk.eagle:package:8337/1" type="box">
 <description>PIN HEADER</description>
 <packageinstances>
 <packageinstance name="MA04-1"/>
@@ -26763,7 +26763,7 @@ W = angled&lt;p&gt;
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MA04-1" urn="urn:adsk.eagle:component:8375/1" prefix="SV" uservalue="yes" library_version="1">
+<deviceset name="MA04-1" urn="urn:adsk.eagle:component:8375/1" prefix="SV" uservalue="yes">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="MA04-1" x="0" y="0"/>
@@ -29681,10 +29681,10 @@ Wickmann</description>
 <package name="2/5.08">
 <pad name="P$1" x="-2.54" y="0" drill="1.3" shape="long" rot="R90"/>
 <pad name="P$3" x="2.54" y="0" drill="1.3" shape="long" rot="R90"/>
-<wire x1="-5.84" y1="-3.91" x2="5.84" y2="-3.91" width="0.2" layer="51"/>
-<wire x1="5.84" y1="-3.91" x2="5.84" y2="3.36" width="0.2" layer="51"/>
-<wire x1="5.84" y1="3.36" x2="-5.84" y2="3.36" width="0.2" layer="51"/>
-<wire x1="-5.84" y1="3.36" x2="-5.84" y2="-3.91" width="0.2" layer="51"/>
+<wire x1="-5.84" y1="-3.91" x2="5.84" y2="-3.91" width="0.2" layer="21"/>
+<wire x1="5.84" y1="-3.91" x2="5.84" y2="3.36" width="0.2" layer="21"/>
+<wire x1="5.84" y1="3.36" x2="-5.84" y2="3.36" width="0.2" layer="21"/>
+<wire x1="-5.84" y1="3.36" x2="-5.84" y2="-3.91" width="0.2" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -30094,6 +30094,9 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <class number="3" name="thin_power2" width="0.254" drill="0">
 <clearance class="3" value="0.254"/>
 </class>
+<class number="4" name="HV" width="0" drill="0">
+<clearance class="4" value="0.508"/>
+</class>
 </classes>
 <parts>
 <part name="LOGO1" library="ohw-logo" deviceset="OSHW_LOGO_6MIL" device="X0200-NT" value="OSHW_LOGO_6MILX0200-NT">
@@ -30296,8 +30299,8 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <part name="TP10" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
 <part name="TP11" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="PAD1-13Y" package3d_urn="urn:adsk.eagle:package:27947/1"/>
 <part name="D7" library="smf_10" deviceset="SMF*A" device="" technology="6.0"/>
-<part name="SJ3" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="" package3d_urn="urn:adsk.eagle:package:15471/1"/>
-<part name="SJ7" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="" package3d_urn="urn:adsk.eagle:package:15471/1"/>
+<part name="SJ3" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="W" package3d_urn="urn:adsk.eagle:package:15507/1"/>
+<part name="SJ7" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="W" package3d_urn="urn:adsk.eagle:package:15507/1"/>
 <part name="SJ8" library="microbuilder" deviceset="SOLDERJUMPER" device="CLOSED"/>
 <part name="SJ9" library="microbuilder" deviceset="SOLDERJUMPER" device="CLOSED"/>
 <part name="SJ10" library="microbuilder" deviceset="SOLDERJUMPER" device="CLOSED"/>
@@ -30332,7 +30335,7 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <attribute name="OC_FARNELL" value="155598"/>
 <attribute name="OC_NEWARK" value=""/>
 </part>
-<part name="SV1" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA04-1" device="" package3d_urn="urn:adsk.eagle:package:8337/1">
+<part name="SV1" library="con-lstb" deviceset="MA04-1" device="" package3d_urn="urn:adsk.eagle:package:8337/1">
 <attribute name="MF" value="MULTICOMP"/>
 <attribute name="MPN" value="2212S-04SG-85"/>
 <attribute name="OC_FARNELL" value="1593460"/>
@@ -30366,8 +30369,13 @@ Source: www.allegromicro.com/datafile/0750-050.pdf</description>
 <part name="U$17" library="testpad_db" deviceset="TP" device="0.8MM"/>
 <part name="U$18" library="testpad_db" deviceset="TP" device="0.8MM"/>
 <part name="U$19" library="testpad_db" deviceset="TP" device="0.8MM"/>
-<part name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="" package3d_urn="urn:adsk.eagle:package:15471/1"/>
-<part name="SJ14" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="" package3d_urn="urn:adsk.eagle:package:15471/1"/>
+<part name="SJ1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="W" package3d_urn="urn:adsk.eagle:package:15507/1"/>
+<part name="SJ14" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="SJ" device="W" package3d_urn="urn:adsk.eagle:package:15507/1"/>
+<part name="SV2" library="con-lstb" deviceset="MA04-1" device="" package3d_urn="urn:adsk.eagle:package:8337/1">
+<attribute name="MF" value="MULTICOMP"/>
+<attribute name="MPN" value="2212S-04SG-85"/>
+<attribute name="OC_FARNELL" value="1593460"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -30927,6 +30935,10 @@ SENSOR</text>
 <attribute name="NAME" x="-104.14" y="363.22" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-97.79" y="363.22" size="1.778" layer="96" rot="R90"/>
 </instance>
+<instance part="SV2" gate="1" x="256.54" y="452.12" smashed="yes" rot="R180">
+<attribute name="VALUE" x="257.81" y="462.28" size="1.778" layer="96" rot="R180"/>
+<attribute name="NAME" x="257.81" y="446.278" size="1.778" layer="95" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -31132,8 +31144,11 @@ SENSOR</text>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="4"/>
-<wire x1="251.46" y1="449.58" x2="243.84" y2="449.58" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="449.58" x2="248.92" y2="449.58" width="0.1524" layer="91"/>
 <junction x="251.46" y="449.58"/>
+<pinref part="SV2" gate="1" pin="4"/>
+<wire x1="248.92" y1="449.58" x2="243.84" y2="449.58" width="0.1524" layer="91"/>
+<junction x="248.92" y="449.58"/>
 </segment>
 <segment>
 <pinref part="GND10" gate="1" pin="GND"/>
@@ -31214,8 +31229,11 @@ SENSOR</text>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="3"/>
-<wire x1="251.46" y1="452.12" x2="243.84" y2="452.12" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="452.12" x2="248.92" y2="452.12" width="0.1524" layer="91"/>
 <junction x="251.46" y="452.12"/>
+<pinref part="SV2" gate="1" pin="3"/>
+<wire x1="248.92" y1="452.12" x2="243.84" y2="452.12" width="0.1524" layer="91"/>
+<junction x="248.92" y="452.12"/>
 </segment>
 <segment>
 <pinref part="SJ2" gate="1" pin="1"/>
@@ -31263,7 +31281,7 @@ SENSOR</text>
 <wire x1="88.9" y1="307.34" x2="88.9" y2="304.8" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="LOAD-NEG-A" class="1">
+<net name="LOAD-NEG-A" class="4">
 <segment>
 <label x="-111.379" y="462.28" size="1.778" layer="95" rot="R180"/>
 <wire x1="-104.14" y1="457.2" x2="-106.68" y2="457.2" width="0.1524" layer="91"/>
@@ -31312,7 +31330,7 @@ SENSOR</text>
 <label x="83.82" y="358.14" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<net name="SOURCE-POS-B" class="1">
+<net name="SOURCE-POS-B" class="4">
 <segment>
 <pinref part="MH3" gate="G$1" pin="MOUNT"/>
 <wire x1="-104.14" y1="325.12" x2="-106.68" y2="325.12" width="0.1524" layer="91"/>
@@ -31346,7 +31364,7 @@ SENSOR</text>
 <junction x="-144.78" y="347.98"/>
 </segment>
 </net>
-<net name="LOAD-NEG-B" class="1">
+<net name="LOAD-NEG-B" class="4">
 <segment>
 <label x="-111.125" y="354.076" size="1.778" layer="95" rot="R180"/>
 <wire x1="-104.14" y1="347.98" x2="-106.68" y2="347.98" width="0.1524" layer="91"/>
@@ -31379,7 +31397,7 @@ SENSOR</text>
 <junction x="-106.68" y="347.98"/>
 </segment>
 </net>
-<net name="SOURCE-POS-A" class="1">
+<net name="SOURCE-POS-A" class="4">
 <segment>
 <wire x1="-104.14" y1="434.34" x2="-106.68" y2="434.34" width="0.1524" layer="91"/>
 <wire x1="-106.68" y1="444.5" x2="-106.68" y2="436.88" width="0.1524" layer="91"/>
@@ -31643,8 +31661,11 @@ SENSOR</text>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="1"/>
-<wire x1="251.46" y1="457.2" x2="243.84" y2="457.2" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="457.2" x2="248.92" y2="457.2" width="0.1524" layer="91"/>
 <junction x="251.46" y="457.2"/>
+<pinref part="SV2" gate="1" pin="1"/>
+<wire x1="248.92" y1="457.2" x2="243.84" y2="457.2" width="0.1524" layer="91"/>
+<junction x="248.92" y="457.2"/>
 </segment>
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="GPIO4"/>
@@ -31661,8 +31682,11 @@ SENSOR</text>
 </segment>
 <segment>
 <pinref part="SV1" gate="1" pin="2"/>
-<wire x1="251.46" y1="454.66" x2="243.84" y2="454.66" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="454.66" x2="248.92" y2="454.66" width="0.1524" layer="91"/>
 <junction x="251.46" y="454.66"/>
+<pinref part="SV2" gate="1" pin="2"/>
+<wire x1="248.92" y1="454.66" x2="243.84" y2="454.66" width="0.1524" layer="91"/>
+<junction x="248.92" y="454.66"/>
 </segment>
 <segment>
 <pinref part="ESP-12" gate="G$1" pin="GPIO5"/>
@@ -31784,7 +31808,7 @@ SENSOR</text>
 <wire x1="-66.04" y1="350.52" x2="-66.04" y2="347.98" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="V_IN_POSTFUSE" class="1">
+<net name="V_IN_POSTFUSE" class="4">
 <segment>
 <wire x1="-111.76" y1="259.08" x2="-109.22" y2="259.08" width="0.1524" layer="91"/>
 <wire x1="-109.22" y1="259.08" x2="-86.36" y2="259.08" width="0.1524" layer="91"/>
@@ -31991,7 +32015,7 @@ SENSOR</text>
 <pinref part="F5" gate="1" pin="2"/>
 </segment>
 </net>
-<net name="V_IN_PREFUSE" class="1">
+<net name="V_IN_PREFUSE" class="4">
 <segment>
 <pinref part="F1" gate="G$1" pin="1"/>
 <wire x1="-121.92" y1="259.08" x2="-124.46" y2="259.08" width="0.1524" layer="91"/>
