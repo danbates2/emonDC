@@ -46,17 +46,18 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 
 Latest spec:
 
-- Two-channel high side only DC current and voltage sensing, up to 64.4V or 75V, suitable for a wide range of low-voltage generator/battery systems.
+- Two-channel high side **only** DC current and voltage sensing, up to 64.4V or 75V, suitable for a wide range of low-voltage generator/battery systems.
 - 50Amps onboard shunt rating or 1000A external shunt rating.
-- Hall-effect current sensor footprint alternative for isolated current only measurement.- Waterproof, clear-top plastic case.
-- 128 x 32 OLED display.
+- Hall-effect current sensor footprint alternative for isolated current only measurement.
+- Waterproof, clear-top plastic case.
+- 128 x 32 OLED display option.
 - WiFi Connectivity.
 - Low-power mode (10mA draw).
 - Accurate 12-bit ADC.
 - Over-voltage and reverse voltage protected (fuses).
 
 Also:
-- It can function as independent unit self-powered using an onboard buck regulator module, connected to either channel, generator or battery. Data can be stored locally to a MicroSD card, keeping time with on-board RTC and coin-cell.
+- It can function as independent unit self-powered using an onboard buck regulator module, powered from either measurement channel. Data can be stored locally to a MicroSD card, keeping time with on-board RTC and coin-cell.
 - Radio transmission of data possible through RFM69Pi module.
 - Voltage divisions for reference voltages easily modified by soldering for maximum resolution for given system.
 - The I2C port can connect control boards for power management, in development.
