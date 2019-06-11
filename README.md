@@ -47,7 +47,7 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 
 Latest spec:
 
-- Two-channel high side **only** DC current and voltage sensing, up to 64.4V or 75V, suitable for a wide range of low-voltage generator/battery systems.
+- Two-channel high or low side DC current and voltage sensing, up to 64.4V or 75V, suitable for a wide range of low-voltage generator/battery systems.
 - 50Amps onboard shunt rating or 1000A external shunt rating.
 - Hall-effect current sensor footprint alternative for isolated current only measurement.
 - Waterproof, clear-top plastic case.
