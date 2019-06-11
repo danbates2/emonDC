@@ -6,7 +6,6 @@ The main board in development is emonDCduo, a dual-channel generator/battery mon
 ###### Project status: Development units available for sale. Crowd-funding application in development.
 ###### https://shop.openenergymonitor.com/emondc/
   <br/>
-###### Programming working being undertaken. Not all software feature yet implemented.
 
 ![Example System Schematic](/images/emonDC_system.jpg)
 
