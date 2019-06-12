@@ -157,7 +157,7 @@ Below are a set of images outlining some other customisations.
 ## Setup Guides
 
 *Plan your cabling and equipment to allow installation of this energy monitor.*<br>
-*Have an understanding of [shunts](https://en.wikipedia.org/wiki/Current_sensing#Shunt_resistors), [high-side vs low-side shunt monitoring](http://www.worldofindie.co.uk/?p=216) (emonDCduo is high-side only), and whether or not your electrical Ground needs earthing or can float.*
+*Have an understanding of [shunts](https://en.wikipedia.org/wiki/Current_sensing#Shunt_resistors), [high-side vs low-side shunt monitoring](http://www.worldofindie.co.uk/?p=216), and whether or not your electrical Ground needs earthing or can float.*
 
 #### Example 1; 'standard' emonDCduo with enclosure, ring terminals and on-board power supply.
 
