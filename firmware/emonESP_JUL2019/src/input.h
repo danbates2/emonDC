@@ -23,43 +23,24 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "emonesp.h"
-#include "input.h"
-#include "emondc.h"
+#ifndef _EMONESP_INPUT_H
+#define _EMONESP_INPUT_H
 
-String input_string="";
-String last_datastr="";
+#include <Arduino.h>
 
-boolean input_get(String& data) {
-  boolean gotData = false;
+// -------------------------------------------------------------------
+// Support for reading input
+// -------------------------------------------------------------------
 
-  // If data from test API e.g `http://<IP-ADDRESS>/input?string=CT1:3935,CT2:325,T1:12.5,T2:16.9,T3:11.2,T4:34.7`
-  if(input_string.length() > 0) {
-    data = input_string;
-    input_string = "";
-    gotData = true;
-  }
-  // If data received on serial
-  else if (Serial.available()) {
-    // Could check for string integrity here
-    data = Serial.readStringUntil('\n');
-    gotData = true;
-  }
+extern String last_datastr;
+extern String input_string;
 
-  if(gotData)
-  {
-    // Get rid of any whitespace, newlines etc
-    data.trim();
+// -------------------------------------------------------------------
+// Read input sent via the web_server or serial.
+//
+// data: if true is returned data will be updated with the new line of
+//       input
+// -------------------------------------------------------------------
+extern boolean input_get(String& data);
 
-    if(data.length() > 0) {
-      if (!RFM69_enabled) {
-      DEBUG.printf("Got '%s'\n", data.c_str());  
-      }
-      last_datastr = data;
-    } else {
-      gotData = false;
-    }
-  }
-
-  return gotData;
-}
+#endif // _EMONESP_INPUT_H

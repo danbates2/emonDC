@@ -23,43 +23,25 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "emonesp.h"
-#include "input.h"
-#include "emondc.h"
+#ifndef _EMONESP_HTTP_H
+#define _EMONESP_HTTP_H
 
-String input_string="";
-String last_datastr="";
+// -------------------------------------------------------------------
+// HTTP(S) support functions
+// -------------------------------------------------------------------
 
-boolean input_get(String& data) {
-  boolean gotData = false;
+#include <Arduino.h>
 
-  // If data from test API e.g `http://<IP-ADDRESS>/input?string=CT1:3935,CT2:325,T1:12.5,T2:16.9,T3:11.2,T4:34.7`
-  if(input_string.length() > 0) {
-    data = input_string;
-    input_string = "";
-    gotData = true;
-  }
-  // If data received on serial
-  else if (Serial.available()) {
-    // Could check for string integrity here
-    data = Serial.readStringUntil('\n');
-    gotData = true;
-  }
+// -------------------------------------------------------------------
+// HTTPS SECURE GET Request
+// url: N/A
+// -------------------------------------------------------------------
+extern String get_https(const char* fingerprint, const char* host, String url, int httpsPort);
 
-  if(gotData)
-  {
-    // Get rid of any whitespace, newlines etc
-    data.trim();
+// -------------------------------------------------------------------
+// HTTP GET Request
+// url: N/A
+// -------------------------------------------------------------------
+extern String get_http(const char* host, String url);
 
-    if(data.length() > 0) {
-      if (!RFM69_enabled) {
-      DEBUG.printf("Got '%s'\n", data.c_str());  
-      }
-      last_datastr = data;
-    } else {
-      gotData = false;
-    }
-  }
-
-  return gotData;
-}
+#endif // _EMONESP_HTTP_H
