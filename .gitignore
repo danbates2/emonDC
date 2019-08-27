@@ -11,3 +11,4 @@ expenses/expenses 2.ods
 *.odt#
 doco/DC current and voltage monitoring v1.3.odt
 README - blog.md
+*.DS_Store
