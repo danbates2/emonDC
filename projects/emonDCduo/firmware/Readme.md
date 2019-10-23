@@ -1,6 +1,7 @@
+See emondc.cpp for user-defined variables.
+<br>
 Based on emonESP, modified for emonDC with: <br>
 - Uses the MCP3208 12-bit adc.
-- Web interface includes post rate option.
 - OLED Display support.
 - RTC support.
 - MicroSD Card support.
