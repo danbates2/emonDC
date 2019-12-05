@@ -43,7 +43,7 @@
 #include "emoncms.h"
 #include "mqtt.h"
 
-#include "emondc.h" // emonDC code additions.
+#include "emondc.h" // emonDC additions.
 #include "gpio0.h" // button pressing.
 #include "sleep.h" // deep-sleep mode management.
 
@@ -103,7 +103,7 @@ void setup() {
     // Start the OTA update systems
     ota_setup();
 
-    emondc_setup(); // HEY HEY!
+    emondc_setup();
 
 
     /*

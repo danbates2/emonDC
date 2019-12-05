@@ -1,17 +1,27 @@
 // emonDC extras, Daniel Bates SEP, 2019.
 // Free to use and modify.
 
+#include "emondc.h"
+#include "input.h"
+#include "config.h"
+#include "wifi.h"
+#include <SD.h>
+#include <Wire.h>
+#include <RTClib.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
 // -------------------------------------------------------------------
 // change the following variable for the system.
 // -------------------------------------------------------------------
 
-unsigned long _MAIN_INTERVAL = 5; // seconds
+unsigned long _MAIN_INTERVAL = 10; // seconds
 
 bool chanAref = 0; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 bool chanBref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 
-float chanA_gain = 101; // shunt amp gain.
-float chanB_gain = 101;
+float chanA_shuntAmp_gain = 100; // shunt amp gain.
+float chanB_shuntAmp_gain = 100;
 
 // values of resistor divider for voltage reading.
 float R1_A = 1000000.0; // 1Mohm default.
@@ -45,8 +55,6 @@ float _CAL_FACTOR_TEST = 1.00; // ADC_CHANNEL_7.
 
   data model:
   main_emondc_interval
-  _t_begin
-  RFM69_enabled
   chanAref
   chanBref
   R1_A
@@ -55,11 +63,15 @@ float _CAL_FACTOR_TEST = 1.00; // ADC_CHANNEL_7.
   R2_B
   Rshunt_A
   Rshunt_B
+  chanA_shuntAmp_gain
+  chanB_shuntAmp_gain
   _CAL_FACTOR1
   _CAL_FACTOR2
   _CAL_FACTOR3
   _CAL_FACTOR4
   _CAL_FACTOR_TEST
+  _t_begin
+  RFM69_enabled
   battery_voltage_nominal
   peukert_exponent
   rated_discharge_time
@@ -81,17 +93,13 @@ float _CAL_FACTOR_TEST = 1.00; // ADC_CHANNEL_7.
   TempAlarmRoomHIGH
   TempAlarmRoomLOW
   midnight_calibration
-  chanA_gain
-  chanB_gain
+  chanA_shuntAmp_gain
+  chanB_shuntAmp_gain
   Wh_chA
   Wh_chB
 */
 
-#include "emondc.h"
-#include "input.h"
-#include "config.h"
-#include "wifi.h"
-#include <SD.h>
+
 
 unsigned long main_emondc_interval = _MAIN_INTERVAL * 1000;
 
@@ -230,14 +238,12 @@ unsigned int ADC_DelayTest = 1; // microsecond delay in ADC routine, to improve 
 
 // The RTC is an option for off-grid stand alone dataloggers without an internet connection.
 // PCF8523 Real-time Clock setup
-#include <Wire.h>
-#include <RTClib.h>
+
 RTC_PCF8523 rtc;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
 // OLED Display
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
@@ -245,7 +251,7 @@ char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursd
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 int screentog = 0;
 
-const int chipSelectSD = 15; //SD card
+const int chipSelectSD = 15; // SD card
 
 // MCP3208
 #define MCP3208_CS_PIN    2 // CS
@@ -323,12 +329,11 @@ void emondc_setup(void) {
   // RTC init
   //-----------------------------------
   if (!rtc.begin()) {
-    Serial.println("RTC not detected.");
+    Serial.println("RTC/I2C not functioning.");
   }
-
-  delay(100);
-  if (!rtc.initialized()) {
-    Serial.println("RTC not running, initialising with compile time.");
+  
+  else if (!rtc.initialized()) {
+    Serial.println("RTC not running,\r\n    - attempting initialisation with compile time.");
     // following line sets the RTC to the date & time this sketch was compiled
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     // This line sets the RTC with an explicit date & time, for example to set
@@ -338,6 +343,7 @@ void emondc_setup(void) {
   else {
     Serial.println("RTC initialised.");
   }
+  delay(10);
 }
 
 
@@ -352,7 +358,7 @@ void emondc_loop(void) {
   CHANNEL5 = read_adc(6);
   CHANNEL6 = read_adc(5);
   CHANNEL7 = read_adc(7);
-  CHANNEL8 = read_adc(8); // Labeled on the PCB as CH8.
+  CHANNEL8 = read_adc(8); // Labeled on the PCB as CH7.
 
   CH_A_CURRENT_ACCUMULATOR = CH_A_CURRENT_ACCUMULATOR + CHANNEL1;
   CH_A_VOLTAGE_ACCUMULATOR = CH_A_VOLTAGE_ACCUMULATOR + CHANNEL2;
@@ -433,9 +439,9 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
 
   volts_to_adc_reading_ratio = volts_to_adc_reading_ratio_function(); // convert VREF33 into 'ADCvalue to Voltage factor'
 
-  Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, chanA, chanA_gain) * _CAL_FACTOR1;
+  Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, chanA, chanA_shuntAmp_gain) * _CAL_FACTOR1;
   Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, chanA) * _CAL_FACTOR2;
-  Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, chanB, chanB_gain) * _CAL_FACTOR3;
+  Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, chanB, chanB_shuntAmp_gain) * _CAL_FACTOR3;
   Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, chanB) * _CAL_FACTOR4;
   CH8_AVERAGED = CH8_AVERAGED * _CAL_FACTOR_TEST;
 
@@ -707,7 +713,12 @@ void drawvalues_to_OLED(void) { // draw to OLED
     display.println(F("SSID:")); display.println(esid);
     screentog = 7;
   }
-  /*  else if (screentog == 7) {
+  else if (screentog == 7) {
+    display.println(F("IP Addr:")); display.println(ipaddress);
+    screentog = 0;
+  }
+  /*
+    else if (screentog == 8) {
       display.print(now.year(), DEC);
       display.print(F("/"));
       if (now.month() <= 9) {
@@ -734,18 +745,12 @@ void drawvalues_to_OLED(void) { // draw to OLED
       display.print(now.second(), DEC);
       display.println();
 
-      //display.display(); /////
-
-      screentog = 8;
+      screentog = 0; // reset toggle counter
     }
   */
-  else if (screentog == 7) {
-    display.println(F("IP Addr:")); display.println(ipaddress);
-    //display.display(); /////
-    screentog = 0;
-  }
 
   display.display();
+  //display.startscrollleft(0x00, 0x0F);
 } // draw to OLED
 
 
