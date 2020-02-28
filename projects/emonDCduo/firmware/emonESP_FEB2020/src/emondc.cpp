@@ -1,10 +1,14 @@
 // emonDC extras, Daniel Bates SEP, 2019.
 // Free to use and modify.
-
+#include "wifi.h"
+#include "emonesp.h"
 #include "emondc.h"
 #include "input.h"
 #include "config.h"
-#include "wifi.h"
+
+#include <ESP8266WiFi.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>
 #include <SD.h>
 #include <Wire.h>
 #include <RTClib.h>
@@ -15,9 +19,9 @@
 // change the following variable for the system.
 // -------------------------------------------------------------------
 
-unsigned long _MAIN_INTERVAL = 10; // seconds
+unsigned long _MAIN_INTERVAL = 5; // seconds
 
-bool chanAref = 0; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
+bool chanAref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 bool chanBref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 
 float chanA_shuntAmp_gain = 100; // shunt amp gain.
@@ -127,6 +131,8 @@ float Wh_accumulate(float current_value, float voltage_value, float elapsed_seco
   float wh = watt_seconds / 3600;
   return wh;
 }
+
+unsigned long rtc_now_time = 0; 
 
 float CH_A_CURRENT_AVERAGED;
 float CH_A_VOLTAGE_AVERAGED;
@@ -285,6 +291,18 @@ String ADC_KeyValue_String = "";
 
 unsigned long currentMillis;
 
+#define NTCENABLE
+#ifdef NTCENABLE
+//int time_offset = 3600; //GMT +0
+int time_offset = 0;
+
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", time_offset, 300000);
+unsigned long previousMillisNTC = 0;
+//unsigned long main_emondc_interval;
+unsigned long intervalNTC = main_emondc_interval;
+#endif
+
 
 void emondc_setup(void) {
   //-----------------------------------
@@ -353,11 +371,28 @@ void emondc_setup(void) {
   else {
     Serial.println("RTC initialised.");
   }
+
+#ifdef NTCENABLE
+      timeClient.setTimeOffset(time_offset);
+
+    timeClient.begin();
+    #endif
+
   delay(10);
+}
+
+void NTC_update_PCF8523_update(void) {
+  if (WiFi.status() == WL_CONNECTED) {
+    timeClient.update();
+    rtc.adjust(timeClient.getEpochTime());
+  }
+  DateTime now = rtc.now();
+  rtc_now_time = now.unixtime();
 }
 
 
 void emondc_loop(void) {
+
 
   currentMillis = millis();
 
@@ -388,11 +423,15 @@ void emondc_loop(void) {
     //previousMillis = previousMillis - overrunMillis;
 
     if (numberofsamples >= 1000) {
+      NTC_update_PCF8523_update();
+      
+
       average_and_calibrate(pre_mills_store, currentMillis);
 
       //-----------------------------------
       // what to do with the ready data:
       //-----------------------------------
+     
 
       forward_to_emonESP();
 
@@ -401,8 +440,8 @@ void emondc_loop(void) {
       // print_readable();
 
       // forward_to_RFM69Pi();
-
-      // test_RTC();
+     
+      //RTC_PCF8523_PRINT();
       // Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap());
 
       drawvalues_to_OLED();
@@ -477,7 +516,7 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   Serial.println(numberofsamples);
   Serial.print("Averaging loop counter: ");
   Serial.println(averaging_loop_counter);
-  Serial.print("_t: ");
+  Serial.print("_time: ");
   Serial.println(_t);
 #endif
 
@@ -506,9 +545,9 @@ void print_readable(void) {
   Serial.println(CH8_AVERAGED);
   Serial.print("_time: ");
   Serial.println(_t);
-
-
 }
+
+
 
 void forward_to_emonESP(void)
 {
@@ -541,7 +580,8 @@ void forward_to_emonESP(void)
   ADC_KeyValue_String = ADC_KeyValue_String + "Wh_chB:";
   ADC_KeyValue_String = ADC_KeyValue_String + Wh_chB;
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "_t:";
+  ADC_KeyValue_String = ADC_KeyValue_String + "time:";
+  _t = rtc_now_time;
   ADC_KeyValue_String = ADC_KeyValue_String + _t;
 
   input_string = ADC_KeyValue_String;
@@ -668,10 +708,12 @@ void testscrolltext(String scrollstring) {
   //delay(1000);
 }
 
-void test_RTC(void) {
+
+
+void RTC_PCF8523_PRINT(void) {
   DateTime now = rtc.now();
 
-  Serial.print("testRTC:");
+  Serial.print("RTC_PCF8523:");
   Serial.print(now.year(), DEC);
   Serial.print('/');
   Serial.print(now.month(), DEC);
@@ -684,8 +726,16 @@ void test_RTC(void) {
   Serial.print(':');
   Serial.print(now.minute(), DEC);
   Serial.print(':');
-  Serial.print(now.second(), DEC);
-  Serial.println();
+  Serial.println(now.second(), DEC);
+  //Serial.println();
+
+  rtc_now_time = now.unixtime();
+  Serial.print(" since midnight 1/1/1970 = ");
+  Serial.print(rtc_now_time);
+  Serial.print("s = ");
+  Serial.print(rtc_now_time / 86400L);
+  Serial.println("d");
+
 }
 
 void drawvalues_to_OLED(void) { // draw to OLED

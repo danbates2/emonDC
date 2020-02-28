@@ -12,3 +12,5 @@ expenses/expenses 2.ods
 doco/DC current and voltage monitoring v1.3.odt
 README - blog.md
 *.DS_Store
+projects/emonDCduo/firmware/emonESP_FEB2020/.pio/*
+projects/emonDCduo/firmware/emonESP_NOV2019/.pio/*
