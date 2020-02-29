@@ -1,0 +1,6 @@
+terminal commands to flash firmware, the first two may be ommitted:
+
+$ pip install esptool.py
+$ esptool.py erase_flash
+$ pio run -t upload && pio run -t uploadfs
+$ pio device monitor

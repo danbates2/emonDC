@@ -806,7 +806,7 @@ void drawvalues_to_OLED(void) { // draw to OLED
     }
   */
   else if (screentog == 7) {
-    display.println(F("IP Addr:")); display.println(ipaddress);
+    display.println(F("IP Addr:")); display.println(ipaddress_OLED);
     //display.display(); /////
     screentog = 0;
   }

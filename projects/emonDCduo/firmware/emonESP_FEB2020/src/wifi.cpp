@@ -29,6 +29,7 @@
 #include <ESP8266WiFi.h>              // Connect to Wifi
 #include <ESP8266mDNS.h>              // Resolve URL for update server etc.
 #include <DNSServer.h>                // Required for captive portal
+#include <String.h>
 
 DNSServer dnsServer;                  // Create class DNS server, captive portal re-direct
 const byte DNS_PORT = 53;
@@ -46,6 +47,7 @@ const char *esp_hostname = "emondc";
 String connected_network = "";
 String status_string = "";
 String ipaddress = "";
+String ipaddress_OLED = "";
 
 unsigned long Timer;
 String st, rssi;
@@ -115,6 +117,10 @@ void startAP() {
   DEBUG.print("AP IP Address: ");
   DEBUG.println(tmpStr);
   ipaddress = tmpStr;
+  ipaddress_OLED = tmpStr;
+  int iplen = ipaddress_OLED.length();
+  int iplen_adjust = iplen - 10;
+  ipaddress_OLED.remove(0,iplen_adjust);
   
 }
 
@@ -190,11 +196,14 @@ startClient() {
     // Copy the connected network and ipaddress to global strings for use in status request
     connected_network = esid;
     ipaddress = tmpStr;
+    ipaddress_OLED = tmpStr;
+    int iplen = ipaddress_OLED.length();
+    int iplen_adjust = iplen - 10;
+    ipaddress_OLED.remove(0,iplen_adjust);
   }
 }
 
-void
-wifi_setup() {
+void wifi_setup() {
 #ifdef WIFI_LED
   pinMode(WIFI_LED, OUTPUT);
   //digitalWrite(WIFI_LED, wifiLedState);

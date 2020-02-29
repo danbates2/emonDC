@@ -6,7 +6,12 @@
 	],
 	"settings": {
 		"files.associations": {
-			"utility": "cpp"
+			"utility": "cpp",
+			"__hash_table": "cpp",
+			"__tree": "cpp",
+			"algorithm": "cpp",
+			"list": "cpp",
+			"*.tcc": "cpp"
 		}
 	}
 }
