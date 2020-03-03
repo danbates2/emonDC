@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/d4/Library/Mobile Documents/com~apple~CloudDocs/PROJECT FILES/emon/EmonDC/firmware/emonESP_FEB2020"
 		}
 	],
 	"settings": {

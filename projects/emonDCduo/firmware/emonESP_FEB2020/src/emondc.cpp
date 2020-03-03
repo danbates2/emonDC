@@ -9,11 +9,14 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 #include <NTPClient.h>
+#include "AH_MCP320x.h"
+#include <SPI.h>
 #include <SD.h>
 #include <Wire.h>
 #include <RTClib.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
 
 // -------------------------------------------------------------------
 // change the following variable for the system.
@@ -109,9 +112,6 @@ unsigned long main_emondc_interval = _MAIN_INTERVAL * 1000;
 
 unsigned long _t;
 
-String datalogFilename = "datalog.txt";
-//sd::File datalogFile;
-
 bool RFM69_enabled = false; // RFM69Pi compatibility.
 
 
@@ -119,6 +119,11 @@ bool RFM69_enabled = false; // RFM69Pi compatibility.
 // -------------------------------------------------------------------
 // 'ADVANCED' STUFF BELOW HERE
 // -------------------------------------------------------------------
+
+
+const int chipSelectSD = 15; // SD card
+
+AH_MCP320x ADC_SPI(2);  
 
 int _t_begin;
 
@@ -258,7 +263,6 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 int screentog = 0;
 
 
-const int chipSelectSD = 15; // SD card
 
 // MCP3208
 #define MCP3208_CS_PIN    2 // CS
@@ -304,15 +308,46 @@ unsigned long intervalNTC = main_emondc_interval;
 #endif
 
 
+
+String datalogFilename = "datalog.txt";
+
+
+void save_to_SDcard(void) {
+  
+  //using sd::File;
+  File dataFile = SD.open(datalogFilename, FILE_WRITE);
+
+  // if the file is available, write to it:
+  if (dataFile) {
+    dataFile.println(ADC_KeyValue_String);
+    dataFile.close();
+    // print to the serial port too:
+    Serial.println(ADC_KeyValue_String);
+  }
+  // if the file isn't open, pop up an error:
+  else {
+    Serial.println("error opening datalog.txt");
+  }
+  //SD::SD.end();
+}
+
+
 void emondc_setup(void) {
   //-----------------------------------
   // microSD card init
   //-----------------------------------
+  //SPI.setClockDivider(SPI_CLOCK_DIV128);
+  //SPI.beginTransaction(SPISettings(400000, MSBFIRST, SPI_MODE0));
+  
 
   pinMode(chipSelectSD, OUTPUT);
   digitalWrite(chipSelectSD, HIGH); delay(1);
-  if (SD.begin(chipSelectSD)) {
+  if (SD.begin(chipSelectSD, 400000)) {
     Serial.println("SDcard initialised.");
+    // File myFile;
+    // myFile = SD.open("datalog.txt", FILE_WRITE);
+    // myFile.close();
+    // Serial.println("SD card file created");
   }
   else {
     Serial.println("SD card not detected.");
@@ -321,6 +356,7 @@ void emondc_setup(void) {
   //-----------------------------------
   // MCP3208 ADC init
   //-----------------------------------
+  /*
   pinMode(MCP3208_CS_PIN, OUTPUT);
   pinMode(DATAOUT_MCP3208, OUTPUT);
   pinMode(DATAIN_MCP3208, INPUT);
@@ -329,6 +365,8 @@ void emondc_setup(void) {
   digitalWrite(MCP3208_CS_PIN, HIGH);
   digitalWrite(DATAOUT_MCP3208, LOW);
   digitalWrite(SPICLOCK, LOW);
+  */
+  //SPI.setClockDivider(SPI_CLOCK_DIV128);
 
   //-----------------------------------
   // OLED Display init
@@ -351,7 +389,7 @@ void emondc_setup(void) {
   display.println(F("v3.6 N19"));
   screentog = 1;
   display.display();
-  delay(2000);
+  delay(1500);
 
   //-----------------------------------
   // RTC init
@@ -393,9 +431,18 @@ void NTC_update_PCF8523_update(void) {
 
 void emondc_loop(void) {
 
-
   currentMillis = millis();
 
+  CHANNEL1 = ADC_SPI.readCH(0);
+  CHANNEL2 = ADC_SPI.readCH(1);
+  CHANNEL3 = ADC_SPI.readCH(2);
+  CHANNEL4 = ADC_SPI.readCH(3);
+  CHANNEL5 = ADC_SPI.readCH(5);
+  CHANNEL6 = ADC_SPI.readCH(4);
+  CHANNEL7 = ADC_SPI.readCH(6);
+  CHANNEL8 = ADC_SPI.readCH(7);
+
+  /*
   CHANNEL1 = read_adc(1);
   CHANNEL2 = read_adc(2);
   CHANNEL3 = read_adc(3);
@@ -404,6 +451,7 @@ void emondc_loop(void) {
   CHANNEL6 = read_adc(5);
   CHANNEL7 = read_adc(7);
   CHANNEL8 = read_adc(8); // Labeled on the PCB as CH7.
+  */
 
   CH_A_CURRENT_ACCUMULATOR = CH_A_CURRENT_ACCUMULATOR + CHANNEL1;
   CH_A_VOLTAGE_ACCUMULATOR = CH_A_VOLTAGE_ACCUMULATOR + CHANNEL2;
@@ -423,30 +471,28 @@ void emondc_loop(void) {
     //previousMillis = previousMillis - overrunMillis;
 
     if (numberofsamples >= 1000) {
-      NTC_update_PCF8523_update();
       
-
       average_and_calibrate(pre_mills_store, currentMillis);
+      
+      NTC_update_PCF8523_update();
 
       //-----------------------------------
       // what to do with the ready data:
       //-----------------------------------
+          
+      forward_to_emonESP(); // sending to emonCMS?
+
+      // print_readable(); // debugging...
+
+      // forward_to_RFM69Pi(); // not tested
      
+      Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for testing
 
-      forward_to_emonESP();
+      save_to_SDcard(); // 
 
-      // save_to_SDcard();
+      drawvalues_to_OLED(); // for the 128x32 I2C OLED.
 
-      // print_readable();
-
-      // forward_to_RFM69Pi();
-     
-      //RTC_PCF8523_PRINT();
-      // Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap());
-
-      drawvalues_to_OLED();
-
-      clear_accumulators(); // this must happen to run another set of samples.
+      clear_accumulators(); // this happens before gathering next samples, or else chaos ensues.
     }
   }
 }
@@ -562,14 +608,11 @@ void forward_to_emonESP(void)
   ADC_KeyValue_String = ADC_KeyValue_String + "Amps_B:";
   ADC_KeyValue_String = ADC_KeyValue_String + Current_B;
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "AmpsRef_Uni:";
+  ADC_KeyValue_String = ADC_KeyValue_String + "Ref_Uni:";
   ADC_KeyValue_String = ADC_KeyValue_String + (VREF_UNI_AVERAGED * volts_to_adc_reading_ratio);
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "AmpsRef_Bi:";
+  ADC_KeyValue_String = ADC_KeyValue_String + "Ref_Bi:";
   ADC_KeyValue_String = ADC_KeyValue_String + (VREF_BI_AVERAGED * volts_to_adc_reading_ratio);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "3.3V_Ref:";
-  ADC_KeyValue_String = ADC_KeyValue_String + (VREF33_AVERAGED * volts_to_adc_reading_ratio);
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
   ADC_KeyValue_String = ADC_KeyValue_String + "CH8:";
   ADC_KeyValue_String = ADC_KeyValue_String + CH8_AVERAGED;
@@ -580,41 +623,15 @@ void forward_to_emonESP(void)
   ADC_KeyValue_String = ADC_KeyValue_String + "Wh_chB:";
   ADC_KeyValue_String = ADC_KeyValue_String + Wh_chB;
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
+  ADC_KeyValue_String = ADC_KeyValue_String + "samplecount:";
+  ADC_KeyValue_String = ADC_KeyValue_String + numberofsamples;
+  ADC_KeyValue_String = ADC_KeyValue_String + ",";
   ADC_KeyValue_String = ADC_KeyValue_String + "time:";
-  _t = rtc_now_time;
-  ADC_KeyValue_String = ADC_KeyValue_String + _t;
-
+  //_t = rtc_now_time;
+  ADC_KeyValue_String = ADC_KeyValue_String + rtc_now_time;
   input_string = ADC_KeyValue_String;
 }
 
-
-void forward_to_RFM69Pi(void) {
-  // ADC_KeyValue_String = "Volts_A:" + String(make_readable_Volts(CH_A_VOLTAGE_AVERAGED, chanA), 2);
-  ADC_KeyValue_String = String(Voltage_A, 2);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "Amps_A:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Current_A;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "Volts_B:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Voltage_B;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "Amps_B:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Current_B;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "AmpsRef_Uni:";
-  ADC_KeyValue_String = ADC_KeyValue_String + (VREF_UNI_AVERAGED * volts_to_adc_reading_ratio);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "AmpsRef_Bi:";
-  ADC_KeyValue_String = ADC_KeyValue_String + (VREF_BI_AVERAGED * volts_to_adc_reading_ratio);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "3.3V_Ref:";
-  ADC_KeyValue_String = ADC_KeyValue_String + (VREF33_AVERAGED * volts_to_adc_reading_ratio);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  //ADC_KeyValue_String = ADC_KeyValue_String + "CH8:";
-  ADC_KeyValue_String = ADC_KeyValue_String + CH8_AVERAGED;
-  ADC_KeyValue_String = ADC_KeyValue_String + "s";
-  Serial.println(ADC_KeyValue_String);
-}
 
 void clear_accumulators(void) {
   CH_A_CURRENT_ACCUMULATOR = 0;
@@ -627,25 +644,7 @@ void clear_accumulators(void) {
   CH8_ACCUMULATOR = 0;
   numberofsamples = 0;
 }
-/*
-  void save_to_SDcard(void) {
-  datalogFile = SD.open(datalogFilename, FILE_WRITE);
-  datalogFile.close();
-  datalogFile = SD.open(datalogFilename, FILE_WRITE);
-  if (datalogFile) {
-    datalogFile.println(ADC_KeyValue_String);
-    datalogFile.close();
-    // print to the serial port too:
-    Serial.println("saved to SD card.");
-  }
-  // if the file isn't open, pop up an error:
-  else {
-    Serial.print("error opening ");
-    Serial.println(datalogFilename);
-    //datalogFile = SD.open(datalogFilename, FILE_WRITE);
-  }
-  }
-*/
+
 
 // Read ADC function for MCP3208
 int read_adc(int channel) {

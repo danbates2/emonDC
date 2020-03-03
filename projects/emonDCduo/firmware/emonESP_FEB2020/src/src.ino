@@ -28,7 +28,7 @@
 // RTC library: https://github.com/adafruit/RTClib
 // PubSubClient library: https://github.com/knolleary/pubsubclient
 // AsyncWebServer library: https://github.com/me-no-dev/ESPAsyncWebServer
-
+#define FS_NO_GLOBALS
 #define RELEASE false
 #define GPIO0YES false
 //#define MICROSDEBUG
