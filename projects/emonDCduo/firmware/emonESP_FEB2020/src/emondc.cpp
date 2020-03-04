@@ -22,7 +22,8 @@
 // change the following variable for the system.
 // -------------------------------------------------------------------
 
-unsigned long _MAIN_INTERVAL = 5; // seconds
+unsigned int _MAIN_INTERVAL = 10; // seconds
+unsigned int main_emondc_interval = _MAIN_INTERVAL * 1000;
 
 bool chanAref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 bool chanBref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
@@ -39,11 +40,11 @@ float Rshunt_A = 0.000500; // value of Rsense in ohms.
 float Rshunt_B = 0.000500;
 
 // Calibration values for manual adjustment.
-float _CAL_FACTOR1 = 1.00; // CURRENT_A.
-float _CAL_FACTOR2 = 1.00; // VOLTAGE_A.
-float _CAL_FACTOR3 = 1.00; // CURRENT_B.
-float _CAL_FACTOR4 = 1.00; // VOLTAGE_B.
-float _CAL_FACTOR_TEST = 1.00; // ADC_CHANNEL_7.
+float _CAL_FACTOR_icalA = 1.00; // CURRENT_A.
+float _CAL_FACTOR_vcalA = 1.00; // VOLTAGE_A.
+float _CAL_FACTOR_icalB = 1.00; // CURRENT_B.
+float _CAL_FACTOR_vcalB = 1.00; // VOLTAGE_B.
+
 
 /*
   todo:
@@ -72,10 +73,10 @@ float _CAL_FACTOR_TEST = 1.00; // ADC_CHANNEL_7.
   Rshunt_B
   chanA_shuntAmp_gain
   chanB_shuntAmp_gain
-  _CAL_FACTOR1
-  _CAL_FACTOR2
-  _CAL_FACTOR3
-  _CAL_FACTOR4
+  _CAL_FACTOR_icalA
+  _CAL_FACTOR_vcalA
+  _CAL_FACTOR_icalB
+  _CAL_FACTOR_vcalB
   _CAL_FACTOR_TEST
   _t_begin
   RFM69_enabled
@@ -108,7 +109,7 @@ float _CAL_FACTOR_TEST = 1.00; // ADC_CHANNEL_7.
 
 
 
-unsigned long main_emondc_interval = _MAIN_INTERVAL * 1000;
+
 
 unsigned long _t;
 
@@ -193,20 +194,20 @@ float Vcal_coefficient_A = R2_A / Vcal_coefficient_A_pre;
 float Vcal_coefficient_B_pre = (R1_B + R2_B); // resistor divider calc.
 float Vcal_coefficient_B = R2_B / Vcal_coefficient_B_pre;
 
-// adc value to Volts function:
+// adc value to Volts function
 float make_readable_Volts (float _adcValue, String _chan) {
   float _readableV1 = _adcValue * volts_to_adc_reading_ratio;
   if (_chan == chanA) {
     float _readableV2 = _readableV1 / Vcal_coefficient_A;
     return (_readableV2);
   }
-  else if (_chan == chanB) {
+  else {
     float _readableV2 = _readableV1 / Vcal_coefficient_B;
     return (_readableV2);
   }
 }
 
-// adc value to Amps function:
+// adc value to Amps function
 float make_readable_Amps (float _adcValue, String _chan, float _gain)
 {
   float _readable_1 = _adcValue * volts_to_adc_reading_ratio;
@@ -216,7 +217,7 @@ float make_readable_Amps (float _adcValue, String _chan, float _gain)
     float _readable_current = _readable_2 / Rshunt_A; // I=V/R
     return (_readable_current);
   }
-  else if (_chan == chanB) {
+  else {
     float _readable_current = _readable_2 / Rshunt_B; // I=V/R
     //Serial.println(_readableC3);
     return (_readable_current);
@@ -410,11 +411,11 @@ void emondc_setup(void) {
     Serial.println("RTC initialised.");
   }
 
-#ifdef NTCENABLE
-      timeClient.setTimeOffset(time_offset);
 
-    timeClient.begin();
-    #endif
+  timeClient.setTimeOffset(time_offset);
+
+  timeClient.begin();
+    
 
   delay(10);
 }
@@ -509,14 +510,7 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   VREF33_AVERAGED = VREF33_ACCUMULATOR / numberofsamples;
   CH8_AVERAGED = CH8_ACCUMULATOR / numberofsamples;
 
-  // CALIBRATE
-  CH_A_CURRENT_AVERAGED = CH_A_CURRENT_AVERAGED * _CAL_FACTOR1;
-  CH_A_VOLTAGE_AVERAGED = CH_A_VOLTAGE_AVERAGED * _CAL_FACTOR2;
-  CH_B_CURRENT_AVERAGED = CH_B_CURRENT_AVERAGED * _CAL_FACTOR3;
-  CH_B_VOLTAGE_AVERAGED = CH_B_VOLTAGE_AVERAGED * _CAL_FACTOR4;
-  CH8_AVERAGED = CH8_AVERAGED * _CAL_FACTOR_TEST;
-
-
+ 
   // adjust current readings according to Vref values.
   if (chanAref == chanRef) {
     CH_A_CURRENT_AVERAGED = CH_A_CURRENT_AVERAGED - VREF_UNI_AVERAGED;
@@ -534,11 +528,11 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
 
   volts_to_adc_reading_ratio = volts_to_adc_reading_ratio_function(); // convert VREF33 into 'ADCvalue to Voltage factor'
 
-  Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, chanA, chanA_shuntAmp_gain) * _CAL_FACTOR1;
-  Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, chanA) * _CAL_FACTOR2;
-  Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, chanB, chanB_shuntAmp_gain) * _CAL_FACTOR3;
-  Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, chanB) * _CAL_FACTOR4;
-  CH8_AVERAGED = CH8_AVERAGED * _CAL_FACTOR_TEST;
+  Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, chanA, chanA_shuntAmp_gain) * _CAL_FACTOR_icalA;
+  Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, chanA) * _CAL_FACTOR_vcalA;
+  Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, chanB, chanB_shuntAmp_gain) * _CAL_FACTOR_icalB;
+  Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, chanB) * _CAL_FACTOR_vcalB;
+  //CH8_AVERAGED = CH8_AVERAGED * _CAL_FACTOR_TEST;
 
   //Voltage_A = Voltage_A - 0.02;
   //Voltage_B = Voltage_B - 0.02;
@@ -814,9 +808,24 @@ void drawvalues_to_OLED(void) { // draw to OLED
 } // draw to OLED
 
 
-void config_save_emondc(unsigned long  interval)
+void config_save_emondc(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB)
 {
-  main_emondc_interval = interval * 1000;
+
+  main_emondc_interval = interval;
+  _CAL_FACTOR_vcalA = vcalA; // CURRENT_A.
+  _CAL_FACTOR_icalA = icalA; // VOLTAGE_A.
+  _CAL_FACTOR_vcalB = vcalB; // CURRENT_B.
+  _CAL_FACTOR_icalB = icalB; // VOLTAGE_B.
+  
+  Serial.println("emonDC saving settings...");
+  Serial.println(main_emondc_interval);
+  Serial.println(_CAL_FACTOR_vcalA);
+  Serial.println(_CAL_FACTOR_icalA);
+  Serial.println(_CAL_FACTOR_vcalB);
+  Serial.println(_CAL_FACTOR_icalB);
+  Serial.println("... done.");
+
+  // PGM_P xyz = PSTR("Store this string in flash"); 
 
   /*
     EEPROM_write_string(EEPROM_WWW_USER_START, EEPROM_WWW_USER_SIZE, user);
@@ -824,5 +833,5 @@ void config_save_emondc(unsigned long  interval)
 
     EEPROM.commit();
   */
-
+ 
 }

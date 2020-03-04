@@ -244,8 +244,7 @@ handleSaveMqtt(AsyncWebServerRequest *request) {
 // Save the web site user/pass
 // url: /saveadmin
 // -------------------------------------------------------------------
-void
-handleSaveAdmin(AsyncWebServerRequest *request) {
+void handleSaveAdmin(AsyncWebServerRequest *request) {
   AsyncResponseStream *response;
   if (false == requestPreProcess(request, response, "text/plain")) {
     return;
@@ -255,7 +254,7 @@ handleSaveAdmin(AsyncWebServerRequest *request) {
   String qpass = request->arg("pass");
 
   config_save_admin(quser, qpass);
-  Serial.println("testing testing saving admin settings");
+
   response->setCode(200);
   response->print("saved");
   request->send(response);
@@ -266,94 +265,31 @@ handleSaveAdmin(AsyncWebServerRequest *request) {
 // Handle emonDC sampling setting
 // url /emondc
 // -------------------------------------------------------------------
-void handleEmonDC_Interval(AsyncWebServerRequest *request) {
+void handleEmonDC(AsyncWebServerRequest *request) {
   AsyncResponseStream *response;
   if (false == requestPreProcess(request, response, "text/plain")) {
     return;
   }
+  Serial.println("WE'VE GOT THIS FAR!!!");
 
-  String inStringInterval = request->arg("interval");    // string to hold input
+  String qinterval = request->arg("interval");
+  String qvcalA = request->arg("vcalA");
+  String qicalA = request->arg("icalA");
+  String qvcalB = request->arg("vcalB");
+  String qicalB = request->arg("icalB");
 
-  unsigned long qinterval = inStringInterval.toInt();
-  config_save_emondc(qinterval);
+  unsigned int interval = qinterval.toInt();
+  float vcalA = qvcalA.toFloat();
+  float icalA = qicalA.toFloat();
+  float vcalB = qvcalB.toFloat();
+  float icalB = qicalB.toFloat();
+
+  config_save_emondc(interval, vcalA, icalA, vcalB, icalB);
 
   response->setCode(200);
   response->print("saved");
   request->send(response);
 
-  DBUGLN(inStringInterval);
-}
-
-void handleEmonDC_Vcal1(AsyncWebServerRequest *request) {
-  AsyncResponseStream *response;
-  if (false == requestPreProcess(request, response, "text/plain")) {
-    return;
-  }
-
-  String inStringInterval = request->arg("Vcal1");    // string to hold input
-
-  unsigned long qvcal1 = inStringInterval.toInt();
-  config_save_emondc(qvcal1);
-
-  response->setCode(200);
-  response->print("saved");
-  request->send(response);
-
-  DBUGLN(inStringInterval);
-}
-
-void handleEmonDC_Ccal1(AsyncWebServerRequest *request) {
-  AsyncResponseStream *response;
-  if (false == requestPreProcess(request, response, "text/plain")) {
-    return;
-  }
-
-  String inStringInterval = request->arg("Ccal1");    // string to hold input
-
-  unsigned long qinterval = inStringInterval.toInt();
-  config_save_emondc(qinterval);
-
-  response->setCode(200);
-  response->print("saved");
-  request->send(response);
-
-  DBUGLN(inStringInterval);
-}
-
-void handleEmonDC_Vcal2(AsyncWebServerRequest *request) {
-  AsyncResponseStream *response;
-  if (false == requestPreProcess(request, response, "text/plain")) {
-    return;
-  }
-
-  String inStringInterval = request->arg("Vcal2");    // string to hold input
-
-  unsigned long qinterval = inStringInterval.toInt();
-  config_save_emondc(qinterval);
-
-  response->setCode(200);
-  response->print("saved");
-  request->send(response);
-
-  DBUGLN(inStringInterval);
-}
-
-void handleEmonDC_Ccal2(AsyncWebServerRequest *request) {
-  AsyncResponseStream *response;
-  if (false == requestPreProcess(request, response, "text/plain")) {
-    return;
-  }
-
-  String inStringInterval = request->arg("Ccal2");    // string to hold input
-
-  unsigned long qinterval = inStringInterval.toInt();
-  config_save_emondc(qinterval);
-
-  response->setCode(200);
-  response->print("saved");
-  request->send(response);
-
-  DBUGLN(inStringInterval);
 }
 
 // -------------------------------------------------------------------
@@ -647,11 +583,7 @@ web_server_setup()
   server.on("/input", handleInput);
   server.on("/lastvalues", handleLastValues);
 
-  server.on("/emondcinterval", handleEmonDC_Interval);
-  server.on("/emondccalibrationV1", handleEmonDC_Vcal1);
-  server.on("/emondccalibrationC1", handleEmonDC_Ccal1);
-  server.on("/emondccalibrationV2", handleEmonDC_Vcal2);
-  server.on("/emondccalibrationC2", handleEmonDC_Ccal2);
+  server.on("/savedc", handleEmonDC);
 
   // Simple Firmware Update Form
   server.on("/upload", HTTP_POST, [](AsyncWebServerRequest * request) {

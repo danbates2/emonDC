@@ -71,7 +71,7 @@
             <p>
               <b>Passkey:</b><br>
               <input type="text" data-bind="textInput: config.pass">
-              <button data-bind="click: saveNetwork, text: (saveNetworkFetching() ? 'Saving' : (saveNetworkSuccess() ? 'Saved' : 'Connect')), disable: saveAdminFetching">Connect</button>
+              <button data-bind="click: saveNetwork, text: (saveNetworkFetching() ? 'Saving' : (saveNetworkSuccess() ? 'Saved' : 'Connect')), disable: saveNetworkFetching">Connect</button>
             </p>
           </div>
 
@@ -145,7 +145,7 @@
           </p>
           <p><b>Username:</b><br>
             <input data-bind="textInput: config.mqtt_user" type="text"><br/>
-            <span class="small-text">Leave blank for authentication</span>
+            <span class="small-text">Leave blank for no authentication</span>
           </p>
           <p><b>Password:</b><br>
             <input data-bind="textInput: config.mqtt_pass" type="password"><br/>
@@ -239,13 +239,35 @@
       </div>
       <!--//////////////////////////////////////////////////////////////////////////////////-->
       <div id="nine">
-        <h2>9. emonDC Sampling</h2>
+        <h2>9. emonDC</h2>
         <div class="itembody-wrapper">
-          <p>
-            <b>Sampling and posting rate (milliseconds):</b><br>
-            <input type="text" value="emondc" data-bind="textInput: config.thisinterval">
+            <p>
+              <b>Posting interval: (milliseconds, 65535 max)</b><br>
+              <input type="text" value="emondc" data-bind="textInput: config.www_interval">
+            </p>
+            <p>
+              <b>V calibration. Channel A</b><br>
+              <input type="text" data-bind="textInput: config.vcalA">
+            </p>
+            <p>
+              <b>I calibration. Channel A</b><br>
+              <input type="text" data-bind="textInput: config.icalA">
+            </p>
+            <p>
+              <b>V calibration. Channel B</b><br>
+              <input type="text" data-bind="textInput: config.vcalB">
+            </p>
+            <p>
+              <b>I calibration. Channel B</b><br>
+              <input type="text" data-bind="textInput: config.icalB">
+            </p>
             <button data-bind="click: saveEmonDC, text: (saveEmonDCFetching() ? 'Saving' : (saveEmonDCSuccess() ? 'Saved' : 'Save')), disable: saveEmonDCFetching">Save</button>
-          </p>
+            <p>
+              <b>All fields should be filled, you may want to take note of values for future resetting, no values are remembered upon reset.</b></br>
+              <b>default calibration: 1.0</b></br>
+              <b>default interval: 10000</b>
+            </p>
+        
         </div>
       </div>
       <!--//////////////////////////////////////////////////////////////////////////////////-->

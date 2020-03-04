@@ -101,7 +101,11 @@ function ConfigViewModel() {
     "mqtt_pass": "",
     "www_username": "",
     "www_password": "",
-    "thisinterval": "",
+    "www_interval": "",
+    "vcalA": "",
+    "icalA": "",
+    "vcalB": "",
+    "icalB": "",
     "espflash": "",
     "version": "0.0.0"
   }, baseEndpoint + '/config');
@@ -295,7 +299,6 @@ function EmonEspViewModel() {
     });
   };
 
-
   // -----------------------------------------------------------------------
   // Event: EmonDC save
   // -----------------------------------------------------------------------
@@ -304,7 +307,7 @@ function EmonEspViewModel() {
   self.saveEmonDC = function () {
     self.saveEmonDCFetching(true);
     self.saveEmonDCSuccess(false);
-    $.post(baseEndpoint + "/emondc", { interval: self.config.thisinterval() }, function (data) {
+    $.post(baseEndpoint + "/savedc", { interval: self.config.www_interval(), vcalA: self.config.vcalA(), icalA: self.config.icalA(), vcalB: self.config.vcalB(), icalB: self.config.icalB() }, function (data) {
       self.saveEmonDCSuccess(true);
     }).fail(function () {
       alert("Failed to save config");

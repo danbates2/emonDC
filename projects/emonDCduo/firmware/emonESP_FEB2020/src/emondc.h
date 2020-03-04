@@ -8,7 +8,7 @@
 #include <WString.h>
 
 
-extern unsigned long main_emondc_interval; // default milliseconds interval for averaging samples and sending to emonCMS.
+extern unsigned int main_emondc_interval; // default milliseconds interval for averaging samples and sending to emonCMS.
 
 extern int _t_begin;
 extern void emondc_setup(void);
@@ -53,21 +53,16 @@ void clear_accumulators(void);
 void forward_to_RFM69Pi(void);
 void forward_to_emonESP(void);
 float make_readable_Amps(float adcValuePassed, String chan);
+float make_readable_Volts (float _adcValue, String _chan);
 extern void Wh_accumulate(float current_reading, int elapsed_seconds);
 
-extern void config_save_emondc(unsigned long interval);
+extern void config_save_emondc(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB);
 extern float time_until_discharged(void);
 extern void save_to_SDcard(void);
 
 const bool chanRef = 0;
 
 extern int averaging_loop_counter;
-
-extern float CAL0;
-extern float CAL1;
-extern float CAL2;
-extern float CAL3;
-extern float CAL7;
 
 const String chanA = "A";
 const String chanB = "B";
