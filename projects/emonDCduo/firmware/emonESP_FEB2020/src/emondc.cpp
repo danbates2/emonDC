@@ -22,6 +22,8 @@
 // change the following variable for the system.
 // -------------------------------------------------------------------
 
+
+// NOTE: SEE THE JSON SETTINGS FILE FOR CHANGING THESE, THE VALUES INDICATED BELOW ARE A BACKUP.
 unsigned int _MAIN_INTERVAL = 10; // seconds
 unsigned int main_emondc_interval = _MAIN_INTERVAL * 1000;
 
@@ -122,7 +124,6 @@ bool RFM69_enabled = false; // RFM69Pi compatibility.
 
 
 const int chipSelectSD = 15; // SD card
-
 AH_MCP320x ADC_SPI(2);  
 
 int _t_begin;
@@ -130,14 +131,13 @@ int _t_begin;
 double Wh_chA = 0.0;
 double Wh_chB = 0.0;
 
-float Wh_accumulate(float current_value, float voltage_value, float elapsed_seconds) {
-  float watts = current_value * voltage_value;
-  float watt_seconds = watts * elapsed_seconds;
-  float wh = watt_seconds / 3600;
+double Wh_accumulate(float current_value, float voltage_value, float elapsed_seconds) {
+  double watts = current_value * voltage_value;
+  double watt_seconds = watts * elapsed_seconds;
+  double wh = watt_seconds / 3600;
   return wh;
 }
 
-unsigned long rtc_now_time = 0; 
 
 float CH_A_CURRENT_AVERAGED;
 float CH_A_VOLTAGE_AVERAGED;
@@ -223,6 +223,11 @@ float make_readable_Amps (float _adcValue, String _chan, float _gain)
   }
 }
 
+
+String ADC_KeyValue_String = ""; // critical component which is forwarded to emonESP front-end, and emonCMS.
+
+unsigned long currentMillis;
+
 int averaging_loop_counter = 0;
 
 bool sendData_go = true;
@@ -249,12 +254,13 @@ unsigned int ADC_DelayTest = 1; // microsecond delay in ADC routine, to improve 
 
 // The RTC is an option for off-grid stand alone dataloggers without an internet connection.
 // PCF8523 Real-time Clock setup
-
 RTC_PCF8523 rtc;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+unsigned long rtc_now_time = 0;
 
 // OLED Display
-
+unsigned int oled_interval = 5000;
+unsigned long oled_previousMillis;
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
@@ -264,11 +270,14 @@ int screentog = 0;
 
 
 
-// MCP3208
-#define MCP3208_CS_PIN    2 // CS
+
+//---------------
+// MCP3208 Sampling
+//---------------
+#define MCP3208_CS_PIN     2 // CS
 #define DATAOUT_MCP3208    13 // MOSI
 #define DATAIN_MCP3208     12 // MISO
-#define SPICLOCK          14 // CLK
+#define SPICLOCK           14 // CLK
 
 unsigned long previousMillis = 0;
 
@@ -280,39 +289,34 @@ int CHANNEL5 = 0;
 int CHANNEL6 = 0;
 int CHANNEL7 = 0;
 int CHANNEL8 = 0;
-unsigned long CH_A_CURRENT_ACCUMULATOR = 0;
-unsigned long CH_A_VOLTAGE_ACCUMULATOR = 0;
-unsigned long CH_B_CURRENT_ACCUMULATOR = 0;
-unsigned long CH_B_VOLTAGE_ACCUMULATOR = 0;
-unsigned long VREF_UNI_ACCUMULATOR = 0;
-unsigned long VREF_BI_ACCUMULATOR = 0;
-unsigned long VREF33_ACCUMULATOR = 0;
-unsigned long CH8_ACCUMULATOR = 0;
+unsigned long long CH_A_CURRENT_ACCUMULATOR = 0;
+unsigned long long CH_A_VOLTAGE_ACCUMULATOR = 0;
+unsigned long long CH_B_CURRENT_ACCUMULATOR = 0;
+unsigned long long CH_B_VOLTAGE_ACCUMULATOR = 0;
+unsigned long long VREF_UNI_ACCUMULATOR = 0;
+unsigned long long VREF_BI_ACCUMULATOR = 0;
+unsigned long long VREF33_ACCUMULATOR = 0;
+unsigned long long CH8_ACCUMULATOR = 0;
 
 unsigned long numberofsamples = 0;
 
-String ADC_KeyValue_String = "";
 
-unsigned long currentMillis;
-
-#define NTCENABLE
-#ifdef NTCENABLE
+//---------------
+// NTP TIME SETTINGS
+//---------------
 //int time_offset = 3600; //GMT +0
 int time_offset = 0;
-
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", time_offset, 300000);
 unsigned long previousMillisNTC = 0;
-//unsigned long main_emondc_interval;
 unsigned long intervalNTC = 60000;
-#endif
 
-unsigned int oled_interval = 5000;
-unsigned long oled_previousMillis;
 
+//---------------
+// SD CARD
+//---------------
 String datalogFilename = "datalog.txt";
-
-
+bool SD_present;
 void save_to_SDcard(void) {
   File dataFile = SD.open(datalogFilename, FILE_WRITE);
 
@@ -345,9 +349,11 @@ void emondc_setup(void) {
   digitalWrite(chipSelectSD, HIGH); delay(1);
   if (SD.begin(chipSelectSD, 400000)) {
     Serial.println("SDcard initialised.");
+    SD_present = true;
   }
   else {
     Serial.println("SD card not detected.");
+    SD_present = false;
   }
 
   //-----------------------------------
@@ -418,6 +424,7 @@ void emondc_setup(void) {
 
 void NTC_update_PCF8523_update(void) {
   if (currentMillis - previousMillisNTC >= intervalNTC) {
+    previousMillisNTC = currentMillis;
     if (WiFi.status() == WL_CONNECTED) {
       timeClient.update();
       rtc.adjust(timeClient.getEpochTime());
@@ -481,7 +488,7 @@ void emondc_loop(void) {
           
       forward_to_emonESP(); // sending to emonCMS?
 
-      save_to_SDcard();
+      if (SD_present) save_to_SDcard();
 
       clear_accumulators(); // this happens before gathering next samples, or else chaos ensues.
       
