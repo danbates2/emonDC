@@ -62,6 +62,9 @@ extern String mqtt_feed_prefix;
 // Load saved settings
 // -------------------------------------------------------------------
 extern void config_load_settings();
+extern void config_load_settings_spiffs();
+extern void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB);
+extern void printFile();
 
 // -------------------------------------------------------------------
 // Save the EmonCMS server details

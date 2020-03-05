@@ -289,7 +289,6 @@ void handleEmonDC(AsyncWebServerRequest *request) {
   response->setCode(200);
   response->print("saved");
   request->send(response);
-
 }
 
 // -------------------------------------------------------------------

@@ -28,7 +28,7 @@
 // RTC library: https://github.com/adafruit/RTClib
 // PubSubClient library: https://github.com/knolleary/pubsubclient
 // AsyncWebServer library: https://github.com/me-no-dev/ESPAsyncWebServer
-#define FS_NO_GLOBALS
+
 #define RELEASE false
 #define GPIO0YES false
 //#define MICROSDEBUG
@@ -47,16 +47,12 @@
 #include "gpio0.h" // button pressing.
 #include "sleep.h" // deep-sleep mode management.
 
-
-
-
-
 // -------------------------------------------------------------------
 // SETUP
 // -------------------------------------------------------------------
 void setup() {
   delay(100);
-  Serial.begin(115200);
+  Serial.begin(460800);
 
   currentfirmware = "2.3.2_emonDCmod";
 
@@ -77,9 +73,9 @@ void setup() {
 
     // Read saved settings from the config
     config_load_settings();
-    
-    
-    
+    config_load_settings_spiffs();
+    printFile();
+
     // Initialise the WiFi
     wifi_setup();
 
@@ -91,23 +87,8 @@ void setup() {
 
     emondc_setup();
 
-
-    
-    
-    
-
-
     DEBUG.println("Server started");
 
-    if (RFM69_enabled) {
-      delay(2000);
-      DEBUG.println("2i");
-      delay(500);
-      DEBUG.println("4b");
-      delay(500);
-      DEBUG.println("210g");
-      delay(500);
-    }
   }
 
 } // end setup
@@ -125,6 +106,7 @@ void loop() {
   wifi_loop();
 
   emondc_loop();
+  
   gpio0_loop();
   
   

@@ -1,5 +1,5 @@
-// emonDC extras, Daniel Bates SEP, 2019.
-// Free to use and modify.
+// emonDC extras, by Dan Bates.
+
 #include "wifi.h"
 #include "emonesp.h"
 #include "emondc.h"
@@ -44,7 +44,6 @@ float _CAL_FACTOR_icalA = 1.00; // CURRENT_A.
 float _CAL_FACTOR_vcalA = 1.00; // VOLTAGE_A.
 float _CAL_FACTOR_icalB = 1.00; // CURRENT_B.
 float _CAL_FACTOR_vcalB = 1.00; // VOLTAGE_B.
-
 
 /*
   todo:
@@ -128,8 +127,8 @@ AH_MCP320x ADC_SPI(2);
 
 int _t_begin;
 
-float Wh_chA = 0.0;
-float Wh_chB = 0.0;
+double Wh_chA = 0.0;
+double Wh_chB = 0.0;
 
 float Wh_accumulate(float current_value, float voltage_value, float elapsed_seconds) {
   float watts = current_value * voltage_value;
@@ -305,17 +304,16 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", time_offset, 300000);
 unsigned long previousMillisNTC = 0;
 //unsigned long main_emondc_interval;
-unsigned long intervalNTC = main_emondc_interval;
+unsigned long intervalNTC = 60000;
 #endif
 
-
+unsigned int oled_interval = 5000;
+unsigned long oled_previousMillis;
 
 String datalogFilename = "datalog.txt";
 
 
 void save_to_SDcard(void) {
-  
-  //using sd::File;
   File dataFile = SD.open(datalogFilename, FILE_WRITE);
 
   // if the file is available, write to it:
@@ -334,21 +332,19 @@ void save_to_SDcard(void) {
 
 
 void emondc_setup(void) {
+  
+  main_emondc_interval = _MAIN_INTERVAL * 1000; // note timeing this is called at, after JSON loading.
+
   //-----------------------------------
   // microSD card init
   //-----------------------------------
   //SPI.setClockDivider(SPI_CLOCK_DIV128);
   //SPI.beginTransaction(SPISettings(400000, MSBFIRST, SPI_MODE0));
-  
 
   pinMode(chipSelectSD, OUTPUT);
   digitalWrite(chipSelectSD, HIGH); delay(1);
   if (SD.begin(chipSelectSD, 400000)) {
     Serial.println("SDcard initialised.");
-    // File myFile;
-    // myFile = SD.open("datalog.txt", FILE_WRITE);
-    // myFile.close();
-    // Serial.println("SD card file created");
   }
   else {
     Serial.println("SD card not detected.");
@@ -421,9 +417,11 @@ void emondc_setup(void) {
 }
 
 void NTC_update_PCF8523_update(void) {
-  if (WiFi.status() == WL_CONNECTED) {
-    timeClient.update();
-    rtc.adjust(timeClient.getEpochTime());
+  if (currentMillis - previousMillisNTC >= intervalNTC) {
+    if (WiFi.status() == WL_CONNECTED) {
+      timeClient.update();
+      rtc.adjust(timeClient.getEpochTime());
+    }
   }
   DateTime now = rtc.now();
   rtc_now_time = now.unixtime();
@@ -483,18 +481,17 @@ void emondc_loop(void) {
           
       forward_to_emonESP(); // sending to emonCMS?
 
-      // print_readable(); // debugging...
-
-      // forward_to_RFM69Pi(); // not tested
-     
-      Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for testing
-
-      save_to_SDcard(); // 
-
-      drawvalues_to_OLED(); // for the 128x32 I2C OLED.
+      save_to_SDcard();
 
       clear_accumulators(); // this happens before gathering next samples, or else chaos ensues.
+      
+      Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for testing
     }
+  }
+  
+  if (currentMillis - oled_previousMillis >= oled_interval) {
+    oled_previousMillis = currentMillis;
+    drawvalues_to_OLED(); // for the 128x32 I2C OLED.
   }
 }
 
@@ -659,6 +656,7 @@ int read_adc(int channel) {
 
   digitalWrite(SPICLOCK, HIGH);   //ignores 2 null bits
   digitalWrite(SPICLOCK, LOW);
+  // microsecond delay here for increased accuracy (overcoming input impedance)
   digitalWrite(SPICLOCK, HIGH);
   digitalWrite(SPICLOCK, LOW);
 
@@ -806,25 +804,27 @@ void drawvalues_to_OLED(void) { // draw to OLED
 
   display.display();
 } // draw to OLED
-
-
+#define FS_NO_GLOBALS
+#include <FS.h>
 void config_save_emondc(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB)
 {
-
-  main_emondc_interval = interval;
-  _CAL_FACTOR_vcalA = vcalA; // CURRENT_A.
-  _CAL_FACTOR_icalA = icalA; // VOLTAGE_A.
-  _CAL_FACTOR_vcalB = vcalB; // CURRENT_B.
-  _CAL_FACTOR_icalB = icalB; // VOLTAGE_B.
+  _MAIN_INTERVAL = interval;
+  main_emondc_interval = _MAIN_INTERVAL * 1000;
+  _CAL_FACTOR_vcalA = vcalA;
+  _CAL_FACTOR_icalA = icalA;
+  _CAL_FACTOR_vcalB = vcalB;
+  _CAL_FACTOR_icalB = icalB;
   
   Serial.println("emonDC saving settings...");
-  Serial.println(main_emondc_interval);
+  Serial.println(_MAIN_INTERVAL);
   Serial.println(_CAL_FACTOR_vcalA);
   Serial.println(_CAL_FACTOR_icalA);
   Serial.println(_CAL_FACTOR_vcalB);
   Serial.println(_CAL_FACTOR_icalB);
   Serial.println("... done.");
 
+  config_save_settings_spiffs(interval, vcalA, icalA, vcalB, icalB);
+  
   // PGM_P xyz = PSTR("Store this string in flash"); 
 
   /*

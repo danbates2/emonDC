@@ -242,7 +242,7 @@
         <h2>9. emonDC</h2>
         <div class="itembody-wrapper">
             <p>
-              <b>Posting interval: (milliseconds, 65535 max)</b><br>
+              <b>Posting interval: (seconds)</b><br>
               <input type="text" value="emondc" data-bind="textInput: config.www_interval">
             </p>
             <p>
@@ -263,11 +263,10 @@
             </p>
             <button data-bind="click: saveEmonDC, text: (saveEmonDCFetching() ? 'Saving' : (saveEmonDCSuccess() ? 'Saved' : 'Save')), disable: saveEmonDCFetching">Save</button>
             <p>
-              <b>All fields should be filled, you may want to take note of values for future resetting, no values are remembered upon reset.</b></br>
-              <b>default calibration: 1.0</b></br>
-              <b>default interval: 10000</b>
+              <b>All fields should be filled, you may want to take note of values for future adjustment.</b></br>
+              <b>default interval: 10</b></br>
+              <b>default calibration: 1.0</b>
             </p>
-        
         </div>
       </div>
       <!--//////////////////////////////////////////////////////////////////////////////////-->

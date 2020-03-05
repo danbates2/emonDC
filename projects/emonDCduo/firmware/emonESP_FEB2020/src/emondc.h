@@ -7,12 +7,12 @@
 
 #include <WString.h>
 
-
-extern unsigned int main_emondc_interval; // default milliseconds interval for averaging samples and sending to emonCMS.
-
-extern int _t_begin;
 extern void emondc_setup(void);
 extern void emondc_loop(void);
+
+extern unsigned int main_emondc_interval; // default milliseconds interval for averaging samples and sending to emonCMS.
+extern int _t_begin;
+
 extern float Vcal1;
 extern float Ccal1;
 extern float Vcal2;
@@ -20,6 +20,30 @@ extern float Ccal2;
 
 extern bool chanAref;
 extern bool chanBref;
+
+
+extern unsigned int _MAIN_INTERVAL;
+
+extern bool chanAref;
+extern bool chanBref;
+
+extern float chanA_shuntAmp_gain;
+extern float chanB_shuntAmp_gain;
+
+// values of resistor divider for voltage reading.
+extern float R1_A;
+extern float R2_A;
+extern float R1_B;
+extern float R2_B;
+extern float Rshunt_A;
+extern float Rshunt_B;
+
+// Calibration values for manual adjustment.
+extern float _CAL_FACTOR_icalA;
+extern float _CAL_FACTOR_vcalA;
+extern float _CAL_FACTOR_icalB;
+extern float _CAL_FACTOR_vcalB;
+
 
 extern bool sendData_go;
 
