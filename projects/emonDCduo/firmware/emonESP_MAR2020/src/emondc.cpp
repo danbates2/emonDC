@@ -46,6 +46,11 @@ float _CAL_FACTOR_icalA = 1.00; // CURRENT_A.
 float _CAL_FACTOR_vcalA = 1.00; // VOLTAGE_A.
 float _CAL_FACTOR_icalB = 1.00; // CURRENT_B.
 float _CAL_FACTOR_vcalB = 1.00; // VOLTAGE_B.
+// Amplifier offset corrections for zero measurements, ideally these would be maps derived from experiment.
+float offset_correction_ampsA = 0.14;
+float offset_correction_voltsA = -0.01;
+float offset_correction_ampsB = 0.14;
+float offset_correction_voltsB = -0.01;
 
 /*
   todo:
@@ -197,12 +202,14 @@ float Vcal_coefficient_B = R2_B / Vcal_coefficient_B_pre;
 float make_readable_Volts (float _adcValue, String _chan) {
   float _readableV1 = _adcValue * volts_to_adc_reading_ratio;
   if (_chan == chanA) {
-    float _readableV2 = _readableV1 / Vcal_coefficient_A;
-    return (_readableV2);
+    float _readableVolts = _readableV1 / Vcal_coefficient_A;
+    _readableVolts += offset_correction_voltsA;
+    return (_readableVolts);
   }
   else {
-    float _readableV2 = _readableV1 / Vcal_coefficient_B;
-    return (_readableV2);
+    float _readableVolts = _readableV1 / Vcal_coefficient_B;
+    _readableVolts += offset_correction_voltsB;
+    return (_readableVolts);
   }
 }
 
@@ -213,13 +220,14 @@ float make_readable_Amps (float _adcValue, String _chan, float _gain)
   float _readable_2 = _readable_1 / _gain; // gives mV signal value.
 
   if (_chan == chanA) {
-    float _readable_current = _readable_2 / Rshunt_A; // I=V/R
-    return (_readable_current);
+    float _readableAmps = _readable_2 / Rshunt_A; // I=V/R
+    _readableAmps += offset_correction_ampsA; // shunt monitor offset calibration
+    return (_readableAmps);
   }
   else {
-    float _readable_current = _readable_2 / Rshunt_B; // I=V/R
-    //Serial.println(_readableC3);
-    return (_readable_current);
+    float _readableAmps = _readable_2 / Rshunt_B; // I=V/R
+    _readableAmps += offset_correction_ampsB; // shunt monitor offset calibration
+    return (_readableAmps);
   }
 }
 

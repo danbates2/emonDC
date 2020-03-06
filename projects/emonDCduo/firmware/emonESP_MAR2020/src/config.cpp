@@ -243,7 +243,10 @@ void config_save_wifi(String qsid, String qpass)
 }
 
 
-// EMONDC LOAD / SAVE TO SPIFFS as JSON functions
+//----------------------
+// Load JSON from SPIFFS
+//----------------------
+
 #define EMONDC_CONFIG  "/emondc_settings.json"
 
 void config_load_settings_spiffs() {
@@ -277,7 +280,8 @@ void config_load_settings_spiffs() {
         _CAL_FACTOR_vcalA = json["_CAL_FACTOR_vcalA"];
         _CAL_FACTOR_icalB = json["_CAL_FACTOR_icalB"];
         _CAL_FACTOR_vcalB = json["_CAL_FACTOR_vcalB"];
-        Serial.println("emonDC settings JSON loaded.");
+        Serial.println("emonDC settings JSON loaded:");
+        printFile();
       } else {
         Serial.println("failed to load json config");
       }
@@ -287,6 +291,9 @@ void config_load_settings_spiffs() {
   }
 }
 
+//----------------------
+// Save JSON to SPIFFS
+//----------------------
 void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB) {
   if (SPIFFS.begin()) {
     // Delete existing file, otherwise the configuration is appended to the file
@@ -335,8 +342,9 @@ void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA
   }
 }
 
-
+//----------------------
 // Prints the content of a file to the Serial
+//----------------------
 void printFile() {
   SPIFFS.begin();
   // Open file for reading

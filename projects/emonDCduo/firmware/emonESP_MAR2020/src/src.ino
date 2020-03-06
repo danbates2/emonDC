@@ -74,7 +74,6 @@ void setup() {
     // Read saved settings from the config
     config_load_settings();
     config_load_settings_spiffs();
-    printFile();
 
     // Initialise the WiFi
     wifi_setup();
