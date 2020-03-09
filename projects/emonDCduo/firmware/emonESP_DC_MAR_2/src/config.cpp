@@ -122,8 +122,8 @@ void EEPROM_read_string(int start, int count, String & val) {
   }
 }
 
-void EEPROM_write_string(int start, int count, String val) {
-  for (int i = 0; i < count; ++i){
+void EEPROM_write_string(int start, unsigned int count, String val) {
+  for (unsigned int i = 0; i < count; ++i) {
     if (i<val.length()) {
       EEPROM.write(start+i, val[i]);
     } else {
@@ -246,16 +246,11 @@ void config_save_wifi(String qsid, String qpass)
 //----------------------
 // Load JSON from SPIFFS
 //----------------------
-
 #define EMONDC_CONFIG  "/emondc_settings.json"
-
 void config_load_settings_spiffs() {
   if (SPIFFS.begin()) {
-    //Serial.println("mounted file system");
-
     // parse json config file
     fs::File jsonFile = SPIFFS.open(EMONDC_CONFIG, "r+");
-//      GetFile(CLOUDMQTT_CONFIG);
     if (jsonFile) {
       // Allocate a buffer to store contents of the file.
       size_t size = jsonFile.size();
