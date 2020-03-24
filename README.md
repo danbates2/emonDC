@@ -132,7 +132,7 @@ The board sets sail with a RFM69Pi module
 
 Find firmware here:<br>
 https://github.com/danbates2/emonDC/tree/master/firmware<br>
-It is based on emonESP, and detailed instructions on compiling and uploading the firmware can be found in it's documentation. Arduino IDE method recommended.<br>
+It is based on emonESP, and detailed instructions on compiling and uploading the firmware can be found in it's documentation. <br>
 https://github.com/openenergymonitor/EmonESP
 <br>
 <div style="width:400px; font-size:80%; text-align:center;"><img src="https://raw.githubusercontent.com/danbates2/emonDC/master/images/emonesp_dcmod.png" alt="Firmware web-interface screengrab" width="400" /></div>
