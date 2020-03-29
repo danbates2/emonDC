@@ -43,19 +43,14 @@ const char* u_host = "217.9.195.227";
 const char* u_url = "/esp/firmware.php";
 
 extern const char *esp_hostname;
+const char ota_pass[] = "emondcdev";
 
 void ota_setup()
 {
   // Start local OTA update server
   ArduinoOTA.setHostname(esp_hostname);
+  ArduinoOTA.setPassword(ota_pass);
   ArduinoOTA.begin();
-  #ifdef WIFI_LED
-  ArduinoOTA.onProgress([](unsigned int pos, unsigned int size) {
-    static int state = LOW;
-    state = !state;
-    //digitalWrite(WIFI_LED, state);
-  });
-  #endif
 }
 
 void ota_loop()
@@ -73,7 +68,7 @@ String ota_get_latest_version()
 t_httpUpdate_return ota_http_update()
 {
   SPIFFS.end(); // unmount filesystem
-  t_httpUpdate_return ret = ESPhttpUpdate.update("http://" + String(u_host) + String(u_url) + "?tag=" + currentfirmware);
+  t_httpUpdate_return r = ESPhttpUpdate.update("http://" + String(u_host) + String(u_url) + "?tag=" + currentfirmware);
   SPIFFS.begin(); //mount-file system
-  return ret;
+  return r;
 }

@@ -49,7 +49,7 @@ String get_https(const char* fingerprint, const char* host, String url, int http
      // Handle wait for reply and timeout
     unsigned long timeout = millis();
     while (client.available() == 0) {
-      if (millis() - timeout > 5000) {
+      if (millis() - timeout > 3500) {
         client.stop();
         return("Client Timeout");
       }

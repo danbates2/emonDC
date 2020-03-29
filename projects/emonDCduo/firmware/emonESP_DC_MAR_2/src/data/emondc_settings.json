@@ -1,5 +1,5 @@
 {
-    "_MAIN_INTERVAL": 10,
+    "main_interval_seconds": 5,
     "chanAref": 1,
     "chanBref": 1,
     "chanA_shuntAmp_gain": 100,

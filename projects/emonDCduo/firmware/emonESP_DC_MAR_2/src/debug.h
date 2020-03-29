@@ -1,7 +1,7 @@
 #ifndef __DEBUG_H
 #define __DEBUG_H
 
-//#define DEBUG
+//#define ENABLE_DEBUG
 //#define DEBUG_PORT Serial
 
 #define TEXTIFY(A) #A

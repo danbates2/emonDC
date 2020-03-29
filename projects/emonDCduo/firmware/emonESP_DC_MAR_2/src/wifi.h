@@ -49,7 +49,7 @@ extern String rssi;
 // Network state
 extern String ipaddress;
 extern String ipaddress_OLED;
-
+extern String connected_network;
 // mDNS hostname
 extern const char *esp_hostname;
 

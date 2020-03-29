@@ -260,7 +260,7 @@ void config_load_settings_spiffs() {
       DynamicJsonBuffer jsonBuffer;
       JsonObject& json = jsonBuffer.parseObject(jsonBuf.get());
       if (json.success()) {
-        _MAIN_INTERVAL = json["_MAIN_INTERVAL"];
+        main_interval_seconds = json["main_interval_seconds"];
         chanAref = json["chanAref"];
         chanBref = json["chanBref"];
         chanA_shuntAmp_gain = json["chanA_shuntAmp_gain"];
@@ -308,7 +308,7 @@ void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA
     JsonObject &root = jsonBuffer.createObject();
 
     // Set the values
-    root["_MAIN_INTERVAL"] = interval;
+    root["main_interval_seconds"] = interval;
     root["chanAref"] = chanAref;
     root["chanBref"] = chanBref;
     root["chanA_shuntAmp_gain"] = chanA_shuntAmp_gain;

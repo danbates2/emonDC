@@ -28,6 +28,7 @@
 
 #include <Arduino.h>
 
+
 // -------------------------------------------------------------------
 // Load and save the EmonESP config.
 //
@@ -62,9 +63,6 @@ extern String mqtt_feed_prefix;
 // Load saved settings
 // -------------------------------------------------------------------
 extern void config_load_settings();
-extern void config_load_settings_spiffs();
-extern void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB);
-extern void printFile();
 
 // -------------------------------------------------------------------
 // Save the EmonCMS server details
@@ -90,5 +88,12 @@ extern void config_save_wifi(String qsid, String qpass);
 // Reset the config back to defaults
 // -------------------------------------------------------------------
 extern void config_reset();
+
+// -------------------------------------------------------------------
+// emonDC settings additions, JSON config file.
+// -------------------------------------------------------------------
+extern void config_load_settings_spiffs();
+extern void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB);
+void printFile();
 
 #endif // _EMONESP_CONFIG_H

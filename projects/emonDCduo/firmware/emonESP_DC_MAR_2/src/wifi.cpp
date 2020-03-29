@@ -52,26 +52,6 @@ String ipaddress_OLED = "";
 unsigned long Timer;
 String st, rssi;
 
-//#define WIFI_LED LED_BUILTIN
-
-#ifdef WIFI_LED
-#ifndef WIFI_LED_ON_STATE
-#define WIFI_LED_ON_STATE LOW
-#endif
-
-#ifndef WIFI_LED_AP_TIME
-#define WIFI_LED_AP_TIME 1000
-#endif
-
-#ifndef WIFI_LED_STA_CONNECTING_TIME
-#define WIFI_LED_STA_CONNECTING_TIME 500
-#endif
-
-int wifiLedState = !WIFI_LED_ON_STATE;
-unsigned long wifiLedTimeOut = millis();
-#endif
-
-// -------------------------------------------------------------------
 int wifi_mode = WIFI_MODE_STA;
 
 
@@ -101,10 +81,10 @@ void startAP() {
   delay(100);
 
   WiFi.softAPConfig(apIP, apIP, netMsk);
-  // Create Unique SSID e.g "emonESP_XXXXXX"
-  String softAP_ssid_ID =
-    String(softAP_ssid) + "_" + String(ESP.getChipId());;
+  // Create Unique SSID e.g "emonDC_XXXXXX"
+  String softAP_ssid_ID = String(softAP_ssid) + "_" + String(ESP.getChipId());;
   WiFi.softAP(softAP_ssid_ID.c_str(), softAP_password);
+  connected_network = softAP_ssid_ID;
 
   // Setup the DNS server redirecting all the domains to the apIP
   dnsServer.setErrorReplyCode(DNSReplyCode::NoError);
@@ -127,65 +107,67 @@ void startAP() {
 // -------------------------------------------------------------------
 // Start Client, attempt to connect to Wifi network
 // -------------------------------------------------------------------
-void
-startClient() {
+void startClient() {
   DEBUG.print("Connecting to SSID: ");
-  DEBUG.println(esid.c_str());
-  // DEBUG.print(" epass:");
-  // DEBUG.println(epass.c_str());
+  DEBUG.print(esid.c_str());
   WiFi.hostname(esp_hostname);
   WiFi.begin(esid.c_str(), epass.c_str());
+  Timer = millis();
 
-  delay(50);
-
-  int t = 0;
+  int tries = 0;
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+    tries++;
+    if (tries == 20) break;
+    if (digitalRead(0) == LOW) {
+      Serial.println(" ");
+      startAP();
+      wifi_mode = WIFI_MODE_AP_ONLY;
+      return;
+    }
+  }
   int attempt = 0;
   while (WiFi.status() != WL_CONNECTED) {
-#ifdef WIFI_LED
-    wifiLedState = !wifiLedState;
-    //digitalWrite(WIFI_LED, wifiLedState);
-#endif
-    if (digitalRead(0) == LOW) {
+    if (digitalRead(0) == HIGH) {
+      DEBUG.println(" ");
+      DEBUG.print("Try Again...");
+      WiFi.disconnect();
+      delay(100);
+      WiFi.begin(esid.c_str(), epass.c_str());
+      tries = 0;
+      while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+        tries++;
+        if (tries == 15) break;
+        if (digitalRead(0) == LOW) {
+        Serial.println(" ");
+        startAP();
+        wifi_mode = WIFI_MODE_AP_ONLY;
+        break;
+        }
+      }
+      if (WIFI_MODE_AP_ONLY) break;
+      attempt++;
+      if (attempt == 3) {
+        DEBUG.println(" ");
+        startAP();
+        // AP mode with SSID in EEPROM, connection will retry in 5 minutes
+        wifi_mode = WIFI_MODE_AP_STA_RETRY;
+        break;
+      }
+    }
+    else if (digitalRead(0) == LOW) {
+      DEBUG.println(" ");
       startAP();
       wifi_mode = WIFI_MODE_AP_ONLY;
       break;
     }
-    delay(500);
-    t++;
-    // push and hold boot button after power on to skip stright to AP mode
-#ifdef WIFI_LED
-    if (t >= 20)
-      if (!WIFI_LED || digitalRead(0) == HIGH) {
-#else
-    if (t >= 20)
-      if (digitalRead(0) == HIGH) {
-#endif
-        DEBUG.println(" ");
-        DEBUG.println("Try Again...");
-        delay(2000);
-        WiFi.disconnect();
-        WiFi.begin(esid.c_str(), epass.c_str());
-        t = 0;
-        attempt++;
-        if (attempt >= 5 || digitalRead(0) == LOW) {
-          startAP();
-          // AP mode with SSID in EEPROM, connection will retry in 5 minutes
-          wifi_mode = WIFI_MODE_AP_STA_RETRY;
-          break;
-        }
-      }
-      else if (digitalRead(0) == LOW) {
-        startAP();
-        wifi_mode = WIFI_MODE_AP_ONLY;
-      }
-
   }
+  
 
   if (wifi_mode == WIFI_MODE_STA || wifi_mode == WIFI_MODE_AP_AND_STA) {
-#ifdef WIFI_LED
-    wifiLedState = WIFI_LED_ON_STATE;
-    //digitalWrite(WIFI_LED, wifiLedState);
-#endif
 
     IPAddress myAddress = WiFi.localIP();
     char tmpStr[40];
@@ -201,14 +183,10 @@ startClient() {
     int iplen_adjust = iplen - 10;
     ipaddress_OLED.remove(0,iplen_adjust);
   }
+  DEBUG.println(" ");
 }
 
 void wifi_setup() {
-#ifdef WIFI_LED
-  pinMode(WIFI_LED, OUTPUT);
-  //digitalWrite(WIFI_LED, wifiLedState);
-#endif
-
   WiFi.disconnect();
   // 1) If no network configured start up access point
   if (esid == 0 || esid == "") {
@@ -232,31 +210,22 @@ void wifi_setup() {
   Timer = millis();
 }
 
-void
-wifi_loop() {
+void wifi_loop() {
 
-#ifdef WIFI_LED
-  if (wifi_mode == WIFI_MODE_AP_ONLY && millis() > wifiLedTimeOut) {
-    wifiLedState = !wifiLedState;
-    //digitalWrite(WIFI_LED, wifiLedState);
-    wifiLedTimeOut = millis() + WIFI_LED_AP_TIME;
-  }
-#endif
-
-
-  dnsServer.processNextRequest(); // Captive portal DNS re-dierct
+  dnsServer.processNextRequest(); // Captive portal DNS re-direct
 
   // Remain in AP mode for 5 Minutes before resetting
   if (wifi_mode == WIFI_MODE_AP_STA_RETRY) {
     if ((millis() - Timer) >= 300000) {
-      ESP.reset();
-      DEBUG.println("WIFI Mode = 1, resetting");
+      wifi_disconnect();
+      delay(100);
+      wifi_setup();
     }
   }
+  yield();
 }
 
-void
-wifi_restart() {
+void wifi_restart() {
   // Startup in STA + AP mode
   WiFi.mode(WIFI_AP_STA);
   WiFi.softAPConfig(apIP, apIP, netMsk);
@@ -273,8 +242,7 @@ wifi_restart() {
   startClient();
 }
 
-void
-wifi_scan() {
+void wifi_scan() {
   DEBUG.println("WIFI Scan");
   int n = WiFi.scanNetworks();
   DEBUG.print(n);
@@ -291,7 +259,6 @@ wifi_scan() {
   }
 }
 
-void
-wifi_disconnect() {
+void wifi_disconnect() {
   WiFi.disconnect();
 }

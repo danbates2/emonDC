@@ -24,14 +24,11 @@
    Boston, MA 02111-1307, USA.
 */
 
+// Working for ESP8266 'Arduino' framework 2.4.2 https://github.com/platformio/platform-espressif8266/releases/tag/v1.8.0
 // NTC library: https://github.com/arduino-libraries/NTPClient
 // RTC library: https://github.com/adafruit/RTClib
 // PubSubClient library: https://github.com/knolleary/pubsubclient
 // AsyncWebServer library: https://github.com/me-no-dev/ESPAsyncWebServer
-
-#define RELEASE false
-#define GPIO0YES false
-//#define MICROSDEBUG
 
 #include "emonesp.h"
 #include "config.h"
@@ -42,19 +39,16 @@
 #include "input.h"
 #include "emoncms.h"
 #include "mqtt.h"
-
 #include "emondc.h" // emonDC additions.
 #include "gpio0.h" // button pressing.
 #include "sleep.h" // deep-sleep mode management.
+
 
 // -------------------------------------------------------------------
 // SETUP
 // -------------------------------------------------------------------
 void setup() {
-  delay(100);
-  Serial.begin(460800);
-
-  currentfirmware = "2.3.2_emonDCmod";
+  Serial.begin(460800); // boom!
 
   DEBUG.println();
   DEBUG.print("EmonESP ");
@@ -65,32 +59,28 @@ void setup() {
   DEBUG.print("Reset cause: ");
   DEBUG.println(ESP.getResetReason());
 
+  // Deep sleep wake-up routine (for a low-power-mode idea).
   if (ESP.getResetReason() == "Deep-Sleep Wake") {
     // wake_from_sleep();
   }
   else {
-    // normal boot
-
     // Read saved settings from the config
     config_load_settings();
+    // Read emonDC settings from JSON file.
     config_load_settings_spiffs();
-
     // Initialise the WiFi
     wifi_setup();
-
     // Bring up the web server
     web_server_setup();
-
     // Start the OTA update systems
     ota_setup();
-
+    // emonDC related inits - SD card, RTC etc.
     emondc_setup();
 
     DEBUG.println("Server started");
-
   }
-
 } // end setup
+
 
 // -------------------------------------------------------------------
 // LOOP
@@ -103,13 +93,10 @@ void loop() {
   ota_loop();
   web_server_loop();
   wifi_loop();
-
   emondc_loop();
-  
   gpio0_loop();
   
   
-
   String input = "";
   boolean gotInput = input_get(input);
 
@@ -125,4 +112,5 @@ void loop() {
       }
     }
   }
+  yield();
 }

@@ -9,7 +9,7 @@
 #include "input.h"
 #include "config.h"
 #include "emondc.h"
-
+#include "gpio0.h"
 #include "AH_MCP320x.h"
 
 #include <ESP8266WiFi.h>
@@ -22,35 +22,35 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
+String hw_version = "HW:v3.6";
 
 // -------------------------------------------------------------------
 // change the following variables for your system.
 // -------------------------------------------------------------------
 // NOTE: SEE THE JSON SETTINGS FILE FOR CHANGING THESE, THE VALUES INDICATED BELOW ARE A BACKUP.
-
-unsigned int _MAIN_INTERVAL = 10; // seconds
-unsigned int main_emondc_interval = _MAIN_INTERVAL * 1000;
+unsigned int main_interval_seconds = 5; // !!! set this in the JSON config file !!! max is 1800 seconds (30 minutes).
+unsigned long main_interval_ms= main_interval_seconds * 1000;
 bool chanAref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 bool chanBref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
-float chanA_shuntAmp_gain = 100; // shunt amp gain.
-float chanB_shuntAmp_gain = 100;
+double chanA_shuntAmp_gain = 100; // shunt amp gain.
+double chanB_shuntAmp_gain = 100;
 // values of resistor divider for voltage reading.
-float R1_A = 1000000.0; // 1Mohm default.
-float R2_A = 75000.0; // 75kohm default.
-float R1_B = 1000000.0;
-float R2_B = 75000.0;
-float Rshunt_A = 0.000500; // value of Rsense in ohms.
-float Rshunt_B = 0.000500;
+double R1_A = 1000000.0; // 1Mohm default.
+double R2_A = 75000.0; // 75kohm default.
+double R1_B = 1000000.0;
+double R2_B = 75000.0;
+double Rshunt_A = 0.000500; // value of Rsense in Ohms.
+double Rshunt_B = 0.000500;
 // Calibration values for manual adjustment.
-float _CAL_FACTOR_icalA = 1.00; // CURRENT_A.
-float _CAL_FACTOR_vcalA = 1.00; // VOLTAGE_A.
-float _CAL_FACTOR_icalB = 1.00; // CURRENT_B.
-float _CAL_FACTOR_vcalB = 1.00; // VOLTAGE_B.
+double _CAL_FACTOR_icalA = 1.00; // CURRENT_A.
+double _CAL_FACTOR_vcalA = 1.00; // VOLTAGE_A.
+double _CAL_FACTOR_icalB = 1.00; // CURRENT_B.
+double _CAL_FACTOR_vcalB = 1.00; // VOLTAGE_B.
 // Amplifier offset corrections for zero measurements, ideally these would be maps derived from experiment.
-float offset_correction_ampsA = 0.14;
-float offset_correction_voltsA = -0.01;
-float offset_correction_ampsB = 0.14;
-float offset_correction_voltsB = -0.01;
+double offset_correction_ampsA = 0.14;
+double offset_correction_voltsA = -0.01;
+double offset_correction_ampsB = 0.14;
+double offset_correction_voltsB = -0.01;
 
 
 
@@ -65,71 +65,67 @@ unsigned long oled_previousMillis;
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 #define OLED_RESET  -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-int screentog;
+int screentog = -1;
 
 const int chipSelectSD = 15; // SD card chip SPI chip select
-
 AH_MCP320x ADC_SPI(2); // ADC SPI chip select. SPI speed set in library.
+// sample rate in this sketch is around 450 samples per channel per second.
 
-int _t_begin; //  human readable time of start
+unsigned int _t_begin; //  human readable time of start
 unsigned long _t;//  human readable time since start
 
-// ADC reading
-int CHANNEL1 = 0;
-int CHANNEL2 = 0;
-int CHANNEL3 = 0;
-int CHANNEL4 = 0;
-int CHANNEL5 = 0;
-int CHANNEL6 = 0;
-int CHANNEL7 = 0;
-int CHANNEL8 = 0;
 // Accumulators
-unsigned long long CH_A_CURRENT_ACCUMULATOR = 0;
-unsigned long long CH_A_VOLTAGE_ACCUMULATOR = 0;
-unsigned long long CH_B_CURRENT_ACCUMULATOR = 0;
-unsigned long long CH_B_VOLTAGE_ACCUMULATOR = 0;
-unsigned long long VREF_UNI_ACCUMULATOR = 0;
-unsigned long long VREF_BI_ACCUMULATOR = 0;
-unsigned long long VREF33_ACCUMULATOR = 0;
-unsigned long long CH8_ACCUMULATOR = 0;
+unsigned long CH_A_CURRENT_ACCUMULATOR = 0;
+unsigned long CH_A_VOLTAGE_ACCUMULATOR = 0;
+unsigned long CH_B_CURRENT_ACCUMULATOR = 0;
+unsigned long CH_B_VOLTAGE_ACCUMULATOR = 0;
+unsigned long VREF_UNI_ACCUMULATOR = 0;
+unsigned long VREF_BI_ACCUMULATOR = 0;
+unsigned long VREF33_ACCUMULATOR = 0;
+unsigned long CH8_ACCUMULATOR = 0;
 unsigned long numberofsamples = 0;
 // Averaged ADC channel values.
-float CH_A_CURRENT_AVERAGED;
-float CH_A_VOLTAGE_AVERAGED;
-float CH_B_CURRENT_AVERAGED;
-float CH_B_VOLTAGE_AVERAGED;
-float VREF_UNI_AVERAGED;
-float VREF_BI_AVERAGED;
-float VREF33_AVERAGED;
-float CH8_AVERAGED;
+double CH_A_CURRENT_AVERAGED;
+double CH_A_VOLTAGE_AVERAGED;
+double CH_B_CURRENT_AVERAGED;
+double CH_B_VOLTAGE_AVERAGED;
+double VREF_UNI_AVERAGED;
+double VREF_BI_AVERAGED;
+double VREF33_AVERAGED;
+double CH8_AVERAGED;
 // Human-readable volts and amps
-float Voltage_A;
-float Current_A;
-float Voltage_B;
-float Current_B;
+double Voltage_A;
+double Current_A;
+double Voltage_B;
+double Current_B;
+//------------------------------
 // Battery variables
-double Ah_level_A = 0;
-double Ah_level_B = 0;
-double Ah_positive_A = 0;
-double Ah_positive_B = 0;
-double Ah_negative_A = 0;
-double Ah_negative_B = 0;
+//------------------------------
+double Ah_level_A = 0.0;
+double Ah_level_B = 0.0;
+double Ah_positive_A = 0.0;
+double Ah_positive_B = 0.0;
+double Ah_negative_A = 0.0;
+double Ah_negative_B = 0.0;
+// Battery State of Charge variables [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
+double battery_voltage_nominal = 12.0; // just in case useful later
+double bat_max = 14.8; double bat_min = 10.6; // these actually change with temperature, and are therefore crude values.
+double state_of_charge = 1.00 ; // 1 = 100% percent
+double _time_until_discharged;
+// battery data.
+double Hr = 20.0; // rated time in hours
+double k = 1.25; // Peukert exponent for flooded lead-acid (see link above)
+double C = 100.0; // capacity of battery at rated time (Ah)
+double Temperature_Room = 16.0; // future use
+double Temperature_Bat = 10.0; // future use
 // Wh variables
 double Wh_chA_positive = 0.0;
 double Wh_chB_positive = 0.0;
 double Wh_chA_negative = 0.0;
 double Wh_chB_negative = 0.0;
-// Battery State of Charge variables [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
-float battery_voltage_nominal = 12.0; // just in case useful later
-float bat_max = 14.8; float bat_min = 10.6; // these actually change with temperature, and are therefore crude values.
-float State_of_Charge; // percentage SoC, related to temperature, rate of discharge and Peukert coefficient.
-float Temperature_Room; // future use
-float Temperature_Bat; // future use
-float peukert_exponent = 1.20; // can be derived from the 5h and 20h ratings of a battery/cell.
-float rated_discharge_time = 20.0; // hours (Rt, or H)
-float rated_capacity = 110.0; // amp-hours
+
 // for converting the 3.3V reading into a useful calibration value, sets unit accuracy to the accuracy of the voltage regulator.
-float volts_to_adc_reading_ratio;
+double volts_to_adc_reading_ratio;
 // for storing the main string to be send to SD card and emonESP front-end and emonCMS.
 String ADC_KeyValue_String = ""; 
 // counting the number of posts.
@@ -139,16 +135,16 @@ bool low_power_mode = false;
 unsigned int waking_time = 6000;
 unsigned int sleeping_time = 10000;
 // battery and voltage alarm levels for future development.
-float Valarm_A_HIGH;
-float Valarm_A_LOW;
-float Valarm_A_VERY_LOW;
-float Valarm_B_HIGH;
-float Valarm_B_LOW;
-float Valarm_B_VERY_LOW;
-float Calarm_A_HIGH;
-float Calarm_B_HIGH;
-float TempAlarmBatHIGH;
-float TempAlarmBatLOW;
+double Valarm_A_HIGH;
+double Valarm_A_LOW;
+double Valarm_A_VERY_LOW;
+double Valarm_B_HIGH;
+double Valarm_B_LOW;
+double Valarm_B_VERY_LOW;
+double Calarm_A_HIGH;
+double Calarm_B_HIGH;
+double TempAlarmBatHIGH;
+double TempAlarmBatLOW;
 // calibrate solar at midnight?
 bool midnight_calibration = false; 
 // stopping the first post firing off too soon, before samples are gathered.
@@ -158,6 +154,7 @@ bool setup_done = 0;
 RTC_PCF8523 rtc;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 unsigned long rtc_now_time = 0;
+bool rtc_accurate;
 // time variables.
 unsigned long currentMillis;
 unsigned long previousMillis = 0;
@@ -180,12 +177,14 @@ bool SD_present;
 //-----------------------------------
 void emondc_setup(void) {
 
-  main_emondc_interval = _MAIN_INTERVAL * 1000; // note timeing this is called at, after JSON loading.
+  main_interval_ms= main_interval_seconds * 1000; // called after JSON is loaded.
 
   // microSD card init
   pinMode(chipSelectSD, OUTPUT);
   digitalWrite(chipSelectSD, HIGH); delay(1);
+  SPISettings mySetting(400000, MSBFIRST, SPI_MODE0);
   if (SD.begin(chipSelectSD, 400000)) { // SPI speed sey here. Clash possible with ADC.
+  //if (SD.begin(chipSelectSD, mySetting)) { // SPI speed sey here. Clash possible with ADC.
     Serial.println("SDcard initialised.");
     SD_present = true;
   }
@@ -195,108 +194,99 @@ void emondc_setup(void) {
   }
 
   // OLED Display init
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x32
-    Serial.println(F("SSD1306 allocation failed"));
-  }
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) Serial.println("SSD1306 allocation failed."); // Address 0x3C for 128x32
   display.setRotation(2);
   display.clearDisplay();
   display.setTextSize(2);             // Normal 1:1 pixel scale
   display.setTextColor(WHITE);        // Draw white text
   display.setCursor(0, 0);            // Start at top-left corner
-  // Initial print, version number.
-  display.println(F("emonDCduo"));
-  display.println(F("HW:v3.6"));
-  screentog = -1;
+  display.println(F("emonDCduo")); // Initial print to OLED, version number.
+  display.println(hw_version);
   display.display();
-  //delay(1500);
-
-
+  
   // RTC init
-  if (!rtc.begin()) {
-    Serial.println("RTC or I2C not functioning.");
-  }
+  if (!rtc.begin()) { Serial.println("RTC or I2C not functioning."); rtc_accurate = false; }
   else if (!rtc.initialized()) {
-    Serial.println("RTC not running,\r\n    - attempting initialisation with compile time.");
+    Serial.println("RTC not running,\r\n  - attempting initialisation with compile time.");
     // following line sets the RTC to the date & time this sketch was compiled
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     // This line sets the RTC with an explicit date & time, for example to set
     // January 21, 2014 at 3am you would call:
     // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+    rtc_accurate = false;
   }
   else {
     Serial.println("RTC initialised.");
+    rtc_accurate = true;
   }
-
 
   // Start NTP time 
   timeClient.setTimeOffset(time_offset);
   timeClient.begin();
-}
+
+  gpio0_setup();
+} // end emonDC setup.
 
 
-//----------------- 
+//--------------------------------------------------
 // emonDC main loop.
-//-----------------
+//--------------------------------------------------
 void emondc_loop(void) {
   currentMillis = millis();
 
-  CHANNEL1 = ADC_SPI.readCH(0);
-  CHANNEL2 = ADC_SPI.readCH(1);
-  CHANNEL3 = ADC_SPI.readCH(2);
-  CHANNEL4 = ADC_SPI.readCH(3);
-  CHANNEL5 = ADC_SPI.readCH(5);
-  CHANNEL6 = ADC_SPI.readCH(4);
-  CHANNEL7 = ADC_SPI.readCH(6);
-  CHANNEL8 = ADC_SPI.readCH(7);
-
-  CH_A_CURRENT_ACCUMULATOR = CH_A_CURRENT_ACCUMULATOR + CHANNEL1;
-  CH_A_VOLTAGE_ACCUMULATOR = CH_A_VOLTAGE_ACCUMULATOR + CHANNEL2;
-  CH_B_CURRENT_ACCUMULATOR = CH_B_CURRENT_ACCUMULATOR + CHANNEL3;
-  CH_B_VOLTAGE_ACCUMULATOR = CH_B_VOLTAGE_ACCUMULATOR + CHANNEL4;
-  VREF_UNI_ACCUMULATOR = VREF_UNI_ACCUMULATOR + CHANNEL5;
-  VREF_BI_ACCUMULATOR = VREF_BI_ACCUMULATOR + CHANNEL6;
-  VREF33_ACCUMULATOR = VREF33_ACCUMULATOR + CHANNEL7;
-  CH8_ACCUMULATOR = CH8_ACCUMULATOR + CHANNEL8;
+  CH_A_CURRENT_ACCUMULATOR += ADC_SPI.readCH(0);
+  CH_A_VOLTAGE_ACCUMULATOR += ADC_SPI.readCH(1);
+  CH_B_CURRENT_ACCUMULATOR += ADC_SPI.readCH(2);
+  CH_B_VOLTAGE_ACCUMULATOR += ADC_SPI.readCH(3);
+  VREF_UNI_ACCUMULATOR     += ADC_SPI.readCH(4);
+  VREF_BI_ACCUMULATOR      += ADC_SPI.readCH(5);
+  VREF33_ACCUMULATOR       += ADC_SPI.readCH(6);
+  CH8_ACCUMULATOR          += ADC_SPI.readCH(7);
+  
   numberofsamples++;
 
-  if (currentMillis - previousMillis >= main_emondc_interval) {
-    //int overrunMillis = currentMillis % main_emondc_interval;
-    unsigned long pre_mills_store = previousMillis;
+  yield();
+
+  if (currentMillis - previousMillis >= main_interval_ms) {
+    //overrunMillis = currentMillis % main_interval_ms;
     previousMillis = currentMillis;
-
     //previousMillis = previousMillis - overrunMillis;
+    NTP_update_PCF8523_update();  // update RTC time, via network if available every 60s.   
 
-    if (numberofsamples >= 1000) {
-      
-      average_and_calibrate(pre_mills_store, currentMillis);
-      
-      NTP_update_PCF8523_update();
-
+    if (numberofsamples >= 500) { // making sure we've got some samples to average.
+      yield();
+      average_and_calibrate(previousMillis, currentMillis); // readying the readable values, passing necessary time values associated with the posting intervals.
+      yield();
       //-----------------------------------
       // what to do with the ready data:
       //-----------------------------------
       forward_to_emonESP(); // sending to emonCMS
-      if (SD_present) save_to_SDcard();
+      yield();
+      if (SD_present) save_to_SDcard(); // save to SD card.
+      yield();
+      //Serial.println(time_until_discharged()); // testing Peukert calculation
+      //Serial.println(effective_capacity()); // testing Peukert calculation
+      //-----------------------------------
       clear_accumulators(); // this happens before gathering next samples, or else chaos ensues.
-      // done.
-      
+      yield();
+      //-----------------------------------
       Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for debugging
     }
   }
   
   if (currentMillis - oled_previousMillis >= oled_interval) {
     oled_previousMillis = currentMillis;
-    drawvalues_to_OLED(); // for the 128x32 I2C OLED.
+    draw_OLED(); // for the 128x32 I2C OLED.
+    yield();
   }
-}
+} // end emonDC loop
 
 
-//-----------------
+//----------------------------------------------------------------------------------------------------
 // Create averaged values from ADC channels, apply calibration, make readable amps and volts.
-//-----------------
-double Ah_A;
-double Ah_B;
+//----------------------------------------------------------------------------------------------------
 void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
+  // create averaged values from the sample accumulators.
   CH_A_CURRENT_AVERAGED = CH_A_CURRENT_ACCUMULATOR / numberofsamples;
   CH_A_VOLTAGE_AVERAGED = CH_A_VOLTAGE_ACCUMULATOR / numberofsamples;
   CH_B_CURRENT_AVERAGED = CH_B_CURRENT_ACCUMULATOR / numberofsamples;
@@ -306,67 +296,86 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   VREF33_AVERAGED = VREF33_ACCUMULATOR / numberofsamples;
   CH8_AVERAGED = CH8_ACCUMULATOR / numberofsamples;
 
- 
-  // adjust current readings according to Vref values.
-  if (chanAref == chanRef) {
-    CH_A_CURRENT_AVERAGED = CH_A_CURRENT_AVERAGED - VREF_UNI_AVERAGED;
-  }
-  else {
-    CH_A_CURRENT_AVERAGED = CH_A_CURRENT_AVERAGED - VREF_BI_AVERAGED;
-  }
-  if (chanBref == chanRef) {
-    CH_B_CURRENT_AVERAGED = CH_B_CURRENT_AVERAGED - VREF_UNI_AVERAGED;
-  }
-  else {
-    CH_B_CURRENT_AVERAGED = CH_B_CURRENT_AVERAGED - VREF_BI_AVERAGED;
-  }
+  // adjust current readings according to Vref values, i.e. reference offset removal.
+  if (chanAref == chanRef) CH_A_CURRENT_AVERAGED -= VREF_UNI_AVERAGED;
+  else CH_A_CURRENT_AVERAGED -= VREF_BI_AVERAGED;
+  if (chanBref == chanRef) CH_B_CURRENT_AVERAGED -= VREF_UNI_AVERAGED;
+  else CH_B_CURRENT_AVERAGED -= VREF_BI_AVERAGED;
 
   volts_to_adc_reading_ratio = volts_to_adc_reading_ratio_function(); // convert VREF33 into 'ADCvalue to Voltage factor'
-
+  yield();
+  // make readable voltage and current values, apply calibration.
   Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, chanA, chanA_shuntAmp_gain) * _CAL_FACTOR_icalA;
   Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, chanA) * _CAL_FACTOR_vcalA;
   Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, chanB, chanB_shuntAmp_gain) * _CAL_FACTOR_icalB;
   Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, chanB) * _CAL_FACTOR_vcalB;
-  //CH8_AVERAGED = CH8_AVERAGED * _CAL_FACTOR_TEST;
 
-  int this_interval = curr_mills - pre_mills;
-  // amps in, amps out
-  Ah_A = Ah_calculate(Current_A, this_interval / 1000);
-  Ah_B = Ah_calculate(Current_B, this_interval / 1000);
+  unsigned long this_interval_ms = curr_mills - pre_mills;
+  yield();
+  double Ah_period = (Current_B * (this_interval_ms/1000)) / 3600.0; // Coulomb counting.
+  double soc_diff = Ah_period / effective_capacity_fromfull(); // state of charge difference this period.
+  state_of_charge -= soc_diff; // update state of charge.
+  // C *= state_of_charge; don't adjust this on the fly because of it's effect of peukert equation.
+  _time_until_discharged = time_until_discharged_fromfull() * 3600  * state_of_charge;
+  yield();
+  
+  
+  
+  /*
+  // calculate amp hours and watt hours.
+  
+  //double Ah_A = Ah_calculate(Current_A, ((double)this_interval / 1000.0));
+  //double Ah_B = Ah_calculate(Current_B, ((double)this_interval / 1000.0));
   Ah_level_A += Ah_A;
   Ah_level_B += Ah_B;
   if (Ah_A > 0) Ah_positive_A += Ah_A;
   else Ah_negative_A += Ah_A;
   if (Ah_B > 0) Ah_positive_B += Ah_B;
   else Ah_negative_B += Ah_B;
-  // -- - -- -
-  Wh_chA_positive += Wh_accumulate(Current_A, Voltage_A, this_interval / 1000);
-  Wh_chB_positive += Wh_accumulate(Current_B, Voltage_B, this_interval / 1000);
   
+  Serial.println("Ah_positive_A");
+  Serial.println(Ah_positive_A);
+  Serial.println("Ah_negative_A");
+  Serial.println(Ah_negative_A);
+  Serial.println("Ah_positive_B");
+  Serial.println(Ah_positive_B);
+  Serial.println("Ah_negative_B");
+  Serial.println(Ah_negative_B);
+  */
+  // -- - -- -
+  //Wh_chA_positive += Wh_accumulate(Current_A, Voltage_A, this_interval / 1000);
+  //Wh_chB_positive += Wh_accumulate(Current_B, Voltage_B, this_interval / 1000);
+  /*
+  Serial.println("Wh_chA_positive");
+  Serial.println(Wh_chA_positive);
+  Serial.println("Wh_chB_positive");
+  Serial.println(Wh_chB_positive);
+  */
+
+
   if (setup_done == false) {
     _t_begin = millis() / 1000;
     setup_done = true;
   }
-
-  int _t_pre = millis() / 1000;
-  _t = _t_pre - _t_begin;
+  int _t2 = millis() / 1000;
+  _t = _t2 - _t_begin;
 
   averaging_loop_counter++;
 
-#ifndef RELEASE
-  Serial.print("Number of samples: ");
-  Serial.println(numberofsamples);
+  
   Serial.print("Averaging loop counter: ");
-  Serial.println(averaging_loop_counter);
-  Serial.print("_time: ");
+  Serial.print(averaging_loop_counter);
+  Serial.print("        _t: ");
   Serial.println(_t);
-#endif
+  Serial.print("connected_network: ");
+  Serial.println(connected_network);
+  
 } // Averaging loop end.
 
 
-//-----------------
+//---------------------------------------------------------------------------
 // Build Strign to forward to emonESP, same string is stored to SD card.
-//-----------------
+//---------------------------------------------------------------------------
 void forward_to_emonESP(void)
 {
   ADC_KeyValue_String = "Volts_A:" + String(Voltage_A, 2);
@@ -389,11 +398,11 @@ void forward_to_emonESP(void)
   ADC_KeyValue_String = ADC_KeyValue_String + "CH8:";
   ADC_KeyValue_String = ADC_KeyValue_String + CH8_AVERAGED;
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Ah_level_A:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Ah_level_A;
+  ADC_KeyValue_String = ADC_KeyValue_String + "SoC(%):";
+  ADC_KeyValue_String = ADC_KeyValue_String + (state_of_charge*100);
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Ah_level_A:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Ah_level_B;
+  ADC_KeyValue_String = ADC_KeyValue_String + "TimeUD(s):";
+  ADC_KeyValue_String = ADC_KeyValue_String + _time_until_discharged;
   ADC_KeyValue_String = ADC_KeyValue_String + ",";
   ADC_KeyValue_String = ADC_KeyValue_String + "samplecount:";
   ADC_KeyValue_String = ADC_KeyValue_String + numberofsamples;
@@ -404,9 +413,9 @@ void forward_to_emonESP(void)
 }
 
 
-//-----------------
+//-------------------------
 // Clear ADC accumulators for next round of samples.
-//-----------------
+//-------------------------
 void clear_accumulators(void) {
   CH_A_CURRENT_ACCUMULATOR = 0;
   CH_A_VOLTAGE_ACCUMULATOR = 0;
@@ -420,10 +429,10 @@ void clear_accumulators(void) {
 }
 
 
-//-----------------
+//-------------------------
 // 128x32 I2C OLED
-//-----------------
-void drawvalues_to_OLED(void) { // draw to OLED
+//-------------------------
+void draw_OLED(void) { // draw to OLED
   if (screentog == -1) {
     screentog = 0;
     return;
@@ -449,30 +458,37 @@ void drawvalues_to_OLED(void) { // draw to OLED
     screentog = 4;
   }
   else if (screentog == 4) {
-    display.println(F("Ah(A)")); display.println(Ah_level_A);
+    display.println(F("SoC(%)")); display.println(state_of_charge*100);
     screentog = 5;
   }
   else if (screentog == 5) {
-    display.println(F("Ah(B)")); display.println(Ah_level_B);
-    screentog = 6;
+    display.println(F("TimeUD(h)")); display.println(_time_until_discharged/3600);
+    screentog = 8;
   }
-  else if (screentog == 6) {
-    display.println(F("SSID:")); display.println(esid);
+  /*else if (screentog == 6) {
+    display.println(F("effCap:")); display.println(effective_capacity_fromfull());
     screentog = 7;
   }
   else if (screentog == 7) {
+    display.println(F("TUD:")); display.println(time_until_discharged_fromfull());
+    screentog = 8;
+  }*/
+  else if (screentog == 8) {
+    display.println(F("SSID:")); display.println(connected_network);
+    screentog = 9;
+  }
+  else if (screentog == 9) {
     display.println(F("IP Addr:")); display.println(ipaddress_OLED);
-    //display.display(); /////
-    screentog = -1;
+    screentog = 0; // return to zero
   }
 
-  display.display();
-} // draw to OLED
+  display.display(); // refresh display with buffer contents.
+}
 
 
-//-----------------
+//-------------------------
 // Update NTP time, set to RTC, read time from RTC.
-//-----------------
+//-------------------------
 void NTP_update_PCF8523_update(void) {
   if (WiFi.status() == WL_CONNECTED) {
     if (currentMillis - previousMillisNTP >= intervalNTP) {
@@ -486,20 +502,20 @@ void NTP_update_PCF8523_update(void) {
 }
 
 
-//-----------------
+//-------------------------
 // Web server -> Save settings, intermediate function.
-//-----------------
-void config_save_emondc(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB)
+//-------------------------
+void config_save_emondc(unsigned int interval, double vcalA, double icalA, double vcalB, double icalB)
 {
-  _MAIN_INTERVAL = interval;
-  main_emondc_interval = _MAIN_INTERVAL * 1000;
+  // update values for emondc_loop
+  main_interval_ms = interval * 1000; 
   _CAL_FACTOR_vcalA = vcalA;
   _CAL_FACTOR_icalA = icalA;
   _CAL_FACTOR_vcalB = vcalB;
   _CAL_FACTOR_icalB = icalB;
   
   Serial.println("emonDC saving settings...");
-  Serial.println(_MAIN_INTERVAL);
+  Serial.println(main_interval_ms);
   Serial.println(_CAL_FACTOR_vcalA);
   Serial.println(_CAL_FACTOR_icalA);
   Serial.println(_CAL_FACTOR_vcalB);
@@ -510,99 +526,66 @@ void config_save_emondc(unsigned int interval, float vcalA, float icalA, float v
 }
 
 
-//-----------------
-// Wh accumulator calc.
-//-----------------
-double Wh_accumulate(float amps_value, float volts_value, int elapsed_seconds) {
-  double watts = amps_value * volts_value;
-  double watt_seconds = watts * (float)elapsed_seconds;
-  double wh = watt_seconds / 3600;
-  return wh;
-}
 
-
-//-----------------
-// Wh accumulator calc.
-//-----------------
-double Ah_calculate(float amps_value, int elapsed_seconds) {
-  double _Amp_hours = (amps_value * elapsed_seconds) / 3600.0;
-  return _Amp_hours;
-}
-
-
-//-----------------
-// TBD
-//-----------------
-float time_until_discharged(void) {
-  //t = Rt(C/IRt)^k [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
-  float IRt = Current_B * rated_discharge_time; // for channel B is connected to battery.
-  float C_IRt = rated_capacity / IRt;
-  float Rt_C_IRt = rated_discharge_time * C_IRt;
-  float _time_until_discharged = pow(Rt_C_IRt, 2.0);
-  return _time_until_discharged;
-}
-//-----------------
-// TBD
-//-----------------
-float effective_capacity(void) {
-  // It = C (C / I*H)^k-1 [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
-  float _IH = Current_B * rated_discharge_time; // for channel B is connected to battery.
-  float _C_IH = rated_capacity / _IH;
-  float _C_C_IH = rated_capacity * _C_IH;
-  float _k_neg_one = 1 / peukert_exponent;
-  float _result_It = pow(_C_C_IH, _k_neg_one);
-  return _result_It;
-}
-
-
-
-float volts_to_adc_reading_ratio_function(void) {
-  float _volts_to_adc_reading_ratio = 3.3000 / VREF33_AVERAGED;
+//--------------------------------------------------
+// ADC averaged 3.3V reading to volts per 12-bit ADC division
+//--------------------------------------------------
+double volts_to_adc_reading_ratio_function(void) {
+  double _volts_to_adc_reading_ratio = 3.3000 / VREF33_AVERAGED;
   return (_volts_to_adc_reading_ratio);
 }
 
 
-float Vcal_coefficient_A_pre = (R1_A + R2_A); // resistor divider calc.
-float Vcal_coefficient_A = R2_A / Vcal_coefficient_A_pre;
-float Vcal_coefficient_B_pre = (R1_B + R2_B); // resistor divider calc.
-float Vcal_coefficient_B = R2_B / Vcal_coefficient_B_pre;
 
-// adc value to Volts function
-float make_readable_Volts (float _adcValue, String _chan) {
-  float _readableV1 = _adcValue * volts_to_adc_reading_ratio;
+//--------------------------------------------------
+// ADC averaged value to Volts
+//--------------------------------------------------
+double Vcal_coefficient_A_pre = (R1_A + R2_A); // resistor divider calc.
+double Vcal_coefficient_A = R2_A / Vcal_coefficient_A_pre;
+double Vcal_coefficient_B_pre = (R1_B + R2_B); // resistor divider calc.
+double Vcal_coefficient_B = R2_B / Vcal_coefficient_B_pre;
+
+double make_readable_Volts (double _Value, String _chan) {
+  double _readableV1 = _Value * volts_to_adc_reading_ratio;
   if (_chan == chanA) {
-    float _readableVolts = _readableV1 / Vcal_coefficient_A;
+    double _readableVolts = _readableV1 / Vcal_coefficient_A;
     _readableVolts += offset_correction_voltsA;
     return (_readableVolts);
   }
   else {
-    float _readableVolts = _readableV1 / Vcal_coefficient_B;
+    double _readableVolts = _readableV1 / Vcal_coefficient_B;
     _readableVolts += offset_correction_voltsB;
     return (_readableVolts);
   }
 }
 
-// adc value to Amps function
-float make_readable_Amps (float _adcValue, String _chan, float _gain)
+
+
+//--------------------------------------------------
+// ADC averaged value to Amps
+//--------------------------------------------------
+double make_readable_Amps (double _Value, String _chan, double _gain)
 {
-  float _readable_1 = _adcValue * volts_to_adc_reading_ratio;
-  float _readable_2 = _readable_1 / _gain; // gives mV signal value.
+  double _readable_1 = _Value * volts_to_adc_reading_ratio;
+  double _readable_2 = _readable_1 / _gain; // gives mV signal value.
 
   if (_chan == chanA) {
-    float _readableAmps = _readable_2 / Rshunt_A; // I=V/R
+    double _readableAmps = _readable_2 / Rshunt_A; // I=V/R
     _readableAmps += offset_correction_ampsA; // shunt monitor offset calibration
     return (_readableAmps);
   }
   else {
-    float _readableAmps = _readable_2 / Rshunt_B; // I=V/R
+    double _readableAmps = _readable_2 / Rshunt_B; // I=V/R
     _readableAmps += offset_correction_ampsB; // shunt monitor offset calibration
     return (_readableAmps);
   }
 }
 
-//---------------
+
+
+//-------------------------
 // SD CARD
-//---------------
+//-------------------------
 void save_to_SDcard(void) {
   File dataFile = SD.open(datalogFilename, FILE_WRITE);
   // if the file is available, write to it:
@@ -610,10 +593,65 @@ void save_to_SDcard(void) {
     dataFile.println(ADC_KeyValue_String);
     dataFile.close();
     // print to the serial port too:
-    Serial.println("Save to SD card.");
+    Serial.println("SD card save OK");
   }
   // if the file isn't open, pop up an error:
   else {
     Serial.println("error opening datalog.txt");
   }
 }
+
+
+//-------------------------
+// Wh accumulator calc.
+//-------------------------
+double Wh_accumulate(double amps_value, double volts_value, int elapsed_seconds) {
+  double watts = amps_value * volts_value;
+  double watt_seconds = watts * (double)elapsed_seconds;
+  double wh = watt_seconds / 3600;
+  return wh;
+}
+
+
+//-------------------------
+// Battery monitoring.
+//-------------------------
+double time_until_discharged_fromfull(void) { // returns time until discharged from ideal battery condition.
+  // http://www.smartgauge.co.uk/peukert2.html
+  // T = (Hr*(C/Hr)^n)/(I^n)
+  double Peukert_capacity = Hr * pow((C/Hr), k);
+  bool flip = 0;
+  if (Current_B < 0) { flip = true; Current_B = fabs(Current_B); }
+  double _time_until_discharged = Peukert_capacity / (pow(Current_B, k));
+  //sprintf(log_buffer, "_time_until_discharged(seconds):%.3f\r\n", _time_until_discharged*3600);
+  //printf("%s",log_buffer);
+  if (flip) { _time_until_discharged = -_time_until_discharged; Current_B = -Current_B; }
+  return _time_until_discharged;
+}
+
+double effective_capacity_fromfull(void) { // returns eff. cap. in Ah.
+  // http://www.smartgauge.co.uk/technical1.html
+  // http://www.smartgauge.co.uk/peukert3.html
+  bool flip = 0;
+  if (Current_B < 0) { flip = true; Current_B = fabs(Current_B); } // deal with negative readings before pow()
+  double _effective_capacity = time_until_discharged_fromfull() * Current_B;
+  //sprintf(log_buffer, "_effective_capacity(Ah):%.3f\r\n", _effective_capacity);
+  //printf("%s",log_buffer);
+  if (flip) { _effective_capacity = -_effective_capacity; Current_B = -Current_B; }
+  return _effective_capacity;
+}
+
+/*
+void reset_ah_capacity(void) {
+  // check the voltage level, check the current flowing into the battery,
+  // if the battery is held at a certain voltage and reads a particular current in or out, 
+  // for a certain length of time, then battery is full.
+  // for example, lead-acid generally, this could be a battery at >14.0V with less than .1A flowing in or out per cell, for 30 minutes.
+  // check battery manufactures instructions and the charger specification and charging modes to know what's expected.
+  // https://batteryuniversity.com/learn/article/charging_the_lead_acid_battery
+  if (Voltage_B >= 14.0 && Current_B <= 0.1) {
+    bool charged_inquiry = true;
+    //uint32_t time1_ah_reset = currentMillis;
+  }
+}
+*/
