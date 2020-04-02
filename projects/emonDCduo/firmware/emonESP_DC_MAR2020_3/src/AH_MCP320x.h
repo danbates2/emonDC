@@ -27,12 +27,13 @@
 #define SINGLE       true
 #define DIFFERENTIAL false
 
+#include <SPI.h>
 
 class AH_MCP320x
 {
   public:
     AH_MCP320x(int CS, int DOUT,int DIN, int CLK);
-    AH_MCP320x(int CS);
+    AH_MCP320x(int CS, SPISettings settings);
     int readCH(int CHANNEL);
     void readALL(int values[], int n);
     void getCONFIG(int config[],int n);

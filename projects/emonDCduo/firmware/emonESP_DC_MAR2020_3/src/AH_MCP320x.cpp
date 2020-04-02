@@ -21,7 +21,7 @@
 #endif
 
 #include "AH_MCP320x.h"
-#include "SPI.h"
+#include <SPI.h>
 
 
 
@@ -56,7 +56,7 @@ AH_MCP320x::AH_MCP320x(int CS, int DOUT,int DIN, int CLK)
 //************************************************************************
 //SPI MODE INIT
 //************************************************************************
-AH_MCP320x::AH_MCP320x(int CS)
+AH_MCP320x::AH_MCP320x(int CS, SPISettings settings)
 {
   _CS   = CS;
   _MODE = 1; //SPI mode
@@ -70,7 +70,7 @@ AH_MCP320x::AH_MCP320x(int CS)
   digitalWrite(_CS,HIGH);
   //SPI.begin();
   //SPI.setClockDivider(SPI_CLOCK_DIV8);
-  SPI.beginTransaction(SPISettings(400000, MSBFIRST, SPI_MODE0));
+  SPI.beginTransaction(settings);
 }
 
 //************************************************************************

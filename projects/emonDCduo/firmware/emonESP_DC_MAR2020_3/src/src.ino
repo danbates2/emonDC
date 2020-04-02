@@ -66,8 +66,6 @@ void setup() {
   else {
     // Read saved settings from the config
     config_load_settings();
-    // Read emonDC settings from JSON file.
-    config_load_settings_spiffs();
     // Initialise the WiFi
     wifi_setup();
     // Bring up the web server
@@ -95,7 +93,6 @@ void loop() {
   wifi_loop();
   emondc_loop();
   gpio0_loop();
-  
   
   String input = "";
   boolean gotInput = input_get(input);

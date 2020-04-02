@@ -25,11 +25,12 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#define FS_NO_GLOBALS
-#include <FS.h>                       // SPIFFS file-system: store web server html, CSS etc.
+//#define FS_NO_GLOBALS
+//#include <FS.h>                       // SPIFFS file-system: store web server html, CSS etc.
 
 #include "emonesp.h"
 #include "web_server.h"
+#include "web_server_static.h"
 #include "config.h"
 #include "wifi.h"
 #include "mqtt.h"
@@ -39,7 +40,21 @@
 #include "debug.h"
 #include "emondc.h"
 
+#include "web_server.config_js.h"
+#include "web_server.home_html.h"
+#include "web_server.style_css.h"
+#include "web_server.lib_js.h"
+
 AsyncWebServer server(80);          // Create class for Web server
+AsyncWebSocket ws("/ws");
+StaticFileWebHandler staticFile;
+
+// Content Types
+const char _CONTENT_TYPE_HTML[] PROGMEM = "text/html";
+const char _CONTENT_TYPE_TEXT[] PROGMEM = "text/text";
+const char _CONTENT_TYPE_CSS[] PROGMEM = "text/css";
+//const char _CONTENT_TYPE_JSON[] PROGMEM = "application/json";
+const char _CONTENT_TYPE_JS[] PROGMEM = "application/javascript";
 
 bool enableCors = true;
 
@@ -53,6 +68,52 @@ unsigned long systemRebootTime = 0;
 #define TEXTIFY(A) #A
 #define ESCAPEQUOTE(A) TEXTIFY(A)
 String currentfirmware = ESCAPEQUOTE(BUILD_TAG);
+
+
+void dumpRequest(AsyncWebServerRequest *request) {
+  if(request->method() == HTTP_GET) {
+    DBUGF("GET");
+  } else if(request->method() == HTTP_POST) {
+    DBUGF("POST");
+  } else if(request->method() == HTTP_DELETE) {
+    DBUGF("DELETE");
+  } else if(request->method() == HTTP_PUT) {
+    DBUGF("PUT");
+  } else if(request->method() == HTTP_PATCH) {
+    DBUGF("PATCH");
+  } else if(request->method() == HTTP_HEAD) {
+    DBUGF("HEAD");
+  } else if(request->method() == HTTP_OPTIONS) {
+    DBUGF("OPTIONS");
+  } else {
+    DBUGF("UNKNOWN");
+  }
+  DBUGF(" http://%s%s", request->host().c_str(), request->url().c_str());
+
+  if(request->contentLength()){
+    DBUGF("_CONTENT_TYPE: %s", request->contentType().c_str());
+    DBUGF("_CONTENT_LENGTH: %u", request->contentLength());
+  }
+
+  int headers = request->headers();
+  int i;
+  for(i=0; i<headers; i++) {
+    AsyncWebHeader* h = request->getHeader(i);
+    DBUGF("_HEADER[%s]: %s", h->name().c_str(), h->value().c_str());
+  }
+
+  int params = request->params();
+  for(i = 0; i < params; i++) {
+    AsyncWebParameter* p = request->getParam(i);
+    if(p->isFile()){
+      DBUGF("_FILE[%s]: %s, size: %u", p->name().c_str(), p->value().c_str(), p->size());
+    } else if(p->isPost()){
+      DBUGF("_POST[%s]: %s", p->name().c_str(), p->value().c_str());
+    } else {
+      DBUGF("_GET[%s]: %s", p->name().c_str(), p->value().c_str());
+    }
+  }
+}
 
 // -------------------------------------------------------------------
 // Helper function to perform the standard operations on a request
@@ -71,13 +132,13 @@ bool requestPreProcess(AsyncWebServerRequest *request, AsyncResponseStream *&res
 
   return true;
 }
-
+/*
 // -------------------------------------------------------------------
 // Load Home page
 // url: /
 // -------------------------------------------------------------------
-void
-handleHome(AsyncWebServerRequest *request) {
+//static const char index_html[] PROGMEM = "This is a string stored in flash";
+void handleHome(AsyncWebServerRequest *request) {
   if (www_username != ""
       && !request->authenticate(www_username.c_str(),
                                 www_password.c_str())
@@ -86,13 +147,14 @@ handleHome(AsyncWebServerRequest *request) {
   }
 
   if (SPIFFS.exists("/home.html")) {
-    request->send(SPIFFS, "/home.html");
+    //request->send(SPIFFS, "/home.html");
+    request->send_P(200, "text/html", home_html); // this works!
   } else {
     request->send(200, "text/plain",
                   "/home.html not found, have you flashed the SPIFFS?");
   }
 }
-
+*/
 // -------------------------------------------------------------------
 // Wifi scan /scan not currently used
 // url: /scan
@@ -269,7 +331,6 @@ void handleEmonDC(AsyncWebServerRequest *request) {
   if (false == requestPreProcess(request, response, "text/plain")) {
     return;
   }
-  Serial.println("WE'VE GOT THIS FAR!!!");
 
   String qinterval = request->arg("interval");
   String qvcalA = request->arg("vcalA");
@@ -277,13 +338,7 @@ void handleEmonDC(AsyncWebServerRequest *request) {
   String qvcalB = request->arg("vcalB");
   String qicalB = request->arg("icalB");
 
-  unsigned int interval = qinterval.toInt();
-  float vcalA = qvcalA.toFloat();
-  float icalA = qicalA.toFloat();
-  float vcalB = qvcalB.toFloat();
-  float icalB = qicalB.toFloat();
-
-  config_save_emondc(interval, vcalA, icalA, vcalB, icalB);
+  config_save_emondc(qinterval, qvcalA, qicalA, qvcalB, qicalB);
 
   response->setCode(200);
   response->print("saved");
@@ -496,76 +551,74 @@ static void handle_update_progress_cb(AsyncWebServerRequest *request, String fil
 
 void handleNotFound(AsyncWebServerRequest *request)
 {
-  if (wifi_mode) {
-    handleHome(request);
-  }
-  else {
   DBUG("NOT_FOUND: ");
-  if (request->method() == HTTP_GET) {
-    DBUGF("GET");
-  } else if (request->method() == HTTP_POST) {
-    DBUGF("POST");
-  } else if (request->method() == HTTP_DELETE) {
-    DBUGF("DELETE");
-  } else if (request->method() == HTTP_PUT) {
-    DBUGF("PUT");
-  } else if (request->method() == HTTP_PATCH) {
-    DBUGF("PATCH");
-  } else if (request->method() == HTTP_HEAD) {
-    DBUGF("HEAD");
-  } else if (request->method() == HTTP_OPTIONS) {
-    DBUGF("OPTIONS");
+  dumpRequest(request);
+
+  if(wifi_mode == WIFI_MODE_AP_ONLY) {
+    // Redirect to the home page in AP mode (for the captive portal)
+    AsyncResponseStream *response = request->beginResponseStream(String(CONTENT_TYPE_HTML));
+
+    String url = F("http://");
+    url += ipaddress;
+
+    String s = F("<html><body><a href=\"");
+    s += url;
+    s += F("\">OpenEVSE</a></body></html>");
+
+    response->setCode(301);
+    response->addHeader(F("Location"), url);
+    response->print(s);
+    request->send(response);
   } else {
-    DBUGF("UNKNOWN");
-  }
-  DBUGF(" http://%s%s", request->host().c_str(), request->url().c_str());
-
-  if (request->contentLength()) {
-    DBUGF("_CONTENT_TYPE: %s", request->contentType().c_str());
-    DBUGF("_CONTENT_LENGTH: %u", request->contentLength());
-  }
-
-  int headers = request->headers();
-  int i;
-  for (i = 0; i < headers; i++) {
-    AsyncWebHeader* h = request->getHeader(i);
-    DBUGF("_HEADER[%s]: %s", h->name().c_str(), h->value().c_str());
-  }
-
-  int params = request->params();
-  for (i = 0; i < params; i++) {
-    AsyncWebParameter* p = request->getParam(i);
-    if (p->isFile()) {
-      DBUGF("_FILE[%s]: %s, size: %u", p->name().c_str(), p->value().c_str(), p->size());
-    } else if (p->isPost()) {
-      DBUGF("_POST[%s]: %s", p->name().c_str(), p->value().c_str());
-    } else {
-      DBUGF("_GET[%s]: %s", p->name().c_str(), p->value().c_str());
-    }
-  }
-  
     request->send(404);
+  }
+}
+
+
+void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len) {
+  if(type == WS_EVT_CONNECT) {
+    DBUGF("ws[%s][%u] connect", server->url(), client->id());
+    client->ping();
+  } else if(type == WS_EVT_DISCONNECT) {
+    DBUGF("ws[%s][%u] disconnect: %u", server->url(), client->id());
+  } else if(type == WS_EVT_ERROR) {
+    DBUGF("ws[%s][%u] error(%u): %s", server->url(), client->id(), *((uint16_t*)arg), (char*)data);
+  } else if(type == WS_EVT_PONG) {
+    DBUGF("ws[%s][%u] pong[%u]: %s", server->url(), client->id(), len, (len)?(char*)data:"");
+  } else if(type == WS_EVT_DATA) {
+    AwsFrameInfo * info = (AwsFrameInfo*)arg;
+    String msg = "";
+    if(info->final && info->index == 0 && info->len == len)
+    {
+      //the whole message is in a single frame and we got all of it's data
+      DBUGF("ws[%s][%u] %s-message[%u]: ", server->url(), client->id(), (info->opcode == WS_TEXT)?"text":"binary", len);
+    } else {
+      // TODO: handle messages that are comprised of multiple frames or the frame is split into multiple packets
+    }
   }
 }
 
 void
 web_server_setup()
 {
-  SPIFFS.begin(); // mount the fs
+  // SPIFFS.begin(); // mount the fs
 
   // Setup the static files
-  server.serveStatic("/", SPIFFS, "/")
-  .setDefaultFile("index.html")
-  .setAuthentication(www_username.c_str(), www_password.c_str());
+  // server.serveStatic("/", SPIFFS, "/")
+  // .setDefaultFile("index.html")
+  // .setAuthentication(www_username.c_str(), www_password.c_str()); 
+
+  // Add the Web Socket server
+  ws.onEvent(onWsEvent);
+  server.addHandler(&ws);
+  server.addHandler(&staticFile);
 
   // Start server & server root html /
-  server.on("/", handleHome);
-
+  // server.on("/", handleHome);
   // Handle HTTP web interface button presses
-  server.on("/generate_204", handleHome);  //Android captive portal. Maybe not needed. Might be handled by notFound
-  server.on("/fwlink", handleHome);  //Microsoft captive portal. Maybe not needed. Might be handled by notFound
+  // server.on("/generate_204", handleHome);  //Android captive portal. Maybe not needed. Might be handled by notFound
+  // server.on("/fwlink", handleHome);  //Microsoft captive portal. Maybe not needed. Might be handled by notFound
   server.on("/status", handleStatus);
-
   server.on("/config", handleConfig);
 
   server.on("/savenetwork", handleSaveNetwork);

@@ -27,32 +27,39 @@ String hw_version = "HW:v3.6";
 // -------------------------------------------------------------------
 // change the following variables for your system.
 // -------------------------------------------------------------------
-// NOTE: SEE THE JSON SETTINGS FILE FOR CHANGING THESE, THE VALUES INDICATED BELOW ARE A BACKUP.
-unsigned int main_interval_seconds = 5; // !!! set this in the JSON config file !!! max is 1800 seconds (30 minutes).
-unsigned long main_interval_ms= main_interval_seconds * 1000;
-bool chanAref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
-bool chanBref = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
-double chanA_shuntAmp_gain = 100; // shunt amp gain.
-double chanB_shuntAmp_gain = 100;
+int main_interval_seconds = 5; // !!! set this in the JSON config file !!! max is 1800 seconds (30 minutes).
+unsigned long main_interval_ms;
+bool chanA_VrefSet = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
+bool chanB_VrefSet = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
+int channelA_gain = 100; // shunt amp gain.
+int channelB_gain = 100;
 // values of resistor divider for voltage reading.
-double R1_A = 1000000.0; // 1Mohm default.
-double R2_A = 75000.0; // 75kohm default.
-double R1_B = 1000000.0;
-double R2_B = 75000.0;
-double Rshunt_A = 0.000500; // value of Rsense in Ohms.
-double Rshunt_B = 0.000500;
+long R1_A = 1000000; // 1Mohm default.
+long R2_A = 75000; // 75kohm default.
+long R1_B = 1000000;
+long R2_B = 75000;
+double Rshunt_A = 0.0005; // value of Rsense in Ohms.
+double Rshunt_B = 0.0005;
 // Calibration values for manual adjustment.
-double _CAL_FACTOR_icalA = 1.00; // CURRENT_A.
-double _CAL_FACTOR_vcalA = 1.00; // VOLTAGE_A.
-double _CAL_FACTOR_icalB = 1.00; // CURRENT_B.
-double _CAL_FACTOR_vcalB = 1.00; // VOLTAGE_B.
+double icalA = 1.000; // CURRENT_A.
+double vcalA = 1.000; // VOLTAGE_A.
+double icalB = 1.000; // CURRENT_B.
+double vcalB = 1.000; // VOLTAGE_B.
 // Amplifier offset corrections for zero measurements, ideally these would be maps derived from experiment.
-double offset_correction_ampsA = 0.14;
-double offset_correction_voltsA = -0.01;
-double offset_correction_ampsB = 0.14;
+double offset_correction_ampsA = -0.02;
+double offset_correction_voltsA = -0.005;
+double offset_correction_ampsB = 0.07;
 double offset_correction_voltsB = -0.01;
-
-
+// Battery State of Charge variables [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
+double battery_voltage_nominal = 12.0; // just in case useful later
+double bat_max = 14.8; double bat_min = 10.6; // these actually change with temperature, and are therefore crude values.
+double state_of_charge = 1.00 ; // 1 = 100% percent
+double time_until_discharged;
+// battery data.
+double Hr = 20.0; // rated time in hours
+double k = 1.3; // Peukert exponent for flooded lead-acid (see link above)
+double C = 100.0; // capacity of battery at rated time (Ah)
+double Temperature_Bat = 10.0; // future use
 
 // -------------------------------------------------------------------
 // More advanced setting below.
@@ -67,9 +74,14 @@ unsigned long oled_previousMillis;
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 int screentog = -1;
 
+// SD CARD
 const int chipSelectSD = 15; // SD card chip SPI chip select
-AH_MCP320x ADC_SPI(2); // ADC SPI chip select. SPI speed set in library.
-// sample rate in this sketch is around 450 samples per channel per second.
+SPISettings mySettings(250000, MSBFIRST, SPI_MODE0); // 10kHz is the minimum clock speed : MCP3208 datasheet.
+
+// sample rate in this sketch is around 450 samples per channel per second at 400kHz.
+// ADC
+const int chipSelectADC = 2; // SD card chip SPI chip select
+AH_MCP320x ADC_SPI(chipSelectADC, mySettings); // ADC SPI chip select.
 
 unsigned int _t_begin; //  human readable time of start
 unsigned long _t;//  human readable time since start
@@ -107,17 +119,7 @@ double Ah_positive_A = 0.0;
 double Ah_positive_B = 0.0;
 double Ah_negative_A = 0.0;
 double Ah_negative_B = 0.0;
-// Battery State of Charge variables [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
-double battery_voltage_nominal = 12.0; // just in case useful later
-double bat_max = 14.8; double bat_min = 10.6; // these actually change with temperature, and are therefore crude values.
-double state_of_charge = 1.00 ; // 1 = 100% percent
-double _time_until_discharged;
-// battery data.
-double Hr = 20.0; // rated time in hours
-double k = 1.25; // Peukert exponent for flooded lead-acid (see link above)
-double C = 100.0; // capacity of battery at rated time (Ah)
-double Temperature_Room = 16.0; // future use
-double Temperature_Bat = 10.0; // future use
+
 // Wh variables
 double Wh_chA_positive = 0.0;
 double Wh_chB_positive = 0.0;
@@ -129,7 +131,7 @@ double volts_to_adc_reading_ratio;
 // for storing the main string to be send to SD card and emonESP front-end and emonCMS.
 String ADC_KeyValue_String = ""; 
 // counting the number of posts.
-int averaging_loop_counter = 0;
+unsigned int averaging_loop_counter = 0;
 // future use.
 bool low_power_mode = false;
 unsigned int waking_time = 6000;
@@ -145,6 +147,8 @@ double Calarm_A_HIGH;
 double Calarm_B_HIGH;
 double TempAlarmBatHIGH;
 double TempAlarmBatLOW;
+
+
 // calibrate solar at midnight?
 bool midnight_calibration = false; 
 // stopping the first post firing off too soon, before samples are gathered.
@@ -177,14 +181,14 @@ bool SD_present;
 //-----------------------------------
 void emondc_setup(void) {
 
-  main_interval_ms= main_interval_seconds * 1000; // called after JSON is loaded.
+  main_interval_ms = main_interval_seconds * 1000; // called after JSON is loaded.
 
   // microSD card init
   pinMode(chipSelectSD, OUTPUT);
   digitalWrite(chipSelectSD, HIGH); delay(1);
-  SPISettings mySetting(400000, MSBFIRST, SPI_MODE0);
-  if (SD.begin(chipSelectSD, 400000)) { // SPI speed sey here. Clash possible with ADC.
-  //if (SD.begin(chipSelectSD, mySetting)) { // SPI speed sey here. Clash possible with ADC.
+  
+  //if (SD.begin(chipSelectSD, 250000)) { // SPI speed sey here. Clash possible with ADC. // esp8266 framework v1.8
+  if (SD.begin(chipSelectSD, mySettings)) { // SPI speed sey here. Clash possible with ADC. // esp8266 framework v2+
     Serial.println("SDcard initialised.");
     SD_present = true;
   }
@@ -238,8 +242,8 @@ void emondc_loop(void) {
   CH_A_VOLTAGE_ACCUMULATOR += ADC_SPI.readCH(1);
   CH_B_CURRENT_ACCUMULATOR += ADC_SPI.readCH(2);
   CH_B_VOLTAGE_ACCUMULATOR += ADC_SPI.readCH(3);
-  VREF_UNI_ACCUMULATOR     += ADC_SPI.readCH(4);
-  VREF_BI_ACCUMULATOR      += ADC_SPI.readCH(5);
+  VREF_BI_ACCUMULATOR      += ADC_SPI.readCH(4);
+  VREF_UNI_ACCUMULATOR     += ADC_SPI.readCH(5);
   VREF33_ACCUMULATOR       += ADC_SPI.readCH(6);
   CH8_ACCUMULATOR          += ADC_SPI.readCH(7);
   
@@ -249,14 +253,37 @@ void emondc_loop(void) {
 
   if (currentMillis - previousMillis >= main_interval_ms) {
     //overrunMillis = currentMillis % main_interval_ms;
+    uint32_t _previousMillis = previousMillis;
     previousMillis = currentMillis;
     //previousMillis = previousMillis - overrunMillis;
     NTP_update_PCF8523_update();  // update RTC time, via network if available every 60s.   
 
     if (numberofsamples >= 500) { // making sure we've got some samples to average.
       yield();
-      average_and_calibrate(previousMillis, currentMillis); // readying the readable values, passing necessary time values associated with the posting intervals.
+      average_and_calibrate(_previousMillis, currentMillis); // readying the readable values, passing necessary time values associated with the posting intervals.
       yield();
+
+      //Serial.print("chanA_VrefSet:");      Serial.println(chanA_VrefSet);
+      //Serial.print("chanB_VrefSet:");      Serial.println(chanB_VrefSet);
+      /*
+      Serial.print("channelA_gain:");      Serial.println(channelA_gain);
+      Serial.print("channelB_gain:");      Serial.println(channelB_gain);
+      Serial.print("R1_A:");      Serial.println(R1_A);
+      Serial.print("R2_A:");      Serial.println(R2_A);
+      Serial.print("R1_B:");      Serial.println(R1_B);
+      Serial.print("R2_B:");      Serial.println(R2_B);
+      Serial.print("Rshunt_A:");      Serial.println(Rshunt_A,4);
+      Serial.print("Rshunt_B:");      Serial.println(Rshunt_B,4);
+      Serial.print("icalA:");      Serial.println(icalA,3);
+      Serial.print("vcalA:");      Serial.println(vcalA,3);
+      Serial.print("icalB:");      Serial.println(icalB,3);
+      Serial.print("vcalB:");      Serial.println(vcalB,3);
+      Serial.print("offset_correction_ampsA:");      Serial.println(offset_correction_ampsA);
+      Serial.print("offset_correction_voltsA:");      Serial.println(offset_correction_voltsA);
+      Serial.print("offset_correction_ampsB:");      Serial.println(offset_correction_ampsB);
+      Serial.print("offset_correction_voltsB:");      Serial.println(offset_correction_voltsB);
+*/
+
       //-----------------------------------
       // what to do with the ready data:
       //-----------------------------------
@@ -297,29 +324,31 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   CH8_AVERAGED = CH8_ACCUMULATOR / numberofsamples;
 
   // adjust current readings according to Vref values, i.e. reference offset removal.
-  if (chanAref == chanRef) CH_A_CURRENT_AVERAGED -= VREF_UNI_AVERAGED;
+  if (chanA_VrefSet == 0) CH_A_CURRENT_AVERAGED -= VREF_UNI_AVERAGED;
   else CH_A_CURRENT_AVERAGED -= VREF_BI_AVERAGED;
-  if (chanBref == chanRef) CH_B_CURRENT_AVERAGED -= VREF_UNI_AVERAGED;
+  if (chanB_VrefSet == 0) CH_B_CURRENT_AVERAGED -= VREF_UNI_AVERAGED;
   else CH_B_CURRENT_AVERAGED -= VREF_BI_AVERAGED;
 
   volts_to_adc_reading_ratio = volts_to_adc_reading_ratio_function(); // convert VREF33 into 'ADCvalue to Voltage factor'
   yield();
   // make readable voltage and current values, apply calibration.
-  Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, chanA, chanA_shuntAmp_gain) * _CAL_FACTOR_icalA;
-  Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, chanA) * _CAL_FACTOR_vcalA;
-  Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, chanB, chanB_shuntAmp_gain) * _CAL_FACTOR_icalB;
-  Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, chanB) * _CAL_FACTOR_vcalB;
+  Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, 0, channelA_gain) * icalA;
+  Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, 0) * vcalA;
+  Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, 1, channelB_gain) * icalB;
+  Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, 1) * vcalB;
 
   unsigned long this_interval_ms = curr_mills - pre_mills;
+  //Serial.print("this_interval_ms:"); debug
+  //Serial.println(this_interval_ms);
   yield();
   double Ah_period = (Current_B * (this_interval_ms/1000)) / 3600.0; // Coulomb counting.
   double soc_diff = Ah_period / effective_capacity_fromfull(); // state of charge difference this period.
   state_of_charge -= soc_diff; // update state of charge.
   // C *= state_of_charge; don't adjust this on the fly because of it's effect of peukert equation.
-  _time_until_discharged = time_until_discharged_fromfull() * 3600  * state_of_charge;
+  time_until_discharged = time_until_discharged_fromfull() * 3600  * state_of_charge;
+  double _effective_capacity = effective_capacity_fromfull() * state_of_charge;
+  //Serial.println(_effective_capacity);
   yield();
-  
-  
   
   /*
   // calculate amp hours and watt hours.
@@ -341,11 +370,11 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   Serial.println(Ah_positive_B);
   Serial.println("Ah_negative_B");
   Serial.println(Ah_negative_B);
-  */
+  
   // -- - -- -
   //Wh_chA_positive += Wh_accumulate(Current_A, Voltage_A, this_interval / 1000);
   //Wh_chB_positive += Wh_accumulate(Current_B, Voltage_B, this_interval / 1000);
-  /*
+  
   Serial.println("Wh_chA_positive");
   Serial.println(Wh_chA_positive);
   Serial.println("Wh_chB_positive");
@@ -379,36 +408,36 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
 void forward_to_emonESP(void)
 {
   ADC_KeyValue_String = "Volts_A:" + String(Voltage_A, 2);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Amps_A:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Current_A;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Volts_B:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Voltage_B;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Amps_B:";
-  ADC_KeyValue_String = ADC_KeyValue_String + Current_B;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Ref_Uni:";
-  ADC_KeyValue_String = ADC_KeyValue_String + (VREF_UNI_AVERAGED * volts_to_adc_reading_ratio);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "Ref_Bi:";
-  ADC_KeyValue_String = ADC_KeyValue_String + (VREF_BI_AVERAGED * volts_to_adc_reading_ratio);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "CH8:";
-  ADC_KeyValue_String = ADC_KeyValue_String + CH8_AVERAGED;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "SoC(%):";
-  ADC_KeyValue_String = ADC_KeyValue_String + (state_of_charge*100);
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "TimeUD(s):";
-  ADC_KeyValue_String = ADC_KeyValue_String + _time_until_discharged;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "samplecount:";
-  ADC_KeyValue_String = ADC_KeyValue_String + numberofsamples;
-  ADC_KeyValue_String = ADC_KeyValue_String + ",";
-  ADC_KeyValue_String = ADC_KeyValue_String + "time:";
-  ADC_KeyValue_String = ADC_KeyValue_String + rtc_now_time;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "Amps_A:";
+  ADC_KeyValue_String += Current_A;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "Volts_B:";
+  ADC_KeyValue_String += Voltage_B;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "Amps_B:";
+  ADC_KeyValue_String += Current_B;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "Ref_Uni:";
+  ADC_KeyValue_String += (VREF_UNI_AVERAGED * volts_to_adc_reading_ratio);
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "Ref_Bi:";
+  ADC_KeyValue_String += (VREF_BI_AVERAGED * volts_to_adc_reading_ratio);
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "CH8:";
+  ADC_KeyValue_String += CH8_AVERAGED,1;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "SoC(%):";
+  ADC_KeyValue_String += (state_of_charge*100);
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "TimeUD(h):";
+  ADC_KeyValue_String += time_until_discharged/3600;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "samplecount:";
+  ADC_KeyValue_String += numberofsamples;
+  ADC_KeyValue_String += ",";
+  ADC_KeyValue_String += "time:";
+  ADC_KeyValue_String += rtc_now_time;
   input_string = ADC_KeyValue_String;
 }
 
@@ -462,17 +491,19 @@ void draw_OLED(void) { // draw to OLED
     screentog = 5;
   }
   else if (screentog == 5) {
-    display.println(F("TimeUD(h)")); display.println(_time_until_discharged/3600);
+    display.println(F("TimeUD(h)")); display.println(time_until_discharged/3600);
     screentog = 8;
   }
-  /*else if (screentog == 6) {
+  /*
+  else if (screentog == 6) {
     display.println(F("effCap:")); display.println(effective_capacity_fromfull());
     screentog = 7;
   }
   else if (screentog == 7) {
     display.println(F("TUD:")); display.println(time_until_discharged_fromfull());
     screentog = 8;
-  }*/
+  }
+  */
   else if (screentog == 8) {
     display.println(F("SSID:")); display.println(connected_network);
     screentog = 9;
@@ -502,31 +533,6 @@ void NTP_update_PCF8523_update(void) {
 }
 
 
-//-------------------------
-// Web server -> Save settings, intermediate function.
-//-------------------------
-void config_save_emondc(unsigned int interval, double vcalA, double icalA, double vcalB, double icalB)
-{
-  // update values for emondc_loop
-  main_interval_ms = interval * 1000; 
-  _CAL_FACTOR_vcalA = vcalA;
-  _CAL_FACTOR_icalA = icalA;
-  _CAL_FACTOR_vcalB = vcalB;
-  _CAL_FACTOR_icalB = icalB;
-  
-  Serial.println("emonDC saving settings...");
-  Serial.println(main_interval_ms);
-  Serial.println(_CAL_FACTOR_vcalA);
-  Serial.println(_CAL_FACTOR_icalA);
-  Serial.println(_CAL_FACTOR_vcalB);
-  Serial.println(_CAL_FACTOR_icalB);
-  Serial.println("... done.");
-
-  config_save_settings_spiffs(interval, vcalA, icalA, vcalB, icalB); 
-}
-
-
-
 //--------------------------------------------------
 // ADC averaged 3.3V reading to volts per 12-bit ADC division
 //--------------------------------------------------
@@ -536,40 +542,37 @@ double volts_to_adc_reading_ratio_function(void) {
 }
 
 
-
 //--------------------------------------------------
 // ADC averaged value to Volts
 //--------------------------------------------------
-double Vcal_coefficient_A_pre = (R1_A + R2_A); // resistor divider calc.
-double Vcal_coefficient_A = R2_A / Vcal_coefficient_A_pre;
-double Vcal_coefficient_B_pre = (R1_B + R2_B); // resistor divider calc.
-double Vcal_coefficient_B = R2_B / Vcal_coefficient_B_pre;
+//double Vcal_coefficient_A = ((double)R2_A / ((double)R1_A + (double)R2_A)); // resistor divider calc.
+//double Vcal_coefficient_B = ((double)R2_B / ((double)R1_B + (double)R2_B)); // resistor divider calc.
 
-double make_readable_Volts (double _Value, String _chan) {
+double make_readable_Volts (double _Value, bool _chan) {
+
   double _readableV1 = _Value * volts_to_adc_reading_ratio;
-  if (_chan == chanA) {
-    double _readableVolts = _readableV1 / Vcal_coefficient_A;
+
+  if (_chan == 0) {
+    double _readableVolts = _readableV1 / ((double)R2_A / ((double)R1_A + (double)R2_A));
     _readableVolts += offset_correction_voltsA;
     return (_readableVolts);
   }
   else {
-    double _readableVolts = _readableV1 / Vcal_coefficient_B;
+    double _readableVolts = _readableV1 / ((double)R2_B / ((double)R1_B + (double)R2_B));
     _readableVolts += offset_correction_voltsB;
     return (_readableVolts);
   }
 }
 
 
-
 //--------------------------------------------------
 // ADC averaged value to Amps
 //--------------------------------------------------
-double make_readable_Amps (double _Value, String _chan, double _gain)
-{
-  double _readable_1 = _Value * volts_to_adc_reading_ratio;
-  double _readable_2 = _readable_1 / _gain; // gives mV signal value.
+double make_readable_Amps (double _Value, bool _chan, double _gain) {
 
-  if (_chan == chanA) {
+  double _readable_2 = (_Value * volts_to_adc_reading_ratio) / _gain; // gives mV signal value.
+
+  if (_chan == 0) {
     double _readableAmps = _readable_2 / Rshunt_A; // I=V/R
     _readableAmps += offset_correction_ampsA; // shunt monitor offset calibration
     return (_readableAmps);

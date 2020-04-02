@@ -23,7 +23,7 @@ void ICACHE_RAM_ATTR gpio0_isr() { // ISR
 
 void gpio0_loop() { // check the buttonflag and perform action
   // if button released, clear the flags.
-  if (buttonISRflag && digitalRead(0)) { 
+  if (buttonISRflag && digitalRead(0)) {
     Serial.println("Button Released");
     buttonISRflag = false;
     _button_flag_one = false;
@@ -40,15 +40,16 @@ void gpio0_loop() { // check the buttonflag and perform action
     }
     else if (!_button_flag_two && TimeButtonPressed + button_delay_AP <= millis()) {
       Serial.println("Button held, AP mode!");
-      led_flash(300, 300);
-      led_flash(300, 300);
+      led_flash(800, 800);
+      led_flash(800, 800);
+      led_flash(800, 800);
       Serial.println("AP mode starting..");
       wifi_mode = WIFI_MODE_AP_ONLY;
       startAP();
       _button_flag_two = true;
     }
     else if (TimeButtonPressed + button_delay_RST <= millis()) {
-      Serial.println("Button held, Factor Reset!");
+      Serial.println("Button held, Factory Reset!");
       led_flash(800, 800);
       Serial.println("Commencing factory reset.");
       delay(500);

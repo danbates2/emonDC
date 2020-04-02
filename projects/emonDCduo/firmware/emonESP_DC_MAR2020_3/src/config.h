@@ -85,15 +85,13 @@ extern void config_save_admin(String user, String pass);
 extern void config_save_wifi(String qsid, String qpass);
 
 // -------------------------------------------------------------------
+// Save the Wifi details
+// -------------------------------------------------------------------
+extern void config_save_emondc(String qinterval, String qicalA, String qvcalA, String qicalB, String qvcalB);
+
+// -------------------------------------------------------------------
 // Reset the config back to defaults
 // -------------------------------------------------------------------
 extern void config_reset();
-
-// -------------------------------------------------------------------
-// emonDC settings additions, JSON config file.
-// -------------------------------------------------------------------
-extern void config_load_settings_spiffs();
-extern void config_save_settings_spiffs(unsigned int interval, float vcalA, float icalA, float vcalB, float icalB);
-void printFile();
 
 #endif // _EMONESP_CONFIG_H

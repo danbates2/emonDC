@@ -134,7 +134,7 @@ function LastValuesViewModel() {
         var namevalue = namevaluepairs[z].split(":");
         var units = "";
         if (namevalue[0].indexOf("CT") === 0) units = "W";
-        if (namevalue[0].indexOf("T") === 0) units = String.fromCharCode(176)+"C";
+        //if (namevalue[0].indexOf("T") === 0) units = String.fromCharCode(176)+"C";
         vals.push({key: namevalue[0], value: namevalue[1]+units});
       }
       ko.mapping.fromJS(vals, self.values);

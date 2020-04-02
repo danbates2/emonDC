@@ -30,10 +30,29 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 
+
 extern AsyncWebServer server;
 extern String currentfirmware;
 
 extern void web_server_setup();
 extern void web_server_loop();
+void dumpRequest(AsyncWebServerRequest *request);
+
+
+// Content Types
+extern const char _CONTENT_TYPE_HTML[];
+#define CONTENT_TYPE_HTML FPSTR(_CONTENT_TYPE_HTML)
+
+extern const char _CONTENT_TYPE_TEXT[];
+#define CONTENT_TYPE_TEXT FPSTR(_CONTENT_TYPE_TEXT)
+
+extern const char _CONTENT_TYPE_CSS[];
+#define CONTENT_TYPE_CSS FPSTR(_CONTENT_TYPE_CSS)
+
+extern const char _CONTENT_TYPE_JSON[];
+#define CONTENT_TYPE_JSON FPSTR(_CONTENT_TYPE_JSON)
+
+extern const char _CONTENT_TYPE_JS[];
+#define CONTENT_TYPE_JS FPSTR(_CONTENT_TYPE_JS)
 
 #endif // _EMONESP_WEB_SERVER_H
