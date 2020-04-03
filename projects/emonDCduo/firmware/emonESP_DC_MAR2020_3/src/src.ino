@@ -24,7 +24,6 @@
    Boston, MA 02111-1307, USA.
 */
 
-// Working for ESP8266 'Arduino' framework 2.4.2 https://github.com/platformio/platform-espressif8266/releases/tag/v1.8.0
 // NTC library: https://github.com/arduino-libraries/NTPClient
 // RTC library: https://github.com/adafruit/RTClib
 // PubSubClient library: https://github.com/knolleary/pubsubclient
@@ -48,7 +47,7 @@
 // SETUP
 // -------------------------------------------------------------------
 void setup() {
-  Serial.begin(460800); // boom!
+  Serial.begin(115200);
 
   DEBUG.println();
   DEBUG.print("EmonESP ");

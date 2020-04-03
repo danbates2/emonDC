@@ -343,7 +343,7 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   yield();
   double Ah_period = (Current_B * (this_interval_ms/1000)) / 3600.0; // Coulomb counting.
   double soc_diff = Ah_period / effective_capacity_fromfull(); // state of charge difference this period.
-  state_of_charge -= soc_diff; // update state of charge.
+  state_of_charge += soc_diff; // update state of charge.
   // C *= state_of_charge; don't adjust this on the fly because of it's effect of peukert equation.
   time_until_discharged = time_until_discharged_fromfull() * 3600  * state_of_charge;
   double _effective_capacity = effective_capacity_fromfull() * state_of_charge;
