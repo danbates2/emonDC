@@ -33,7 +33,7 @@
 
 
 // Wifi Network Strings
-String esid = "d4machine";
+String esid = "";
 String epass = "";
 
 // Web server authentication (leave blank for none)

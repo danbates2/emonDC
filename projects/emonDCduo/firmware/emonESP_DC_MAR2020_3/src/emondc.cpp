@@ -344,9 +344,14 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   double Ah_period = (Current_B * (this_interval_ms/1000)) / 3600.0; // Coulomb counting.
   double soc_diff = Ah_period / effective_capacity_fromfull(); // state of charge difference this period.
   state_of_charge += soc_diff; // update state of charge.
+  if (state_of_charge > 1.0) state_of_charge = 1.0;
   // C *= state_of_charge; don't adjust this on the fly because of it's effect of peukert equation.
-  time_until_discharged = time_until_discharged_fromfull() * 3600  * state_of_charge;
-  double _effective_capacity = effective_capacity_fromfull() * state_of_charge;
+  if (state_of_charge == 1.0) time_until_discharged = NULL;
+  else time_until_discharged = time_until_discharged_fromfull() * 3600  * state_of_charge;
+  if (time_until_discharged < 0) time_until_discharged *= -1;
+  if (Current_B > 0) time_until_discharged = 0;
+
+  //double _effective_capacity = effective_capacity_fromfull() * state_of_charge;
   //Serial.println(_effective_capacity);
   yield();
   
@@ -635,12 +640,12 @@ double time_until_discharged_fromfull(void) { // returns time until discharged f
 double effective_capacity_fromfull(void) { // returns eff. cap. in Ah.
   // http://www.smartgauge.co.uk/technical1.html
   // http://www.smartgauge.co.uk/peukert3.html
-  bool flip = 0;
-  if (Current_B < 0) { flip = true; Current_B = fabs(Current_B); } // deal with negative readings before pow()
+  //bool flip = 0;
+  //if (Current_B < 0) { flip = true; Current_B = fabs(Current_B); } // deal with negative readings before pow()
   double _effective_capacity = time_until_discharged_fromfull() * Current_B;
   //sprintf(log_buffer, "_effective_capacity(Ah):%.3f\r\n", _effective_capacity);
   //printf("%s",log_buffer);
-  if (flip) { _effective_capacity = -_effective_capacity; Current_B = -Current_B; }
+  //if (flip) { _effective_capacity = -_effective_capacity; Current_B = -Current_B; }
   return _effective_capacity;
 }
 
