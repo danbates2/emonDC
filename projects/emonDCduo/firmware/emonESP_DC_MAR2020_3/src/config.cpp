@@ -174,14 +174,14 @@ void EEPROM_read_string(int start, int count, String & val) {
 }
 
 // https://stackoverflow.com/questions/3991478/building-a-32-bit-float-out-of-its-4-composite-bytes
-void EEPROM_read_int(int start, int & val) {
+void EEPROM_read_int(int start, uint16_t & val) {
   byte b[2];
   b[0] = EEPROM.read(start+0);
   b[1] = EEPROM.read(start+1);
   memcpy(&val, &b, 2);
 }
 
-void EEPROM_read_long(int start, long & val) {
+void EEPROM_read_long(int start, uint32_t & val) {
   byte b[4];
   b[0] = EEPROM.read(start+0);
   b[1] = EEPROM.read(start+1);
@@ -202,36 +202,6 @@ void EEPROM_read_double(int start, double & val) {
   b[7] = EEPROM.read(start+7);
   memcpy(&val, &b, 8);
 }
-
-
-
-
-
-
- /*
-void int2Bytes(int val, byte & bytes_array){ 
-  byte *pb = &bytes_array;
-  pb[0] = (int)((val >> 8) & 0XFF);
-  pb[1] = (int)((val & 0XFF));
-}
-
-void long2Bytes(long val, byte & bytes_array) {
-  byte *pb = &bytes_array;
-  pb[0] = (int)((val >> 24) & 0xFF) ;
-  pb[1] = (int)((val >> 16) & 0xFF) ;
-  pb[2] = (int)((val >> 8) & 0XFF);
-  pb[3] = (int)((val & 0XFF));
-  
-  // Create union of shared memory space
-  union {
-    long variable;
-    byte temp_array[4];
-  } u;
-  // Overite bytes of union with variable
-  u.variable = val;
-  // Assign bytes to input array
-  memcpy(&bytes_array, u.temp_array, 4);
-  */
 
 
 void EEPROM_write_string(int start, unsigned int count, String val) {
@@ -324,7 +294,7 @@ void config_load_settings()
   sig[2] = EEPROM.read(EEPROM_SIG_START+2);
   sig[3] = EEPROM.read(EEPROM_SIG_START+3);
   //EEPROM_read_string(EEPROM_SIG_START, EEPROM_SIG_SIZE, sig);
-  Serial.print("signature:");Serial.println(sig);
+  Serial.print("Flash Signature:");Serial.println(sig);
   if (!strcmp(sig, "OEM")) ; // to stop fault while dev'ing
   else return;
   Serial.println("emonDC Settings from Flash:");
@@ -342,14 +312,10 @@ void config_load_settings()
   Serial.print("R1_B:"); Serial.println(R1_B);
   EEPROM_read_long(EEPROM_R2_B_START, R2_B);
   Serial.print("R2_B:"); Serial.println(R2_B);
-
-
-  chanA_VrefSet = bitRead(EEPROM.read(EEPROM_CHAN_A_START), 0);
+  chanA_VrefSet = EEPROM.read(EEPROM_CHAN_A_START);
   Serial.print("chanA_VrefSet:"); Serial.println(chanA_VrefSet);
-  chanB_VrefSet = bitRead(EEPROM.read(EEPROM_CHAN_B_START), 0);
+  chanB_VrefSet = EEPROM.read(EEPROM_CHAN_B_START);
   Serial.print("chanB_VrefSet:"); Serial.println(chanB_VrefSet);
-
-
   EEPROM_read_double(EEPROM_SHUNT_A_START, Rshunt_A);
   Serial.print("Rshunt_A:"); Serial.println(Rshunt_A,5);
   EEPROM_read_double(EEPROM_SHUNT_B_START, Rshunt_B);
@@ -360,7 +326,7 @@ void config_load_settings()
   Serial.print("vcalA:"); Serial.println(vcalA);
   EEPROM_read_double(EEPROM_ICALB_START, icalB);
   Serial.print("icalB:"); Serial.println(icalB);
-  EEPROM_read_double(EEPROM_ICALB_START, vcalB);
+  EEPROM_read_double(EEPROM_VCALB_START, vcalB);
   Serial.print("vcalB:"); Serial.println(vcalB);
 }
 
@@ -438,20 +404,43 @@ void config_save_wifi(String qsid, String qpass)
   EEPROM.commit();
 }
 
-void config_save_emondc(String qinterval, String qicalA, String qvcalA, String qicalB, String qvcalB)
+void config_save_emondc(String qinterval, String qicalA, String qvcalA, String qicalB, String qvcalB,
+String qchanA_VrefSet, String qchanB_VrefSet, String qchannelA_gain, String qchannelB_gain, 
+String qR1_A, String qR2_A, String qR1_B, String qR2_B, 
+String qRshunt_A, String qRshunt_B)
 {
-  char char_array[10]; 
+  char char_array[15]; // temp storage of chars
   strcpy(char_array, qinterval.c_str());
   main_interval_seconds = atoi(char_array);
   main_interval_ms = main_interval_seconds*1000; // update for loop.
   strcpy(char_array, qicalA.c_str());
-  icalA = atoi(char_array);
+  icalA = atof(char_array);
   strcpy(char_array, qvcalA.c_str());
-  vcalA = atoi(char_array);
+  vcalA = atof(char_array);
   strcpy(char_array, qicalB.c_str());
   icalB = atof(char_array);
   strcpy(char_array, qvcalB.c_str());
   vcalB = atof(char_array);
+  strcpy(char_array, qchanA_VrefSet.c_str());
+  chanA_VrefSet = atoi(char_array);
+  strcpy(char_array, qchanB_VrefSet.c_str());
+  chanB_VrefSet = atoi(char_array);
+  strcpy(char_array, qchannelA_gain.c_str());
+  channelA_gain = atoi(char_array);
+  strcpy(char_array, qchannelB_gain.c_str());
+  channelB_gain = atoi(char_array);
+  strcpy(char_array, qR1_A.c_str());
+  R1_A = atoi(char_array);
+  strcpy(char_array, qR2_A.c_str());
+  R2_A = atoi(char_array);
+  strcpy(char_array, qR1_B.c_str());
+  R1_B = atoi(char_array);
+  strcpy(char_array, qR2_B.c_str());
+  R2_B = atoi(char_array);
+  strcpy(char_array, qRshunt_A.c_str());
+  Rshunt_A = atof(char_array);
+  strcpy(char_array, qRshunt_B.c_str());
+  Rshunt_B = atof(char_array);
 
   // save web_server entered values to flash:
   EEPROM_write_int(EEPROM_INTERVAL_START, EEPROM_INTERVAL_SIZE, main_interval_seconds);
@@ -459,22 +448,8 @@ void config_save_emondc(String qinterval, String qicalA, String qvcalA, String q
   EEPROM_write_double(EEPROM_VCALA_START, EEPROM_VCALA_SIZE, vcalA);
   EEPROM_write_double(EEPROM_ICALB_START, EEPROM_ICALB_SIZE, icalB);
   EEPROM_write_double(EEPROM_VCALB_START, EEPROM_ICALB_SIZE, vcalB);
-
-  
-  // wip:
-  chanA_VrefSet = 1; 
-  chanB_VrefSet = 1; 
-  channelA_gain = 100;
-  channelB_gain = 100;
-  R1_A = 1000000;
-  R2_A = 75000;
-  R1_B = 1000000;
-  R2_B = 75000;
-  Rshunt_A = 0.0005;
-  Rshunt_B = 0.0005;
-  byte tb;  bitWrite(tb, 0, 1);
-  EEPROM.write(EEPROM_CHAN_A_START, tb);
-  EEPROM.write(EEPROM_CHAN_B_START, tb);
+  EEPROM.write(EEPROM_CHAN_A_START, chanA_VrefSet);
+  EEPROM.write(EEPROM_CHAN_B_START, chanB_VrefSet);
   EEPROM_write_int(EEPROM_GAIN_A_START, EEPROM_GAIN_B_SIZE, channelA_gain);
   EEPROM_write_int(EEPROM_GAIN_B_START, EEPROM_GAIN_B_SIZE, channelB_gain);
   EEPROM_write_long(EEPROM_R1_A_START, EEPROM_R1_A_SIZE, R1_A);

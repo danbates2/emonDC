@@ -98,9 +98,9 @@ void startAP() {
   DEBUG.println(tmpStr);
   ipaddress = tmpStr;
   ipaddress_OLED = tmpStr;
-  int iplen = ipaddress_OLED.length();
-  int iplen_adjust = iplen - 10;
-  ipaddress_OLED.remove(0,iplen_adjust);
+  //int iplen = ipaddress_OLED.length();
+  //int iplen_adjust = iplen - 10;
+  //ipaddress_OLED.remove(0,iplen_adjust);
   
 }
 

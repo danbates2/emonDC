@@ -40,10 +40,10 @@
 #include "debug.h"
 #include "emondc.h"
 
-#include "web_server.config_js.h"
-#include "web_server.home_html.h"
-#include "web_server.style_css.h"
-#include "web_server.lib_js.h"
+#include "./web_server_files/web_server.config_js.h"
+#include "./web_server_files/web_server.home_html.h"
+#include "./web_server_files/web_server.style_css.h"
+#include "./web_server_files/web_server.lib_js.h"
 
 AsyncWebServer server(80);          // Create class for Web server
 AsyncWebSocket ws("/ws");
@@ -327,6 +327,7 @@ void handleSaveAdmin(AsyncWebServerRequest *request) {
 // url /emondc
 // -------------------------------------------------------------------
 void handleEmonDC(AsyncWebServerRequest *request) {
+  // Serial.print("request start:"); Serial.println(millis());
   AsyncResponseStream *response;
   if (false == requestPreProcess(request, response, "text/plain")) {
     return;
@@ -337,12 +338,25 @@ void handleEmonDC(AsyncWebServerRequest *request) {
   String qicalA = request->arg("icalA");
   String qvcalB = request->arg("vcalB");
   String qicalB = request->arg("icalB");
+  String qchanA_VrefSet = request->arg("chanA_VrefSet");
+  String qchanB_VrefSet = request->arg("chanB_VrefSet");
+  String qchannelA_gain = request->arg("channelA_gain");
+  String qchannelB_gain = request->arg("channelB_gain");
+  String qR1_A = request->arg("R1_A");
+  String qR2_A = request->arg("R2_A");
+  String qR1_B = request->arg("R1_B");
+  String qR2_B = request->arg("R2_B");
+  String qRshunt_A = request->arg("Rshunt_A");
+  String qRshunt_B = request->arg("Rshunt_B");
 
-  config_save_emondc(qinterval, qvcalA, qicalA, qvcalB, qicalB);
+  config_save_emondc(qinterval, qicalA, qvcalA, qicalB, qvcalB, 
+  qchanA_VrefSet, qchanB_VrefSet, qchannelA_gain, qchannelB_gain, 
+  qR1_A, qR2_A, qR1_B, qR2_B, qRshunt_A, qRshunt_B);
 
   response->setCode(200);
   response->print("saved");
   request->send(response);
+  // Serial.print("request end:"); Serial.println(millis());
 }
 
 // -------------------------------------------------------------------
@@ -446,8 +460,23 @@ handleConfig(AsyncWebServerRequest *request) {
   s += "\"mqtt_feed_prefix\":\"" + mqtt_feed_prefix + "\",";
   s += "\"mqtt_user\":\"" + mqtt_user + "\",";
   //s += "\"mqtt_pass\":\""+mqtt_pass+"\","; security risk: DONT RETURN PASSWORDS
-  s += "\"www_username\":\"" + www_username + "\"";
+  s += "\"www_username\":\"" + www_username + "\",";
   //s += "\"www_password\":\""+www_password+"\","; security risk: DONT RETURN PASSWORDS
+  s += "\"www_interval\":\"" + String(main_interval_seconds) + "\",";
+  s += "\"icalA\":\"" + String(icalA,3) + "\",";
+  s += "\"vcalA\":\"" + String(vcalA,3) + "\",";
+  s += "\"icalB\":\"" + String(icalB,3) + "\",";
+  s += "\"vcalB\":\"" + String(vcalB,3) + "\",";
+  s += "\"chanA_VrefSet\":\"" + String(chanA_VrefSet) + "\",";
+  s += "\"chanB_VrefSet\":\"" + String(chanB_VrefSet) + "\",";
+  s += "\"channelA_gain\":\"" + String(channelA_gain) + "\",";
+  s += "\"channelB_gain\":\"" + String(channelB_gain) + "\",";
+  s += "\"R1_A\":\"" + String(R1_A) + "\",";
+  s += "\"R2_A\":\"" + String(R2_A) + "\",";
+  s += "\"R1_B\":\"" + String(R1_B) + "\",";
+  s += "\"R2_B\":\"" + String(R2_B) + "\",";
+  s += "\"Rshunt_A\":\"" + String(Rshunt_A,5) + "\",";
+  s += "\"Rshunt_B\":\"" + String(Rshunt_B,5) + "\"";
   s += "}";
 
   response->setCode(200);

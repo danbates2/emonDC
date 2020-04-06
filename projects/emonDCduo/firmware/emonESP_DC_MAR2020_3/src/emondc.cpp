@@ -10,6 +10,7 @@
 #include "config.h"
 #include "emondc.h"
 #include "gpio0.h"
+#include "oled.h"
 #include "AH_MCP320x.h"
 
 #include <ESP8266WiFi.h>
@@ -22,22 +23,25 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-String hw_version = "HW:v3.6";
+#define TEXTIFY(A) #A
+#define ESCAPEQUOTE(A) TEXTIFY(A)
+String hw_version = ESCAPEQUOTE(HW_TAG);
+
+//String hw_version = "HW:v3.6"; // hardware version.
 
 // -------------------------------------------------------------------
-// change the following variables for your system.
+// change the following variables for your system, values will be overwritten by EEPROM save function (triggered in web_server in emonDC save settings).
 // -------------------------------------------------------------------
-int main_interval_seconds = 5; // !!! set this in the JSON config file !!! max is 1800 seconds (30 minutes).
-unsigned long main_interval_ms;
+uint16_t main_interval_seconds = 5; // interval to post data
 bool chanA_VrefSet = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
 bool chanB_VrefSet = 1; // Channel reference select: 0 for unidirectional, 1 for bidirectional.
-int channelA_gain = 100; // shunt amp gain.
-int channelB_gain = 100;
+uint16_t channelA_gain = 100; // shunt amp gain.
+uint16_t channelB_gain = 100;
 // values of resistor divider for voltage reading.
-long R1_A = 1000000; // 1Mohm default.
-long R2_A = 75000; // 75kohm default.
-long R1_B = 1000000;
-long R2_B = 75000;
+uint32_t R1_A = 1000000; // 1Mohm default.
+uint32_t R2_A = 75000; // 75kohm default.
+uint32_t R1_B = 1000000;
+uint32_t R2_B = 75000;
 double Rshunt_A = 0.0005; // value of Rsense in Ohms.
 double Rshunt_B = 0.0005;
 // Calibration values for manual adjustment.
@@ -62,17 +66,20 @@ double C = 100.0; // capacity of battery at rated time (Ah)
 double Temperature_Bat = 10.0; // future use
 
 // -------------------------------------------------------------------
-// More advanced setting below.
+// Other Settings.
 // -------------------------------------------------------------------
+
 // OLED Display
-unsigned int oled_interval = 5000;
-unsigned long oled_previousMillis;
+uint32_t oled_interval = 10000; // blank after 10s.
+uint32_t oled_previousMillis;
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
 // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 #define OLED_RESET  -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-int screentog = -1;
+int screentog = -1; // rotating variable for knowing which data to present on OLED.
+#define IMAGE_WIDTH    128
+#define IMAGE_HEIGHT   32
 
 // SD CARD
 const int chipSelectSD = 15; // SD card chip SPI chip select
@@ -149,23 +156,21 @@ double TempAlarmBatHIGH;
 double TempAlarmBatLOW;
 
 
-// calibrate solar at midnight?
-bool midnight_calibration = false; 
-// stopping the first post firing off too soon, before samples are gathered.
-bool setup_done = 0;
+
+
+//------------------------------
+// RTC TIME SETTINGS
+//------------------------------
 // The RTC is an option for off-grid stand alone dataloggers without an internet connection.
 // PCF8523 Real-time Clock setup
 RTC_PCF8523 rtc;
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 unsigned long rtc_now_time = 0;
-bool rtc_accurate;
-// time variables.
-unsigned long currentMillis;
-unsigned long previousMillis = 0;
-//---------------
+
+//------------------------------
 // NTP TIME SETTINGS
-//---------------
-//int time_offset = 3600; //GMT +0
+//------------------------------
+//int time_offset = 3600; // timezone correction?
 int time_offset = 0;
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", time_offset, 300000);
@@ -174,6 +179,18 @@ unsigned long intervalNTP = 60000;
 // SD CARD
 String datalogFilename = "datalog.txt";
 bool SD_present;
+
+//---------------
+// Misc
+//---------------
+uint32_t main_interval_ms;
+// time variables.
+unsigned long currentMillis;
+unsigned long previousMillis = 0;
+// calibrate solar at midnight?
+bool midnight_calibration = false;
+
+
 
 
 //-----------------------------------
@@ -209,7 +226,7 @@ void emondc_setup(void) {
   display.display();
   
   // RTC init
-  if (!rtc.begin()) { Serial.println("RTC or I2C not functioning."); rtc_accurate = false; }
+  if (!rtc.begin()) { Serial.println("RTC or I2C not functioning."); }
   else if (!rtc.initialized()) {
     Serial.println("RTC not running,\r\n  - attempting initialisation with compile time.");
     // following line sets the RTC to the date & time this sketch was compiled
@@ -217,11 +234,9 @@ void emondc_setup(void) {
     // This line sets the RTC with an explicit date & time, for example to set
     // January 21, 2014 at 3am you would call:
     // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
-    rtc_accurate = false;
   }
   else {
     Serial.println("RTC initialised.");
-    rtc_accurate = true;
   }
 
   // Start NTP time 
@@ -229,6 +244,10 @@ void emondc_setup(void) {
   timeClient.begin();
 
   gpio0_setup();
+
+  previousMillis = millis(); // for sensible start.
+  _t_begin = millis() / 1000;
+
 } // end emonDC setup.
 
 
@@ -258,52 +277,51 @@ void emondc_loop(void) {
     //previousMillis = previousMillis - overrunMillis;
     NTP_update_PCF8523_update();  // update RTC time, via network if available every 60s.   
 
-    if (numberofsamples >= 500) { // making sure we've got some samples to average.
-      yield();
-      average_and_calibrate(_previousMillis, currentMillis); // readying the readable values, passing necessary time values associated with the posting intervals.
-      yield();
+    yield();
+    average_and_calibrate(_previousMillis, currentMillis); // readying the readable values, passing necessary time values associated with the posting intervals.
+    yield();
 
-      //Serial.print("chanA_VrefSet:");      Serial.println(chanA_VrefSet);
-      //Serial.print("chanB_VrefSet:");      Serial.println(chanB_VrefSet);
-      /*
-      Serial.print("channelA_gain:");      Serial.println(channelA_gain);
-      Serial.print("channelB_gain:");      Serial.println(channelB_gain);
-      Serial.print("R1_A:");      Serial.println(R1_A);
-      Serial.print("R2_A:");      Serial.println(R2_A);
-      Serial.print("R1_B:");      Serial.println(R1_B);
-      Serial.print("R2_B:");      Serial.println(R2_B);
-      Serial.print("Rshunt_A:");      Serial.println(Rshunt_A,4);
-      Serial.print("Rshunt_B:");      Serial.println(Rshunt_B,4);
-      Serial.print("icalA:");      Serial.println(icalA,3);
-      Serial.print("vcalA:");      Serial.println(vcalA,3);
-      Serial.print("icalB:");      Serial.println(icalB,3);
-      Serial.print("vcalB:");      Serial.println(vcalB,3);
-      Serial.print("offset_correction_ampsA:");      Serial.println(offset_correction_ampsA);
-      Serial.print("offset_correction_voltsA:");      Serial.println(offset_correction_voltsA);
-      Serial.print("offset_correction_ampsB:");      Serial.println(offset_correction_ampsB);
-      Serial.print("offset_correction_voltsB:");      Serial.println(offset_correction_voltsB);
-*/
+    //Serial.print("chanA_VrefSet:");      Serial.println(chanA_VrefSet);
+    //Serial.print("chanB_VrefSet:");      Serial.println(chanB_VrefSet);
+    /*
+    Serial.print("channelA_gain:");      Serial.println(channelA_gain);
+    Serial.print("channelB_gain:");      Serial.println(channelB_gain);
+    Serial.print("R1_A:");      Serial.println(R1_A);
+    Serial.print("R2_A:");      Serial.println(R2_A);
+    Serial.print("R1_B:");      Serial.println(R1_B);
+    Serial.print("R2_B:");      Serial.println(R2_B);
+    Serial.print("Rshunt_A:");      Serial.println(Rshunt_A,4);
+    Serial.print("Rshunt_B:");      Serial.println(Rshunt_B,4);
+    Serial.print("icalA:");      Serial.println(icalA,3);
+    Serial.print("vcalA:");      Serial.println(vcalA,3);
+    Serial.print("icalB:");      Serial.println(icalB,3);
+    Serial.print("vcalB:");      Serial.println(vcalB,3);
+    Serial.print("offset_correction_ampsA:");      Serial.println(offset_correction_ampsA);
+    Serial.print("offset_correction_voltsA:");      Serial.println(offset_correction_voltsA);
+    Serial.print("offset_correction_ampsB:");      Serial.println(offset_correction_ampsB);
+    Serial.print("offset_correction_voltsB:");      Serial.println(offset_correction_voltsB);
+    */
 
-      //-----------------------------------
-      // what to do with the ready data:
-      //-----------------------------------
-      forward_to_emonESP(); // sending to emonCMS
-      yield();
-      if (SD_present) save_to_SDcard(); // save to SD card.
-      yield();
-      //Serial.println(time_until_discharged()); // testing Peukert calculation
-      //Serial.println(effective_capacity()); // testing Peukert calculation
-      //-----------------------------------
-      clear_accumulators(); // this happens before gathering next samples, or else chaos ensues.
-      yield();
-      //-----------------------------------
-      Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for debugging
-    }
+    //-----------------------------------
+    // what to do with the ready data:
+    //-----------------------------------
+    forward_to_emonESP(); // sending to emonCMS
+    yield();
+    if (SD_present) save_to_SDcard(); // save to SD card.
+    yield();
+    //Serial.println(time_until_discharged()); // testing Peukert calculation
+    //Serial.println(effective_capacity()); // testing Peukert calculation
+    //-----------------------------------
+    clear_accumulators(); // this happens before gathering next samples, or else chaos ensues.
+    yield();
+    //-----------------------------------
+    Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for debugging
   }
   
   if (currentMillis - oled_previousMillis >= oled_interval) {
     oled_previousMillis = currentMillis;
-    draw_OLED(); // for the 128x32 I2C OLED.
+    display.ssd1306_command(0b10101110); //  turn OLED off, see datasheet.
+    //draw_OLED(); // for the 128x32 I2C OLED.
     yield();
   }
 } // end emonDC loop
@@ -335,6 +353,7 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   Current_A = make_readable_Amps(CH_A_CURRENT_AVERAGED, 0, channelA_gain) * icalA;
   Voltage_A = make_readable_Volts(CH_A_VOLTAGE_AVERAGED, 0) * vcalA;
   Current_B = make_readable_Amps(CH_B_CURRENT_AVERAGED, 1, channelB_gain) * icalB;
+  //Current_B -= 20.0; // testing
   Voltage_B = make_readable_Volts(CH_B_VOLTAGE_AVERAGED, 1) * vcalB;
 
   unsigned long this_interval_ms = curr_mills - pre_mills;
@@ -387,12 +406,14 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   */
 
 
+  /*
   if (setup_done == false) {
     _t_begin = millis() / 1000;
     setup_done = true;
   }
-  int _t2 = millis() / 1000;
-  _t = _t2 - _t_begin;
+  */
+  //int _t2 = ;
+  _t = (millis() / 1000) - _t_begin;
 
   averaging_loop_counter++;
 
@@ -466,57 +487,62 @@ void clear_accumulators(void) {
 //-------------------------
 // 128x32 I2C OLED
 //-------------------------
-void draw_OLED(void) { // draw to OLED
+void draw_OLED() {
+  //delay(5);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) Serial.println("SSD1306 allocation failed."); // Address 0x3C for 128x32
+  //delay(5);
+
+  oled_previousMillis = currentMillis;
+
+  display.clearDisplay();
+  display.setRotation(2);
+  display.setTextSize(1);             // Normal 1:1 pixel scale
+  display.setTextColor(WHITE);        // Draw white text
+  display.setCursor(0, 0);            // Start at top-left corner
+
+   // draw to OLED
   if (screentog == -1) {
     screentog = 0;
     return;
   }
-  display.clearDisplay();
-  display.setTextSize(2);             // Normal 1:1 pixel scale
-  display.setTextColor(WHITE);        // Draw white text
-  display.setCursor(0, 0);            // Start at top-left corner
+  
   if (screentog == 0) {
-    display.println(F("Volts(A)")); display.println(Voltage_A);
+    jumpback_oled:
+    display.print(F("Ch A | ")); display.print(Voltage_A); display.println(F(" Volts"));
+    display.print(F("     | ")); display.print(Current_A); display.println(F(" Amps"));
+    display.print(F("Ch B | ")); display.print(Voltage_B); display.println(F(" Volts"));
+    display.print(F("     | ")); display.print(Current_B); display.println(F(" Amps"));
     screentog = 1;
   }
   else if (screentog == 1) {
-    display.println(F("Amps(A)")); display.println(Current_A);
+    display.println(F("State of Charge")); 
+    display.print(F("  ")); display.print(state_of_charge*100); display.println(F(" %"));
+    display.println(F("Time to Discharged")); 
+    if (time_until_discharged > 0) {
+    display.print(F("  ")); display.print(time_until_discharged/3600); display.println(F(" hour"));
+    }
+    else display.print(F("  ---")); 
     screentog = 2;
   }
   else if (screentog == 2) {
-    display.println(F("Volts(B)")); display.println(Voltage_B);
+    display.println(F("SSID")); 
+    display.print(F("  ")); display.println(connected_network);
+    display.println(F("IP Address"));
+    display.print(F("  ")); display.println(ipaddress_OLED);
     screentog = 3;
   }
   else if (screentog == 3) {
-    display.println(F("Amps(B)")); display.println(Current_B);
-    screentog = 4;
+    if (Current_B > 0.2) {
+      display.drawBitmap(0, 0, charging_bmp, IMAGE_WIDTH, IMAGE_HEIGHT, 1);
+    }
+    else if (Current_B < -0.2) {
+      display.drawBitmap(0, 0, discharging_bmp, IMAGE_WIDTH, IMAGE_HEIGHT, 1);
+    }
+    else goto jumpback_oled;
+    screentog = 0;
   }
-  else if (screentog == 4) {
-    display.println(F("SoC(%)")); display.println(state_of_charge*100);
-    screentog = 5;
-  }
-  else if (screentog == 5) {
-    display.println(F("TimeUD(h)")); display.println(time_until_discharged/3600);
-    screentog = 8;
-  }
-  /*
-  else if (screentog == 6) {
-    display.println(F("effCap:")); display.println(effective_capacity_fromfull());
-    screentog = 7;
-  }
-  else if (screentog == 7) {
-    display.println(F("TUD:")); display.println(time_until_discharged_fromfull());
-    screentog = 8;
-  }
-  */
-  else if (screentog == 8) {
-    display.println(F("SSID:")); display.println(connected_network);
-    screentog = 9;
-  }
-  else if (screentog == 9) {
-    display.println(F("IP Addr:")); display.println(ipaddress_OLED);
-    screentog = 0; // return to zero
-  }
+  else goto jumpback_oled;
+  
 
   display.display(); // refresh display with buffer contents.
 }

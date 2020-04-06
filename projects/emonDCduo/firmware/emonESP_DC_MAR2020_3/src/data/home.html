@@ -245,27 +245,73 @@
               <b>Posting interval: (seconds)</b><br>
               <input type="text" value="emondc" data-bind="textInput: config.www_interval">
             </p>
+            <br>
+            <h3>
+              Channel A settings:
+            </h3>
             <p>
-              <b>V calibration. Channel A</b><br>
+              <b>Voltage calibration (default: 1.0)</b><br>
               <input type="text" data-bind="textInput: config.vcalA">
             </p>
             <p>
-              <b>I calibration. Channel A</b><br>
+              <b>Current calibration (default: 1.0)</b><br>
               <input type="text" data-bind="textInput: config.icalA">
             </p>
             <p>
-              <b>V calibration. Channel B</b><br>
+              <b>Reference Select. 0 for unidirectional, 1 for bidirectional.</b><br>
+              <input type="text" data-bind="textInput: config.chanA_VrefSet">
+            </p>
+            <p>
+              <b>Shunt Monitor Gain (default: 100)</b><br>
+              <input type="text" data-bind="textInput: config.channelA_gain">
+            </p>
+            <p>
+              <b>Resistor R1 (ohms) (default: 1000000)</b><br>
+              <input type="text" data-bind="textInput: config.R1_A">
+            </p>
+            <p>
+              <b>Resistor R2 (ohms) (default: 75000)</b><br>
+              <input type="text" data-bind="textInput: config.R2_A">
+            </p>
+            <p>
+              <b>Shunt Value (ohms) (default: 0.0005)</b><br>
+              <input type="text" data-bind="textInput: config.Rshunt_A">
+            </p>
+            <br><br>
+            <h3>
+              Channel B settings:
+            </h3>
+            <p>
+              <b>Voltage calibration (default: 1.0)</b><br>
               <input type="text" data-bind="textInput: config.vcalB">
             </p>
             <p>
-              <b>I calibration. Channel B</b><br>
+              <b>Current calibration (default: 1.0)</b><br>
               <input type="text" data-bind="textInput: config.icalB">
+            </p>
+            <p>
+              <b>Reference Select. 0 for unidirectional, 1 for bidirectional.</b><br>
+              <input type="text" data-bind="textInput: config.chanB_VrefSet">
+            </p>
+            <p>
+              <b>Shunt Monitor Gain (default: 100)</b><br>
+              <input type="text" data-bind="textInput: config.channelB_gain">
+            </p>
+            <p>
+              <b>Resistor R1 (ohms) (default: 1000000)</b><br>
+              <input type="text" data-bind="textInput: config.R1_B">
+            </p>
+            <p>
+              <b>Resistor R2 (ohms) (default: 75000)</b><br>
+              <input type="text" data-bind="textInput: config.R2_B">
+            </p>
+            <p>
+              <b>Shunt Value (ohms) (default: 0.0005)</b><br>
+              <input type="text" data-bind="textInput: config.Rshunt_B">
             </p>
             <button data-bind="click: saveEmonDC, text: (saveEmonDCFetching() ? 'Saving' : (saveEmonDCSuccess() ? 'Saved' : 'Save')), disable: saveEmonDCFetching">Save</button>
             <p>
               <b>All fields should be filled, you may want to take note of values for future adjustment.</b></br>
-              <b>default interval: 10</b></br>
-              <b>default calibration: 1.0</b>
             </p>
         </div>
       </div>

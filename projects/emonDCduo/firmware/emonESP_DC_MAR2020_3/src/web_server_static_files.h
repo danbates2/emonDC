@@ -1,8 +1,8 @@
-#include "web_server.lib_js.h"
-#include "web_server.home_html.h"
-#include "web_server.wifi_html.h"
-#include "web_server.style_css.h"
-#include "web_server.config_js.h"
+#include "./web_server_files/web_server.lib_js.h"
+#include "./web_server_files/web_server.home_html.h"
+#include "./web_server_files/web_server.wifi_html.h"
+#include "./web_server_files/web_server.style_css.h"
+#include "./web_server_files/web_server.config_js.h"
 
 StaticFile staticFiles[] = {
   { "/lib.js", lib_js, sizeof(lib_js) - 1, _CONTENT_TYPE_JS },

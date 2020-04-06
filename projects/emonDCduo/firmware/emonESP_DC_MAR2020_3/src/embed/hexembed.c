@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
     fread(b, fsize, 1, fp);
     fclose(fp);
-    
+    /*
     int slash_pos;
     int dot_pos;
     for (int i = 0; i < sizeof(fname); ++i) {
@@ -34,12 +34,12 @@ int main(int argc, char *argv[]) {
         if (name[i] == '.') dot_pos = i; dot_pos++; printf("dot:%d\n\n", dot_pos);
     }
     name[strlen(name)-dot_pos] = 0;
-    
+    */
     
     //return 1;
     printf("/* Embedded file: %s */\n", fname);
-    printf("const long fsize_%s = %ld;\n", name, fsize);
-    printf("static unsigned char *%s[%ld] PROGMEM = {\n", name,fsize);
+    printf("const long fsize_%s = %ld;\n", fname, fsize);
+    printf("static unsigned char *%s[%ld] PROGMEM = {\n", fname,fsize);
 
     
     for (int i = 0; i < fsize; ++i) {

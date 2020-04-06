@@ -3,6 +3,7 @@
 #include "config.h"
 #include "mqtt.h"
 #include "gpio0.h"
+#include "emondc.h"
 
 int LEDpin = LED_BUILTIN;
 unsigned long TimeButtonPressed;
@@ -11,6 +12,8 @@ unsigned long button_delay_RST = 11000; // ms for factory reset.
 bool buttonISRflag = false;
 bool _button_flag_one = false;
 bool _button_flag_two = false;
+
+bool LCD_trigger = false;
 
 void gpio0_setup() {
   pinMode(0, INPUT);
@@ -37,6 +40,7 @@ void gpio0_loop() { // check the buttonflag and perform action
     if (!_button_flag_one) {
       Serial.println("Button pressed!");
       _button_flag_one = true;
+      draw_OLED();
     }
     else if (!_button_flag_two && TimeButtonPressed + button_delay_AP <= millis()) {
       Serial.println("Button held, AP mode!");
