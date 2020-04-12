@@ -85,6 +85,7 @@ String mqtt_feed_prefix = "";
 #define EEPROM_ICALA_SIZE         8
 #define EEPROM_VCALB_SIZE         8
 #define EEPROM_ICALB_SIZE         8
+#define EEPROM_AMPOFFSET_SIZE     8
 #define EEPROM_SIG_SIZE           4
 
 #define EEPROM_SIZE               1024
@@ -150,8 +151,19 @@ String mqtt_feed_prefix = "";
 #define EEPROM_VCALB_END          (EEPROM_VCALB_START + EEPROM_VCALB_SIZE)
 #define EEPROM_ICALB_START        EEPROM_VCALB_END
 #define EEPROM_ICALB_END          (EEPROM_ICALB_START + EEPROM_ICALB_SIZE)
-#define EEPROM_SIG_START          EEPROM_ICALB_END
+
+#define EEPROM_AMPOFFSET_A_START        EEPROM_ICALB_END
+#define EEPROM_AMPOFFSET_A_END          (EEPROM_AMPOFFSET_A_START + EEPROM_AMPOFFSET_SIZE)
+#define EEPROM_AMPOFFSET_B_START        EEPROM_AMPOFFSET_A_END
+#define EEPROM_AMPOFFSET_B_END          (EEPROM_AMPOFFSET_B_START + EEPROM_AMPOFFSET_SIZE)
+#define EEPROM_VOLTOFFSET_A_START        EEPROM_AMPOFFSET_B_END
+#define EEPROM_VOLTOFFSET_A_END          (EEPROM_VOLTOFFSET_A_START + EEPROM_AMPOFFSET_SIZE)
+#define EEPROM_VOLTOFFSET_B_START        EEPROM_VOLTOFFSET_A_END
+#define EEPROM_VOLTOFFSET_B_END          (EEPROM_VOLTOFFSET_B_START + EEPROM_AMPOFFSET_SIZE)
+
+#define EEPROM_SIG_START          EEPROM_VOLTOFFSET_B_END
 #define EEPROM_SIG_END            (EEPROM_SIG_START + EEPROM_SIG_SIZE)
+
 
 // -------------------------------------------------------------------
 // Reset EEPROM, wipes all settings
@@ -297,7 +309,7 @@ void config_load_settings()
   Serial.print("Flash Signature:");Serial.println(sig);
   if (!strcmp(sig, "OEM")) ; // to stop fault while dev'ing
   else return;
-  Serial.println("emonDC Settings from Flash:");
+  Serial.println(" "); Serial.println("emonDC Settings from Flash:");
   EEPROM_read_int(EEPROM_INTERVAL_START, main_interval_seconds);
   Serial.print("main_interval_seconds:"); Serial.println(main_interval_seconds);
   EEPROM_read_int(EEPROM_GAIN_A_START, channelA_gain);
@@ -328,6 +340,15 @@ void config_load_settings()
   Serial.print("icalB:"); Serial.println(icalB);
   EEPROM_read_double(EEPROM_VCALB_START, vcalB);
   Serial.print("vcalB:"); Serial.println(vcalB);
+  EEPROM_read_double(EEPROM_AMPOFFSET_A_START, AmpOffset_A);
+  Serial.print("AmpOffset_A:"); Serial.println(AmpOffset_A);
+  EEPROM_read_double(EEPROM_VOLTOFFSET_A_START, VoltOffset_A);
+  Serial.print("VoltOffset_A:"); Serial.println(VoltOffset_A);
+  EEPROM_read_double(EEPROM_AMPOFFSET_B_START, AmpOffset_B);
+  Serial.print("AmpOffset_B:"); Serial.println(AmpOffset_B);
+  EEPROM_read_double(EEPROM_VOLTOFFSET_B_START, VoltOffset_B);
+  Serial.print("VoltOffset_B:"); Serial.println(VoltOffset_B);
+  Serial.println(" "); 
 }
 
 void config_save_emoncms(String server, String path, String node, String apikey, String fingerprint)
@@ -407,7 +428,8 @@ void config_save_wifi(String qsid, String qpass)
 void config_save_emondc(String qinterval, String qicalA, String qvcalA, String qicalB, String qvcalB,
 String qchanA_VrefSet, String qchanB_VrefSet, String qchannelA_gain, String qchannelB_gain, 
 String qR1_A, String qR2_A, String qR1_B, String qR2_B, 
-String qRshunt_A, String qRshunt_B)
+String qRshunt_A, String qRshunt_B,
+String qAmpOffset_A, String qAmpOffset_B, String qVoltOffset_A, String qVoltOffset_B)
 {
   char char_array[15]; // temp storage of chars
   strcpy(char_array, qinterval.c_str());
@@ -441,6 +463,15 @@ String qRshunt_A, String qRshunt_B)
   Rshunt_A = atof(char_array);
   strcpy(char_array, qRshunt_B.c_str());
   Rshunt_B = atof(char_array);
+  strcpy(char_array, qAmpOffset_A.c_str());
+  AmpOffset_A = atof(char_array);
+  strcpy(char_array, qAmpOffset_B.c_str());
+  AmpOffset_B = atof(char_array);
+  strcpy(char_array, qVoltOffset_A.c_str());
+  VoltOffset_A = atof(char_array);
+  strcpy(char_array, qVoltOffset_B.c_str());
+  VoltOffset_B = atof(char_array);
+
 
   // save web_server entered values to flash:
   EEPROM_write_int(EEPROM_INTERVAL_START, EEPROM_INTERVAL_SIZE, main_interval_seconds);
@@ -458,6 +489,10 @@ String qRshunt_A, String qRshunt_B)
   EEPROM_write_long(EEPROM_R2_B_START, EEPROM_R1_A_SIZE, R2_B);
   EEPROM_write_double(EEPROM_SHUNT_A_START, EEPROM_SHUNT_A_SIZE, Rshunt_A);
   EEPROM_write_double(EEPROM_SHUNT_B_START, EEPROM_SHUNT_A_SIZE, Rshunt_B);
+  EEPROM_write_double(EEPROM_AMPOFFSET_A_START, EEPROM_AMPOFFSET_SIZE, AmpOffset_A);
+  EEPROM_write_double(EEPROM_AMPOFFSET_B_START, EEPROM_AMPOFFSET_SIZE, AmpOffset_B);
+  EEPROM_write_double(EEPROM_VOLTOFFSET_A_START, EEPROM_AMPOFFSET_SIZE, VoltOffset_A);
+  EEPROM_write_double(EEPROM_VOLTOFFSET_B_START, EEPROM_AMPOFFSET_SIZE, VoltOffset_B);
 
   // using signature for init.
   EEPROM_write_string(EEPROM_SIG_START, EEPROM_SIG_SIZE, F("OEM"));

@@ -87,10 +87,11 @@ extern void config_save_wifi(String qsid, String qpass);
 // -------------------------------------------------------------------
 // Save the Wifi details
 // -------------------------------------------------------------------
-extern void config_save_emondc(String qinterval, String qicalA, String qvcalA, String qicalB, String qvcalB,
+extern void config_save_emondc (String qinterval, String qicalA, String qvcalA, String qicalB, String qvcalB,
 String qchanA_VrefSet, String qchanB_VrefSet, String qchannelA_gain, String qchannelB_gain, 
 String qR1_A, String qR2_A, String qR1_B, String qR2_B, 
-String qRshunt_A, String qRshunt_B);
+String qRshunt_A, String qRshunt_B,
+String AmpOffset_A, String AmpOffset_B, String VoltOffset_A, String VoltOffset_B);
 
 // -------------------------------------------------------------------
 // Reset the config back to defaults

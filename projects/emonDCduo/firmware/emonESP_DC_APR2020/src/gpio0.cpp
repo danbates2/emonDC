@@ -40,6 +40,7 @@ void gpio0_loop() { // check the buttonflag and perform action
     if (!_button_flag_one) {
       Serial.println("Button pressed!");
       _button_flag_one = true;
+      oled_button_flag = true;
       draw_OLED();
     }
     else if (!_button_flag_two && TimeButtonPressed + button_delay_AP <= millis()) {

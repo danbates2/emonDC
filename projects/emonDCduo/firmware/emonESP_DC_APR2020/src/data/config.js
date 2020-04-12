@@ -116,6 +116,10 @@ function ConfigViewModel() {
     "R2_B": "",
     "Rshunt_A": "",
     "Rshunt_B": "",
+    "AmpOffset_A": "",
+    "AmpOffset_B": "",
+    "VoltOffset_A": "",
+    "VoltOffset_B": "",
     "espflash": "",
     "version": "0.0.0"
   }, baseEndpoint + '/config');
@@ -317,7 +321,7 @@ function EmonEspViewModel() {
   self.saveEmonDC = function () {
     self.saveEmonDCFetching(true);
     self.saveEmonDCSuccess(false);
-    $.post(baseEndpoint + "/savedc", { interval: self.config.www_interval(), vcalA: self.config.vcalA(), icalA: self.config.icalA(), vcalB: self.config.vcalB(), icalB: self.config.icalB(),  chanA_VrefSet: self.config.chanA_VrefSet(), chanB_VrefSet: self.config.chanB_VrefSet(), channelA_gain: self.config.channelA_gain(), channelB_gain: self.config.channelB_gain(), R1_A: self.config.R1_A(), R2_A: self.config.R2_A(), R1_B: self.config.R1_B(), R2_B: self.config.R2_B(), Rshunt_A: self.config.Rshunt_A(), Rshunt_B: self.config.Rshunt_B() }, function (data) {
+    $.post(baseEndpoint + "/savedc", { interval: self.config.www_interval(), vcalA: self.config.vcalA(), icalA: self.config.icalA(), vcalB: self.config.vcalB(), icalB: self.config.icalB(),  chanA_VrefSet: self.config.chanA_VrefSet(), chanB_VrefSet: self.config.chanB_VrefSet(), channelA_gain: self.config.channelA_gain(), channelB_gain: self.config.channelB_gain(), R1_A: self.config.R1_A(), R2_A: self.config.R2_A(), R1_B: self.config.R1_B(), R2_B: self.config.R2_B(), Rshunt_A: self.config.Rshunt_A(), Rshunt_B: self.config.Rshunt_B(), AmpOffset_A: self.config.AmpOffset_A(), AmpOffset_B: self.config.AmpOffset_B(), VoltOffset_A: self.config.VoltOffset_A(), VoltOffset_B: self.config.VoltOffset_B() }, function (data) {
       self.saveEmonDCSuccess(true);
     }).fail(function () {
       alert("Failed to save config");

@@ -118,6 +118,7 @@ void dumpRequest(AsyncWebServerRequest *request) {
 // -------------------------------------------------------------------
 // Helper function to perform the standard operations on a request
 // -------------------------------------------------------------------
+
 bool requestPreProcess(AsyncWebServerRequest *request, AsyncResponseStream *&response, const char *contentType = "application/json")
 {
   if (www_username != "" && !request->authenticate(www_username.c_str(), www_password.c_str())) {
@@ -132,6 +133,8 @@ bool requestPreProcess(AsyncWebServerRequest *request, AsyncResponseStream *&res
 
   return true;
 }
+
+
 /*
 // -------------------------------------------------------------------
 // Load Home page
@@ -348,10 +351,14 @@ void handleEmonDC(AsyncWebServerRequest *request) {
   String qR2_B = request->arg("R2_B");
   String qRshunt_A = request->arg("Rshunt_A");
   String qRshunt_B = request->arg("Rshunt_B");
+  String qAmpOffset_A = request->arg("AmpOffset_A");
+  String qAmpOffset_B = request->arg("AmpOffset_B");
+  String qVoltOffset_A = request->arg("VoltOffset_A");
+  String qVoltOffset_B = request->arg("VoltOffset_B");
 
   config_save_emondc(qinterval, qicalA, qvcalA, qicalB, qvcalB, 
   qchanA_VrefSet, qchanB_VrefSet, qchannelA_gain, qchannelB_gain, 
-  qR1_A, qR2_A, qR1_B, qR2_B, qRshunt_A, qRshunt_B);
+  qR1_A, qR2_A, qR1_B, qR2_B, qRshunt_A, qRshunt_B, qAmpOffset_A, qAmpOffset_B, qVoltOffset_A, qVoltOffset_B);
 
   response->setCode(200);
   response->print("saved");
@@ -476,7 +483,11 @@ handleConfig(AsyncWebServerRequest *request) {
   s += "\"R1_B\":\"" + String(R1_B) + "\",";
   s += "\"R2_B\":\"" + String(R2_B) + "\",";
   s += "\"Rshunt_A\":\"" + String(Rshunt_A,5) + "\",";
-  s += "\"Rshunt_B\":\"" + String(Rshunt_B,5) + "\"";
+  s += "\"Rshunt_B\":\"" + String(Rshunt_B,5) + "\",";
+  s += "\"AmpOffset_A\":\"" + String(AmpOffset_A) + "\",";
+  s += "\"AmpOffset_B\":\"" + String(AmpOffset_B) + "\",";
+  s += "\"VoltOffset_A\":\"" + String(VoltOffset_A) + "\",";
+  s += "\"VoltOffset_B\":\"" + String(VoltOffset_B) + "\"";
   s += "}";
 
   response->setCode(200);
@@ -548,7 +559,7 @@ handleInput(AsyncWebServerRequest *request) {
 // Update firmware
 // url: /update
 // -------------------------------------------------------------------
-static void handle_update_progress_cb(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final) {
+void handle_update_progress_cb(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final) {
   uint32_t free_space = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
   if (!index) {
     Serial.println("Update");
@@ -558,6 +569,7 @@ static void handle_update_progress_cb(AsyncWebServerRequest *request, String fil
     }
   }
 
+  Serial.print(".");
   if (Update.write(data, len) != len) {
     Update.printError(Serial);
   }
@@ -566,7 +578,7 @@ static void handle_update_progress_cb(AsyncWebServerRequest *request, String fil
     if (!Update.end(true)) {
       Update.printError(Serial);
     } else {
-      // restartNow = true;//Set flag so main loop can issue restart call
+      // restartNow = true; //Set flag so main loop can issue restart call
       Serial.println("Update complete");
       delay(1000);
       ESP.reset();
@@ -627,6 +639,114 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient *client, AwsEventTy
   }
 }
 
+/*
+// -------------------------------------------------------------------
+// Update firmware
+// url: /update
+// -------------------------------------------------------------------
+void
+handleUpdateGet(AsyncWebServerRequest *request) {
+  AsyncResponseStream *response;
+  if(false == requestPreProcess(request, response, CONTENT_TYPE_HTML)) {
+    return;
+  }
+
+  response->setCode(200);
+  response->print(
+    F("<html><form method='POST' action='/update' enctype='multipart/form-data'>"
+        "<input type='file' name='firmware'> "
+        "<input type='submit' value='Update'>"
+      "</form></html>"));
+  request->send(response);
+}
+
+void
+handleUpdatePost(AsyncWebServerRequest *request) {
+  bool shouldReboot = !Update.hasError();
+  AsyncWebServerResponse *response = request->beginResponse(200, CONTENT_TYPE_TEXT, shouldReboot ? "OK" : "FAIL");
+  response->addHeader("Connection", "close");
+  request->send(response);
+
+  if(shouldReboot) {
+    delay(1000);
+    ESP.reset();
+    //systemRestartTime = millis() + 1000;
+  }
+}
+
+extern "C" uint32_t _SPIFFS_start;
+extern "C" uint32_t _SPIFFS_end;
+static int lastPercent = -1;
+
+void
+handleUpdateUpload(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final)
+{
+  if(!index)
+  {
+    dumpRequest(request);
+
+    DBUGF("Update Start: %s", filename.c_str());
+    Serial.println("Update Start.");
+
+    // DBUGVAR(data[0]);
+    //int command = data[0] == 0xE9 ? U_FLASH : U_SPIFFS;
+    int command = U_FLASH;
+    size_t updateSize = U_FLASH == command ?
+      (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000 :
+      ((size_t) &_SPIFFS_end - (size_t) &_SPIFFS_start);
+
+    // DBUGVAR(command);
+    // DBUGVAR(updateSize);
+
+    // lcd_display(U_FLASH == command ? F("Updating WiFi") : F("Updating SPIFFS"), 0, 0, 0, LCD_CLEAR_LINE);
+    // lcd_display(F(""), 0, 1, 10 * 1000, LCD_CLEAR_LINE);
+    // lcd_loop();
+
+    Update.runAsync(true);
+    if(!Update.begin(updateSize, command)) {
+#ifdef ENABLE_DEBUG
+      Update.printError(DEBUG_PORT);
+#endif
+    }
+  }
+  if(!Update.hasError())
+  {
+    DBUGF("Update Writing %d", index);
+    // String text = String(index);
+    size_t contentLength = request->contentLength();
+    // DBUGVAR(contentLength);
+    if(contentLength > 0)
+    {
+      int percent = index / (contentLength / 100);
+      // DBUGVAR(percent);
+      // DBUGVAR(lastPercent);
+      if(percent != lastPercent) {
+       // String text = String(percent) + F("%");
+       // lcd_display(text, 0, 1, 10 * 1000, LCD_DISPLAY_NOW);
+        lastPercent = percent;
+      }
+    }
+    if(Update.write(data, len) != len) {
+#ifdef ENABLE_DEBUG
+      Update.printError(DEBUG_PORT);
+#endif
+    }
+  }
+  if(final)
+  {
+    if(Update.end(true)) {
+      //DBUGF("Update Success: %uB", index+len);
+      //lcd_display(F("Complete"), 0, 1, 10 * 1000, LCD_CLEAR_LINE | LCD_DISPLAY_NOW);
+    } else {
+      //lcd_display(F("Error"), 0, 1, 10 * 1000, LCD_CLEAR_LINE | LCD_DISPLAY_NOW);
+#ifdef ENABLE_DEBUG
+      Update.printError(DEBUG_PORT);
+#endif
+    }
+  }
+}
+*/
+
 void
 web_server_setup()
 {
@@ -672,10 +792,7 @@ web_server_setup()
 
   // Simple Firmware Update Form
   //server.on("/upload", HTTP_GET, handleUpdateGet);
-  //server.on("/upload", HTTP_POST, handleUpdatePost, handleUpdateUpload);
-
-  //server.on("/firmware", handleUpdateCheck);
-  //  server.on("/update", handleUpdate);
+  //server.on("/update", HTTP_POST, handleUpdatePost, handleUpdateUpload);
 
   server.onNotFound(handleNotFound);
   //server.onNotFound(handleHome);

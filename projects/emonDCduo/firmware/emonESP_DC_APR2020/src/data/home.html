@@ -277,6 +277,14 @@
               <b>Shunt Value (ohms) (default: 0.0005)</b><br>
               <input type="text" data-bind="textInput: config.Rshunt_A">
             </p>
+            <p>
+              <b>Amps Offset (Amps)</b><br>
+              <input type="text" data-bind="textInput: config.AmpOffset_A">
+            </p>
+            <p>
+              <b>Volts Offset (Volts)</b><br>
+              <input type="text" data-bind="textInput: config.VoltOffset_A">
+            </p>
             <br><br>
             <h3>
               Channel B settings:
@@ -308,6 +316,14 @@
             <p>
               <b>Shunt Value (ohms) (default: 0.0005)</b><br>
               <input type="text" data-bind="textInput: config.Rshunt_B">
+            </p>
+            <p>
+              <b>Amps Offset (Amps)</b><br>
+              <input type="text" data-bind="textInput: config.AmpOffset_B">
+            </p>
+            <p>
+              <b>Volts Offset (Volts)</b><br>
+              <input type="text" data-bind="textInput: config.VoltOffset_B">
             </p>
             <button data-bind="click: saveEmonDC, text: (saveEmonDCFetching() ? 'Saving' : (saveEmonDCSuccess() ? 'Saved' : 'Save')), disable: saveEmonDCFetching">Save</button>
             <p>

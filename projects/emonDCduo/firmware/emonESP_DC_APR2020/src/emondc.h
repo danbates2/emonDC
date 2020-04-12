@@ -27,11 +27,15 @@ extern double icalB;
 extern double vcalB;
 extern unsigned int waking_time;
 extern unsigned int sleeping_time;
+extern double AmpOffset_A;
+extern double VoltOffset_A;
+extern double AmpOffset_B;
+extern double VoltOffset_B;
 
 // false for chanA, true for chanB.
 const bool chanBool = 0;
 extern int screentog;
-
+extern bool oled_button_flag;
 extern void emondc_setup(void);
 extern void emondc_loop(void);
 

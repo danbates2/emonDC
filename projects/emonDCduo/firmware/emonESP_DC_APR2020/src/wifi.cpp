@@ -47,7 +47,7 @@ const char *esp_hostname = "emondc";
 String connected_network = "";
 String status_string = "";
 String ipaddress = "";
-String ipaddress_OLED = "";
+
 
 unsigned long Timer;
 String st, rssi;
@@ -97,11 +97,6 @@ void startAP() {
   DEBUG.print("AP IP Address: ");
   DEBUG.println(tmpStr);
   ipaddress = tmpStr;
-  ipaddress_OLED = tmpStr;
-  //int iplen = ipaddress_OLED.length();
-  //int iplen_adjust = iplen - 10;
-  //ipaddress_OLED.remove(0,iplen_adjust);
-  
 }
 
 // -------------------------------------------------------------------
@@ -140,7 +135,7 @@ void startClient() {
         delay(500);
         Serial.print(".");
         tries++;
-        if (tries == 15) break;
+        if (tries == 15) { Serial.println(" Network not found"); startAP(); wifi_mode = WIFI_MODE_AP_STA_RETRY; break; }
         if (digitalRead(0) == LOW) {
         Serial.println(" ");
         startAP();
@@ -155,7 +150,7 @@ void startClient() {
         startAP();
         // AP mode with SSID in EEPROM, connection will retry in 5 minutes
         wifi_mode = WIFI_MODE_AP_STA_RETRY;
-        break;
+        return;
       }
     }
     else if (digitalRead(0) == LOW) {
@@ -165,26 +160,20 @@ void startClient() {
       break;
     }
   }
-  
 
   if (wifi_mode == WIFI_MODE_STA || wifi_mode == WIFI_MODE_AP_AND_STA) {
-
     IPAddress myAddress = WiFi.localIP();
     char tmpStr[40];
-    sprintf(tmpStr, "%d.%d.%d.%d", myAddress[0], myAddress[1], myAddress[2],
-            myAddress[3]);
+    sprintf(tmpStr, "%d.%d.%d.%d", myAddress[0], myAddress[1], myAddress[2], myAddress[3]);
     DEBUG.print("Connected, IP: ");
     DEBUG.println(tmpStr);
     // Copy the connected network and ipaddress to global strings for use in status request
     connected_network = esid;
     ipaddress = tmpStr;
-    ipaddress_OLED = tmpStr;
-    int iplen = ipaddress_OLED.length();
-    int iplen_adjust = iplen - 10;
-    ipaddress_OLED.remove(0,iplen_adjust);
   }
   DEBUG.println(" ");
 }
+
 
 void wifi_setup() {
   WiFi.disconnect();

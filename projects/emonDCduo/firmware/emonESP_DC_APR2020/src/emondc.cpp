@@ -22,12 +22,10 @@
 #include <RTClib.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-
+ 
 #define TEXTIFY(A) #A
 #define ESCAPEQUOTE(A) TEXTIFY(A)
 String hw_version = ESCAPEQUOTE(HW_TAG);
-
-//String hw_version = "HW:v3.6"; // hardware version.
 
 // -------------------------------------------------------------------
 // change the following variables for your system, values will be overwritten by EEPROM save function (triggered in web_server in emonDC save settings).
@@ -50,10 +48,10 @@ double vcalA = 1.000; // VOLTAGE_A.
 double icalB = 1.000; // CURRENT_B.
 double vcalB = 1.000; // VOLTAGE_B.
 // Amplifier offset corrections for zero measurements, ideally these would be maps derived from experiment.
-double offset_correction_ampsA = -0.02;
-double offset_correction_voltsA = -0.005;
-double offset_correction_ampsB = 0.07;
-double offset_correction_voltsB = -0.01;
+double AmpOffset_A = -0.02;
+double VoltOffset_A = -0.005;
+double AmpOffset_B = 0.07;
+double VoltOffset_B = -0.01;
 // Battery State of Charge variables [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
 double battery_voltage_nominal = 12.0; // just in case useful later
 double bat_max = 14.8; double bat_min = 10.6; // these actually change with temperature, and are therefore crude values.
@@ -70,7 +68,7 @@ double Temperature_Bat = 10.0; // future use
 // -------------------------------------------------------------------
 
 // OLED Display
-uint32_t oled_interval = 10000; // blank after 10s.
+uint32_t oled_interval = 5000; // cycle through data every 5 seconds.
 uint32_t oled_previousMillis;
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 32 // OLED display height, in pixels
@@ -78,6 +76,7 @@ uint32_t oled_previousMillis;
 #define OLED_RESET  -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 int screentog = -1; // rotating variable for knowing which data to present on OLED.
+bool oled_button_flag = false; // if a button press is detected, the screen wil go off after 10seconds.
 #define IMAGE_WIDTH    128
 #define IMAGE_HEIGHT   32
 
@@ -320,8 +319,11 @@ void emondc_loop(void) {
   
   if (currentMillis - oled_previousMillis >= oled_interval) {
     oled_previousMillis = currentMillis;
-    display.ssd1306_command(0b10101110); //  turn OLED off, see datasheet.
-    //draw_OLED(); // for the 128x32 I2C OLED.
+    if (oled_button_flag) { 
+      oled_interval = 10000;
+      display.ssd1306_command(0b10101110); //  turn OLED off, see datasheet.
+    }
+    else draw_OLED(); // for the 128x32 I2C OLED.
     yield();
   }
 } // end emonDC loop
@@ -528,7 +530,7 @@ void draw_OLED() {
     display.println(F("SSID")); 
     display.print(F("  ")); display.println(connected_network);
     display.println(F("IP Address"));
-    display.print(F("  ")); display.println(ipaddress_OLED);
+    display.print(F("  ")); display.println(ipaddress);
     screentog = 3;
   }
   else if (screentog == 3) {
@@ -585,12 +587,12 @@ double make_readable_Volts (double _Value, bool _chan) {
 
   if (_chan == 0) {
     double _readableVolts = _readableV1 / ((double)R2_A / ((double)R1_A + (double)R2_A));
-    _readableVolts += offset_correction_voltsA;
+    _readableVolts += VoltOffset_A;
     return (_readableVolts);
   }
   else {
     double _readableVolts = _readableV1 / ((double)R2_B / ((double)R1_B + (double)R2_B));
-    _readableVolts += offset_correction_voltsB;
+    _readableVolts += VoltOffset_B;
     return (_readableVolts);
   }
 }
@@ -605,12 +607,12 @@ double make_readable_Amps (double _Value, bool _chan, double _gain) {
 
   if (_chan == 0) {
     double _readableAmps = _readable_2 / Rshunt_A; // I=V/R
-    _readableAmps += offset_correction_ampsA; // shunt monitor offset calibration
+    _readableAmps += AmpOffset_A; // shunt monitor offset calibration
     return (_readableAmps);
   }
   else {
     double _readableAmps = _readable_2 / Rshunt_B; // I=V/R
-    _readableAmps += offset_correction_ampsB; // shunt monitor offset calibration
+    _readableAmps += AmpOffset_B; // shunt monitor offset calibration
     return (_readableAmps);
   }
 }
