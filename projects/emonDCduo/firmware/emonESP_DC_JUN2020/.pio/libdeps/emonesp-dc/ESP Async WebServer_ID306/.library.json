@@ -1,0 +1,42 @@
+{
+    "license": "LGPL-3.0", 
+    "name": "ESP Async WebServer", 
+    "repository": {
+        "url": "https://github.com/me-no-dev/ESPAsyncWebServer.git", 
+        "type": "git"
+    }, 
+    "platforms": [
+        "espressif32", 
+        "espressif8266"
+    ], 
+    "frameworks": [
+        "arduino"
+    ], 
+    "version": "1.1.1", 
+    "dependencies": [
+        {
+            "platforms": "espressif8266", 
+            "name": "ESPAsyncTCP"
+        }, 
+        {
+            "platforms": "espressif32", 
+            "name": "AsyncTCP"
+        }
+    ], 
+    "authors": [
+        {
+            "url": null, 
+            "maintainer": true, 
+            "email": null, 
+            "name": "Hristo Gochkov"
+        }
+    ], 
+    "keywords": [
+        "async", 
+        "websocket", 
+        "http", 
+        "webserver"
+    ], 
+    "id": 306, 
+    "description": "Asynchronous HTTP and WebSocket Server Library for ESP8266 and ESP32"
+}
