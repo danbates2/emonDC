@@ -41,7 +41,8 @@ uint32_t R2_A = 75000; // 75kohm default.
 uint32_t R1_B = 1000000;
 uint32_t R2_B = 75000;
 double Rshunt_A = 0.001; // default value of Rsense in Ohms.
-double Rshunt_B = 0.001;
+double Rshunt_B = 0.01; // Y14870R01000B9R Yishay Foil Resistor 0.1% 0.01R
+
 // Calibration values for manual adjustment.
 double icalA = 1.000; // CURRENT_A.
 double vcalA = 1.000; // VOLTAGE_A.
@@ -49,9 +50,9 @@ double icalB = 1.000; // CURRENT_B.
 double vcalB = 1.000; // VOLTAGE_B.
 // Amplifier offset corrections for zero measurements, ideally these would be maps derived from experiment.
 double AmpOffset_A = 0.00;
-double VoltOffset_A = -0.005;
-double AmpOffset_B = 0.07;
-double VoltOffset_B = -0.01;
+double VoltOffset_A = 0.0;
+double AmpOffset_B = 0.0;
+double VoltOffset_B = 0.0;
 // Battery State of Charge variables [https://en.wikipedia.org/wiki/Peukert's_law#Formula]
 //double battery_voltage_nominal = 12.0; // just in case useful later
 //double bat_max = 14.8; double bat_min = 10.6; // these actually change with temperature, and are therefore crude values.
@@ -112,8 +113,18 @@ unsigned long VREF_BI_ACCUMULATOR = 0;
 unsigned long VREF33_ACCUMULATOR = 0;
 unsigned long CH8_ACCUMULATOR = 0;
 unsigned long numberofsamples = 0;
-// for external sending
-unsigned long numberofsamplesext = 0;
+unsigned long numberofsamplesext = 0; // for outputting sample count before clearing accumulators.
+
+// MAX / MIN ADC channel values.
+uint16_t CH_A_CURRENT_MAX = 0;
+uint16_t CH_A_VOLTAGE_MAX = 0;
+uint16_t CH_B_CURRENT_MAX = 0;
+uint16_t CH_B_VOLTAGE_MAX = 0;
+uint16_t CH_A_CURRENT_MIN = 65000;
+uint16_t CH_A_VOLTAGE_MIN = 65000;
+uint16_t CH_B_CURRENT_MIN = 65000;
+uint16_t CH_B_VOLTAGE_MIN = 65000;
+
 // Averaged ADC channel values.
 double CH_A_CURRENT_AVERAGED;
 double CH_A_VOLTAGE_AVERAGED;
@@ -123,20 +134,13 @@ double VREF_UNI_AVERAGED;
 double VREF_BI_AVERAGED;
 double VREF33_AVERAGED;
 double CH8_AVERAGED;
-// MAX / MIN ADC channel values.
-uint16_t CH_A_CURRENT_MAX = 0;
-uint16_t CH_A_VOLTAGE_MAX = 0;
-uint16_t CH_B_CURRENT_MAX = 0;
-uint16_t CH_B_VOLTAGE_MAX = 0;
-uint16_t CH_A_CURRENT_MIN = 0;
-uint16_t CH_A_VOLTAGE_MIN = 0;
-uint16_t CH_B_CURRENT_MIN = 0;
-uint16_t CH_B_VOLTAGE_MIN = 0;
+
 // Human-readable volts and amps
 double Voltage_A;
 double Current_A;
 double Voltage_B;
 double Current_B;
+
 double Voltage_A_Max;
 double Current_A_Max;
 double Voltage_B_Max;
@@ -337,7 +341,7 @@ void emondc_loop(void) {
       // what to do with the ready data:
       //-----------------------------------
       _t = (millis() / 1000) - _t_begin;
-      Serial.print("        _t: ");
+      Serial.print("time since start:: ");
       Serial.println(_t);
       Serial.print("connected_network: ");
       Serial.println(connected_network);
@@ -352,6 +356,7 @@ void emondc_loop(void) {
       //-----------------------------------
       numberofsamplesext = 0;
       Serial.print("FreeRAM (bytes): ");  Serial.println(ESP.getFreeHeap()); // for debugging
+      clear_accumulators();
     }
   }
   
@@ -421,7 +426,7 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   
   unsigned long this_interval_ms = curr_mills - pre_mills;
   yield();
-  double Ah_period = (Current_B * (this_interval_ms/1000)) / 3600.0; // Coulomb counting.
+  double Ah_period = (Current_B * (this_interval_ms/1000)) / 3600.0; // Coulomb count this period.
   double soc_diff = Ah_period / effective_capacity_fromfull(); // state of charge difference this period.
   state_of_charge += soc_diff; // update state of charge.
   if (state_of_charge > 1.0) state_of_charge = 1.0;
@@ -434,9 +439,12 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   yield();
   
   averaging_loop_counter++;
-  Serial.print("Averaging loop counter: ");
-  Serial.println(averaging_loop_counter);
+  //Serial.print("Averaging: ");
+  //Serial.print(averaging_loop_counter); Serial.print("    ");
   
+} // Averaging loop end.
+
+void clear_accumulators(void) {
   CH_A_CURRENT_ACCUMULATOR = 0;
   CH_A_VOLTAGE_ACCUMULATOR = 0;
   CH_B_CURRENT_ACCUMULATOR = 0;
@@ -448,15 +456,22 @@ void average_and_calibrate(unsigned long pre_mills, unsigned long curr_mills) {
   numberofsamplesext = numberofsamples;
   numberofsamples = 0;
 
-} // Averaging loop end.
-
+  CH_A_CURRENT_MAX = 0;
+  CH_A_VOLTAGE_MAX = 0;
+  CH_B_CURRENT_MAX = 0;
+  CH_B_VOLTAGE_MAX = 0;
+  CH_A_CURRENT_MIN = 0;
+  CH_A_VOLTAGE_MIN = 0;
+  CH_B_CURRENT_MIN = 0;
+  CH_B_VOLTAGE_MIN = 0;
+}
 
 //---------------------------------------------------------------------------
 // Build Strign to forward to emonESP, same string is stored to SD card.
 //---------------------------------------------------------------------------
 void forward_to_emonESP(void)
 {
-  /*
+/*
   double Voltage_A_Max;
   double Current_A_Max;
   double Voltage_B_Max;
@@ -467,6 +482,7 @@ void forward_to_emonESP(void)
   double Voltage_B_Min;
   double Current_B_Min;
 */
+
   ADC_KeyValue_String = "Volts_A:" + String(Voltage_A, 2);
   ADC_KeyValue_String += ",";
   ADC_KeyValue_String += "Volts_A_Max:";
@@ -496,10 +512,10 @@ void forward_to_emonESP(void)
   ADC_KeyValue_String += "Amps_B:";
   ADC_KeyValue_String += Current_B;
   ADC_KeyValue_String += ",";
-  ADC_KeyValue_String += "Amps_A_Max:";
+  ADC_KeyValue_String += "Amps_B_Max:";
   ADC_KeyValue_String += Current_B_Max;
   ADC_KeyValue_String += ",";
-  ADC_KeyValue_String += "Amps_A_Min:";
+  ADC_KeyValue_String += "Amps_B_Min:";
   ADC_KeyValue_String += Current_B_Min;
   ADC_KeyValue_String += ",";
   ADC_KeyValue_String += "Ref_Uni:";
@@ -523,10 +539,8 @@ void forward_to_emonESP(void)
   ADC_KeyValue_String += "time:";
   ADC_KeyValue_String += rtc_now_time;
   input_string = ADC_KeyValue_String;
+
 }
-
-
-
 
 
 //-------------------------
@@ -712,7 +726,7 @@ void save_to_SDcard(void) {
 double Wh_accumulate(double amps_value, double volts_value, int elapsed_seconds) {
   double watts = amps_value * volts_value;
   double watt_seconds = watts * (double)elapsed_seconds;
-  double wh = watt_seconds / 3600;
+  double wh = watt_seconds / 3600.0;
   return wh;
 }
 
@@ -758,4 +772,42 @@ void reset_ah_capacity(void) {
     //uint32_t time1_ah_reset = currentMillis;
   }
 }
+*/
+/*
+int timer1 = 1000;
+int timer1_previous;
+
+int timer2 = 5000;
+int timer2_previous;
+
+int timer3 = main_interval_ms;
+int timer3_previous;
+
+if (millis() >= timer1 + timer1_previous) {
+  FastDisplay();
+}
+ 
+if (millis() >= timer2 + timer2_previous) {
+  MiddleStore();
+}
+
+if (millis() >= timer3 + timer3_previous) {
+  PostData();
+}
+
+void FastDisplay(void) {
+
+}
+
+void MiddleStore(void) {
+
+}
+
+void PostData(void) {
+
+}
+
+
+
+
 */

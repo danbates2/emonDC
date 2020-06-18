@@ -394,8 +394,7 @@ void handleLastValues(AsyncWebServerRequest *request) {
 // Returns status json
 // url: /status
 // -------------------------------------------------------------------
-void
-handleStatus(AsyncWebServerRequest *request) {
+void handleStatus(AsyncWebServerRequest *request) {
   AsyncResponseStream *response;
   if (false == requestPreProcess(request, response)) {
     return;
@@ -558,8 +557,7 @@ handleRestart(AsyncWebServerRequest *request) {
 // url /input
 // e.g http://192.168.0.75/input?string=CT1:3935,CT2:325,T1:12.5,T2:16.9,T3:11.2,T4:34.7
 // -------------------------------------------------------------------
-void
-handleInput(AsyncWebServerRequest *request) {
+void handleInput(AsyncWebServerRequest *request) {
   AsyncResponseStream *response;
   if (false == requestPreProcess(request, response, "text/plain")) {
     return;

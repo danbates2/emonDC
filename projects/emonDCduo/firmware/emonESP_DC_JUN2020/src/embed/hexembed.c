@@ -22,26 +22,51 @@ int main(int argc, char *argv[]) {
 
     fread(b, fsize, 1, fp);
     fclose(fp);
-    /*
-    int slash_pos;
-    int dot_pos;
-    for (int i = 0; i < sizeof(fname); ++i) {
-        if (fname[i] == '/') slash_pos = i; slash_pos++; printf("slash:%d\n", slash_pos);
-    }
-    char *name = fname; name += slash_pos; 
-    printf("name:%d\n", sizeof(name));// return 1;
-    for (int i = 0; i < sizeof(name); ++i) {
-        if (name[i] == '.') dot_pos = i; dot_pos++; printf("dot:%d\n\n", dot_pos);
-    }
-    name[strlen(name)-dot_pos] = 0;
-    */
     
-    //return 1;
     printf("/* Embedded file: %s */\n", fname);
-    printf("const long fsize_%s = %ld;\n", fname, fsize);
-    printf("static unsigned char *%s[%ld] PROGMEM = {\n", fname,fsize);
-
+    //printf("const long fsize_%s = %ld;\n", fname, fsize);
     
+    char tmp[300];
+    char *tmpptr = tmp;
+    char *tmppt = tmp;
+    int endSlashPosition;
+    int nullLocation;
+    memcpy(tmp, fname, 300);
+    
+    for (int i = 0 ;i < 300;i++) {
+        if (tmp[i] == NULL) {
+            nullLocation = i;
+            break;
+        }
+    }    
+    //printf("nullLocation = %d\r", nullLocation);
+
+    for (int i = 0 ;i < nullLocation;i++) {
+        if (tmp[i] == '/') {
+            endSlashPosition = i;
+            //break;
+        }
+    }    
+    //printf("endSlashPosition = %d\r", endSlashPosition);
+
+    int filenameLength = nullLocation - endSlashPosition;
+
+    char tmp2[30];
+    char *tmp2ptr = tmp + endSlashPosition+1;
+
+    memcpy(tmp2, tmp2ptr, filenameLength);
+    //printf("filenameLength = %d\r", filenameLength);
+    
+    for (int i = 0;i < filenameLength;i++) {
+        if (tmp2[i] == '.') {
+            tmp2[i] = '_';
+            break;
+        }
+    }
+
+
+    printf("static const char %s[%ld] PROGMEM = {\n", tmp2,fsize);
+
     for (int i = 0; i < fsize; ++i) {
         printf("0x%02x%s",
                 b[i],

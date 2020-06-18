@@ -28,6 +28,10 @@
 // RTC library: https://github.com/adafruit/RTClib
 // PubSubClient library: https://github.com/knolleary/pubsubclient
 // AsyncWebServer library: https://github.com/me-no-dev/ESPAsyncWebServer
+// OLED Driver :https://github.com/adafruit/Adafruit_SSD1306/
+// and Graphics Library :https://github.com/adafruit/Adafruit-GFX-Library/
+// ArduinoJson :https://github.com/bblanchon/ArduinoJson
+// ESPAsyncTCP :https://github.com/me-no-dev/ESPAsyncTCP
 
 #include "emonesp.h"
 #include "config.h"

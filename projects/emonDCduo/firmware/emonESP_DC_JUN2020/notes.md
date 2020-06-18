@@ -9,3 +9,6 @@ Terminal commands to flash firmware, the first two are optional depending on you
     $ esptool.py --baud 921600 write_flash 0x0 .pio/build/emonesp-dc/firmware.bin
     or
     pio run && esptool.py --baud 921600 write_flash 0x0 .pio/build/emonesp-dc/firmware.bin && pio device monitor
+
+    extra pio device monitor commands untested.
+    $ -f colorize -f send_on_enter
