@@ -93,12 +93,12 @@ bool oled_button_flag = false; // if a button press is detected, the screen wil 
 
 // SD CARD
 const int chipSelectSD = 15; // SD card chip SPI chip select
-SPISettings mySettings(250000, MSBFIRST, SPI_MODE0); // 10kHz is the minimum clock speed : MCP3208 datasheet.
+SPISettings sdSettings(250000, MSBFIRST, SPI_MODE0); // 10kHz is the minimum clock speed : MCP3208 datasheet.
 
 // sample rate in this sketch is around 450 samples per channel per second at 400kHz.
 // ADC
 const int chipSelectADC = 2; // SD card chip SPI chip select
-AH_MCP320x ADC_SPI(chipSelectADC, mySettings); // ADC SPI chip select.
+AH_MCP320x ADC_SPI(chipSelectADC, sdSettings); // ADC SPI chip select.
 
 unsigned int _t_begin; //  human readable time of start
 unsigned long _t;//  human readable time since start
@@ -239,7 +239,7 @@ void emondc_setup(void) {
   digitalWrite(chipSelectSD, HIGH); delay(1);
   
   //if (SD.begin(chipSelectSD, 250000)) { // SPI speed sey here. Clash possible with ADC. // esp8266 framework v1.8
-  if (SD.begin(chipSelectSD, mySettings)) { // SPI speed sey here. Clash possible with ADC. // esp8266 framework v2+
+  if (SD.begin(chipSelectSD, sdSettings)) { // SPI speed sey here. Clash possible with ADC. // esp8266 framework v2+
     Serial.println("SDcard initialised.");
     SD_present = true;
   }
@@ -341,8 +341,7 @@ void emondc_loop(void) {
       // what to do with the ready data:
       //-----------------------------------
       _t = (millis() / 1000) - _t_begin;
-      Serial.print("time since start:: ");
-      Serial.println(_t);
+      Serial.print("time since start: "); Serial.print(_t); Serial.print(" seconds");
       Serial.print("connected_network: ");
       Serial.println(connected_network);
       forward_to_emonESP(); // sending to emonCMS
@@ -460,10 +459,10 @@ void clear_accumulators(void) {
   CH_A_VOLTAGE_MAX = 0;
   CH_B_CURRENT_MAX = 0;
   CH_B_VOLTAGE_MAX = 0;
-  CH_A_CURRENT_MIN = 0;
-  CH_A_VOLTAGE_MIN = 0;
-  CH_B_CURRENT_MIN = 0;
-  CH_B_VOLTAGE_MIN = 0;
+  CH_A_CURRENT_MIN = 65000;
+  CH_A_VOLTAGE_MIN = 65000;
+  CH_B_CURRENT_MIN = 65000;
+  CH_B_VOLTAGE_MIN = 65000;
 }
 
 //---------------------------------------------------------------------------

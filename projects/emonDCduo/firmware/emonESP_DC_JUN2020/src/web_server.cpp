@@ -25,12 +25,14 @@
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
+#include <SD.h>
 //#define FS_NO_GLOBALS
 //#include <FS.h>                       // SPIFFS file-system: store web server html, CSS etc.
 
 #include "emonesp.h"
 #include "web_server.h"
 #include "web_server_static.h"
+//#include "AsyncSDServer.h"
 #include "config.h"
 #include "wifi.h"
 #include "mqtt.h"
@@ -391,6 +393,27 @@ void handleLastValues(AsyncWebServerRequest *request) {
 }
 
 // -------------------------------------------------------------------
+// Download from SD card.
+// url: /download
+// -------------------------------------------------------------------
+/*
+void handleDownload(AsyncWebServerRequest *request) {
+  AsyncWebServerResponse *response;
+
+  if (false == requestPreProcess(request, response, "text/plain")) {
+    return;
+  }
+
+  //File dataFile = SD.open(datalogFilename, FILE_READ);
+
+  request->beginResponse(SPIFFS, "/index.htm", String(), true);
+  
+  response->addHeader("Content-Disposition", "attachment");
+  request->send(response);
+}
+*/
+
+// -------------------------------------------------------------------
 // Returns status json
 // url: /status
 // -------------------------------------------------------------------
@@ -656,113 +679,7 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient *client, AwsEventTy
   }
 }
 
-/*
-// -------------------------------------------------------------------
-// Update firmware
-// url: /update
-// -------------------------------------------------------------------
-void
-handleUpdateGet(AsyncWebServerRequest *request) {
-  AsyncResponseStream *response;
-  if(false == requestPreProcess(request, response, CONTENT_TYPE_HTML)) {
-    return;
-  }
 
-  response->setCode(200);
-  response->print(
-    F("<html><form method='POST' action='/update' enctype='multipart/form-data'>"
-        "<input type='file' name='firmware'> "
-        "<input type='submit' value='Update'>"
-      "</form></html>"));
-  request->send(response);
-}
-
-void
-handleUpdatePost(AsyncWebServerRequest *request) {
-  bool shouldReboot = !Update.hasError();
-  AsyncWebServerResponse *response = request->beginResponse(200, CONTENT_TYPE_TEXT, shouldReboot ? "OK" : "FAIL");
-  response->addHeader("Connection", "close");
-  request->send(response);
-
-  if(shouldReboot) {
-    delay(1000);
-    ESP.reset();
-    //systemRestartTime = millis() + 1000;
-  }
-}
-
-extern "C" uint32_t _SPIFFS_start;
-extern "C" uint32_t _SPIFFS_end;
-static int lastPercent = -1;
-
-void
-handleUpdateUpload(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final)
-{
-  if(!index)
-  {
-    dumpRequest(request);
-
-    DBUGF("Update Start: %s", filename.c_str());
-    Serial.println("Update Start.");
-
-    // DBUGVAR(data[0]);
-    //int command = data[0] == 0xE9 ? U_FLASH : U_SPIFFS;
-    int command = U_FLASH;
-    size_t updateSize = U_FLASH == command ?
-      (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000 :
-      ((size_t) &_SPIFFS_end - (size_t) &_SPIFFS_start);
-
-    // DBUGVAR(command);
-    // DBUGVAR(updateSize);
-
-    // lcd_display(U_FLASH == command ? F("Updating WiFi") : F("Updating SPIFFS"), 0, 0, 0, LCD_CLEAR_LINE);
-    // lcd_display(F(""), 0, 1, 10 * 1000, LCD_CLEAR_LINE);
-    // lcd_loop();
-
-    Update.runAsync(true);
-    if(!Update.begin(updateSize, command)) {
-#ifdef ENABLE_DEBUG
-      Update.printError(DEBUG_PORT);
-#endif
-    }
-  }
-  if(!Update.hasError())
-  {
-    DBUGF("Update Writing %d", index);
-    // String text = String(index);
-    size_t contentLength = request->contentLength();
-    // DBUGVAR(contentLength);
-    if(contentLength > 0)
-    {
-      int percent = index / (contentLength / 100);
-      // DBUGVAR(percent);
-      // DBUGVAR(lastPercent);
-      if(percent != lastPercent) {
-       // String text = String(percent) + F("%");
-       // lcd_display(text, 0, 1, 10 * 1000, LCD_DISPLAY_NOW);
-        lastPercent = percent;
-      }
-    }
-    if(Update.write(data, len) != len) {
-#ifdef ENABLE_DEBUG
-      Update.printError(DEBUG_PORT);
-#endif
-    }
-  }
-  if(final)
-  {
-    if(Update.end(true)) {
-      //DBUGF("Update Success: %uB", index+len);
-      //lcd_display(F("Complete"), 0, 1, 10 * 1000, LCD_CLEAR_LINE | LCD_DISPLAY_NOW);
-    } else {
-      //lcd_display(F("Error"), 0, 1, 10 * 1000, LCD_CLEAR_LINE | LCD_DISPLAY_NOW);
-#ifdef ENABLE_DEBUG
-      Update.printError(DEBUG_PORT);
-#endif
-    }
-  }
-}
-*/
 
 void
 web_server_setup()
@@ -778,6 +695,7 @@ web_server_setup()
   ws.onEvent(onWsEvent);
   server.addHandler(&ws);
   server.addHandler(&staticFile);
+  //server.addHandler(new AsyncStaticSDWebHandler("/", SD, "/", "max-age=604800"));
 
   // Start server & server root html /
   // server.on("/", handleHome);

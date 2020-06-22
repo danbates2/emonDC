@@ -29,8 +29,8 @@ int main(int argc, char *argv[]) {
     char tmp[300];
     char *tmpptr = tmp;
     char *tmppt = tmp;
-    int endSlashPosition;
-    int nullLocation;
+    int endSlashPosition = 0;
+    int nullLocation = 0;
     memcpy(tmp, fname, 300);
     
     for (int i = 0 ;i < 300;i++) {

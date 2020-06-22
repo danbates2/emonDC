@@ -468,6 +468,25 @@ document.getElementById("restart").addEventListener("click", function (e) {
 });
 
 // -----------------------------------------------------------------------
+// Event: Download File
+// -----------------------------------------------------------------------
+document.getElementById("download").addEventListener("click", function (e) {
+
+  var r = new XMLHttpRequest();
+  r.open("POST", "restart", true);
+  r.onreadystatechange = function () {
+    if (r.readyState != 4 || r.status != 200)
+      return;
+    var str = r.responseText;
+    console.log(str);
+    if (str !== 0)
+      document.getElementById("reset").innerHTML = "Restarting";
+  };
+  r.send();
+  
+});
+
+// -----------------------------------------------------------------------
 // Event:Upload Firmware
 // -----------------------------------------------------------------------
 document.getElementById("submit").addEventListener("click", function(e) {
