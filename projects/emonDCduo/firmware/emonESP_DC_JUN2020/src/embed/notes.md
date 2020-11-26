@@ -1,1 +1,0 @@
-this C program has been compiled with placed in 'data' folder, it is run with the associated script file, and outputs to the web_server_files directory. this is an automatic process with 'pio run'.
