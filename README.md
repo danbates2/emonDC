@@ -3,7 +3,7 @@
 emonDC is a project aiming to develop DC current and voltage measuring tools compatible with openenergymonitor.org project.<br>
 The main board in development is emonDCduo, a dual-channel generator/battery monitor, WiFi enabled, aimed at solar/battery systems.
 
-###### Project status: Reviewing Project. Develoment Units not available.
+### Project status: Reviewing Project. Develoment Units not available.
 ###### https://shop.openenergymonitor.com/emondc/
   <br/>
 
